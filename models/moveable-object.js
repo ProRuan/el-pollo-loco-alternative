@@ -6,6 +6,7 @@ class MoveableObject extends DrawableObject {
     energy = 100;
     lastHit = 0;    // to rename?
 
+    
     moveRight() {
         this.x += this.speed;
     }
