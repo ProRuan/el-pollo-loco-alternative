@@ -1,9 +1,10 @@
 class World {
+    level = LEVEL_1;
+    character = new Character();
     canvas;
     ctx;
     keyboard;
-
-    background = new Background('img/background/Background.png', 0);
+    camera_x = 0;
 
 
     constructor(canvas, keyboard) {
@@ -17,9 +18,13 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        // camera
+        // this.ctx.translate(this.camera_x, 0);
 
-        this.addToMap(this.background);
+        this.addGroupToMap(this.level.backgroundLayers);
+        this.addToMap(this.character);
+
+
+        // this.ctx.translate(-this.camera_x, 0);
 
         let self = this;
         requestAnimationFrame(() => {
@@ -28,7 +33,14 @@ class World {
     }
 
 
-    addToMap(background) {
-        background.draw(this.ctx);
+    addGroupToMap(objectGroup) {
+        objectGroup.forEach(o => {
+            this.addToMap(o);
+        });
+    }
+
+
+    addToMap(mo) {
+        mo.draw(this.ctx);
     }
 }
