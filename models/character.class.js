@@ -4,9 +4,7 @@ class Character extends MoveableObject {
     x = 32;
     y = 540 - 128 - 32;
     speed = 4;
-    IMAGES_WALKING_PATH = 'img/characters/knight/Walk/walk';
-    IMAGES_WALKING_AMOUNT = 6;
-    IMAGES_WALKING = this.loadImagesWalking(this.IMAGES_WALKING_PATH, this.IMAGES_WALKING_AMOUNT);
+    IMAGES_WALKING = new Animation().walking;    // flipBook???
     world;
 
 
@@ -32,16 +30,5 @@ class Character extends MoveableObject {
                 this.playAnimation(this.IMAGES_WALKING);
             }
         }, 1000 / 60 * 6);    // set value!!! + array.length!!!
-    }
-
-
-    loadImagesWalking(path, amount) {
-        let images = [];
-        for (let i = 0; i < amount; i++) {
-            let serial = i + 1;
-            let img = path + serial + '.png';
-            images.push(img);
-        }
-        return images;
     }
 }
