@@ -1,8 +1,8 @@
 class Keyboard {
-    SPACE = new Key(32);
-    LEFT = new Key(37);
-    UP = new Key(38);
-    RIGHT = new Key(39);
-    DOWN = new Key(40);
-    D = new Key(68);
+    SPACE = new Key('Space');
+    LEFT = new Key('ArrowLeft');
+    UP = new Key('ArrowUp');
+    RIGHT = new Key('ArrowRight');
+    DOWN = new Key('ArrowLeft');
+    D = new Key('keyD');
 }
