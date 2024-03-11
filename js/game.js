@@ -9,7 +9,29 @@ function init() {
 }
 
 
-// add event listener
+// Avoid using keyCode!!!
+document.addEventListener('keydown', (event) => {
+    let keyCode = event.keyCode;
+    setKeyValue(keyCode, 'SPACE');
+    setArrowKeyValue(keyCode);
+    setKeyValue(keyCode, 'D');
+});
+
+
+function setArrowKeyValue(keyCode) {
+    setKeyValue(keyCode, 'LEFT');
+    setKeyValue(keyCode, 'UP');
+    setKeyValue(keyCode, 'RIGHT');
+    setKeyValue(keyCode, 'DOWN');
+}
+
+
+function setKeyValue(keyCode, keyName) {
+    if (keyCode == keyboard[keyName].code) {
+        keyboard[keyName].value = true;
+    }
+}
+
 
 
 
