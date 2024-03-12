@@ -18,11 +18,17 @@ const IMG_IDLE_AMOUNT = 12;
 const IMG_JUMP_PATH = 'img/characters/knight/Jump/jump';
 const IMG_JUMP_AMOUNT = 7;
 const IMG_HIGH_JUMP_PATH = 'img/characters/knight/Jump_high/high_jump';
-const IMG_HIGH_JUMP_AMOUNT = 12
+const IMG_HIGH_JUMP_AMOUNT = 12;
+const IMG_PUSH_PATH = 'img/characters/knight/Push/push';
+const IMG_PUSH_AMOUNT = 4;
 const IMG_RUN_PATH = 'img/characters/knight/Run/run';
 const IMG_RUN_AMOUNT = 8;
+const IMG_RUN_ATTACK_PATH = 'img/characters/knight/Run_attack/run_attack';
+const IMG_RUN_ATTACK_AMOUNT = 8;
 const IMG_WALK_PATH = 'img/characters/knight/Walk/walk';
 const IMG_WALK_AMOUNT = 6;
+const IMG_WALK_ATTACK_PATH = 'img/characters/knight/Walk_attack/walk_attack';
+const IMG_WALK_ATTACK_AMOUNT = 6;
 
 
 function init() {

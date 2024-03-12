@@ -9,8 +9,11 @@ class FlipBook {
     idle;
     jump;
     highJump;
+    push;
     run;
+    runAttack;
     walk;
+    walkAttack;
 
 
     constructor() {
@@ -22,8 +25,11 @@ class FlipBook {
         this.idle = this.createFlipBook(IMG_IDLE_PATH, IMG_IDLE_AMOUNT);
         this.jump = this.createFlipBook(IMG_JUMP_PATH, IMG_JUMP_AMOUNT);
         this.highJump = this.createFlipBook(IMG_HIGH_JUMP_PATH, IMG_HIGH_JUMP_AMOUNT);
+        this.push = this.createFlipBook(IMG_PUSH_PATH, IMG_PUSH_AMOUNT);
         this.run = this.createFlipBook(IMG_RUN_PATH, IMG_RUN_AMOUNT);
+        this.runAttack = this.createFlipBook(IMG_RUN_ATTACK_PATH, IMG_RUN_ATTACK_AMOUNT);
         this.walk = this.createFlipBook(IMG_WALK_PATH, IMG_WALK_AMOUNT);
+        this.walkAttack = this.createFlipBook(IMG_WALK_ATTACK_PATH, IMG_WALK_ATTACK_AMOUNT);
     }
 
 

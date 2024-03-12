@@ -13,10 +13,12 @@ class Character extends MoveableObject {
     FLIP_BOOK_IDLE = this.FLIP_BOOK.idle;
     FLIP_BOOK_JUMP = this.FLIP_BOOK.jump;
     FLIP_BOOK_HIGH_JUMP = this.FLIP_BOOK.highJump;
+    FLIP_BOOK_PUSH = this.FLIP_BOOK.push;
     FLIP_BOOK_RUN = this.FLIP_BOOK.run;
+    FLIP_BOOK_RUN_ATTACK = this.FLIP_BOOK.runAttack;
     FLIP_BOOK_WALK = this.FLIP_BOOK.walk;
+    FLIP_BOOK_WALK_ATTACK = this.FLIP_BOOK.walkAttack;
     world;
-
 
     constructor() {
         super().loadImage('img/characters/knight/knight.png');
@@ -28,8 +30,11 @@ class Character extends MoveableObject {
         this.loadImages(this.FLIP_BOOK_IDLE);
         this.loadImages(this.FLIP_BOOK_JUMP);
         this.loadImages(this.FLIP_BOOK_HIGH_JUMP);
+        this.loadImages(this.FLIP_BOOK_PUSH);
         this.loadImages(this.FLIP_BOOK_RUN);
+        this.loadImages(this.FLIP_BOOK_RUN_ATTACK);
         this.loadImages(this.FLIP_BOOK_WALK);
+        this.loadImages(this.FLIP_BOOK_WALK_ATTACK);
         this.animate();
     }
 
@@ -55,10 +60,11 @@ class Character extends MoveableObject {
                 this.playAnimation(this.FLIP_BOOK_CLIMB);
             }
             if (this.world.keyboard.RIGHT.value || this.world.keyboard.LEFT.value) {
-                this.playAnimation(this.FLIP_BOOK_RUN);
+                this.playAnimation(this.FLIP_BOOK_WALK);
             }
             if (!keyboard.KEYDOWN) {
-                this.playAnimation(this.FLIP_BOOK_IDLE);
+                this.loadImage('img/characters/knight/knight.png');
+                // this.playAnimation(this.FLIP_BOOK_IDLE);
             }
         }, 1000 / 60 * 6);    // set value!!! + array.length!!!
     }
