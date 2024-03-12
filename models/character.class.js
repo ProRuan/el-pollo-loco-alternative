@@ -11,8 +11,10 @@ class Character extends MoveableObject {
     FLIP_BOOK_EXTRA_ATTACK = this.FLIP_BOOK.extraAttack;
     FLIP_BOOK_HURT = this.FLIP_BOOK.hurt;
     FLIP_BOOK_IDLE = this.FLIP_BOOK.idle;
-    FLIP_BOOK_WALK = this.FLIP_BOOK.walk;
     FLIP_BOOK_JUMP = this.FLIP_BOOK.jump;
+    FLIP_BOOK_HIGH_JUMP = this.FLIP_BOOK.highJump;
+    FLIP_BOOK_RUN = this.FLIP_BOOK.run;
+    FLIP_BOOK_WALK = this.FLIP_BOOK.walk;
     world;
 
 
@@ -25,6 +27,8 @@ class Character extends MoveableObject {
         this.loadImages(this.FLIP_BOOK_EXTRA_ATTACK);
         this.loadImages(this.FLIP_BOOK_IDLE);
         this.loadImages(this.FLIP_BOOK_JUMP);
+        this.loadImages(this.FLIP_BOOK_HIGH_JUMP);
+        this.loadImages(this.FLIP_BOOK_RUN);
         this.loadImages(this.FLIP_BOOK_WALK);
         this.animate();
     }
@@ -51,7 +55,7 @@ class Character extends MoveableObject {
                 this.playAnimation(this.FLIP_BOOK_CLIMB);
             }
             if (this.world.keyboard.RIGHT.value || this.world.keyboard.LEFT.value) {
-                this.playAnimation(this.FLIP_BOOK_JUMP);
+                this.playAnimation(this.FLIP_BOOK_RUN);
             }
             if (!keyboard.KEYDOWN) {
                 this.playAnimation(this.FLIP_BOOK_IDLE);

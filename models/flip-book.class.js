@@ -8,6 +8,8 @@ class FlipBook {
     hurt;
     idle;
     jump;
+    highJump;
+    run;
     walk;
 
 
@@ -19,6 +21,8 @@ class FlipBook {
         this.hurt = this.createFlipBook(IMG_HURT_PATH, IMG_HURT_AMOUNT);
         this.idle = this.createFlipBook(IMG_IDLE_PATH, IMG_IDLE_AMOUNT);
         this.jump = this.createFlipBook(IMG_JUMP_PATH, IMG_JUMP_AMOUNT);
+        this.highJump = this.createFlipBook(IMG_HIGH_JUMP_PATH, IMG_HIGH_JUMP_AMOUNT);
+        this.run = this.createFlipBook(IMG_RUN_PATH, IMG_RUN_AMOUNT);
         this.walk = this.createFlipBook(IMG_WALK_PATH, IMG_WALK_AMOUNT);
     }
 

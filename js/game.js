@@ -17,6 +17,10 @@ const IMG_IDLE_PATH = 'img/characters/knight/Idle/idle';
 const IMG_IDLE_AMOUNT = 12;
 const IMG_JUMP_PATH = 'img/characters/knight/Jump/jump';
 const IMG_JUMP_AMOUNT = 7;
+const IMG_HIGH_JUMP_PATH = 'img/characters/knight/Jump_high/high_jump';
+const IMG_HIGH_JUMP_AMOUNT = 12
+const IMG_RUN_PATH = 'img/characters/knight/Run/run';
+const IMG_RUN_AMOUNT = 8;
 const IMG_WALK_PATH = 'img/characters/knight/Walk/walk';
 const IMG_WALK_AMOUNT = 6;
 
