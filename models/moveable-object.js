@@ -12,8 +12,18 @@ class MoveableObject extends DrawableObject {
     }
 
 
+    climbUp() {
+        this.y -= this.speed;
+    }
+
+
     moveRight() {
         this.x += this.speed;
+    }
+
+
+    climbDown() {
+        this.y += this.speed;
     }
 
 

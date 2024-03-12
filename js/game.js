@@ -2,6 +2,16 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 
+// Constants
+IMG_ATTACK_PATH = 'img/characters/knight/Attack/attack';
+IMG_ATTACK_AMOUNT = 4;
+IMG_CLIMB_PATH = 'img/characters/knight/Climb/climb';
+IMG_CLIMB_AMOUNT = 4;
+IMG_DEATH_PATH = 'img/characters/knight/Death/death';
+IMG_DEATH_AMOUNT = 10;
+IMG_WALK_PATH = 'img/characters/knight/Walk/walk';
+IMG_WALK_AMOUNT = 6;
+
 
 function init() {
     canvas = getElement('canvas');
