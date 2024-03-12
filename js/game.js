@@ -3,14 +3,22 @@ let world;
 let keyboard = new Keyboard();
 
 // Constants
-IMG_ATTACK_PATH = 'img/characters/knight/Attack/attack';
-IMG_ATTACK_AMOUNT = 4;
-IMG_CLIMB_PATH = 'img/characters/knight/Climb/climb';
-IMG_CLIMB_AMOUNT = 4;
-IMG_DEATH_PATH = 'img/characters/knight/Death/death';
-IMG_DEATH_AMOUNT = 10;
-IMG_WALK_PATH = 'img/characters/knight/Walk/walk';
-IMG_WALK_AMOUNT = 6;
+const IMG_ATTACK_PATH = 'img/characters/knight/Attack/attack';
+const IMG_ATTACK_AMOUNT = 4;
+const IMG_CLIMB_PATH = 'img/characters/knight/Climb/climb';
+const IMG_CLIMB_AMOUNT = 4;
+const IMG_DEATH_PATH = 'img/characters/knight/Death/death';
+const IMG_DEATH_AMOUNT = 10;
+const IMG_EXTRA_ATTACK_PATH = 'img/characters/knight/Extra_Attack/attack_extra';
+const IMG_EXTRA_ATTACK_AMOUNT = 8;
+const IMG_HURT_PATH = 'img/characters/knight/Hurt/hurt';
+const IMG_HURT_AMOUNT = 4;
+const IMG_IDLE_PATH = 'img/characters/knight/Idle/idle';
+const IMG_IDLE_AMOUNT = 12;
+const IMG_JUMP_PATH = 'img/characters/knight/Jump/jump';
+const IMG_JUMP_AMOUNT = 7;
+const IMG_WALK_PATH = 'img/characters/knight/Walk/walk';
+const IMG_WALK_AMOUNT = 6;
 
 
 function init() {
@@ -20,6 +28,7 @@ function init() {
 
 
 document.addEventListener('keydown', (event) => {
+    keyboard.KEYDOWN = true;
     let keyCode = event.code;
     setKeyValue(keyCode, 'SPACE', true);    // upper() ?
     setArrowKeyValue(keyCode, true);
@@ -45,6 +54,7 @@ function setKeyValue(keyCode, key, logical) {
 
 
 document.addEventListener('keyup', (event) => {
+    keyboard.KEYDOWN = false;
     let keyCode = event.code;
     setKeyValue(keyCode, 'SPACE', false);
     setArrowKeyValue(keyCode, false);
