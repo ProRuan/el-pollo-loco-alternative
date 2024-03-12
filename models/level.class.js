@@ -1,6 +1,6 @@
 class Level {
     backgroundLayers;
-    level_end_x;    // set value
+    level_end_x = 1919;    // to edit
     // edit ...
 
 
