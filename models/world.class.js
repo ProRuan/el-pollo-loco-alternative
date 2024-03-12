@@ -39,14 +39,34 @@ class World {
     }
 
 
-    addGroupToMap(objectGroup) {
-        objectGroup.forEach(o => {
+    addGroupToMap(moGroup) {
+        moGroup.forEach(o => {
             this.addToMap(o);
         });
     }
 
 
     addToMap(mo) {
+        if (mo.otherDirection) {
+            this.flipImage(mo);
+        }
         mo.draw(this.ctx);
+        if (mo.otherDirection) {
+            this.flipImageBack(mo);
+        }
+    }
+
+
+    flipImage(mo) {
+        this.ctx.save();
+        this.ctx.translate(mo.width / 2, 0);
+        this.ctx.scale(-1, 1);
+        mo.x *= -1;
+    }
+
+
+    flipImageBack(mo) {
+        mo.x *= -1;
+        this.ctx.restore();
     }
 }

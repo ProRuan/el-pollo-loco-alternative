@@ -43,16 +43,20 @@ class Character extends MoveableObject {
         setInterval(() => {
             if (this.world.keyboard.LEFT.value) {
                 this.moveLeft();
+                this.otherDirection = true;
             }
             if (this.world.keyboard.UP.value) {
                 this.climbUp();
             }
             if (this.world.keyboard.RIGHT.value) {
                 this.moveRight();
+                this.otherDirection = false;
             }
             if (this.world.keyboard.DOWN.value) {
                 this.climbDown();
             }
+
+            this.world.camera_x = -this.x + 32;
         }, 1000 / 60);
 
         setInterval(() => {
