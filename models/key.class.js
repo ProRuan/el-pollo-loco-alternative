@@ -3,6 +3,7 @@ class Key {
     value;
     keydown;
     timeStamp;
+    doubleClick;
 
 
     constructor(code) {
@@ -10,5 +11,6 @@ class Key {
         this.value = false;
         this.keydown = false;
         this.timeStamp = new Date().getTime();
+        this.doubleClick = false;
     }
 }

@@ -40,11 +40,9 @@ function init() {
 document.addEventListener('keydown', (event) => {
     let keyCode = event.code.replace(event.code[0], event.code[0].toLowerCase());
     let isDefinedKey = keyboard[keyCode] !== undefined;
-    console.log(isDefinedKey);    // to delete
     if (isDefinedKey && !keyboard[keyCode].keydown) {
         keyboard.keydown = true;
         keyboard[keyCode].keydown = true;
-        console.log(keyCode);
         // to edit
         if (keyCode == keyboard[keyCode].code) {
             verifyDoubleClick(keyCode, true);
@@ -60,9 +58,10 @@ function verifyDoubleClick(key, logical) {
     if (logical) {
         let timeStamp = new Date().getTime();
         if (timeStamp - keyboard[key].timeStamp < 500) {
-            keyboard.doubleClicked = true;
+            keyboard[key].doubleClick = true;
+            console.log(keyboard[key].doubleClick);
         } else {
-            keyboard.doubleClicked = false;
+            keyboard[key].doubleClick = false;
         }
         keyboard[key].timeStamp = timeStamp;
     }
@@ -90,7 +89,7 @@ document.addEventListener('keyup', (event) => {
     if (isDefinedKey) {
         keyboard.keydown = false;
         keyboard[keyCode].keydown = false;
-        keyboard.doubleClicked = false;
+        keyboard[keyCode].doubleClick = false;
 
         setKeyValue(keyCode, false);
         // setArrowKeyValue(keyCode, false);
