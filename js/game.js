@@ -38,14 +38,29 @@ function init() {
 
 
 document.addEventListener('keydown', (event) => {
-    keyboard.KEYDOWN = true;
-    let keyCode = event.code;
-    setKeyValue(keyCode, 'SPACE', true);    // upper() ?
-    setArrowKeyValue(keyCode, true);
-    setKeyValue(keyCode, 'D', true);    // upper() ?
-
-    // console.log(event.code);
+    if (!keyboard.KEYDOWN) {
+        keyboard.KEYDOWN = true;
+        let keyCode = event.code;
+        verifyDoubleClick('RIGHT', true);
+        setKeyValue(keyCode, 'SPACE', true);    // upper() ?
+        setArrowKeyValue(keyCode, true);
+        setKeyValue(keyCode, 'D', true);    // upper() ?
+        // console.log(event.code);
+    }
 });
+
+
+function verifyDoubleClick(key, logical) {
+    if (logical) {
+        let timeStamp = new Date().getTime();
+        if (timeStamp - keyboard[key].timeStamp < 500) {
+            keyboard.DOUBLE_CLICKED = true;
+        } else {
+            keyboard.DOUBLE_CLICKED = false;
+        }
+        keyboard[key].timeStamp = timeStamp;
+    }
+}
 
 
 function setArrowKeyValue(keyCode, logical) {
@@ -65,6 +80,7 @@ function setKeyValue(keyCode, key, logical) {
 
 document.addEventListener('keyup', (event) => {
     keyboard.KEYDOWN = false;
+    keyboard.DOUBLE_CLICKED = false;
     let keyCode = event.code;
     setKeyValue(keyCode, 'SPACE', false);
     setArrowKeyValue(keyCode, false);

@@ -1,5 +1,6 @@
 class Keyboard {
     KEYDOWN = false;
+    DOUBLE_CLICKED = false;
     SPACE = new Key('Space');
     LEFT = new Key('ArrowLeft');
     UP = new Key('ArrowUp');
