@@ -40,11 +40,9 @@ function init() {
 document.addEventListener('keydown', (event) => {
     let keyCode = event.code.replace(event.code[0], event.code[0].toLowerCase());
     let isDefinedKey = keyboard[keyCode] !== undefined;
-    console.log(isDefinedKey);    // to delete
     if (isDefinedKey && !keyboard[keyCode].keydown) {
         keyboard.keydown = true;
         keyboard[keyCode].keydown = true;
-        console.log(keyCode);
         // to edit
         if (keyCode == keyboard[keyCode].code) {
             verifyDoubleClick(keyCode, true);

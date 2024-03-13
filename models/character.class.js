@@ -68,12 +68,10 @@ class Character extends MoveableObject {
             // }
             if (this.world.keyboard.arrowUp.value || this.world.keyboard.arrowDown.value) {
                 this.playAnimation(this.FLIP_BOOK_CLIMB);
-                console.log(this.world.keyboard.arrowRight.doubleClick);
             }
-            if (this.world.keyboard.arrowLeft.doubleClick && this.world.keyboard.keyA.keydown || this.world.keyboard.arrowRight.doubleClick && this.world.keyboard.keyA.keydown) {
-                this.playAnimation(this.FLIP_BOOK_RUN_ATTACK);
-            } else if (this.world.keyboard.arrowLeft.doubleClick || this.world.keyboard.arrowRight.doubleClick) {
+            if (this.world.keyboard.arrowLeft.doubleClick || this.world.keyboard.arrowRight.doubleClick) {
                 this.playAnimation(this.FLIP_BOOK_RUN);
+                console.log(this.world.keyboard.arrowRight.doubleClick);
             } else if (this.world.keyboard.arrowLeft.value || this.world.keyboard.arrowRight.value) {
                 this.playAnimation(this.FLIP_BOOK_WALK);
             }
