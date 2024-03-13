@@ -42,18 +42,18 @@ class Character extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            if (this.world.keyboard.LEFT.value && this.x > 32) {
+            if (this.world.keyboard.arrowLeft.value && this.x > 32) {
                 this.moveLeft();
                 this.otherDirection = true;
             }
-            if (this.world.keyboard.UP.value) {
+            if (this.world.keyboard.arrowUp.value) {
                 this.climbUp();
             }
-            if (this.world.keyboard.RIGHT.value && this.x < this.world.level.level_end_x) {
+            if (this.world.keyboard.arrowRight.value && this.x < this.world.level.level_end_x) {
                 this.moveRight();
                 this.otherDirection = false;
             }
-            if (this.world.keyboard.DOWN.value) {
+            if (this.world.keyboard.arrowDown.value) {
                 this.climbDown();
             }
 
@@ -61,15 +61,18 @@ class Character extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            if (this.world.keyboard.UP.value || this.world.keyboard.DOWN.value) {
+            if (this.world.keyboard.keyA.value) {
+                this.playAnimation(this.FLIP_BOOK_ATTACK);
+            }
+            if (this.world.keyboard.arrowUp.value || this.world.keyboard.arrowDown.value) {
                 this.playAnimation(this.FLIP_BOOK_CLIMB);
             }
-            if ((this.world.keyboard.RIGHT.value || this.world.keyboard.LEFT.value) && this.world.keyboard.DOUBLE_CLICKED) {
+            if ((this.world.keyboard.arrowRight.value || this.world.keyboard.arrowLeft.value) && this.world.keyboard.doubleClicked) {
                 this.playAnimation(this.FLIP_BOOK_RUN);
-            } else if (this.world.keyboard.RIGHT.value || this.world.keyboard.LEFT.value) {
+            } else if (this.world.keyboard.arrowRight.value || this.world.keyboard.arrowLeft.value) {
                 this.playAnimation(this.FLIP_BOOK_WALK);
             }
-            if (!keyboard.KEYDOWN) {
+            if (!keyboard.keydown) {
                 this.loadImage('img/characters/knight/knight.png');
                 // this.playAnimation(this.FLIP_BOOK_IDLE);
             }

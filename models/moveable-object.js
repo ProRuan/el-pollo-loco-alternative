@@ -9,7 +9,7 @@ class MoveableObject extends DrawableObject {
 
     moveLeft() {
         this.x -= this.speed;
-        if (keyboard.DOUBLE_CLICKED) {
+        if (keyboard.doubleClicked) {
             this.x -= this.runSpeed;
         }
     }
@@ -22,7 +22,7 @@ class MoveableObject extends DrawableObject {
 
     moveRight() {
         this.x += this.speed;
-        if (keyboard.DOUBLE_CLICKED) {
+        if (keyboard.doubleClicked) {
             this.x += this.runSpeed;
         }
     }

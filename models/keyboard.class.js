@@ -1,11 +1,11 @@
 class Keyboard {
-    KEYDOWN = false;
-    DOUBLE_CLICKED = false;
-    SPACE = new Key('Space');
-    LEFT = new Key('ArrowLeft');
-    UP = new Key('ArrowUp');
-    RIGHT = new Key('ArrowRight');
-    DOWN = new Key('ArrowDown');
-    A = new Key('keyA');
-    D = new Key('keyD');
+    keydown = false;
+    doubleClicked = false;
+    space = new Key('space');
+    arrowLeft = new Key('arrowLeft');
+    arrowUp = new Key('arrowUp');
+    arrowRight = new Key('arrowRight');
+    arrowDown = new Key('arrowDown');
+    keyA = new Key('keyA');
+    keyD = new Key('keyD');
 }

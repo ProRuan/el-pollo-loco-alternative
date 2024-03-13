@@ -38,19 +38,15 @@ function init() {
 
 
 document.addEventListener('keydown', (event) => {
-    if (!keyboard.KEYDOWN) {
-        keyboard.KEYDOWN = true;
-        let keyCode = event.code;
-
+    if (!keyboard.keydown) {
+        keyboard.keydown = true;
+        let keyCode = event.code.replace(event.code[0], event.code[0].toLowerCase());
         // to edit
-        if (keyCode == 'ArrowRight' || keyCode == 'ArrowLeft') {
-            verifyDoubleClick('RIGHT', true);
+        if (keyCode == keyboard[keyCode].code) {
+            verifyDoubleClick(keyCode, true);
         }
-        
-        setKeyValue(keyCode, 'SPACE', true);    // upper() ?
-        setArrowKeyValue(keyCode, true);
-        setKeyValue(keyCode, 'A', true);
-        setKeyValue(keyCode, 'D', true);    // upper() ?
+
+        setKeyValue(keyCode, true);    // upper() ?
         // console.log(event.code);
     }
 });
@@ -60,38 +56,38 @@ function verifyDoubleClick(key, logical) {
     if (logical) {
         let timeStamp = new Date().getTime();
         if (timeStamp - keyboard[key].timeStamp < 500) {
-            keyboard.DOUBLE_CLICKED = true;
+            keyboard.doubleClicked = true;
         } else {
-            keyboard.DOUBLE_CLICKED = false;
+            keyboard.doubleClicked = false;
         }
         keyboard[key].timeStamp = timeStamp;
     }
 }
 
 
-function setArrowKeyValue(keyCode, logical) {
-    setKeyValue(keyCode, 'LEFT', logical);
-    setKeyValue(keyCode, 'UP', logical);
-    setKeyValue(keyCode, 'RIGHT', logical);
-    setKeyValue(keyCode, 'DOWN', logical);
-}
+// function setArrowKeyValue(keyCode, logical) {
+//     setKeyValue(keyCode, logical);
+//     setKeyValue(keyCode, 'UP', logical);
+//     setKeyValue(keyCode, 'RIGHT', logical);
+//     setKeyValue(keyCode, 'DOWN', logical);
+// }
 
 
-function setKeyValue(keyCode, key, logical) {
-    if (keyCode == keyboard[key].code) {
-        keyboard[key].value = logical;
+function setKeyValue(keyCode, logical) {
+    if (keyCode == keyboard[keyCode].code) {
+        keyboard[keyCode].value = logical;
     }
 }
 
 
 document.addEventListener('keyup', (event) => {
-    keyboard.KEYDOWN = false;
-    keyboard.DOUBLE_CLICKED = false;
-    let keyCode = event.code;
-    setKeyValue(keyCode, 'SPACE', false);
-    setArrowKeyValue(keyCode, false);
-    setKeyValue(keyCode, 'A', false);
-    setKeyValue(keyCode, 'D', false);
+    keyboard.keydown = false;
+    keyboard.doubleClicked = false;
+    let keyCode = event.code.replace(event.code[0], event.code[0].toLowerCase());
+    setKeyValue(keyCode, false);
+    // setArrowKeyValue(keyCode, false);
+    // setKeyValue(keyCode, false);
+    // setKeyValue(keyCode, false);
 });
 
 
