@@ -7,4 +7,6 @@ class Keyboard {
     arrowDown = new Key('arrowDown');
     keyA = new Key('keyA');
     keyD = new Key('keyD');
+    keyF = new Key('keyF');
+    keyS = new Key('keyS');
 }

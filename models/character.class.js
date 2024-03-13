@@ -11,10 +11,10 @@ class Character extends MoveableObject {
     FLIP_BOOK_CLIMB = this.FLIP_BOOK.climb;
     FLIP_BOOK_DEATH = this.FLIP_BOOK.death;
     FLIP_BOOK_EXTRA_ATTACK = this.FLIP_BOOK.extraAttack;
+    FLIP_BOOK_HIGH_JUMP = this.FLIP_BOOK.highJump;
     FLIP_BOOK_HURT = this.FLIP_BOOK.hurt;
     FLIP_BOOK_IDLE = this.FLIP_BOOK.idle;
     FLIP_BOOK_JUMP = this.FLIP_BOOK.jump;
-    FLIP_BOOK_HIGH_JUMP = this.FLIP_BOOK.highJump;
     FLIP_BOOK_PUSH = this.FLIP_BOOK.push;
     FLIP_BOOK_RUN = this.FLIP_BOOK.run;
     FLIP_BOOK_RUN_ATTACK = this.FLIP_BOOK.runAttack;
@@ -24,14 +24,14 @@ class Character extends MoveableObject {
 
     constructor() {
         super().loadImage('img/characters/knight/knight.png');
-        this.loadImages(this.FLIP_BOOK_CLIMB);
         this.loadImages(this.FLIP_BOOK_ATTACK);
+        this.loadImages(this.FLIP_BOOK_CLIMB);
         this.loadImages(this.FLIP_BOOK_DEATH);
-        this.loadImages(this.FLIP_BOOK_HURT);
         this.loadImages(this.FLIP_BOOK_EXTRA_ATTACK);
         this.loadImages(this.FLIP_BOOK_IDLE);
-        this.loadImages(this.FLIP_BOOK_JUMP);
         this.loadImages(this.FLIP_BOOK_HIGH_JUMP);
+        this.loadImages(this.FLIP_BOOK_HURT);
+        this.loadImages(this.FLIP_BOOK_JUMP);
         this.loadImages(this.FLIP_BOOK_PUSH);
         this.loadImages(this.FLIP_BOOK_RUN);
         this.loadImages(this.FLIP_BOOK_RUN_ATTACK);
@@ -62,10 +62,12 @@ class Character extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            // if (this.world.keyboard.arrowUp.value || this.world.keyboard.arrowDown.value) {
-            //     this.playAnimation(this.FLIP_BOOK_CLIMB);
-            // }
-            if (this.world.keyboard.arrowLeft.doubleClick && this.world.keyboard.keyA.keydown || this.world.keyboard.arrowRight.doubleClick && this.world.keyboard.keyA.keydown) {
+            if (this.world.keyboard.arrowUp.keydown || this.world.keyboard.arrowDown.keydown) {
+                this.playAnimation(this.FLIP_BOOK_CLIMB);    // still to edit
+            } else if (this.world.keyboard.keyD.keydown) {
+                this.playAnimation(this.FLIP_BOOK_EXTRA_ATTACK);
+                this.idleDelay = new Date().getTime();
+            } else if (this.world.keyboard.arrowLeft.doubleClick && this.world.keyboard.keyA.keydown || this.world.keyboard.arrowRight.doubleClick && this.world.keyboard.keyA.keydown) {
                 this.playAnimation(this.FLIP_BOOK_RUN_ATTACK);
                 this.idleDelay = new Date().getTime();
             } else if (this.world.keyboard.arrowLeft.doubleClick || this.world.keyboard.arrowRight.doubleClick) {
@@ -87,6 +89,6 @@ class Character extends MoveableObject {
                     this.playAnimation(this.FLIP_BOOK_IDLE);
                 }
             }
-        }, 1000 / 60 * 6);    // set value!!! + array.length!!!
+        }, 100);
     }
 }
