@@ -71,7 +71,6 @@ class Character extends MoveableObject {
             }
             if (this.world.keyboard.arrowLeft.doubleClick || this.world.keyboard.arrowRight.doubleClick) {
                 this.playAnimation(this.FLIP_BOOK_RUN);
-                console.log(this.world.keyboard.arrowRight.doubleClick);
             } else if (this.world.keyboard.arrowLeft.value || this.world.keyboard.arrowRight.value) {
                 this.playAnimation(this.FLIP_BOOK_WALK);
             }
