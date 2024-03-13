@@ -8,10 +8,10 @@ Flip books
 Created flip book climb.
 dead ...
 Created flip book extra attack.
-high jump --> after next
+Created flip book high jump. (optional)
 hurt ...
 Created flip book idle.
-jump --> next
+Created flip book jump.
 push ...
 Created flip book run.
 Created flip book run attack.
@@ -19,9 +19,15 @@ Created flip book walk.
 Created flip book walk attack.
 Created flip book attack.
 
-Created flip books: 8 von 13
+Created flip books: 10 von 13
 
 
 Flip books immprovement
 -----------------------
 Finish flip books first ...
+
+
+Tipp
+----
+  - keydown for pressed ...
+  - value for keydown ...

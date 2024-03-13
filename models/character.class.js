@@ -72,6 +72,9 @@ class Character extends MoveableObject {
             } else if (this.world.keyboard.keyD.keydown) {
                 this.playAnimation(this.FLIP_BOOK_EXTRA_ATTACK);
                 this.idleDelay = new Date().getTime();
+            } else if (this.world.keyboard.space.keydown || this.isAboveGround()) {
+                this.playAnimation(this.FLIP_BOOK_JUMP);
+                this.idleDelay = new Date().getTime();
             } else if (this.world.keyboard.arrowLeft.doubleClick && this.world.keyboard.keyA.keydown || this.world.keyboard.arrowRight.doubleClick && this.world.keyboard.keyA.keydown) {
                 this.playAnimation(this.FLIP_BOOK_RUN_ATTACK);
                 this.idleDelay = new Date().getTime();

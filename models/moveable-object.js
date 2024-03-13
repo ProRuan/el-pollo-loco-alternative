@@ -2,7 +2,7 @@ class MoveableObject extends DrawableObject {
     speed = 0.15;    // to edit
     otherDirection = false;
     speedY = 0;
-    acceleration = 0.75;    // to edit
+    acceleration = 0.5;    // to edit
     energy = 100;
     lastHit = 0;    // to rename?
 
@@ -57,6 +57,6 @@ class MoveableObject extends DrawableObject {
 
 
     jump() {
-        this.speedY = 20;
+        this.speedY = 10;
     }
 }
