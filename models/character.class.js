@@ -61,12 +61,9 @@ class Character extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            // if (this.world.keyboard.keyA.value) {
-            //     this.playAnimation(this.FLIP_BOOK_ATTACK);
+            // if (this.world.keyboard.arrowUp.value || this.world.keyboard.arrowDown.value) {
+            //     this.playAnimation(this.FLIP_BOOK_CLIMB);
             // }
-            if (this.world.keyboard.arrowUp.value || this.world.keyboard.arrowDown.value) {
-                this.playAnimation(this.FLIP_BOOK_CLIMB);
-            }
             if (this.world.keyboard.arrowLeft.doubleClick && this.world.keyboard.keyA.keydown || this.world.keyboard.arrowRight.doubleClick && this.world.keyboard.keyA.keydown) {
                 this.playAnimation(this.FLIP_BOOK_RUN_ATTACK);
             } else if (this.world.keyboard.arrowLeft.doubleClick || this.world.keyboard.arrowRight.doubleClick) {
@@ -75,6 +72,8 @@ class Character extends MoveableObject {
                 this.playAnimation(this.FLIP_BOOK_WALK_ATTACK);
             } else if (this.world.keyboard.arrowLeft.value || this.world.keyboard.arrowRight.value) {
                 this.playAnimation(this.FLIP_BOOK_WALK);
+            } else if (this.world.keyboard.keyA.keydown) {
+                this.playAnimation(this.FLIP_BOOK_ATTACK);
             } else if (!keyboard.keydown) {
                 this.loadImage('img/characters/knight/knight.png');
                 // this.playAnimation(this.FLIP_BOOK_IDLE);
