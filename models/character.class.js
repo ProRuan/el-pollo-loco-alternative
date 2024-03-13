@@ -5,8 +5,6 @@ class Character extends MoveableObject {
     y = 540 - 128 - 32;
     speed = 1.5;
     runSpeed = 2;
-    isWalking = false;
-    isRunning = false;
     FLIP_BOOK = new FlipBook();
     FLIP_BOOK_ATTACK = this.FLIP_BOOK.attack;
     FLIP_BOOK_CLIMB = this.FLIP_BOOK.climb;
@@ -69,12 +67,15 @@ class Character extends MoveableObject {
             if (this.world.keyboard.arrowUp.value || this.world.keyboard.arrowDown.value) {
                 this.playAnimation(this.FLIP_BOOK_CLIMB);
             }
-            if (this.world.keyboard.arrowLeft.doubleClick || this.world.keyboard.arrowRight.doubleClick) {
+            if (this.world.keyboard.arrowLeft.doubleClick && this.world.keyboard.keyA.keydown || this.world.keyboard.arrowRight.doubleClick && this.world.keyboard.keyA.keydown) {
+                this.playAnimation(this.FLIP_BOOK_RUN_ATTACK);
+            } else if (this.world.keyboard.arrowLeft.doubleClick || this.world.keyboard.arrowRight.doubleClick) {
                 this.playAnimation(this.FLIP_BOOK_RUN);
+            } else if (this.world.keyboard.arrowLeft.keydown && this.world.keyboard.keyA.keydown || this.world.keyboard.arrowRight.keydown && this.world.keyboard.keyA.keydown) {
+                this.playAnimation(this.FLIP_BOOK_WALK_ATTACK);
             } else if (this.world.keyboard.arrowLeft.value || this.world.keyboard.arrowRight.value) {
                 this.playAnimation(this.FLIP_BOOK_WALK);
-            }
-            if (!keyboard.keydown) {
+            } else if (!keyboard.keydown) {
                 this.loadImage('img/characters/knight/knight.png');
                 // this.playAnimation(this.FLIP_BOOK_IDLE);
             }
