@@ -41,9 +41,15 @@ document.addEventListener('keydown', (event) => {
     if (!keyboard.KEYDOWN) {
         keyboard.KEYDOWN = true;
         let keyCode = event.code;
-        verifyDoubleClick('RIGHT', true);
+
+        // to edit
+        if (keyCode == 'ArrowRight' || keyCode == 'ArrowLeft') {
+            verifyDoubleClick('RIGHT', true);
+        }
+        
         setKeyValue(keyCode, 'SPACE', true);    // upper() ?
         setArrowKeyValue(keyCode, true);
+        setKeyValue(keyCode, 'A', true);
         setKeyValue(keyCode, 'D', true);    // upper() ?
         // console.log(event.code);
     }
@@ -84,6 +90,7 @@ document.addEventListener('keyup', (event) => {
     let keyCode = event.code;
     setKeyValue(keyCode, 'SPACE', false);
     setArrowKeyValue(keyCode, false);
+    setKeyValue(keyCode, 'A', false);
     setKeyValue(keyCode, 'D', false);
 });
 

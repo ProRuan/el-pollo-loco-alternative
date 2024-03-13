@@ -64,7 +64,7 @@ class Character extends MoveableObject {
             if (this.world.keyboard.UP.value || this.world.keyboard.DOWN.value) {
                 this.playAnimation(this.FLIP_BOOK_CLIMB);
             }
-            if ((this.world.keyboard.RIGHT.value || this.world.keyboard.LEFT.value) && keyboard.DOUBLE_CLICKED) {
+            if ((this.world.keyboard.RIGHT.value || this.world.keyboard.LEFT.value) && this.world.keyboard.DOUBLE_CLICKED) {
                 this.playAnimation(this.FLIP_BOOK_RUN);
             } else if (this.world.keyboard.RIGHT.value || this.world.keyboard.LEFT.value) {
                 this.playAnimation(this.FLIP_BOOK_WALK);

@@ -6,5 +6,6 @@ class Keyboard {
     UP = new Key('ArrowUp');
     RIGHT = new Key('ArrowRight');
     DOWN = new Key('ArrowDown');
+    A = new Key('keyA');
     D = new Key('keyD');
 }
