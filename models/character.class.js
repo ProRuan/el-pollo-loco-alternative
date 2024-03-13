@@ -5,6 +5,8 @@ class Character extends MoveableObject {
     y = 540 - 128 - 32;
     speed = 1.5;
     runSpeed = 2;
+    isWalking = false;
+    isRunning = false;
     FLIP_BOOK = new FlipBook();
     FLIP_BOOK_ATTACK = this.FLIP_BOOK.attack;
     FLIP_BOOK_CLIMB = this.FLIP_BOOK.climb;
@@ -61,15 +63,13 @@ class Character extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            if (this.world.keyboard.keyA.value) {
-                this.playAnimation(this.FLIP_BOOK_ATTACK);
-            }
+            // if (this.world.keyboard.keyA.value) {
+            //     this.playAnimation(this.FLIP_BOOK_ATTACK);
+            // }
             if (this.world.keyboard.arrowUp.value || this.world.keyboard.arrowDown.value) {
                 this.playAnimation(this.FLIP_BOOK_CLIMB);
             }
-            if ((this.world.keyboard.arrowRight.value || this.world.keyboard.arrowLeft.value) && this.world.keyboard.doubleClicked) {
-                this.playAnimation(this.FLIP_BOOK_RUN);
-            } else if (this.world.keyboard.arrowRight.value || this.world.keyboard.arrowLeft.value) {
+            if (this.world.keyboard.arrowLeft.value || this.world.keyboard.arrowRight.value) {
                 this.playAnimation(this.FLIP_BOOK_WALK);
             }
             if (!keyboard.keydown) {

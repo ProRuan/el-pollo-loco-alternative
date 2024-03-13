@@ -38,9 +38,13 @@ function init() {
 
 
 document.addEventListener('keydown', (event) => {
-    if (!keyboard.keydown) {
+    let keyCode = event.code.replace(event.code[0], event.code[0].toLowerCase());
+    let isDefinedKey = keyboard[keyCode] !== undefined;
+    console.log(isDefinedKey);    // to delete
+    if (isDefinedKey && !keyboard[keyCode].keydown) {
         keyboard.keydown = true;
-        let keyCode = event.code.replace(event.code[0], event.code[0].toLowerCase());
+        keyboard[keyCode].keydown = true;
+        console.log(keyCode);
         // to edit
         if (keyCode == keyboard[keyCode].code) {
             verifyDoubleClick(keyCode, true);
@@ -81,13 +85,18 @@ function setKeyValue(keyCode, logical) {
 
 
 document.addEventListener('keyup', (event) => {
-    keyboard.keydown = false;
-    keyboard.doubleClicked = false;
     let keyCode = event.code.replace(event.code[0], event.code[0].toLowerCase());
-    setKeyValue(keyCode, false);
-    // setArrowKeyValue(keyCode, false);
-    // setKeyValue(keyCode, false);
-    // setKeyValue(keyCode, false);
+    let isDefinedKey = keyboard[keyCode] !== undefined;
+    if (isDefinedKey) {
+        keyboard.keydown = false;
+        keyboard[keyCode].keydown = false;
+        keyboard.doubleClicked = false;
+
+        setKeyValue(keyCode, false);
+        // setArrowKeyValue(keyCode, false);
+        // setKeyValue(keyCode, false);
+        // setKeyValue(keyCode, false);
+    }
 });
 
 
