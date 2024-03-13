@@ -20,3 +20,8 @@ Created flip book walk attack.
 Created flip book attack.
 
 Created flip books: 8 von 13
+
+
+Flip books immprovement
+-----------------------
+Finish flip books first ...

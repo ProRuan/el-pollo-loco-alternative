@@ -2,7 +2,7 @@ class MoveableObject extends DrawableObject {
     speed = 0.15;    // to edit
     otherDirection = false;
     speedY = 0;
-    acceleration = 2.5;    // to edit
+    acceleration = 0.75;    // to edit
     energy = 100;
     lastHit = 0;    // to rename?
 
@@ -38,5 +38,25 @@ class MoveableObject extends DrawableObject {
         let path = images[i];
         this.img = this.imageCache[path];
         this.currentImage++;
+    }
+
+
+    applyGravity() {
+        setInterval(() => {
+            if (this.isAboveGround() || this.speedY > 0) {
+                this.y -= this.speedY;
+                this.speedY -= this.acceleration;
+            }
+        }, 1000 / 60);
+    }
+
+
+    isAboveGround() {
+        return this.y < 540 - 128 - 32;
+    }
+
+
+    jump() {
+        this.speedY = 20;
     }
 }

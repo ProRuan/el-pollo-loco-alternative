@@ -2,6 +2,7 @@ class Character extends MoveableObject {
     width = 128;
     height = this.width;
     x = 32;
+    // y = 0;
     y = 540 - 128 - 32;
     speed = 1.5;
     runSpeed = 2;
@@ -38,6 +39,7 @@ class Character extends MoveableObject {
         this.loadImages(this.FLIP_BOOK_WALK);
         this.loadImages(this.FLIP_BOOK_WALK_ATTACK);
         this.animate();
+        this.applyGravity();
     }
 
 
@@ -56,6 +58,9 @@ class Character extends MoveableObject {
             }
             if (this.world.keyboard.arrowDown.value) {
                 this.climbDown();
+            }
+            if (this.world.keyboard.space.keydown && !this.isAboveGround()) {
+                this.jump();
             }
 
             this.world.camera_x = -this.x + 32;
