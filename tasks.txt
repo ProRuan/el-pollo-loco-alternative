@@ -5,10 +5,11 @@ Use formulae.
 
 Flip books
 ----------
+Created flip book idle.
 Created flip book run.
 Created flip book run attack.
 Created flip book walk.
 Created flip book walk attack.
 Created flip book attack.
 
-Created flip books: 5 von 13
+Created flip books: 6 von 13
