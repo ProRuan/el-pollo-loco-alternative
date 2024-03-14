@@ -48,7 +48,7 @@ document.addEventListener('keydown', (event) => {
             verifyDoubleClick(keyCode, true);
         }
 
-        setKeyValue(keyCode, true);    // upper() ?
+        setKeydown(keyCode, true);    // upper() ?
         // console.log(event.code);
     }
 });
@@ -67,17 +67,9 @@ function verifyDoubleClick(key, logical) {
 }
 
 
-// function setArrowKeyValue(keyCode, logical) {
-//     setKeyValue(keyCode, logical);
-//     setKeyValue(keyCode, 'UP', logical);
-//     setKeyValue(keyCode, 'RIGHT', logical);
-//     setKeyValue(keyCode, 'DOWN', logical);
-// }
-
-
-function setKeyValue(keyCode, logical) {
+function setKeydown(keyCode, logical) {
     if (keyCode == keyboard[keyCode].code) {
-        keyboard[keyCode].value = logical;
+        keyboard[keyCode].keydown = logical;
     }
 }
 
@@ -91,10 +83,7 @@ document.addEventListener('keyup', (event) => {
         keyboard[keyCode].doubleClick = false;
 
 
-        setKeyValue(keyCode, false);
-        // setArrowKeyValue(keyCode, false);
-        // setKeyValue(keyCode, false);
-        // setKeyValue(keyCode, false);
+        setKeydown(keyCode, false);
     }
 });
 

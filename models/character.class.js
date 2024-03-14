@@ -45,21 +45,21 @@ class Character extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            if (this.world.keyboard.arrowLeft.value && this.x > 32) {
+            if (this.getKey('keydown', 'arrowLeft') && this.x > 32) {
                 this.moveLeft();
                 this.otherDirection = true;
             }
-            if (this.world.keyboard.arrowUp.value) {
+            if (this.getKey('keydown', 'arrowUp')) {
                 this.climbUp();
             }
-            if (this.world.keyboard.arrowRight.value && this.x < this.world.level.level_end_x) {
+            if (this.getKey('keydown', 'arrowRight') && this.x < this.world.level.level_end_x) {
                 this.moveRight();
                 this.otherDirection = false;
             }
-            if (this.world.keyboard.arrowDown.value) {
+            if (this.getKey('keydown', 'arrowDown')) {
                 this.climbDown();
             }
-            if (this.world.keyboard.space.keydown && !this.isAboveGround()) {
+            if (this.getKey('keydown', 'space') && !this.isAboveGround()) {
                 this.jump();
             }
 
