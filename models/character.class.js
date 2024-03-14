@@ -3,7 +3,7 @@ class Character extends MoveableObject {
     height = this.width;
     x = 32;
     // y = 0;
-    y = 540 - 128 - 32;
+    y = 540 - this.height - 32;
     speed = 1.5;
     runSpeed = 2;
     idleDelay = 0;

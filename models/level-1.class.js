@@ -1,13 +1,14 @@
 const GROUND_GRASS_CENTER = [];
-createGroundGrass(0, 15);
-createGroundGrass(15, 6);
-createGroundGrass(24, 3);
+createGroundGrass('center', 0, 20);
+createGroundGrass('end', 20, 1);
+createGroundGrass('start', 24, 1);
+createGroundGrass('center', 25, 5);
 
 
-function createGroundGrass(startX, amount) {
+function createGroundGrass(type, startX, amount) {
     for (let i = 0; i < amount; i++) {
         let x = startX * 64 + i * 64;
-        let tile = new GroundGrassCenter(x, 0);
+        let tile = new GroundGrass(type, x, 0);
         GROUND_GRASS_CENTER.push(tile);
     }
 }
