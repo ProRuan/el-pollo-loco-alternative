@@ -67,27 +67,27 @@ class Character extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            if (this.world.keyboard.arrowUp.keydown || this.world.keyboard.arrowDown.keydown) {
+            if (this.getKeydownOption('arrowUp', 'arrowDown')) {
                 this.playAnimation(this.FLIP_BOOK_CLIMB);    // still to edit
-            } else if (this.world.keyboard.keyD.keydown) {
+            } else if (this.getKeydown('keyD')) {
                 this.playAnimation(this.FLIP_BOOK_EXTRA_ATTACK);
                 this.idleDelay = new Date().getTime();
-            } else if (this.world.keyboard.space.keydown || this.isAboveGround()) {
+            } else if (this.getKeydown('space') || this.isAboveGround()) {
                 this.playAnimation(this.FLIP_BOOK_JUMP);
                 this.idleDelay = new Date().getTime();
-            } else if (this.world.keyboard.arrowLeft.doubleClick && this.world.keyboard.keyA.keydown || this.world.keyboard.arrowRight.doubleClick && this.world.keyboard.keyA.keydown) {
+            } else if (this.getDoubleClickOption('arrowLeft', 'arrowRight') && this.getKeydown('keyA')) {
                 this.playAnimation(this.FLIP_BOOK_RUN_ATTACK);
                 this.idleDelay = new Date().getTime();
-            } else if (this.world.keyboard.arrowLeft.doubleClick || this.world.keyboard.arrowRight.doubleClick) {
+            } else if (this.getDoubleClickOption('arrowLeft', 'arrowRight')) {
                 this.playAnimation(this.FLIP_BOOK_RUN);
                 this.idleDelay = new Date().getTime();
-            } else if (this.world.keyboard.arrowLeft.keydown && this.world.keyboard.keyA.keydown || this.world.keyboard.arrowRight.keydown && this.world.keyboard.keyA.keydown) {
+            } else if (this.getKeydownOption('arrowLeft', 'arrowRight') && this.getKeydown('keyA')) {
                 this.playAnimation(this.FLIP_BOOK_WALK_ATTACK);
                 this.idleDelay = new Date().getTime();
-            } else if (this.world.keyboard.arrowLeft.value || this.world.keyboard.arrowRight.value) {
+            } else if (this.getKeydownOption('arrowLeft', 'arrowRight')) {
                 this.playAnimation(this.FLIP_BOOK_WALK);
                 this.idleDelay = new Date().getTime();
-            } else if (this.world.keyboard.keyA.keydown) {
+            } else if (this.getKeydown('keyA')) {
                 this.playAnimation(this.FLIP_BOOK_ATTACK);
                 this.idleDelay = new Date().getTime();
             } else if (!keyboard.keydown) {
@@ -99,4 +99,27 @@ class Character extends MoveableObject {
             }
         }, 100);
     }
+
+
+    getKeydownOption(keyCodeA, keyCodeB) {
+        return this.getKeydown(keyCodeA) || this.getKeydown(keyCodeB);
+    }
+
+
+    getKeydown(keyCode) {
+        return this.world.keyboard[keyCode].keydown;
+    }
+
+
+    getDoubleClickOption(keyCodeA, keyCodeB) {
+        return this.getDoubleClick(keyCodeA) || this.getDoubleClick(keyCodeB);
+    }
+
+
+    getDoubleClick(keyCode) {
+        return this.world.keyboard[keyCode].doubleClick;
+    }
+
+
+    // Funktionen in game.js definieren und zusammenfassen!!!
 }
