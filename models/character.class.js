@@ -92,10 +92,10 @@ class Character extends MoveableObject {
                 this.idleDelay = new Date().getTime();
             } else if (!keyboard.keydown) {
                 this.loadImage('img/characters/knight/knight.png');
-                let timeStamp = new Date().getTime();
-                if (timeStamp - this.idleDelay > 100) {
-                    this.playAnimation(this.FLIP_BOOK_IDLE);
-                }
+                // let timeStamp = new Date().getTime();
+                // if (timeStamp - this.idleDelay > 100) {
+                //     this.playAnimation(this.FLIP_BOOK_IDLE);
+                // }
             }
         }, 100);
     }

@@ -27,6 +27,13 @@ Flip books immprovement
 Finish flip books first ...
 
 
+Attack Range
+------------
+  - body center line
+  - body border
+  - sword range ...
+
+
 Tipp
 ----
   - keyboard only in game.js? ...
