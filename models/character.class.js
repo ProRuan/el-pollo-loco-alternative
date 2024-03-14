@@ -40,6 +40,7 @@ class Character extends MoveableObject {
         this.loadImages(this.FLIP_BOOK_WALK_ATTACK);
         this.animate();
         this.applyGravity();
+        this.isOnTile();
     }
 
 
@@ -112,6 +113,22 @@ class Character extends MoveableObject {
 
     getKeyValue(keyCode, keyValue) {
         return this.world.keyboard[keyCode][keyValue];
+    }
+
+
+    isOnTile() {
+        setInterval(() => {
+            let thisTile = GROUND_GRASS.find(g => g.x + 64 > this.x - 28);
+            if (this.x > thisTile.x + 36 && thisTile.type === 'end') {
+                console.log(thisTile);
+                if (this.x + 60 > thisTile.x + 128 && !this.isAboveGround()) {
+                    this.speed = 0;
+                    this.runSpeed = 0;
+                }
+                this.y -= this.speedY;
+                this.speedY -= this.acceleration;
+            }
+        }, 1000 / 60);
     }
 
 
