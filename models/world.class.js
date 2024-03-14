@@ -22,7 +22,7 @@ class World {
         this.ctx.translate(this.camera_x, 0);
 
         this.addGroupToMap(this.level.backgroundLayers);
-        this.addGroupToMap(this.level.groundGrassCenter);
+        this.addGroupToMap(this.level.groundGrass);
         this.addToMap(this.character);
 
 

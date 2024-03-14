@@ -1,12 +1,12 @@
 class Level {
     backgroundLayers;
-    groundGrassCenter;
+    groundGrass;
     level_end_x = 1920;    // to edit
     // edit ...
 
 
     constructor(backgroundLayers, tiles) {
         this.backgroundLayers = backgroundLayers;
-        this.groundGrassCenter = tiles[0];
+        this.groundGrass = tiles[0];
     }
 }
