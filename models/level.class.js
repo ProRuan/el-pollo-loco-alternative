@@ -1,7 +1,7 @@
 class Level {
     backgroundLayers;
     groundGrass;
-    level_end_x = 1920;    // to edit
+    level_end_x = 4 * 960 + (960 - 96);    // to edit
     // edit ...
 
 
