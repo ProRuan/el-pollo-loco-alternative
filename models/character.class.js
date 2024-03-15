@@ -46,9 +46,6 @@ class Character extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            if (this.getKey('keydown', 'keyQ')) {
-                this.otherDirection = (this.otherDirection) ? false : true;
-            }
             if (this.getKey('keydown', 'arrowLeft') && this.x > 32) {
                 this.moveLeft();
                 this.otherDirection = true;
@@ -122,6 +119,7 @@ class Character extends MoveableObject {
     isOnTile() {
         setInterval(() => {
             let thisTile = GROUND_GRASS.find(g => this.x + 28 < g.x + g.width && this.x + 60 > g.x) !== undefined;
+
             // getNextTile.x
             console.log(thisTile);
             if (!thisTile) {
@@ -130,6 +128,7 @@ class Character extends MoveableObject {
                     this.speed = 0;
                     this.runSpeed = 0;
                 }
+                this.x += 1.5;
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
             }
