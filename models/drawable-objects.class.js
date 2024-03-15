@@ -33,6 +33,7 @@ class DrawableObject {
 
     drawFrame(ctx) {
         if (this instanceof Character) {
+            // body + center line
             ctx.beginPath();
             ctx.lineWidth = '2';
             ctx.strokeStyle = 'blue';
@@ -40,10 +41,13 @@ class DrawableObject {
             // ctx.rect(this.x + 28, this.y + 60, 32, 48);    // border: x + 28, y + 60, 32, 48
             ctx.stroke();
 
+            // attack range
             ctx.beginPath();
             ctx.lineWidth = '2';
             ctx.strokeStyle = 'red';
-            ctx.rect(this.x + 60, this.y + 60, 48, 48);    // border: x + 28, y + 60, 32, 48
+            // ctx.rect(this.x + 60, this.y + 60, 48, 48);    // attack: x + 60, y + 60, 48, 48
+            // ctx.rect(this.x + 60, this.y + 60, 36, 48);    // walk atttack, run attack: x + 60, y + 60, 36, 48
+            ctx.rect(this.x + 60, this.y + 32, 48, 80);    // attack: x + 60, y + 60, 48, 48
             ctx.stroke();
         }
     }

@@ -3,23 +3,24 @@ Create some tasks here.
 Use formulae.
 
 
-Flip books
+Flip books + frame
 ----------
-Created flip book climb.
+Created flip book climb. - center line
 dead ...
-Created flip book extra attack.
+Created flip book extra attack. - extra attack
 Created flip book high jump. (optional)
 hurt ...
-Created flip book idle.
-Created flip book jump.
+Created flip book idle. - none
+Created flip book jump. - border bottom
 push ...
-Created flip book run.
-Created flip book run attack.
-Created flip book walk.
-Created flip book walk attack.
-Created flip book attack.
+Created flip book run. - none
+Created flip book run attack. - run attack
+Created flip book walk. - none
+Created flip book walk attack. - walk attack
+Created flip book attack. - attack range
 
 Created flip books: 10 von 13
+Frames: 9 von 9 + 0/4 ...
 
 
 Flip books immprovement
@@ -41,3 +42,6 @@ Tipp
   - different animation times (different amount of pictures) ...
 
   - improve character xL + xC + XR ...
+
+  - character width = 120 or 180 ...
+  - tiles width = 60 ...
