@@ -23,7 +23,7 @@ class Character extends MoveableObject {
     FLIP_BOOK_RUN_ATTACK = this.FLIP_BOOK.runAttack;
     FLIP_BOOK_WALK = this.FLIP_BOOK.walk;
     FLIP_BOOK_WALK_ATTACK = this.FLIP_BOOK.walkAttack;
-    
+
     FLIPBOOK_STONE = this.FLIP_BOOK.stone;
     world;
 
@@ -153,20 +153,26 @@ class Character extends MoveableObject {
 
     isOnPushableObject() {
         setInterval(() => {
-            let pushableObject = this.world.animatedObject;
-            if (this.x + 60 > pushableObject.x + 8) {
-                this.isRunnning = false;
-                this.isPushing = true;
-                console.log('isPushing');
-                this.speed = 1;
-                this.runSpeed = this.speed;
-                this.world.animatedObject.x += this.speed;
-                this.playAnimation(this.FLIPBOOK_STONE);
-            } else {
-                this.isRunnning = true;
-                this.isPushing = false;
-                this.speed = 1.5;
-                this.runSpeed = 2;
+            if (this.isKey('keydown', 'arrowLeft', 'arrowRight')) {
+                let pushableObject = this.world.animatedObject;
+                if (this.x + 60 > pushableObject.x + 8 && this.y == pushableObject.y - 64 && !(this.x + 28 > pushableObject.x + pushableObject.width)) {
+                    this.isRunnning = false;
+                    this.isPushing = true;
+                    console.log('isPushing');
+                    this.speed = 1;
+                    this.runSpeed = this.speed;
+                    if (this.otherDirection) {
+                        this.world.animatedObject.x -= this.speed;
+                    } else {
+                        this.world.animatedObject.x += this.speed;
+                    }
+                    this.playAnimation(this.FLIPBOOK_STONE);
+                } else {
+                    this.isRunnning = true;
+                    this.isPushing = false;
+                    this.speed = 1.5;
+                    this.runSpeed = 2;
+                }
             }
         }, 1000 / 60);
     }
