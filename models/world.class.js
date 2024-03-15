@@ -1,6 +1,7 @@
 class World {
     level = LEVEL_1;
     character = new Character();
+    animatedObject = new AnimatedObject();
     canvas;
     ctx;
     keyboard;
@@ -24,6 +25,7 @@ class World {
         this.addGroupToMap(this.level.backgroundLayers);
         this.addGroupToMap(this.level.groundGrass);
         this.addToMap(this.character);
+        this.addToMap(this.animatedObject);
 
 
         this.ctx.translate(-this.camera_x, 0);

@@ -15,6 +15,8 @@ class FlipBook {
     walk;
     walkAttack;
 
+    stone;
+
 
     constructor() {
         this.attack = this.createFlipBook(IMG_ATTACK_PATH, IMG_ATTACK_AMOUNT);
@@ -30,6 +32,8 @@ class FlipBook {
         this.runAttack = this.createFlipBook(IMG_RUN_ATTACK_PATH, IMG_RUN_ATTACK_AMOUNT);
         this.walk = this.createFlipBook(IMG_WALK_PATH, IMG_WALK_AMOUNT);
         this.walkAttack = this.createFlipBook(IMG_WALK_ATTACK_PATH, IMG_WALK_ATTACK_AMOUNT);
+
+        this.stone = this.createFlipBook(IMG_STONE_PATH, IMG_STONE_AMOUNT);
     }
 
 

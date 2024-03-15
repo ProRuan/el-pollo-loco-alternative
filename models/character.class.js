@@ -7,6 +7,8 @@ class Character extends MoveableObject {
     speed = 1.5;
     runSpeed = 2;
     idleDelay = 0;
+    isRunnning = true;
+    isPushing = false;
     FLIP_BOOK = new FlipBook();
     FLIP_BOOK_ATTACK = this.FLIP_BOOK.attack;
     FLIP_BOOK_CLIMB = this.FLIP_BOOK.climb;
@@ -21,6 +23,8 @@ class Character extends MoveableObject {
     FLIP_BOOK_RUN_ATTACK = this.FLIP_BOOK.runAttack;
     FLIP_BOOK_WALK = this.FLIP_BOOK.walk;
     FLIP_BOOK_WALK_ATTACK = this.FLIP_BOOK.walkAttack;
+    
+    FLIPBOOK_STONE = this.FLIP_BOOK.stone;
     world;
 
     constructor() {
@@ -41,6 +45,8 @@ class Character extends MoveableObject {
         this.animate();
         this.applyGravity();
         this.isOnTile();
+        this.isOnPushableObject();
+        this.loadImages(this.FLIPBOOK_STONE);
     }
 
 
@@ -81,6 +87,9 @@ class Character extends MoveableObject {
                 this.idleDelay = new Date().getTime();
             } else if (this.isKey('keydown', 'space') || this.isAboveGround()) {
                 this.playAnimation(this.FLIP_BOOK_JUMP);
+                this.idleDelay = new Date().getTime();
+            } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isPushing) {
+                this.playAnimation(this.FLIP_BOOK_PUSH);
                 this.idleDelay = new Date().getTime();
             } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
                 this.playAnimation(this.FLIP_BOOK_RUN_ATTACK);
@@ -137,6 +146,27 @@ class Character extends MoveableObject {
                 this.x += 1.5;
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
+            }
+        }, 1000 / 60);
+    }
+
+
+    isOnPushableObject() {
+        setInterval(() => {
+            let pushableObject = this.world.animatedObject;
+            if (this.x + 60 > pushableObject.x + 8) {
+                this.isRunnning = false;
+                this.isPushing = true;
+                console.log('isPushing');
+                this.speed = 1;
+                this.runSpeed = this.speed;
+                this.world.animatedObject.x += this.speed;
+                this.playAnimation(this.FLIPBOOK_STONE);
+            } else {
+                this.isRunnning = true;
+                this.isPushing = false;
+                this.speed = 1.5;
+                this.runSpeed = 2;
             }
         }, 1000 / 60);
     }

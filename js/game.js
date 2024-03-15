@@ -30,6 +30,9 @@ const IMG_WALK_AMOUNT = 6;
 const IMG_WALK_ATTACK_PATH = 'img/characters/knight/Walk_attack/walk_attack';
 const IMG_WALK_ATTACK_AMOUNT = 6;
 
+const IMG_STONE_PATH = 'img/objects_animated/Stone/stone';
+const IMG_STONE_AMOUNT = 8;
+
 
 function init() {
     canvas = getElement('canvas');

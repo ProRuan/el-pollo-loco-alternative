@@ -50,5 +50,13 @@ class DrawableObject {
             ctx.rect(this.x + 60, this.y + 32, 48, 80);    // attack: x + 60, y + 60, 48, 48
             ctx.stroke();
         }
+
+        if (this instanceof AnimatedObject) {
+            ctx.beginPath();
+            ctx.lineWidth = '2';
+            ctx.strokeStyle = 'green';
+            ctx.rect(this.x + 16, this.y + 16, 32, 32);
+            ctx.stroke();
+        }
     }
 }
