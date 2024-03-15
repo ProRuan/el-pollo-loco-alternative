@@ -46,6 +46,9 @@ class Character extends MoveableObject {
 
     animate() {
         setInterval(() => {
+            if (this.getKey('keydown', 'keyQ')) {
+                this.otherDirection = (this.otherDirection) ? false : true;
+            }
             if (this.getKey('keydown', 'arrowLeft') && this.x > 32) {
                 this.moveLeft();
                 this.otherDirection = true;

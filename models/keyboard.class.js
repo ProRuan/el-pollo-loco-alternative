@@ -8,5 +8,6 @@ class Keyboard {
     keyA = new Key('keyA');
     keyD = new Key('keyD');
     keyF = new Key('keyF');
+    keyQ = new Key('keyQ');
     keyS = new Key('keyS');
 }
