@@ -46,21 +46,27 @@ class Character extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            if (this.getKey('keydown', 'arrowLeft') && this.x > 32) {
+            if (this.isKey('keydown', 'keyQ')) {
+                this.otherDirection = true;
+            }
+            if (this.isKey('keydown', 'keyE')) {
+                this.otherDirection = false;
+            }
+            if (this.isKey('keydown', 'arrowLeft') && this.x > 32) {
                 this.moveLeft();
                 this.otherDirection = true;
             }
-            if (this.getKey('keydown', 'arrowUp')) {
+            if (this.isKey('keydown', 'arrowUp')) {
                 this.climbUp();
             }
-            if (this.getKey('keydown', 'arrowRight') && this.x < this.world.level.level_end_x) {
+            if (this.isKey('keydown', 'arrowRight') && this.x < this.world.level.level_end_x) {
                 this.moveRight();
                 this.otherDirection = false;
             }
-            if (this.getKey('keydown', 'arrowDown')) {
+            if (this.isKey('keydown', 'arrowDown')) {
                 this.climbDown();
             }
-            if (this.getKey('keydown', 'space') && !this.isAboveGround()) {
+            if (this.isKey('keydown', 'space') && !this.isAboveGround()) {
                 this.jump();
             }
 
@@ -68,27 +74,27 @@ class Character extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            if (this.getKey('keydown', 'arrowUp', 'arrowDown')) {
+            if (this.isKey('keydown', 'arrowUp', 'arrowDown')) {
                 this.playAnimation(this.FLIP_BOOK_CLIMB);    // still to edit
-            } else if (this.getKey('keydown', 'keyD')) {
+            } else if (this.isKey('keydown', 'keyD')) {
                 this.playAnimation(this.FLIP_BOOK_EXTRA_ATTACK);
                 this.idleDelay = new Date().getTime();
-            } else if (this.getKey('keydown', 'space') || this.isAboveGround()) {
+            } else if (this.isKey('keydown', 'space') || this.isAboveGround()) {
                 this.playAnimation(this.FLIP_BOOK_JUMP);
                 this.idleDelay = new Date().getTime();
-            } else if (this.getKey('doubleClick', 'arrowLeft', 'arrowRight') && this.getKey('keydown', 'keyA')) {
+            } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
                 this.playAnimation(this.FLIP_BOOK_RUN_ATTACK);
                 this.idleDelay = new Date().getTime();
-            } else if (this.getKey('doubleClick', 'arrowLeft', 'arrowRight')) {
+            } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight')) {
                 this.playAnimation(this.FLIP_BOOK_RUN);
                 this.idleDelay = new Date().getTime();
-            } else if (this.getKey('keydown', 'arrowLeft', 'arrowRight') && this.getKey('keydown', 'keyA')) {
+            } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
                 this.playAnimation(this.FLIP_BOOK_WALK_ATTACK);
                 this.idleDelay = new Date().getTime();
-            } else if (this.getKey('keydown', 'arrowLeft', 'arrowRight')) {
+            } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight')) {
                 this.playAnimation(this.FLIP_BOOK_WALK);
                 this.idleDelay = new Date().getTime();
-            } else if (this.getKey('keydown', 'keyA')) {
+            } else if (this.isKey('keydown', 'keyA')) {
                 this.playAnimation(this.FLIP_BOOK_ATTACK);
                 this.idleDelay = new Date().getTime();
             } else if (!keyboard.keydown) {
@@ -102,7 +108,7 @@ class Character extends MoveableObject {
     }
 
 
-    getKey(keyValue, keyCodeA, keyCodeB) {
+    isKey(keyValue, keyCodeA, keyCodeB) {
         if (!keyCodeB) {
             return this.getKeyValue(keyCodeA, keyValue);
         } else {
