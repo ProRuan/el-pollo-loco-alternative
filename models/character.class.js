@@ -121,10 +121,12 @@ class Character extends MoveableObject {
 
     isOnTile() {
         setInterval(() => {
-            let thisTile = GROUND_GRASS.find(g => g.x + 64 > this.x - 28);
-            if (this.x > thisTile.x + 36 && thisTile.type === 'end') {
-                console.log(thisTile);
-                if (this.x + 60 > thisTile.x + 128 && !this.isAboveGround()) {
+            let thisTile = GROUND_GRASS.find(g => this.x + 28 < g.x + g.width && this.x + 60 > g.x) !== undefined;
+            // getNextTile.x
+            console.log(thisTile);
+            if (!thisTile) {
+                // console.log(thisTile);
+                if (!this.isAboveGround()) {
                     this.speed = 0;
                     this.runSpeed = 0;
                 }
