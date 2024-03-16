@@ -202,8 +202,7 @@ class Character extends MoveableObject {
         setInterval(() => {
             let thisTile = GROUND_GRASS.find(g => this.x + 28 < g.x + g.width && this.x + 60 > g.x) !== undefined;
 
-            // getNextTile.x
-            console.log(thisTile);
+            // console.log(thisTile);
             if (!thisTile) {
                 // console.log(thisTile);
                 if (!this.isAboveGround()) {
@@ -225,7 +224,7 @@ class Character extends MoveableObject {
                 if (this.x + 60 - 8 > pushableObject.x && this.y == pushableObject.y - 64 && !(this.x + 28 > pushableObject.x + pushableObject.width)) {
                     this.isRunnning = false;
                     this.isPushing = true;
-                    console.log('isPushing');
+                    // console.log('isPushing');
                     this.speed = 1;
                     this.runSpeed = this.speed;
                     if (this.otherDirection) {

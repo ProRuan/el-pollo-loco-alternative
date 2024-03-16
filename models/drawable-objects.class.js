@@ -55,7 +55,7 @@ class DrawableObject {
             ctx.beginPath();
             ctx.lineWidth = '2';
             ctx.strokeStyle = 'purple';
-            // ctx.rect(this.x, this.y + 40, 104, 48);    // x, y + 40, 104, 48
+            // ctx.rect(this.x, this.y + 40, 104, 48);    // x, y + 40, 104, 48 --> xCenter = 52
             ctx.rect(this.x + 84, this.y + 40, 40, 40);    // x + 84, y + 40, 40, 40
             ctx.stroke();
         }

@@ -16,6 +16,6 @@ class Keyboard {
 
     updateKeydownTimeStamp() {
         this.keydownTimeStamp = new Date().getTime();
-        console.log(this.keydownTimeStamp);
+        // console.log(this.keydownTimeStamp);
     }
 }

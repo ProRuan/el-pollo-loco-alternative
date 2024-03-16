@@ -34,6 +34,38 @@ class Enemy extends MoveableObject {
     }
 
 
+    get xLeftAttack() {
+        return this.x + 84;
+    }
+
+
+    get xRightAttack() {
+        return this.xLeftAttack + 40;
+    }
+
+
+    get yTopAttack() {
+        return this.y + 40;
+    }
+
+
+    get yBottomAttack() {
+        return this.y + 40 + 40;
+    }
+
+
+    // replace attack border !!! + this.xCenter richtig spiegeln!!!
+    get isHit() {
+        if (world.character.xLeftAttack > this.xLeftAttack - 84 && world.character.xLeftAttack < this.xRightAttack - 84 ||
+            world.character.xRightAttack > this.xLeftAttack - 84 && world.character.xRightAttack < this.xRightAttack - 84 ||
+            world.character.yTopAttack > this.yBottomAttack && world.character.yTopAttack < this.yTopAttack ||
+            world.character.yBottomAttack > this.yBottomAttack && world.character.yBottomAttack < this.yTopAttack) {
+            console.log('hit');
+            return true;
+        }
+    }
+
+
     animate() {
         setInterval(() => {
             if (this.hitPoints < 1 && !this.isBeated) {
@@ -41,7 +73,7 @@ class Enemy extends MoveableObject {
                 this.isBeated = true;
             } else {
                 let timeStamp = new Date().getTime();
-                if (keyboard['keyA'].keydown && this.x - 32 < world.character.xRightAttack) {
+                if (keyboard['keyA'].keydown && this.isHit) {
                     this.x = this.x;
                     this.hitPoints--;
                 } else if ((timeStamp - this.startTime) % 4000 > 2000) {
@@ -58,7 +90,7 @@ class Enemy extends MoveableObject {
                 this.loadImage('img/enemies/dino/Death/death6.png');
             } else if (this.hitPoints < 1 && !this.isBeated) {
                 this.playAnimation(this.FLIP_BOOK_DEATH);
-            } else if (keyboard['keyA'].keydown && this.x - 32 < world.character.xRightAttack) {
+            } else if (keyboard['keyA'].keydown && this.isHit) {
                 this.playAnimation(this.FLIP_BOOK_HURT);
             } else {
                 let timeStamp = new Date().getTime();
