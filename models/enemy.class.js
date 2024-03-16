@@ -3,6 +3,7 @@ class Enemy extends MoveableObject {
     height = this.width;
     x = 960;
     y = 540 - this.height - 16;
+    startTime = new Date().getTime();
     speed = 64 / 60;
     otherDirection = true;
     FLIP_BOOK = new FlipBook();
@@ -23,11 +24,21 @@ class Enemy extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            this.x -= this.speed;
+            let timeStamp = new Date().getTime();
+            if ((timeStamp - this.startTime) % 4000 > 2000) {
+                this.x -= this.speed;
+            } else {
+                this.x = this.x;
+            }
         }, 1000 / 60);
 
         setInterval(() => {
-            this.playAnimation(this.FLIP_BOOK_WALK);
+            let timeStamp = new Date().getTime();
+            if ((timeStamp - this.startTime) % 4000 > 2000) {
+                this.playAnimation(this.FLIP_BOOK_WALK)
+            } else {
+                this.playAnimation(this.FLIP_BOOK_IDLE);
+            }
         }, 100);
     }
 }
