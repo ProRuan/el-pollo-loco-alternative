@@ -55,4 +55,7 @@ Tipp
 Class Check
 -----------
   - key - Check
-  - keyboard - 
+  - keyboard ...
+
+  
+  - check game.js ...

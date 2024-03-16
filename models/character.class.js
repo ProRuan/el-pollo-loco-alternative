@@ -2,17 +2,20 @@ class Character extends MoveableObject {
     width = 128;
     height = this.width;
     x = 32;
-    xLeft = this.x + 28;
-    xRight = this.xLeft + 32;
     y = 540 - this.height - 32;
+    xLeft = this.x + 28;
+    xCenter = this.x + 16;
+    xRight = this.xCenter + 16;
+    xPush = this.xRight - 8;
     yTop = this.y + 60;
     yBottom = this.yTop + 48;
     // y = 0;
     speed = 1.5;
     speedXWalk = 5;    // not in use yet
     speedXRun = 5;    // not in use yet
-    speedYClimb = 5;    // not in use yet
     speedXPush = 5;    // not in use yet
+    speedXYClimb = 5;    // not in use yet
+    speedXJump = 5;    // not in use yet
     speedYJump = 5;    // not in use yet
     runSpeed = 2;
     idleDelay = 0;
@@ -86,6 +89,7 @@ class Character extends MoveableObject {
             }
 
             this.world.camera_x = -this.x + 32;
+            this.updateCharacterValues();
         }, 1000 / 60);
 
         setInterval(() => {
@@ -164,7 +168,7 @@ class Character extends MoveableObject {
         setInterval(() => {
             if (this.isKey('keydown', 'arrowLeft', 'arrowRight')) {
                 let pushableObject = this.world.animatedObject;
-                if (this.x + 60 > pushableObject.x + 8 && this.y == pushableObject.y - 64 && !(this.x + 28 > pushableObject.x + pushableObject.width)) {
+                if (this.x + 60 - 8 > pushableObject.x && this.y == pushableObject.y - 64 && !(this.x + 28 > pushableObject.x + pushableObject.width)) {
                     this.isRunnning = false;
                     this.isPushing = true;
                     console.log('isPushing');
@@ -184,6 +188,16 @@ class Character extends MoveableObject {
                 }
             }
         }, 1000 / 60);
+    }
+
+
+    updateCharacterValues() {
+        xLeft = this.x + 28;
+        xCenter = this.x + 16;
+        xRight = this.xCenter + 16;
+        xPush = this.xRight - 8;
+        yTop = this.y + 60;
+        yBottom = this.yTop + 48;
     }
 
 
