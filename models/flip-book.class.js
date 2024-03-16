@@ -15,6 +15,9 @@ class FlipBook {
     walk;
     walkAttack;
 
+    dinoIdle;
+    dinoWalk;
+
     stone;
 
 
@@ -32,6 +35,9 @@ class FlipBook {
         this.runAttack = this.createFlipBook(IMG_RUN_ATTACK_PATH, IMG_RUN_ATTACK_AMOUNT);
         this.walk = this.createFlipBook(IMG_WALK_PATH, IMG_WALK_AMOUNT);
         this.walkAttack = this.createFlipBook(IMG_WALK_ATTACK_PATH, IMG_WALK_ATTACK_AMOUNT);
+
+        this.dinoIdle = this.createFlipBook(IMG_DINO_IDLE_PATH, IMG_DINO_IDLE_AMOUNT);
+        this.dinoWalk = this.createFlipBook(IMG_DINO_WALK_PATH, IMG_DINO_WALK_AMOUNT);
 
         this.stone = this.createFlipBook(IMG_STONE_PATH, IMG_STONE_AMOUNT);
     }
