@@ -50,3 +50,9 @@ Tipp
   - improve AnimatedObject ...
   - Character and AnimatedObject must be separated ...
       - change values for stone and others ...
+
+
+Class Check
+-----------
+  - key - Check
+  - keyboard - 
