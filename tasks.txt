@@ -59,3 +59,9 @@ Class Check
 
   
   - check game.js ...
+
+
+  Current tasks
+  -------------
+    - draw dino frame ...
+        - find x, y and so on ...

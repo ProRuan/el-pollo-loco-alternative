@@ -25,8 +25,8 @@ class World {
 
         this.addGroupToMap(this.level.backgroundLayers);
         this.addGroupToMap(this.level.groundGrass);
-        this.addToMap(this.character);
         this.addToMap(this.enemy);
+        this.addToMap(this.character);
         this.addToMap(this.animatedObject);
 
 
