@@ -45,9 +45,18 @@ class DrawableObject {
             ctx.beginPath();
             ctx.lineWidth = '2';
             ctx.strokeStyle = 'red';
-            // ctx.rect(this.x + 60, this.y + 60, 48, 48);    // attack: x + 60, y + 60, 48, 48
+            ctx.rect(this.x + 60, this.y + 60, 48, 48);    // attack: x + 60, y + 60, 48, 48
             // ctx.rect(this.x + 60, this.y + 60, 36, 48);    // walk atttack, run attack: x + 60, y + 60, 36, 48
-            ctx.rect(this.x + 60, this.y + 32, 48, 80);    // attack: x + 60, y + 60, 48, 48
+            // ctx.rect(this.x + 60, this.y + 32, 48, 80);    // attack: x + 60, y + 60, 48, 48
+            ctx.stroke();
+        }
+
+        if (this instanceof Enemy) {
+            ctx.beginPath();
+            ctx.lineWidth = '2';
+            ctx.strokeStyle = 'purple';
+            // ctx.rect(this.x, this.y + 40, 104, 48);    // x, y + 40, 104, 48
+            ctx.rect(this.x + 84, this.y + 40, 40, 40);    // x + 84, y + 40, 40, 40
             ctx.stroke();
         }
 
