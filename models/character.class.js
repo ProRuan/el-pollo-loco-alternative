@@ -4,28 +4,6 @@ class Character extends MoveableObject {
     x = 32;
     y = 540 - this.height - 32;
 
-    // Body + Center Line
-    xLeft = this.x + 28;
-    xCenter = this.x + 16;
-    xRight = this.xCenter + 16;
-    xPush = this.xRight - 8;
-    yTop = this.y + 60;
-    yBottom = this.yTop + 48;
-
-    // Attack
-    xLeftAttack = this.xRight;
-    xRightAttack = this.xLeftAttack + 48;
-    yTopAttack = this.yTop;
-    yBottomAttack = this.yBottom;
-
-    // Walk Attack + Run Attack
-    xRightWalkAttack = this.xLeftAttack + 36;
-
-    // Extra Attack
-    yTopExtraAttack = this.y + 32;
-
-
-
     speed = 1.5;
     speedXWalk = 5;    // not in use yet
     speedXRun = 5;    // not in use yet
@@ -34,7 +12,6 @@ class Character extends MoveableObject {
     speedXJump = 5;    // not in use yet
     speedYJump = 5;    // not in use yet
     runSpeed = 2;
-
     idleDelay = 0;
     isRunnning = true;
     isPushing = false;
@@ -79,6 +56,66 @@ class Character extends MoveableObject {
     }
 
 
+    get xLeft() {
+        return this.x + 28;
+    }
+
+
+    get xCenter() {
+        return this.x + 28 + 16;
+    }
+
+
+    get xRight() {
+        return this.x + 28 + 16 + 16;
+    }
+
+
+    get xPush() {
+        return this.x + 52;
+    }
+
+
+    get yTop() {
+        return this.y + 60;
+    }
+
+
+    get yBottom() {
+        return this.yTop + 60 + 48;
+    }
+
+
+    get xLeftAttack() {
+        return this.x + 60;
+    }
+
+
+    get xRightAttack() {
+        return this.x + 60 + 48;
+    }
+
+
+    get yTopAttack() {
+        return this.y + 60;
+    }
+
+
+    get yBottomAttack() {
+        return this.y + 60 + 48;
+    }
+
+
+    get xRightWalkAttack() {
+        return this.x + 60 + 36;
+    }
+
+
+    get yTopExtraAttack() {
+        return this.y + 32;
+    }
+
+
     animate() {
         setInterval(() => {
             if (this.isKey('keydown', 'keyQ')) {
@@ -106,7 +143,7 @@ class Character extends MoveableObject {
             }
 
             this.world.camera_x = -this.x + 32;
-            this.updateCharacterValues();
+            // this.updateCharacterValues();    // not in use
         }, 1000 / 60);
 
         setInterval(() => {
@@ -208,6 +245,7 @@ class Character extends MoveableObject {
     }
 
 
+    // not in use
     updateCharacterValues() {
         this.xLeft = this.x + 28;
         this.xCenter = this.x + 16;
