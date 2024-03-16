@@ -45,6 +45,7 @@ document.addEventListener('keydown', (event) => {
     let isDefinedKey = keyboard[keyCode] !== undefined;
     if (isDefinedKey && !keyboard[keyCode].keydown) {
         keyboard.keydown = true;
+        keyboard.updateKeydownTimeStamp();
         keyboard[keyCode].keydown = true;
         // to edit
         if (keyCode == keyboard[keyCode].code) {

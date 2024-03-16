@@ -1,5 +1,6 @@
 class Keyboard {
     keydown = false;
+    keydownTimeStamp = 0;
     space = new Key('space');
     arrowLeft = new Key('arrowLeft');
     arrowUp = new Key('arrowUp');
@@ -11,4 +12,10 @@ class Keyboard {
     keyF = new Key('keyF');
     keyQ = new Key('keyQ');
     keyS = new Key('keyS');
+
+
+    updateKeydownTimeStamp() {
+        this.keydownTimeStamp = new Date().getTime();
+        console.log(this.keydownTimeStamp);
+    }
 }
