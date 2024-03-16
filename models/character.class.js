@@ -2,7 +2,7 @@ class Character extends MoveableObject {
     width = 128;
     height = this.width;
     x = 32;
-    y = 540 - this.height - 32;
+    y = 540 - this.height - 32 - 8;
 
     speed = 1.5;
     speedXWalk = 5;    // not in use yet
