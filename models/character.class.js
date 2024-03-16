@@ -3,13 +3,29 @@ class Character extends MoveableObject {
     height = this.width;
     x = 32;
     y = 540 - this.height - 32;
+
+    // Body + Center Line
     xLeft = this.x + 28;
     xCenter = this.x + 16;
     xRight = this.xCenter + 16;
     xPush = this.xRight - 8;
     yTop = this.y + 60;
     yBottom = this.yTop + 48;
-    // y = 0;
+
+    // Attack
+    xLeftAttack = this.xRight;
+    xRightAttack = this.xLeftAttack + 48;
+    yTopAttack = this.yTop;
+    yBottomAttack = this.yBottom;
+
+    // Walk Attack + Run Attack
+    xRightWalkAttack = this.xLeftAttack + 36;
+
+    // Extra Attack
+    yTopExtraAttack = this.y + 32;
+
+
+
     speed = 1.5;
     speedXWalk = 5;    // not in use yet
     speedXRun = 5;    // not in use yet
@@ -18,6 +34,7 @@ class Character extends MoveableObject {
     speedXJump = 5;    // not in use yet
     speedYJump = 5;    // not in use yet
     runSpeed = 2;
+
     idleDelay = 0;
     isRunnning = true;
     isPushing = false;
@@ -192,12 +209,25 @@ class Character extends MoveableObject {
 
 
     updateCharacterValues() {
-        xLeft = this.x + 28;
-        xCenter = this.x + 16;
-        xRight = this.xCenter + 16;
-        xPush = this.xRight - 8;
-        yTop = this.y + 60;
-        yBottom = this.yTop + 48;
+        this.xLeft = this.x + 28;
+        this.xCenter = this.x + 16;
+        this.xRight = this.xCenter + 16;
+        this.xPush = this.xRight - 8;
+        this.yTop = this.y + 60;
+        this.yBottom = this.yTop + 48;
+
+        // Attack
+        this.xLeftAttack = this.xRight;
+        this.xRightAttack = this.xLeftAttack + 48;
+        this.yTopAttack = this.yTop;
+        this.yBottomAttack = this.yBottom;
+
+        // Walk Attack + Run Attack
+        this.xRightWalkAttack = this.xLeftAttack + 36;
+
+        // Extra Attack
+        this.yTopExtraAttack = this.y + 32;
+        this.yBottomExtraAttack = this.yTopExtraAttack + 80;
     }
 
 
