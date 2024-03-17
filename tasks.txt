@@ -67,3 +67,10 @@ Class Check
         - find x, y and so on ...
 
     - use getter ...
+
+
+    - jump: speedY = 10.5 + improve xJump
+    - high jump: speedY = 14.0 + improve xHighJump
+
+    - jump: requires stand or walk
+    - high jump: requires run
