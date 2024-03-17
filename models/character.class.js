@@ -30,6 +30,7 @@ class Character extends MoveableObject {
     FLIP_BOOK_WALK = this.FLIP_BOOK.walk;
     FLIP_BOOK_WALK_ATTACK = this.FLIP_BOOK.walkAttack;
 
+    enemyBeated = false;
     FLIPBOOK_STONE = this.FLIP_BOOK.stone;
     world;
 
@@ -147,6 +148,16 @@ class Character extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
+            if (this.enemyBeated) {
+                this.loadImage('img/enemies/dino/Death/death6.png');
+                setTimeout(() => {
+                    this.world.enemy.splice(0, 1);
+                }, 1000);
+            } else if (this.world.enemy[0] != undefined && this.world.enemy[0].isBeated && !this.enemyBeated) {
+                this.world.enemy[0].playAnimation(this.FLIP_BOOK.dinoDeath);
+                this.enemyBeated = true;
+            }
+
             if (this.isKey('keydown', 'arrowUp', 'arrowDown')) {
                 this.playAnimation(this.FLIP_BOOK_CLIMB);    // still to edit
             } else if (this.isKey('keydown', 'keyD')) {

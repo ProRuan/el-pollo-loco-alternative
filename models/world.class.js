@@ -1,7 +1,7 @@
 class World {
     level = LEVEL_1;
     character = new Character();
-    enemy = new Enemy();
+    enemy = [new Enemy()];
     animatedObject = new AnimatedObject();
     canvas;
     ctx;
@@ -25,7 +25,9 @@ class World {
 
         this.addGroupToMap(this.level.backgroundLayers);
         this.addGroupToMap(this.level.groundGrass);
-        this.addToMap(this.enemy);
+        if (this.enemy[0] !== undefined) {
+            this.addToMap(this.enemy[0]);
+        }
         this.addToMap(this.character);
         this.addToMap(this.animatedObject);
 
