@@ -82,7 +82,7 @@ class Character extends MoveableObject {
 
 
     get yBottom() {
-        return this.yTop + 60 + 48;
+        return this.y + 60 + 48;
     }
 
 
