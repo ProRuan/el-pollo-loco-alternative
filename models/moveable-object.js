@@ -2,7 +2,8 @@ class MoveableObject extends DrawableObject {
     speed = 0.15;    // to edit
     otherDirection = false;
     speedY = 0;
-    acceleration = 0.5;    // to edit - 1/20 from jump height
+    acceleration = 0.64;    // to edit - 1/20 from jump height
+    jumpHeightMax = 540;
     energy = 100;
     lastHit = 0;    // to rename?
 
@@ -44,9 +45,12 @@ class MoveableObject extends DrawableObject {
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
-                this.speedY -= this.acceleration;
                 this.y -= this.speedY;
-                console.log(this.y);
+                if (this.y < this.jumpHeightMax) {
+                    this.jumpHeightMax = this.y;
+                    console.log(372 - this.jumpHeightMax);
+                }
+                this.speedY -= this.acceleration;
             }
         }, 1000 / 60);
     }
@@ -58,6 +62,6 @@ class MoveableObject extends DrawableObject {
 
 
     jump() {
-        this.speedY = 10;    // jump height 160
+        this.speedY = 14;    // jump height 160
     }
 }
