@@ -1,24 +1,44 @@
 class FlipBookHero {
-    // flip book title image
     path = 'img/characters/knight';
+    cover = 'img/characters/knight/knight.png';
     attack;
+    climb;
+    death;
+    extraAttack;
+    highJump;
+    hurt;
+    idle;
+    jump;
+    push;
+    run;
+    runAttack;
+    walk;
+    walkAttack;
 
 
     constructor() {
-        this.attack = this.createFlipBookChapter('attack', 4);
+        this.attack = this.createChapter('Attack', 4);
+        this.climb = this.createChapter('Climb', 4);
+        this.death = this.createChapter('Death', 10);
+        this.extraAttack = this.createChapter('Extra_Attack', 8);
+        this.highJump = this.createChapter('High_Jump', 12);
+        this.hurt = this.createChapter('Hurt', 4);
+        this.idle = this.createChapter('Idle', 12);
+        this.jump = this.createChapter('Jump', 7);
+        this.push = this.createChapter('Push', 4);
+        this.run = this.createChapter('Run', 8);
+        this.runAttack = this.createChapter('Run_Attack', 8);
+        this.walk = this.createChapter('Walk', 6);
+        this.walkAttack = this.createChapter('Walk_Attack', 6)
     }
 
 
-    // rename path, folder, file ...
-    // try to make a getter with img counter in the folder itself!!!
-
-
-    createFlipBookChapter(subpath, amount) {
+    createChapter(folder, files) {
         let images = [];
-        for (let i = 0; i < amount; i++) {
+        for (let i = 0; i < files; i++) {
             let serial = i + 1;
-            let folder = subpath[0].toUpperCase() + subpath.replace(subpath[0], '');
-            let img = this.path + '/' + folder + '/' + subpath + serial + '.png';
+            let subfolder = folder.toLowerCase();
+            let img = this.path + '/' + folder + '/' + subfolder + serial + '.png';
             images.push(img);
         }
         return images;
