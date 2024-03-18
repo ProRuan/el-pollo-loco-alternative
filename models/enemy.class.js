@@ -9,23 +9,18 @@ class Enemy extends MoveableObject {
     // otherDirection = false;    // for testing
     otherDirection = true;
     isBeated = false;
-    FLIP_BOOK = new FlipBook();
-    FLIP_BOOK_ATTACK = this.FLIP_BOOK.dinoAttack;
-    FLIP_BOOK_DEATH = this.FLIP_BOOK.dinoDeath;
-    FLIP_BOOK_HURT = this.FLIP_BOOK.dinoHurt;
-    FLIP_BOOK_IDLE = this.FLIP_BOOK.dinoIdle;
-    FLIP_BOOK_WALK = this.FLIP_BOOK.dinoWalk;
+    FLIP_BOOK = new FlipBookDino();
     hitPoints = 100;
     world;
 
 
     constructor() {
         super().loadImage('img/enemies/dino/Idle/idle1.png');
-        this.loadImages(this.FLIP_BOOK_ATTACK);
-        this.loadImages(this.FLIP_BOOK_DEATH);
-        this.loadImages(this.FLIP_BOOK_HURT);
-        this.loadImages(this.FLIP_BOOK_IDLE);
-        this.loadImages(this.FLIP_BOOK_WALK);
+        this.loadImages(this.FLIP_BOOK.attack);
+        this.loadImages(this.FLIP_BOOK.death);
+        this.loadImages(this.FLIP_BOOK.hurt);
+        this.loadImages(this.FLIP_BOOK.idle);
+        this.loadImages(this.FLIP_BOOK.walk);
         this.animate();
 
         // this.animate();
@@ -89,15 +84,15 @@ class Enemy extends MoveableObject {
             if (this.isBeated) {
                 this.loadImage('img/enemies/dino/Death/death6.png');
             } else if (this.hitPoints < 1 && !this.isBeated) {
-                this.playAnimation(this.FLIP_BOOK_DEATH);
+                this.playAnimation(this.FLIP_BOOK.death);
             } else if (keyboard['keyA'].keydown && this.isHit) {
-                this.playAnimation(this.FLIP_BOOK_HURT);
+                this.playAnimation(this.FLIP_BOOK.hurt);
             } else {
                 let timeStamp = new Date().getTime();
                 if ((timeStamp - this.startTime) % 4000 > 2000) {
-                    this.playAnimation(this.FLIP_BOOK_WALK)
+                    this.playAnimation(this.FLIP_BOOK.walk)
                 } else {
-                    this.playAnimation(this.FLIP_BOOK_IDLE);
+                    this.playAnimation(this.FLIP_BOOK.idle);
                 }
             }
         }, 100);

@@ -16,10 +16,10 @@ class Character extends MoveableObject {
     isRunnning = true;
     isPushing = false;
     FLIP_BOOK_HERO = new FlipBookHero();
-    FLIP_BOOK = new FlipBook();
+    FLIP_BOOK_DINO = new FlipBookDino();
+    //flipBookStone
 
     enemyBeated = false;
-    FLIPBOOK_STONE = this.FLIP_BOOK.stone;
     world;
 
     constructor() {
@@ -30,7 +30,7 @@ class Character extends MoveableObject {
         this.applyGravity();
         this.isOnTile();
         this.isOnPushableObject();
-        this.loadImages(this.FLIPBOOK_STONE);
+        // this.loadImages(this.FLIPBOOK_STONE);
     }
 
 
@@ -148,7 +148,7 @@ class Character extends MoveableObject {
                     this.world.enemy.splice(0, 1);
                 }, 1000);
             } else if (this.world.enemy[0] != undefined && this.world.enemy[0].isBeated && !this.enemyBeated) {
-                this.world.enemy[0].playAnimation(this.FLIP_BOOK.dinoDeath);
+                this.world.enemy[0].playAnimation(this.FLIP_BOOK_DINO.death);
                 this.enemyBeated = true;
             }
 
@@ -237,7 +237,7 @@ class Character extends MoveableObject {
                     } else {
                         this.world.animatedObject.x += this.speed;
                     }
-                    this.playAnimation(this.FLIPBOOK_STONE);
+                    // this.playAnimation(this.FLIPBOOK_STONE);
                 } else {
                     this.isRunnning = true;
                     this.isPushing = false;
