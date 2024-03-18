@@ -86,7 +86,7 @@ Class Check
   Classes (2/14)
   -------
     - Key - check
-    - FlipBookHero - check
-    - FlipBookDino - ...
+    - FlipBookHero - check (doppelter Code!!!)
+    - FlipBookDino - check (doppelter Code!!!)
     
     - keyboard + game + flipBook + imgFolder ...
