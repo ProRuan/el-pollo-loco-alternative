@@ -3,17 +3,6 @@ let world;
 let keyboard = new Keyboard();
 
 // Constants
-const IMG_DINO_ATTACK_PATH = 'img/enemies/dino/Attack/attack';
-const IMG_DINO_ATTACK_AMOUNT = 5;
-const IMG_DINO_DEATH_PATH = 'img/enemies/dino/Death/death';
-const IMG_DINO_DEATH_AMOUNT = 6;
-const IMG_DINO_HURT_PATH = 'img/enemies/dino/Hurt/hurt';
-const IMG_DINO_HURT_AMOUNT = 4;
-const IMG_DINO_IDLE_PATH = 'img/enemies/dino/Idle/idle';
-const IMG_DINO_IDLE_AMOUNT = 5;
-const IMG_DINO_WALK_PATH = 'img/enemies/dino/Walk/walk';
-const IMG_DINO_WALK_AMOUNT = 4;
-
 const IMG_STONE_PATH = 'img/objects_animated/Stone/stone';
 const IMG_STONE_AMOUNT = 8;
 
