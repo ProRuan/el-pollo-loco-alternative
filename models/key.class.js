@@ -17,7 +17,17 @@ class Key {
     }
 
 
+    set keydown(logical) {
+        this.keydown = (logical) ? true : false;
+    }
+
+
     set timeStamp(logical) {
         this.timeStamp = (logical) ? new Date().getTime() : this.timeStamp;
+    }
+
+
+    set doubleClick(logical) {
+        this.doubleClick = (logical) ? true : false;
     }
 }
