@@ -1,10 +1,13 @@
 class FlipBookObjects {
     path = 'img/objects_animated';
-    cover = 'img/objects_animated/Stone/stone1.png';
 
 
     constructor() {
         this.coin = this.createChapter('Coin', 10);
+        this.crystal = this.createChapter('Crystal', 10);
+        this.heart = this.createChapter('Heart', 10);
+        this.hitPoint = this.createChapter('Hit_Point', 10);
+        this.star = this.createChapter('star', 10);
         this.stone = this.createChapter('Stone', 8);
     }
 
