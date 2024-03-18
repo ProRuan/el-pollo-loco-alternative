@@ -29,7 +29,7 @@ class FlipBookHero {
         this.run = this.createChapter('Run', 8);
         this.runAttack = this.createChapter('Run_Attack', 8);
         this.walk = this.createChapter('Walk', 6);
-        this.walkAttack = this.createChapter('Walk_Attack', 6)
+        this.walkAttack = this.createChapter('Walk_Attack', 6);
     }
 
 

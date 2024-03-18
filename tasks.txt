@@ -83,9 +83,10 @@ Class Check
 
 
 
-  Classes (2/13)
+  Classes (2/14)
   -------
     - Key - check
     - FlipBookHero - check
+    - FlipBookDino - ...
     
     - keyboard + game + flipBook + imgFolder ...
