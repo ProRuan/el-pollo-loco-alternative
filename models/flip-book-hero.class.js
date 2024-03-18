@@ -1,19 +1,6 @@
 class FlipBookHero {
     path = 'img/characters/knight';
     cover = 'img/characters/knight/knight.png';
-    attack;
-    climb;
-    death;
-    extraAttack;
-    highJump;
-    hurt;
-    idle;
-    jump;
-    push;
-    run;
-    runAttack;
-    walk;
-    walkAttack;
 
 
     constructor() {
