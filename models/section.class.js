@@ -1,11 +1,12 @@
-class Section extends DrawableObject {
+class Section {
     grass = [];
 
+
     constructor() {
-        super();
         this.grass = this.loadGrass();
     }
 
+    
     loadGrass() {
         return [
             new Tile('grass-center', 0),

@@ -76,15 +76,16 @@ Tipp
 
   Classes (7/16) + game.js (1/1)
   -------
-    - DrawableObject - check
+    - DrawableObject - ...
     - FlipBookDino - check
     - FlipBookHero - check
     - FlipBookObjects - check
     - FlipBook - check
-    - GroundGrass - check
+    - GroundGrass - ...
     - Key - check
     
     - keyboard + game + flipBook + imgFolder ...
+    - width = height = 60; x = 16, y = 9 ...
 
 
   Images (0/5)
