@@ -12,67 +12,65 @@ function init() {
 
 document.addEventListener('keydown', (event) => {
     let keyCode = setInitialToLowerCase(event.code);
-    if (isDefinedKey(keyCode) && !keyboard[keyCode].keydown) {
-        keyboard.keydown = true;
-        keyboard.updateKeydownTimeStamp();
-        keyboard[keyCode].keydown = true;
-        // to edit
-        if (keyCode == keyboard[keyCode].code) {
-            verifyDoubleClick(keyCode, true);
-        }
-
-        setKeydown(keyCode, true);    // upper() ?
-        // console.log(event.code);
+    if (isDefinedKey(keyCode, true)) {
+        setKey(keyCode, 'keydown', true);
+        verifyDoubleClick(keyCode, true);
     }
 });
 
 
 function setInitialToLowerCase(keyCode) {
     let initial = keyCode.charAt(0);
-    return keyCode.replace(initial, initial.toLowerCase())
+    return keyCode.replace(initial, initial.toLowerCase());
 }
 
 
-function isDefinedKey(keyCode) {
-    return keyboard[keyCode] !== undefined;
+function isDefinedKey(keyCode, onkeydown) {
+    let defined = getKey(keyCode) !== undefined;
+    let keydown = getKey(keyCode, 'keydown');
+    return (onkeydown) ? defined && !keydown : defined;
 }
 
 
-// function getKeyValue(keyCode, key) {
-//     return keyboard[keyCode][key];
-// }
+function getKey(keyCode, key) {
+    return (!key) ? keyboard[keyCode] : keyboard[keyCode][key];
+}
 
 
-function verifyDoubleClick(key, logical) {
+function setKey(keyCode, key, value) {
+    keyboard[keyCode][key] = value;
+}
+
+
+function verifyDoubleClick(keyCode, logical) {
     if (logical) {
         let timeStamp = new Date().getTime();
-        if (timeStamp - keyboard[key].timeStamp < 500) {
-            keyboard[key].doubleClick = true;
-        } else {
-            keyboard[key].doubleClick = false;
-        }
-        keyboard[key].timeStamp = timeStamp;
+        setKeyDoubleClick(keyCode);
+        setKey(keyCode, 'timeStamp', timeStamp);
     }
 }
 
 
-function setKeydown(keyCode, logical) {
-    if (keyCode == keyboard[keyCode].code) {
-        keyboard[keyCode].keydown = logical;
+function setKeyDoubleClick(keyCode) {
+    if (isDoubleclick(keyCode)) {
+        setKey(keyCode, 'doubleClick', true);
+    } else {
+        setKey(keyCode, 'doubleClick', false);
     }
+}
+
+
+function isDoubleclick(keyCode) {
+    let timeStamp = new Date().getTime();
+    return timeStamp - keyboard[keyCode].timeStamp < 500;
 }
 
 
 document.addEventListener('keyup', (event) => {
-    let keyCode = event.code.replace(event.code[0], event.code[0].toLowerCase());
-    let isDefinedKey = keyboard[keyCode] !== undefined;
-    if (isDefinedKey) {
-        keyboard.keydown = false;
-        keyboard[keyCode].keydown = false;
-        keyboard[keyCode].doubleClick = false;
-
-
-        setKeydown(keyCode, false);
+    let keyCode = setInitialToLowerCase(event.code);
+    if (isDefinedKey(keyCode)) {
+        setKey(keyCode, 'keydown', false);
+        setKey(keyCode, 'doubleClick', false);
     }
 });
 
