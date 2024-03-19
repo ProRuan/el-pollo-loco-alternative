@@ -1,22 +1,18 @@
 let canvas;
+let keyboard;
 let world;
-let keyboard = new Keyboard();
-
-// Constants
-const IMG_STONE_PATH = 'img/objects_animated/Stone/stone';
-const IMG_STONE_AMOUNT = 8;
 
 
 function init() {
     canvas = getElement('canvas');
+    keyboard = new Keyboard();
     world = new World(canvas, keyboard);
 }
 
 
 document.addEventListener('keydown', (event) => {
-    let keyCode = event.code.replace(event.code[0], event.code[0].toLowerCase());
-    let isDefinedKey = keyboard[keyCode] !== undefined;
-    if (isDefinedKey && !keyboard[keyCode].keydown) {
+    let keyCode = setInitialToLowerCase(event.code);
+    if (isDefinedKey(keyCode) && !keyboard[keyCode].keydown) {
         keyboard.keydown = true;
         keyboard.updateKeydownTimeStamp();
         keyboard[keyCode].keydown = true;
@@ -29,6 +25,22 @@ document.addEventListener('keydown', (event) => {
         // console.log(event.code);
     }
 });
+
+
+function setInitialToLowerCase(keyCode) {
+    let initial = keyCode.charAt(0);
+    return keyCode.replace(initial, initial.toLowerCase())
+}
+
+
+function isDefinedKey(keyCode) {
+    return keyboard[keyCode] !== undefined;
+}
+
+
+// function getKeyValue(keyCode, key) {
+//     return keyboard[keyCode][key];
+// }
 
 
 function verifyDoubleClick(key, logical) {

@@ -85,10 +85,10 @@ Class Check
 
   Classes (5/16)
   -------
-    - Key - check
-    - FlipBook - check
-    - FlipBookHero - check
     - FlipBookDino - check
+    - FlipBookHero - check
     - FlipBookObjects - check
+    - FlipBook - check
+    - Key - check
     
     - keyboard + game + flipBook + imgFolder ...
