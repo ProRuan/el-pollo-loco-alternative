@@ -1,6 +1,6 @@
 class DrawableObject {
-    x = 100;
-    y = 100;
+    x = 0;
+    y = 540;
     width = 32;
     height = 32;
     img;
@@ -19,9 +19,6 @@ class DrawableObject {
     }
 
 
-    // drawFrame(ctx)
-
-
     loadImages(array) {
         array.forEach(path => {
             let img = new Image();
@@ -29,6 +26,8 @@ class DrawableObject {
             this.imageCache[path] = img;
         });
     }
+
+    
 
 
     drawFrame(ctx) {

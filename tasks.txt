@@ -52,15 +52,6 @@ Tipp
       - change values for stone and others ...
 
 
-Class Check
------------
-  - key - Check
-  - keyboard ...
-
-  
-  - check game.js ...
-
-
   Current tasks
   -------------
     - draw dino frame ...
@@ -83,8 +74,9 @@ Class Check
 
 
 
-  Classes (5/16) + game.js (1/1)
+  Classes (6/16) + game.js (1/1)
   -------
+    - DrawableObject - check
     - FlipBookDino - check
     - FlipBookHero - check
     - FlipBookObjects - check
@@ -92,3 +84,17 @@ Class Check
     - Key - check
     
     - keyboard + game + flipBook + imgFolder ...
+
+
+  Images (0/5)
+  ------
+    - background
+    - character
+    - enemies
+    - objects_animated
+    - tiles
+
+
+  Remove
+  ------
+    - DrawableObject: drawFrame() ...
