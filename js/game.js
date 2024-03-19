@@ -14,7 +14,7 @@ document.addEventListener('keydown', (event) => {
     let keyCode = setInitialToLowerCase(event.code);
     if (isDefinedKey(keyCode, true)) {
         setKey(keyCode, 'keydown', true);
-        verifyDoubleClick(keyCode, true);
+        verifyDoubleClick(keyCode);
     }
 });
 
@@ -42,12 +42,10 @@ function setKey(keyCode, key, value) {
 }
 
 
-function verifyDoubleClick(keyCode, logical) {
-    if (logical) {
-        let timeStamp = new Date().getTime();
-        setKeyDoubleClick(keyCode);
-        setKey(keyCode, 'timeStamp', timeStamp);
-    }
+function verifyDoubleClick(keyCode) {
+    let timeStamp = new Date().getTime();
+    setKeyDoubleClick(keyCode);
+    setKey(keyCode, 'timeStamp', timeStamp);
 }
 
 
