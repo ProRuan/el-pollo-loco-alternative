@@ -9,8 +9,8 @@ class DrawableObject {
 
 
     constructor(x, y) {
-        this.x = x;
-        this.y = (!y) ? 540 - this.height : 540 - this.height + y;
+        this.x = x * 64;
+        this.y = (!y) ? 540 - this.height : 540 - this.height + y * 64;
     }
 
 
