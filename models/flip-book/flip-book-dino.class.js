@@ -1,4 +1,4 @@
-class FlipBookDino extends FlipBook {
+class FlipBookDino extends Chapter {
     constructor() {
         super();
         this.path += '/enemies/dino';
