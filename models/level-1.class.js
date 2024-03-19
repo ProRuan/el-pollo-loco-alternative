@@ -41,7 +41,7 @@ createGroundGrass('center', 0 + TRANSLATION_SECTION_5, 15);
 function createGroundGrass(type, xStart, amount) {
     for (let i = 0; i < amount; i++) {
         let x = xStart * 64 + i * 64;
-        let tile = new GroundGrass(type, x, 0);
+        let tile = new GroundGrass(type, x);
         GROUND_GRASS.push(tile);
     }
 }

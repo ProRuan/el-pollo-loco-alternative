@@ -74,13 +74,14 @@ Tipp
 
 
 
-  Classes (6/16) + game.js (1/1)
+  Classes (7/16) + game.js (1/1)
   -------
     - DrawableObject - check
     - FlipBookDino - check
     - FlipBookHero - check
     - FlipBookObjects - check
     - FlipBook - check
+    - GroundGrass - check
     - Key - check
     
     - keyboard + game + flipBook + imgFolder ...

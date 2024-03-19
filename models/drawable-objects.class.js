@@ -1,11 +1,17 @@
 class DrawableObject {
-    x = 0;
-    y = 540;
-    width = 32;
-    height = 32;
+    x;
+    y;
+    width = 64;
+    height = this.width;
     img;
     imageCache = {};
     currentImage = 0;
+
+
+    constructor(x, y) {
+        this.x = x;
+        this.y = (!y) ? 540 - this.height : 540 - this.height + y;
+    }
 
 
     loadImage(path) {
@@ -27,7 +33,7 @@ class DrawableObject {
         });
     }
 
-    
+
 
 
     drawFrame(ctx) {
