@@ -1,9 +1,8 @@
-class FlipBookHero {
-    path = 'img/characters/knight';
-    cover = 'img/characters/knight/knight.png';
-
-
+class FlipBookHero extends FlipBook {
     constructor() {
+        super();
+        this.path += '/characters/knight';
+        this.cover += '/characters/knight/knight.png';
         this.attack = this.createChapter('Attack', 4);
         this.climb = this.createChapter('Climb', 4);
         this.death = this.createChapter('Death', 10);
@@ -17,17 +16,5 @@ class FlipBookHero {
         this.runAttack = this.createChapter('Run_Attack', 8);
         this.walk = this.createChapter('Walk', 6);
         this.walkAttack = this.createChapter('Walk_Attack', 6);
-    }
-
-
-    createChapter(folder, files) {
-        let images = [];
-        for (let i = 0; i < files; i++) {
-            let serial = i + 1;
-            let subfolder = folder.toLowerCase();
-            let img = this.path + '/' + folder + '/' + subfolder + serial + '.png';
-            images.push(img);
-        }
-        return images;
     }
 }
