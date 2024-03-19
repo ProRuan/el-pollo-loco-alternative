@@ -83,7 +83,7 @@ Class Check
 
 
 
-  Classes (5/16)
+  Classes (5/16) + game.js (1/1)
   -------
     - FlipBookDino - check
     - FlipBookHero - check
