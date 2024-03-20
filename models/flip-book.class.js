@@ -1,5 +1,6 @@
 class FlipBook {
-    pattern = /([a-z]+\_?[a-z]*)(\d+)/;
+    patternDirectory = /[a-z]+\/[a-z]+\/([a-z]+)\//;
+    patternSource = /([a-z]+\_?[a-z]*)(\d+)/;
 
 
     constructor(directory, sources) {
@@ -9,7 +10,7 @@ class FlipBook {
 
 
     get cover() {
-        let directory = this.directory.match(/[a-z]+\/[a-z]+\/([a-z]+)\//);
+        let directory = this.directory.match(this.patternDirectory);
         let fileName = directory[1];
         return this.directory + fileName + '.png';
     }
@@ -24,15 +25,48 @@ class FlipBook {
 
 
     createChapter(source) {
-        source = source.match(this.pattern);
-        let folder = source[1].replace(source[1][0], source[1][0].toUpperCase()) + '/';
-        let file = source[1];
+        source = source.match(this.patternSource);
+        let [folder, file, amount] = this.getPathDetails(source);
         let chapter = file.toUpperCase();
-        let amount = +source[2];
         this[chapter] = [];
         for (let i = 1; i < amount + 1; i++) {
             let path = this.directory + folder + file + i + '.png';
             this[chapter].push(path);
         }
+    }
+
+
+    getPathDetails(source) {
+        let folder = this.getFolder(source);
+        let file = source[1];
+        let amount = +source[2];
+        return [folder, file, amount];
+    }
+
+
+    getFolder(source) {
+        let folder = source[1];
+        if (folder.includes('_')) {
+            folder = this.getFolderNameSplit(folder);
+        } else {
+            folder = this.getFolderName(folder);
+        }
+        return folder + '/';
+    }
+
+
+    getFolderNameSplit(folder) {
+        let folderSplit = folder.split('_');
+        for (let i = 0; i < folderSplit.length; i++) {
+            let folder = folderSplit[i];
+            folderSplit[i] = this.getFolderName(folder);
+        }
+        return folderSplit[0] + '_' + folderSplit[1];
+    }
+
+
+    getFolderName(folder) {
+        let initial = folder[0];
+        return folder.replace(initial, initial.toUpperCase());
     }
 }
