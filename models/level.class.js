@@ -7,4 +7,9 @@ class Level {
     constructor(backgroundLayers, tiles) {
         this.backgroundLayers = backgroundLayers;
     }
+
+
+    // loadSection(section) {
+    //     this[section] = section;
+    // }
 }
