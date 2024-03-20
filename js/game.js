@@ -2,9 +2,9 @@ let canvas;
 let keyboard;
 let world;
 
-let flipBookDino = new FlipBook(DINO_DIRECTORY, DINO_SOURCES);
-let flipBookHero = new FlipBook(HERO_DIRECTORY, HERO_SOURCES);
-let flipBookObjects = new FlipBook(OBJECTS_DIRECTORY, OBJECTS_SOURCES);
+const FLIP_BOOK_DINO = new FlipBook(DINO_DIRECTORY, DINO_SOURCES);
+const FLIP_BOOK_HERO = new FlipBook(HERO_DIRECTORY, HERO_SOURCES);
+const FLIP_BOOK_OBJECTS = new FlipBook(OBJECTS_DIRECTORY, OBJECTS_SOURCES);
 
 
 function init() {

@@ -15,22 +15,19 @@ class Character extends MoveableObject {
     idleDelay = 0;
     isRunnning = true;
     isPushing = false;
-    FLIP_BOOK_HERO = new FlipBookHero();
-    FLIP_BOOK_DINO = new FlipBookDino();
-    //flipBookStone
 
     enemyBeated = false;
     world;
 
     constructor() {
         super();
-        this.loadImage(this.FLIP_BOOK_HERO.cover);
+        this.loadImage(FLIP_BOOK_HERO.cover);
         this.loadFlipBookHero();
         this.animate();
         this.applyGravity();
         this.isOnTile();
         this.isOnPushableObject();
-        // this.loadImages(this.FLIPBOOK_STONE);
+        this.loadImages(FLIP_BOOK_OBJECTS.STONE);
     }
 
 
@@ -95,19 +92,19 @@ class Character extends MoveableObject {
 
 
     loadFlipBookHero() {
-        this.loadImages(this.FLIP_BOOK_HERO.attack);
-        this.loadImages(this.FLIP_BOOK_HERO.climb);
-        this.loadImages(this.FLIP_BOOK_HERO.death);
-        this.loadImages(this.FLIP_BOOK_HERO.extraAttack);
-        this.loadImages(this.FLIP_BOOK_HERO.highJump);
-        this.loadImages(this.FLIP_BOOK_HERO.hurt);
-        this.loadImages(this.FLIP_BOOK_HERO.idle);
-        this.loadImages(this.FLIP_BOOK_HERO.jump);
-        this.loadImages(this.FLIP_BOOK_HERO.push);
-        this.loadImages(this.FLIP_BOOK_HERO.run);
-        this.loadImages(this.FLIP_BOOK_HERO.runAttack);
-        this.loadImages(this.FLIP_BOOK_HERO.walk);
-        this.loadImages(this.FLIP_BOOK_HERO.walkAttack);
+        this.loadImages(FLIP_BOOK_HERO.ATTACK);
+        this.loadImages(FLIP_BOOK_HERO.CLIMB);
+        this.loadImages(FLIP_BOOK_HERO.DEATH);
+        this.loadImages(FLIP_BOOK_HERO.EXTRA_ATTACK);
+        this.loadImages(FLIP_BOOK_HERO.HIGH_JUMP);
+        this.loadImages(FLIP_BOOK_HERO.HURT);
+        this.loadImages(FLIP_BOOK_HERO.IDLE);
+        this.loadImages(FLIP_BOOK_HERO.JUMP);
+        this.loadImages(FLIP_BOOK_HERO.PUSH);
+        this.loadImages(FLIP_BOOK_HERO.RUN);
+        this.loadImages(FLIP_BOOK_HERO.RUN_ATTACK);
+        this.loadImages(FLIP_BOOK_HERO.WALK);
+        this.loadImages(FLIP_BOOK_HERO.WALK_ATTACK);
     }
 
 
@@ -148,41 +145,41 @@ class Character extends MoveableObject {
                     this.world.enemy.splice(0, 1);
                 }, 1000);
             } else if (this.world.enemy[0] != undefined && this.world.enemy[0].isBeated && !this.enemyBeated) {
-                this.world.enemy[0].playAnimation(this.FLIP_BOOK_DINO.death);
+                this.world.enemy[0].playAnimation(FLIP_BOOK_DINO.DEATH);
                 this.enemyBeated = true;
             }
 
             if (this.isKey('keydown', 'arrowUp', 'arrowDown')) {
-                this.playAnimation(this.FLIP_BOOK_HERO.climb);    // still to edit
+                this.playAnimation(FLIP_BOOK_HERO.CLIMB);    // still to edit
             } else if (this.isKey('keydown', 'keyD')) {
-                this.playAnimation(this.FLIP_BOOK_HERO.extraAttack);
+                this.playAnimation(FLIP_BOOK_HERO.EXTRA_ATTACK);
                 this.idleDelay = new Date().getTime();
             } else if (this.isKey('keydown', 'space') || this.isAboveGround()) {
-                this.playAnimation(this.FLIP_BOOK_HERO.jump);
+                this.playAnimation(FLIP_BOOK_HERO.JUMP);
                 this.idleDelay = new Date().getTime();
             } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isPushing) {
-                this.playAnimation(this.FLIP_BOOK_HERO.push);
+                this.playAnimation(FLIP_BOOK_HERO.PUSH);
                 this.idleDelay = new Date().getTime();
             } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
-                this.playAnimation(this.FLIP_BOOK_HERO.runAttack);
+                this.playAnimation(FLIP_BOOK_HERO.RUN_ATTACK);
                 this.idleDelay = new Date().getTime();
             } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight')) {
-                this.playAnimation(this.FLIP_BOOK_HERO.run);
+                this.playAnimation(FLIP_BOOK_HERO.RUN);
                 this.idleDelay = new Date().getTime();
             } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
-                this.playAnimation(this.FLIP_BOOK_HERO.walkAttack);
+                this.playAnimation(FLIP_BOOK_HERO.WALK_ATTACK);
                 this.idleDelay = new Date().getTime();
             } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight')) {
-                this.playAnimation(this.FLIP_BOOK_HERO.walk);
+                this.playAnimation(FLIP_BOOK_HERO.WLK);
                 this.idleDelay = new Date().getTime();
             } else if (this.isKey('keydown', 'keyA')) {
-                this.playAnimation(this.FLIP_BOOK_HERO.attack);
+                this.playAnimation(FLIP_BOOK_HERO.ATTACK);
                 this.idleDelay = new Date().getTime();
             } else if (!keyboard.keydown) {
-                this.loadImage(this.FLIP_BOOK_HERO.cover);
+                this.loadImage(FLIP_BOOK_HERO.cover);
                 // let timeStamp = new Date().getTime();
                 // if (timeStamp - this.idleDelay > 100) {
-                //     this.playAnimation(this.FLIP_BOOK_HERO.idle);
+                //     this.playAnimation(FLIP_BOOK_HERO.IDLE);
                 // }
             }
         }, 100);

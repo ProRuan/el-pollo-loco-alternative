@@ -9,18 +9,17 @@ class Enemy extends MoveableObject {
     // otherDirection = false;    // for testing
     otherDirection = true;
     isBeated = false;
-    FLIP_BOOK = new FlipBookDino();
     hitPoints = 100;
     world;
 
 
     constructor() {
         super().loadImage('img/enemies/dino/Idle/idle1.png');
-        this.loadImages(this.FLIP_BOOK.attack);
-        this.loadImages(this.FLIP_BOOK.death);
-        this.loadImages(this.FLIP_BOOK.hurt);
-        this.loadImages(this.FLIP_BOOK.idle);
-        this.loadImages(this.FLIP_BOOK.walk);
+        this.loadImages(FLIP_BOOK_DINO.ATTACK);
+        this.loadImages(FLIP_BOOK_DINO.DEATH);
+        this.loadImages(FLIP_BOOK_DINO.HURT);
+        this.loadImages(FLIP_BOOK_DINO.IDLE);
+        this.loadImages(FLIP_BOOK_DINO.WALK);
         this.animate();
 
         // this.animate();
@@ -80,19 +79,19 @@ class Enemy extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            // this.playAnimation(this.FLIP_BOOK_ATTACK);
+            // this.playAnimation(FLIP_BOOK_DINO_ATTACK);
             if (this.isBeated) {
                 this.loadImage('img/enemies/dino/Death/death6.png');
             } else if (this.hitPoints < 1 && !this.isBeated) {
-                this.playAnimation(this.FLIP_BOOK.death);
+                this.playAnimation(FLIP_BOOK_DINO.DEATH);
             } else if (keyboard['keyA'].keydown && this.isHit) {
-                this.playAnimation(this.FLIP_BOOK.hurt);
+                this.playAnimation(FLIP_BOOK_DINO.HURT);
             } else {
                 let timeStamp = new Date().getTime();
                 if ((timeStamp - this.startTime) % 4000 > 2000) {
-                    this.playAnimation(this.FLIP_BOOK.walk)
+                    this.playAnimation(FLIP_BOOK_DINO.WALK)
                 } else {
-                    this.playAnimation(this.FLIP_BOOK.idle);
+                    this.playAnimation(FLIP_BOOK_DINO.IDLE);
                 }
             }
         }, 100);

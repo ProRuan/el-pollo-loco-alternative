@@ -27,11 +27,12 @@ class FlipBook {
         source = source.match(this.pattern);
         let folder = source[1].replace(source[1][0], source[1][0].toUpperCase()) + '/';
         let file = source[1];
+        let chapter = file.toUpperCase();
         let amount = +source[2];
-        this[file] = [];
+        this[chapter] = [];
         for (let i = 1; i < amount + 1; i++) {
             let path = this.directory + folder + file + i + '.png';
-            this[file].push(path);
+            this[chapter].push(path);
         }
     }
 }
