@@ -25,7 +25,6 @@ class World {
 
         this.addGroupToMap(this.level.backgroundLayers);
         this.addGroupToMap(GRASS);
-        // this.addGroupToMap(this.level.groundGrass);
         if (this.enemy[0] !== undefined) {
             this.addToMap(this.enemy[0]);
         }

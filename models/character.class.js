@@ -202,7 +202,7 @@ class Character extends MoveableObject {
 
     isOnTile() {
         setInterval(() => {
-            let thisTile = GROUND_GRASS.find(g => this.x + 28 < g.x + g.width && this.x + 60 > g.x) !== undefined;
+            let thisTile = GRASS.find(g => this.x + 28 < g.x + g.width && this.x + 60 > g.x) !== undefined;
 
             // console.log(thisTile);
             if (!thisTile) {
