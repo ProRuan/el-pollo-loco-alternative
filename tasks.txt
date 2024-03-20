@@ -74,9 +74,8 @@ Tipp
 
 
 
-  Classes (2/16) + game.js (1/1)
+  Classes (2/15) + game.js (1/1)
   -------
-    - Chapter - check ...
     - DrawableObject - ...
     - FlipBook - check
     - GroundGrass - ...

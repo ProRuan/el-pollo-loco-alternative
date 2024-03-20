@@ -170,7 +170,7 @@ class Character extends MoveableObject {
                 this.playAnimation(FLIP_BOOK_HERO.WALK_ATTACK);
                 this.idleDelay = new Date().getTime();
             } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight')) {
-                this.playAnimation(FLIP_BOOK_HERO.WLK);
+                this.playAnimation(FLIP_BOOK_HERO.WALK);
                 this.idleDelay = new Date().getTime();
             } else if (this.isKey('keydown', 'keyA')) {
                 this.playAnimation(FLIP_BOOK_HERO.ATTACK);
