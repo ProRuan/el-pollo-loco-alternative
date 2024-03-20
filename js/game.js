@@ -2,6 +2,10 @@ let canvas;
 let keyboard;
 let world;
 
+let flipBookDino = new FlipBook(DINO_DIRECTORY, DINO_SOURCES);
+let flipBookHero = new FlipBook(HERO_DIRECTORY, HERO_SOURCES);
+let flipBookObjects = new FlipBook(OBJECTS_DIRECTORY, OBJECTS_SOURCES);
+
 
 function init() {
     canvas = getElement('canvas');
@@ -79,11 +83,3 @@ document.addEventListener('keyup', (event) => {
 function getElement(id) {
     return document.getElementById(id);
 }
-
-
-// showPathComponents();
-// function showPathComponents() {
-//     let testPath = 'img/characters/knight/Walk/walk4.png';
-//     let result = testPath.match(/([a-z]+\/[a-z]+\/[a-z]+\/)([A-Z][a-z]+\/)([a-z]+)(\d+)(\.[a-z]+)/);
-//     console.log(result, result[0], result[1], result[2], result[3], result[4], result[5]);
-// }

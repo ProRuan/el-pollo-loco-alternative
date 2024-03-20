@@ -1,48 +1,37 @@
 class FlipBook {
-    pattern = /([A-Z][a-z]+\_?[A-z]?[a-z]*\/)(([a-z]+\_?[a-z]*)(\d+)(\.[a-z]+))/;
-    directory;
+    pattern = /([a-z]+\_?[a-z]*)(\d+)/;
 
 
-    constructor(directory) {
-        this.directory = directory;
-        // let testPath = 'img/characters/knight/Extra_Attack/extra_attack12.png';
-        // let result = testPath.match(this.pattern);
-        // this.path = result[0];
-        // this.directory = result[1];
-        // this.figure = result[2];
-        // this.folder = result[3];
-        // this.cover = this.directory + this.figure;
-        // let file = result[4];
-        // this.fileName = result[5];
-        // this.fileId = +result[6];
-        // this.fileExt = result[7];
-
-        // for (let i = 0; i < result.length; i++) {
-        //     console.log(result[i]);
-        // }
-
-        // console.log(result);
-
-        // this[result[4]] = () => {
-        //     let chapter = [];
-        //     for (let i = 1; i < result[5] + 1; i++) {
-        //         let source = result[1] + result[3] + result[4] + i + result[6];
-        //         chapter.push(source);
-        //     }
-        //     return chapter;
-        // }
+    constructor(directory, sources) {
+        this.directory = 'img/' + directory;
+        this.createFlipBook(sources);
     }
 
 
     get cover() {
         let directory = this.directory.match(/[a-z]+\/[a-z]+\/([a-z]+)\//);
-        return this.directory + directory[1] + '.png';
+        let fileName = directory[1];
+        return this.directory + fileName + '.png';
     }
 
 
-    createChapter(path) {
-        path = path.match(this.pattern);
-        console.log(path);
-        this[path[3]] = 'success';
+    createFlipBook(sources) {
+        for (let i = 0; i < sources.length; i++) {
+            let source = sources[i];
+            this.createChapter(source);
+        }
+    }
+
+
+    createChapter(source) {
+        source = source.match(this.pattern);
+        let folder = source[1].replace(source[1][0], source[1][0].toUpperCase()) + '/';
+        let file = source[1];
+        let amount = +source[2];
+        this[file] = [];
+        for (let i = 1; i < amount + 1; i++) {
+            let path = this.directory + folder + file + i + '.png';
+            this[file].push(path);
+        }
     }
 }
