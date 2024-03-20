@@ -1,22 +1,16 @@
 class Section {
-    translation = -1;
-    grass = [];
-
-
-    constructor() {
-        this.translation++;
-    }
+    translation = 0;
 
 
     pushTile(type, xStart, n) {
         for (let i = xStart; i < xStart + n; i++) {
             let tile = new Tile(type, i + this.translation);
-            this.grass.push(tile);
+            GRASS.push(tile);
         }
     }
 
 
-    pushGrassStart(xStart, n) {
+    pushGrassStartCenter(xStart, n) {
         this.pushTile('grass-start', xStart + this.translation, 1);
         this.pushTile('grass-center', xStart + 1 + this.translation, n - 1);
     }
