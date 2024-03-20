@@ -1,29 +1,36 @@
 class Section {
+    translation = -1;
     grass = [];
 
 
     constructor() {
-        this.grass = this.loadGrass();
+        this.translation++;
     }
 
 
-    loadGrass() {
-        return [
-            new Tile('grass-center', 0),
-            new Tile('grass-center', 1),
-            new Tile('grass-center', 2),
-            new Tile('grass-center', 3),
-            new Tile('grass-center', 4),
-            new Tile('grass-center', 5),
-            new Tile('grass-center', 6),
-            new Tile('grass-center', 7),
-            new Tile('grass-center', 8),
-            new Tile('grass-center', 9),
-            new Tile('grass-center', 10),
-            new Tile('grass-center', 11),
-            new Tile('grass-center', 12),
-            new Tile('grass-center', 13),
-            new Tile('grass-center', 14)
-        ];
+    pushTile(type, xStart, n) {
+        for (let i = xStart; i < xStart + n; i++) {
+            let tile = new Tile(type, i + this.translation);
+            this.grass.push(tile);
+        }
+    }
+
+
+    pushGrassStart(xStart, n) {
+        this.pushTile('grass-start', xStart + this.translation, 1);
+        this.pushTile('grass-center', xStart + 1 + this.translation, n - 1);
+    }
+
+
+    pushGrassStartCenterEnd(xStart, n) {
+        this.pushTile('grass-start', xStart + this.translation, 1);
+        this.pushTile('grass-center', xStart + 1 + this.translation, n - 2);
+        this.pushTile('grass-end', xStart + n - 1 + this.translation, 1);
+    }
+
+
+    pushGrassCenterEnd(xStart, n) {
+        this.pushTile('grass-center', xStart + this.translation, n - 1);
+        this.pushTile('grass-end', xStart + n - 1 + this.translation, 1);
     }
 }
