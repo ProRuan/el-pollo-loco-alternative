@@ -1,4 +1,4 @@
-class Coin extends AnimatedObjectNew {
+class Coin extends AnimatedObject {
 
 
     constructor(x, y) {

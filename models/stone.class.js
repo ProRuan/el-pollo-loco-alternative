@@ -1,4 +1,4 @@
-class Stone extends AnimatedObjectNew {
+class Stone extends AnimatedObject {
 
 
     constructor(x, y) {

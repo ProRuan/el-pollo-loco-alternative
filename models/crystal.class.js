@@ -1,4 +1,4 @@
-class Crystal extends AnimatedObjectNew {
+class Crystal extends AnimatedObject {
    
 
     constructor(x, y) {

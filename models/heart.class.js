@@ -1,4 +1,4 @@
-class Heart extends AnimatedObjectNew {
+class Heart extends AnimatedObject {
 
 
     constructor(x, y) {

@@ -1,29 +1,32 @@
-class AnimatedObject extends MoveableObject {
-    width = 64;
-    height = this.width;
-    x = 256;
-    y = 540 - this.height - 32;
-    world;
-
-
+class AnimatedObject extends DrawableObjectNew {
     directory = 'img/objects_animated/';
+    cover;
+    flipBook;
 
 
-    constructor(folder) {
+    constructor(x, y, name) {
         super();
-        this.path = this.buildPath(folder);
-        this.loadImage(this.path);
-        this.loadFlipBook(folder);
+        this.setSize(32);
+        this.setPosition(x, y);
+        this.setName(name);
+        this.setCover(this.name);
+        this.loadImage(this.cover);
+        this.setFlipBook(this.name);
     }
 
 
-    buildPath(folder) {
-        let fileName = folder.toLowerCase();
-        return this.directory + folder + '/' + fileName + 1 + '.png';
+    setName(name) {
+        this.name = name;
     }
 
 
-    loadFlipBook(name) {
+    setCover(folder) {
+        let file = folder.toLowerCase() + '.png';
+        this.cover = this.directory + file;
+    }
+
+
+    setFlipBook(name) {
         name = name.toUpperCase();
         this.flipBook = FLIP_BOOK_OBJECTS[name];
     }

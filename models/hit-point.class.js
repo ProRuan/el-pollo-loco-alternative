@@ -1,4 +1,4 @@
-class HitPoint extends AnimatedObjectNew {
+class HitPoint extends AnimatedObject {
 
 
     constructor(x, y) {

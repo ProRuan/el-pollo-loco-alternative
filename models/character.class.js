@@ -230,9 +230,9 @@ class Character extends MoveableObject {
                     this.speed = 1;
                     this.runSpeed = this.speed;
                     if (this.otherDirection) {
-                        this.world.animatedObject.x -= this.speed;
+                        this.world.stone.x -= this.speed;
                     } else {
-                        this.world.animatedObject.x += this.speed;
+                        this.world.stone.x += this.speed;
                     }
                     // this.playAnimation(this.FLIPBOOK_STONE);
                 } else {

@@ -1,4 +1,4 @@
-class Star extends AnimatedObjectNew {
+class Star extends AnimatedObject {
 
 
     constructor(x, y) {
