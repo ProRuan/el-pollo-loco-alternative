@@ -8,7 +8,8 @@ class Coin extends AnimatedObjectNew {
         this.height = this.width;
         this.setX(x);
         this.setY(y);
-        this.setImage(this.name);
+        this.setCover(this.name);
+        this.loadImage(this.cover);
         this.setFlipBook(this.name);
     }
 }

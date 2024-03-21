@@ -1,11 +1,15 @@
 class Crystal extends AnimatedObjectNew {
+    name = 'Crystal';
+
+
     constructor(x, y) {
         super();
         this.width = 32;
         this.height = this.width;
         this.setX(x);
         this.setY(y);
-        this.setImage('Crystal');
-        this.setFlipBook('CRYSTAL');
+        this.setCover(this.name);
+        this.loadImage(this.cover);
+        this.setFlipBook(this.name);
     }
 }
