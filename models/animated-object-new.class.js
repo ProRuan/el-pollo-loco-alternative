@@ -9,6 +9,7 @@ class AnimatedObjectNew extends DrawableObjectNew {
 
 
     setFlipBook(name) {
+        name = name.toUpperCase();
         this.flipBook = FLIP_BOOK_OBJECTS[name];
     }
 }

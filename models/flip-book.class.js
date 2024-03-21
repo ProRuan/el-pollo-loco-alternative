@@ -16,12 +16,6 @@ class FlipBook {
     }
 
 
-    getSubcover(folder) {
-        let file = folder.toLowerCase() + '1.png';
-        return this.directory + folder + '/' + file;
-    }
-
-
     createFlipBook(sources) {
         for (let i = 0; i < sources.length; i++) {
             let source = sources[i];

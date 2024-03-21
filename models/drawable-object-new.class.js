@@ -10,7 +10,7 @@ class DrawableObjectNew extends CoordinateSystem {
 
 
     setImage(folder) {
-        let file = folder.toLowerCase() + '1.png';
-        this.img = this.directory + folder + '/' + file;
+        let file = folder.toLowerCase() + '.png';
+        this.img = this.directory + file;
     }
 }
