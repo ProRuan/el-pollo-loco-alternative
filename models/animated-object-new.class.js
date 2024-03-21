@@ -4,12 +4,21 @@ class AnimatedObjectNew extends DrawableObjectNew {
     flipBook;
 
 
-    constructor(x, y) {
+    constructor(x, y, name) {
         super();
         this.width = 32;
         this.height = this.width;
         this.setX(x);
         this.setY(y);
+        this.setName(name);
+        this.setCover(this.name);
+        this.loadImage(this.cover);
+        this.setFlipBook(this.name);
+    }
+
+
+    setName(name) {
+        this.name = name;
     }
 
 
