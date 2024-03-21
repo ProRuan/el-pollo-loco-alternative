@@ -3,9 +3,7 @@ class Coin extends AnimatedObjectNew {
 
 
     constructor(x, y) {
-        super();
-        this.setX(x);
-        this.setY(y);
+        super(x, y);
         this.setCover(this.name);
         this.loadImage(this.cover);
         this.setFlipBook(this.name);
