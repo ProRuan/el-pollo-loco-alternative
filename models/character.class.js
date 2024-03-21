@@ -222,7 +222,7 @@ class Character extends MoveableObject {
     isOnPushableObject() {
         setInterval(() => {
             if (this.isKey('keydown', 'arrowLeft', 'arrowRight')) {
-                let pushableObject = this.world.animatedObject;
+                let pushableObject = this.world.stone;
                 if (this.x + 60 - 8 > pushableObject.x && this.y == pushableObject.y - 64 && !(this.x + 28 > pushableObject.x + pushableObject.width)) {
                     this.isRunnning = false;
                     this.isPushing = true;

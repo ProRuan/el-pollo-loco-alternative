@@ -2,7 +2,7 @@ class World {
     level = LEVEL_1;
     character = new Character();
     enemy = [new Enemy()];
-    coin = new AnimatedObject('Coin');
+    stone = new AnimatedObject('Stone');
     canvas;
     ctx;
     keyboard;
@@ -29,7 +29,7 @@ class World {
             this.addToMap(this.enemy[0]);
         }
         this.addToMap(this.character);
-        this.addToMap(this.coin);
+        this.addToMap(this.stone);
 
 
         this.ctx.translate(-this.camera_x, 0);
