@@ -3,9 +3,11 @@ class AnimatedObjectNew extends DrawableObjectNew {
     cover;
     flipBook;
 
-    
+
     constructor() {
         super();
+        this.width = 32;
+        this.height = this.width;
     }
 
 
