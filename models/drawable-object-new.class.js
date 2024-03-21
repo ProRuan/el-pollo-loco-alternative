@@ -9,13 +9,20 @@ class DrawableObjectNew extends CoordinateSystem {
     }
 
 
-    // setSize()
+    setSize(width, height) {
+        this.setWidth(width);
+        (!height) ? this.setHeight(width) : this.setHeight(height);
+    }
 
 
-    // setWidth()
+    setWidth(width) {
+        this.width = width;
+    }
 
 
-    // setHeight()
+    setHeight(height) {
+        this.height = height;
+    }
 
 
     loadImage(path) {

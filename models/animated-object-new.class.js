@@ -6,10 +6,8 @@ class AnimatedObjectNew extends DrawableObjectNew {
 
     constructor(x, y, name) {
         super();
-        this.width = 32;
-        this.height = this.width;
-        this.setX(x);
-        this.setY(y);
+        this.setSize(32);
+        this.setPosition(x, y);
         this.setName(name);
         this.setCover(this.name);
         this.loadImage(this.cover);
