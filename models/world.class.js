@@ -2,7 +2,7 @@ class World {
     level = LEVEL_1;
     character = new Character();
     enemy = [new Enemy()];
-    stone = new Stone(1, 1);
+    // stone = new Stone(1, 1);
     canvas;
     ctx;
     keyboard;

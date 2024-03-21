@@ -8,10 +8,15 @@ class AnimatedObject extends DrawableObjectNew {
         super();
         this.setSize(32);
         this.setPosition(x, y);
+        this.setSource(name);
+        this.setImages(this.cover, this.flipBook);
+    }
+
+
+    setSource(name) {
         this.setName(name);
-        this.setCover(this.name);
-        this.loadImage(this.cover);
-        this.setFlipBook(this.name);
+        this.setCover(name);
+        this.setFlipBook(name);
     }
 
 

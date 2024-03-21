@@ -74,11 +74,12 @@ Tipp
 
 
 
-  Classes (2/15) + game.js (1/1)
+  Classes (10/24) + game.js (1/1)
   -------
-    - DrawableObject - ...
+    - AnimatedObject - check
+    - Coordinate System - check
+    - Coin, Crystal, Heart, HitPoint, Star, Stone - check
     - FlipBook - check
-    - GroundGrass - ...
     - Key - check
     
     - keyboard + game + flipBook + imgFolder ...
@@ -101,7 +102,6 @@ Tipp
 
   Current Task
   ------------
-    - loadImages / FlipBook ...
     - Do class check ...
     - AnimatedClass + world? ...
     - SAVE ...

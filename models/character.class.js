@@ -26,7 +26,7 @@ class Character extends MoveableObject {
         this.animate();
         this.applyGravity();
         this.isOnTile();
-        this.isOnPushableObject();
+        // this.isOnPushableObject();
         this.loadImages(FLIP_BOOK_OBJECTS.STONE);
     }
 

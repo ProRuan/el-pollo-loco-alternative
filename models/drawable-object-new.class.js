@@ -2,6 +2,8 @@ class DrawableObjectNew extends CoordinateSystem {
     width;
     height;
     img;
+    imageCache = [];
+    patternFile = /[a-z]+\_?[a-z]*\d+.png/;
 
 
     constructor() {
@@ -25,14 +27,24 @@ class DrawableObjectNew extends CoordinateSystem {
     }
 
 
+    setImages(path, flipBook) {
+        this.loadImage(path);
+        this.loadImages(flipBook);
+    }
+
+
     loadImage(path) {
         this.img = new Image();
         this.img.src = path;
     }
 
 
-    // setImage(folder) {
-    //     let file = folder.toLowerCase() + '.png';
-    //     this.img = this.directory + file;
-    // }
+    loadImages(flipBook) {
+        flipBook.forEach(chapter => {
+            let img = new Image();
+            img.src = chapter;
+            let file = chapter.match(this.patternFile);
+            this.imageCache[file] = img;
+        });
+    }
 }
