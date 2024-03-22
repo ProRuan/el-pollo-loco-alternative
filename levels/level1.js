@@ -40,6 +40,18 @@ level1.loadGrass(3);
 
 
 level1.cache = [
-    new Coin(8.25, 1.25), new Coin(9.25, 1.25), new Coin(10.25, 1.25)
+    new Coin(9.25, 1.25), new Coin(10.25, 1.25), new Coin(11.25, 1.25)
 ];
 level1.loadCoins(0);
+
+level1.cache = [
+    new Coin(6.25, 1.25), new Coin(7.25, 2.25), new Coin(8.25, 1.25)
+];
+level1.loadCoins(1);
+
+level1.cache = [
+    new Coin(5.25, 2.25), new Coin(7.25, 1.25), new Coin(9.25, 2.25)
+];
+level1.loadCoins(2);
+
+// continue with coins ...

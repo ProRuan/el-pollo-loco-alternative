@@ -18,7 +18,8 @@ class Level {
 
     loadBackground() {
         for (let i = 0; i < LEVEL_SIZE; i++) {
-            let background = new Background(i);
+            let t = i * this.translation / 64;
+            let background = new Background(t);
             this.BACKGROUND.push(background);
         }
     }
