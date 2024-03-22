@@ -15,6 +15,6 @@ class CoordinateSystem {
 
 
     setY(y) {
-        this.y = 540 - this.height - y * 64;
+        this.y = canvas.height - this.height - y * 64;
     }
 }
