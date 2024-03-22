@@ -36,6 +36,18 @@ class DrawableObject extends CoordinateSystem {
     }
 
 
+    loadImages(flipBook) {
+        this.imageCache = [];
+        flipBook.forEach(chapter => {
+            let img = new Image();
+            img.src = chapter;
+            let file = chapter.match(this.patternFile);
+            this.imageCache[file] = img;
+        });
+        return this.imageCache;
+    }
+
+
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
