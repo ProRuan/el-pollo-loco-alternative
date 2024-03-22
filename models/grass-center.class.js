@@ -8,5 +8,6 @@ class GrassCenter extends DrawableObject {
         this.height = this.width;
         this.setX(x);
         this.setY(y);
+        this.loadImage(this.path);
     }
 }

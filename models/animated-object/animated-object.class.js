@@ -2,6 +2,8 @@ class AnimatedObject extends DrawableObject {
     directory = 'img/objects_animated/';
     cover;
     flipBook;
+    imageCache = [];
+    patternFile = /[a-z]+\_?[a-z]*\d+.png/;
 
 
     constructor(x, y, name) {
@@ -34,5 +36,21 @@ class AnimatedObject extends DrawableObject {
     setFlipBook(name) {
         name = name.toUpperCase();
         this.flipBook = FLIP_BOOK_OBJECTS[name];
+    }
+
+
+    setImages(path, flipBook) {
+        this.loadImage(path);
+        this.loadImages(flipBook);
+    }
+
+
+    loadImages(flipBook) {
+        flipBook.forEach(chapter => {
+            let img = new Image();
+            img.src = chapter;
+            let file = chapter.match(this.patternFile);
+            this.imageCache[file] = img;
+        });
     }
 }

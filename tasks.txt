@@ -74,7 +74,7 @@ Tipp
 
 
 
-  Classes (11/25) + game.js (1/1)
+  Classes (11/24) + game.js (1/1)
   -------
     - AnimatedObject - check
     - Canvas - check
@@ -103,6 +103,10 @@ Tipp
 
   Current Task
   ------------
+    - class Grass
+    - class GrassCenter
+    - class GrassFlying
+
     - Do class check ...
     - AnimatedClass + world? ...
     - SAVE ...
