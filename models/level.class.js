@@ -16,6 +16,7 @@ class Level {
     setSections(amount) {
         for (let i = 0; i < amount; i++) {
             this[`section${i}`] = new Section(i);
+            this[`section${i}`][`levelId`] = this.levelId;
         }
     }
 

@@ -2,6 +2,8 @@ let canvas;
 let keyboard;
 let world;
 
+let LEVELS = [];
+
 const FLIP_BOOK_DINO = new FlipBook(DINO_DIRECTORY, DINO_SOURCES);
 const FLIP_BOOK_HERO = new FlipBook(HERO_DIRECTORY, HERO_SOURCES);
 const FLIP_BOOK_OBJECTS = new FlipBook(OBJECTS_DIRECTORY, OBJECTS_SOURCES);
