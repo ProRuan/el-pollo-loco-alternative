@@ -1,15 +1,26 @@
 class Level {
-    backgroundLayers;
-    level_end_x = 4 * 960 + (960 - 96);    // to edit
-    // edit ...
 
 
-    constructor(backgroundLayers, tiles) {
-        this.backgroundLayers = backgroundLayers;
+    constructor(i) {
+        this.setSize(i);
+        this.setSections(this.size);
+        this.setXLevelEnd(this.size);
     }
 
 
-    // loadSection(section) {
-    //     this[section] = section;
-    // }
+    setSize(i) {
+        this.size = (!i) ? 6 : i;
+    }
+
+
+    setSections(amount) {
+        for (let i = 0; i < amount; i++) {
+            this[`section${i}`] = new Section(i);
+        }
+    }
+
+
+    setXLevelEnd(amount) {
+        this.X_LEVEL_END = amount * CANVAS_WIDTH;
+    }
 }

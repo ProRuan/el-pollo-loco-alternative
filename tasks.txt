@@ -74,7 +74,7 @@ Tipp
 
 
 
-  Classes (18/25) + game.js (1/1)
+  Classes (19/25) + game.js (1/1)
   -------
     - AnimatedObject - check
     - Background - check
@@ -86,6 +86,7 @@ Tipp
     - Grass - check
     - GrassCenter, GrassEnd, GrassFlying, GrassStart - check
     - Key - check
+    - Level - check
     
     - keyboard + game + flipBook + imgFolder ...
     - width = height = 60; x = 16, y = 9 ...
@@ -111,6 +112,7 @@ Tipp
 
   Current Task
   ------------
+    - rename Grass
     - class Grass
     - class GrassCenter
     - class GrassFlying

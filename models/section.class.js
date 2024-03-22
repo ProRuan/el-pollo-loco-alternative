@@ -6,5 +6,10 @@ class Section {
     }
 
 
-
+    loadBackground(backgrounds) {
+        for (let i = 0; i < backgrounds.length; i++) {
+            let background = backgrounds[i];
+            this.background.push(background);
+        }
+    }
 }

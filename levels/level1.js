@@ -14,8 +14,13 @@ initLevel1();
 
 
 function initLevel1() {
+    initLevel1Section0();
+}
+
+
+function initLevel1Section0() {
     pushSectionBackground(0);
-    pushSectionArray(GRASS_CENTER_LEVEL1_SECTION0);
+    pushSectionGrass(GRASS_CENTER_LEVEL1_SECTION0);
 }
 
 
@@ -25,7 +30,7 @@ function pushSectionBackground(i) {
 }
 
 
-function pushSectionArray(array) {
+function pushSectionGrass(array) {
     for (let i = 0; i < array.length; i++) {
         let element = array[i];
         GRASS_LEVEL1.push(element);
