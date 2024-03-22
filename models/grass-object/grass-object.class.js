@@ -1,4 +1,4 @@
-class Grass extends DrawableObject {
+class GrassObject extends DrawableObject {
     directory = 'img/tiles/';
 
 
@@ -9,7 +9,4 @@ class Grass extends DrawableObject {
         this.setPath(name);
         this.loadImage(this.path);
     }
-
-    
-    
 }
