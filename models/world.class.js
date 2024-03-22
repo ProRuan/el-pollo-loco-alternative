@@ -30,6 +30,7 @@ class World {
         // }
 
         this.addGroupToMap(level1.GRASS);
+        this.addGroupToMap(level1.COINS);
         this.addToMap(this.character);
         // this.addToMap(this.stone);
 

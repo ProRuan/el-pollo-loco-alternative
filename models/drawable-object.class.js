@@ -84,12 +84,12 @@ class DrawableObject extends CoordinateSystem {
             ctx.stroke();
         }
 
-        if (this instanceof AnimatedObject) {
-            ctx.beginPath();
-            ctx.lineWidth = '2';
-            ctx.strokeStyle = 'green';
-            ctx.rect(this.x + 16, this.y + 16, 32, 32);
-            ctx.stroke();
-        }
+        // if (this instanceof AnimatedObject) {
+        //     ctx.beginPath();
+        //     ctx.lineWidth = '2';
+        //     ctx.strokeStyle = 'green';
+        //     ctx.rect(this.x + 16, this.y + 16, 32, 32);
+        //     ctx.stroke();
+        // }
     }
 }

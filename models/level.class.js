@@ -3,6 +3,7 @@ class Level {
     cache = [];
     BACKGROUND = [];
     GRASS = [];
+    COINS = [];
 
 
     constructor() {
@@ -28,6 +29,16 @@ class Level {
             let grass = this.cache[i];
             grass.x += n * this.translation;
             this.GRASS.push(grass);
+        }
+        this.cache = [];
+    }
+
+
+    loadCoins(n) {
+        for (let i = 0; i < this.cache.length; i++) {
+            let coin = this.cache[i];
+            coin.x += n * this.translation;
+            this.COINS.push(coin);
         }
         this.cache = [];
     }
