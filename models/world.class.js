@@ -24,10 +24,13 @@ class World {
         this.ctx.translate(this.camera_x, 0);
 
         // this.addGroupToMap(this.level.backgroundLayers);
-        this.addGroupToMap(GRASS);
+        // this.addGroupToMap(GRASS);
         // if (this.enemy[0] !== undefined) {
         //     this.addToMap(this.enemy[0]);
         // }
+     
+        this.addGroupToMap(BACKGROUND_LEVEL1);
+        this.addGroupToMap(GRASS_LEVEL1);
         this.addToMap(this.character);
         // this.addToMap(this.stone);
 

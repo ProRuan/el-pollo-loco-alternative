@@ -1,52 +1,33 @@
-const GRASS = [];
-
-let section0 = new Section(0);
-let section1 = new Section(1);
-let section2 = new Section(2);
-let section3 = new Section(3);
-let section4 = new Section(4);
+let BACKGROUND_LEVEL1 = [];
+let GRASS_LEVEL1 = [];
 
 
-initLevel();
+const GRASS_CENTER_LEVEL1_SECTION0 = [
+    new GrassCenter(0, 0), new GrassCenter(1, 0), new GrassCenter(2, 0), new GrassCenter(3, 0),
+    new GrassCenter(4, 0), new GrassCenter(5, 0), new GrassCenter(6, 0), new GrassCenter(7, 0),
+    new GrassCenter(8, 0), new GrassCenter(9, 0), new GrassCenter(10, 0), new GrassCenter(11, 0),
+    new GrassCenter(12, 0), new GrassCenter(13, 0), new GrassCenter(14, 0)
+];
 
 
-function initLevel() {
-   loadSection0();
-   loadSection1();
-   loadSection2();
-   loadSection3();
-   loadSection4();
+initLevel1();
+
+
+function initLevel1() {
+    pushSectionBackground(0);
+    pushSectionArray(GRASS_CENTER_LEVEL1_SECTION0);
 }
 
 
-function loadSection0() {
-    section0.pushTile('grass-center', 0, 15);
+function pushSectionBackground(i) {
+    let background = new Background(i)
+    BACKGROUND_LEVEL1.push(background);
 }
 
 
-function loadSection1() {
-    section1.pushGrassBlockEnd(0, 7);
-    section1.pushGrassBlockStart(8, 7);
+function pushSectionArray(array) {
+    for (let i = 0; i < array.length; i++) {
+        let element = array[i];
+        GRASS_LEVEL1.push(element);
+    }
 }
-
-
-function loadSection2() {
-    section2.pushGrassBlockEnd(0, 4);
-    section2.pushGrassBlockCenter(5, 5);
-    section2.pushGrassBlockStart(11, 4);
-}
-
-
-function loadSection3() {
-    section3.pushGrassBlockEnd(0, 8);
-    section3.pushGrassBlockStart(10, 5);
-}
-
-
-function loadSection4() {
-    section4.pushGrassBlockEnd(0, 5);
-    section4.pushGrassBlockStart(10, 5);
-}
-
-
-// let section4 = new Section(0);
