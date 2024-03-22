@@ -74,7 +74,7 @@ Tipp
 
 
 
-  Classes (16/25) + game.js (1/1)
+  Classes (16/24) + game.js (1/1)
   -------
     - AnimatedObject - check
     - Canvas - check
