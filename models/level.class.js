@@ -1,27 +1,34 @@
 class Level {
+    translation = CANVAS_WIDTH;
+    cache = [];
+    BACKGROUND = [];
+    GRASS = [];
 
 
-    constructor(i) {
-        this.setLevelId(i);
-        this.setSections(LEVEL_SIZE);
+    constructor() {
         this.setXLevelEnd(LEVEL_SIZE);
-    }
-
-
-    setLevelId(i) {
-        this.levelId = i;
-    }
-
-
-    setSections(amount) {
-        for (let i = 0; i < amount; i++) {
-            this[`section${i}`] = new Section(i);
-            this[`section${i}`][`levelId`] = this.levelId;
-        }
     }
 
 
     setXLevelEnd(amount) {
         this.X_LEVEL_END = amount * CANVAS_WIDTH;
+    }
+
+
+    loadBackground() {
+        for (let i = 0; i < LEVEL_SIZE; i++) {
+            let background = new Background(i);
+            this.BACKGROUND.push(background);
+        }
+    }
+
+
+    loadGrass(n) {
+        for (let i = 0; i < this.cache.length; i++) {
+            let grass = this.cache[i];
+            grass.x += n * this.translation;
+            this.GRASS.push(grass);
+        }
+        this.cache = [];
     }
 }

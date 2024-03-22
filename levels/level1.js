@@ -1,38 +1,36 @@
-let BACKGROUND_LEVEL1 = [];
-let GRASS_LEVEL1 = [];
+level1 = new Level(1);
 
 
-const GRASS_CENTER_LEVEL1_SECTION0 = [
+level1.loadBackground();
+
+
+level1.cache = [
     new GrassCenter(0, 0), new GrassCenter(1, 0), new GrassCenter(2, 0), new GrassCenter(3, 0),
     new GrassCenter(4, 0), new GrassCenter(5, 0), new GrassCenter(6, 0), new GrassCenter(7, 0),
     new GrassCenter(8, 0), new GrassCenter(9, 0), new GrassCenter(10, 0), new GrassCenter(11, 0),
     new GrassCenter(12, 0), new GrassCenter(13, 0), new GrassCenter(14, 0)
 ];
+level1.loadGrass(-1);
 
+level1.cache = [
+    new GrassCenter(0, 0), new GrassCenter(1, 0), new GrassCenter(2, 0), new GrassCenter(3, 0),
+    new GrassCenter(4, 0), new GrassCenter(5, 0), new GrassEnd(6, 0), new GrassStart(8, 0),
+    new GrassCenter(9, 0), new GrassCenter(10, 0), new GrassCenter(11, 0), new GrassCenter(12, 0),
+    new GrassCenter(13, 0), new GrassCenter(14, 0)
+];
+level1.loadGrass(1);
 
-initLevel1();
+level1.cache = [
+    new GrassCenter(0, 0), new GrassCenter(1, 0), new GrassCenter(2, 0), new GrassCenter(3, 0),
+    new GrassEnd(4, 0), new GrassStart(6, 0), new GrassCenter(7, 0), new GrassEnd(8, 0),
+    new GrassStart(10, 0), new GrassCenter(11, 0), new GrassCenter(12, 0), new GrassCenter(13, 0),
+    new GrassCenter(14, 0)
+];
+level1.loadGrass(2);
 
-
-function initLevel1() {
-    initLevel1Section0();
-}
-
-
-function initLevel1Section0() {
-    pushSectionBackground(0);
-    pushSectionGrass(GRASS_CENTER_LEVEL1_SECTION0);
-}
-
-
-function pushSectionBackground(i) {
-    let background = new Background(i)
-    BACKGROUND_LEVEL1.push(background);
-}
-
-
-function pushSectionGrass(array) {
-    for (let i = 0; i < array.length; i++) {
-        let element = array[i];
-        GRASS_LEVEL1.push(element);
-    }
-}
+level1.cache = [
+    new GrassCenter(0, 0), new GrassCenter(1, 0), new GrassCenter(2, 0), new GrassCenter(3, 0),
+    new GrassCenter(4, 0), new GrassEnd(5, 0), new GrassStart(9, 0), new GrassCenter(10, 0),
+    new GrassCenter(11, 0), new GrassCenter(12, 0), new GrassCenter(13, 0), new GrassCenter(14, 0)
+];
+level1.loadGrass(0);

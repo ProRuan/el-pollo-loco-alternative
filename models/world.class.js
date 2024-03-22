@@ -1,5 +1,5 @@
 class World {
-    // level = LEVEL_1;
+    // level = level1;
     character = new Character();
     enemy = [new Enemy()];
     // stone = new Stone(1, 1);
@@ -28,9 +28,8 @@ class World {
         // if (this.enemy[0] !== undefined) {
         //     this.addToMap(this.enemy[0]);
         // }
-     
-        this.addGroupToMap(BACKGROUND_LEVEL1);
-        this.addGroupToMap(GRASS_LEVEL1);
+
+        this.addGroupToMap(level1.GRASS);
         this.addToMap(this.character);
         // this.addToMap(this.stone);
 
