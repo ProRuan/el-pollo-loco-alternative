@@ -74,7 +74,7 @@ Tipp
 
 
 
-  Classes (18/27) + game.js (1/1)
+  Classes (18/25) + game.js (1/1)
   -------
     - AnimatedObject - check
     - Background - check
@@ -103,6 +103,10 @@ Tipp
   Remove
   ------
     - DrawableObject: drawFrame() ...
+
+  Add
+  ---
+    - Keyboard: keys ...
 
 
   Current Task

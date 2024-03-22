@@ -1,5 +1,5 @@
 class World {
-    level = LEVEL_1;
+    // level = LEVEL_1;
     character = new Character();
     enemy = [new Enemy()];
     // stone = new Stone(1, 1);
