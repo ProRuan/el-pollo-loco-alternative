@@ -19,3 +19,6 @@ const OBJECTS_DIRECTORY = 'objects_animated/';
 const OBJECTS_SOURCES = [
     'coin10', 'crystal10', 'heart10', 'hit_point10', 'star10', 'stone8'
 ];
+
+
+const LEVEL_SIZE = 6;

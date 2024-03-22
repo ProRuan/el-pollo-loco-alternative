@@ -2,14 +2,17 @@ class Section {
 
 
     constructor(i) {
-        this.translation = (!i) ? 0 : i * CANVAS_WIDTH;
+        this.setSectionId(i);
+        this.setTranslation(i);
     }
 
 
-    loadBackground(backgrounds) {
-        for (let i = 0; i < backgrounds.length; i++) {
-            let background = backgrounds[i];
-            this.background.push(background);
-        }
+    setSectionId(i) {
+        this.sectionId = i;
+    }
+
+
+    setTranslation(i) {
+        this.translation = (!i) ? 0 : i * CANVAS_WIDTH;
     }
 }

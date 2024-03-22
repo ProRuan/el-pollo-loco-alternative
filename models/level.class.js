@@ -2,14 +2,14 @@ class Level {
 
 
     constructor(i) {
-        this.setSize(i);
-        this.setSections(this.size);
-        this.setXLevelEnd(this.size);
+        this.setLevelId(i);
+        this.setSections(LEVEL_SIZE);
+        this.setXLevelEnd(LEVEL_SIZE);
     }
 
 
-    setSize(i) {
-        this.size = (!i) ? 6 : i;
+    setLevelId(i) {
+        this.levelId = i;
     }
 
 
