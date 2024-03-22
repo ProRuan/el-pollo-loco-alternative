@@ -74,13 +74,14 @@ Tipp
 
 
 
-  Classes (17/24) + game.js (1/1)
+  Classes (18/27) + game.js (1/1)
   -------
     - AnimatedObject - check
     - Background - check
     - Canvas - check
     - Coordinate System - check
     - Coin, Crystal, Heart, HitPoint, Star, Stone - check
+    - DrawableObject - check
     - FlipBook - check
     - Grass - check
     - GrassCenter, GrassEnd, GrassFlying, GrassStart - check
