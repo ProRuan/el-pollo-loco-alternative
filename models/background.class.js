@@ -1,11 +1,24 @@
 class Background extends DrawableObject {
-    width = 960;    // edit for other resolution?
-    height = 540;    // edit for other resolution?
+    cover = 'img/background/background.png';
 
 
-    constructor(imagePath, x) {
-        super().loadImage(imagePath);
-        this.x = x;
-        this.y = 0;    // edit for other resolution?
+    constructor(x) {
+        super();
+        this.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
+        this.setPosition(x, 0);
+        this.loadImage(this.cover);
+        this.loadLayers();
+    }
+
+
+    loadLayers() {
+        this.layers = [];
+        for (let i = 0; i < 6; i++) {
+            let path = `img/background/background${i}.png`;
+            let layer = new Image();
+            layer.src = path;
+            this.layers[i] = layer;
+        }
+        return this.layers;
     }
 }
