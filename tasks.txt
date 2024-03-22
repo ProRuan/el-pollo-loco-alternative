@@ -74,7 +74,7 @@ Tipp
 
 
 
-  Classes (13/24) + game.js (1/1)
+  Classes (16/25) + game.js (1/1)
   -------
     - AnimatedObject - check
     - Canvas - check
@@ -82,7 +82,7 @@ Tipp
     - Coin, Crystal, Heart, HitPoint, Star, Stone - check
     - FlipBook - check
     - Grass - check
-    - GrassCenter - check
+    - GrassCenter, GrassEnd, GrassFlying, GrassStart - check
     - Key - check
     
     - keyboard + game + flipBook + imgFolder ...

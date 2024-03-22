@@ -54,7 +54,7 @@ class DrawableObject extends CoordinateSystem {
 
 
 
-
+    // Please delete!!!
     drawFrame(ctx) {
         if (this instanceof Character) {
             // body + center line
