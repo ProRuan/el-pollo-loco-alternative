@@ -1,4 +1,4 @@
-class DrawableObjectNew extends CoordinateSystem {
+class DrawableObject extends CoordinateSystem {
     width;
     height;
     img;

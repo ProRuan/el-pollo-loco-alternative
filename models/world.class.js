@@ -25,9 +25,9 @@ class World {
 
         this.addGroupToMap(this.level.backgroundLayers);
         this.addGroupToMap(GRASS);
-        if (this.enemy[0] !== undefined) {
-            this.addToMap(this.enemy[0]);
-        }
+        // if (this.enemy[0] !== undefined) {
+        //     this.addToMap(this.enemy[0]);
+        // }
         this.addToMap(this.character);
         // this.addToMap(this.stone);
 

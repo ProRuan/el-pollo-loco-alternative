@@ -1,4 +1,4 @@
-class AnimatedObject extends DrawableObjectNew {
+class AnimatedObject extends DrawableObject {
     directory = 'img/objects_animated/';
     cover;
     flipBook;

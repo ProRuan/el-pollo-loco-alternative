@@ -1,4 +1,4 @@
-class GrassCenter extends DrawableObjectNew {
+class GrassCenter extends DrawableObject {
     path = 'img/tiles/grass-center.png';
 
 

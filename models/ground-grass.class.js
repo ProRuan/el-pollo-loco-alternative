@@ -3,7 +3,9 @@ class GroundGrass extends DrawableObject {
 
 
     constructor(type, x, y) {
-        (!y) ? super(x) : super(x, y);
-        this.loadImage(this.path + type + '.png');
+        super();
+        this.setSize(64);
+        this.setPosition(x, y);
+        this.loadImage(path + type + '.png');
     }
 }
