@@ -8,7 +8,7 @@ const FLIP_BOOK_OBJECTS = new FlipBook(OBJECTS_DIRECTORY, OBJECTS_SOURCES);
 
 
 function init() {
-    canvas = getElement('canvas');
+    canvas = new Canvas(960, 540);
     keyboard = new Keyboard();
     world = new World(canvas, keyboard);
 }

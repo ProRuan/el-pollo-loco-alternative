@@ -74,9 +74,10 @@ Tipp
 
 
 
-  Classes (10/24) + game.js (1/1)
+  Classes (11/25) + game.js (1/1)
   -------
     - AnimatedObject - check
+    - Canvas - check
     - Coordinate System - check
     - Coin, Crystal, Heart, HitPoint, Star, Stone - check
     - FlipBook - check
