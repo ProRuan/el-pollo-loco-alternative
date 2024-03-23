@@ -12,7 +12,7 @@ class MoveableObjectNew extends DrawableObject {
     }
 
 
-    setFlipBook(name) {
+    setFlipBook(name) {    // doppelt???
         name = name.toUpperCase();
         this.flipBook = FLIP_BOOK_OBJECTS[name];
     }

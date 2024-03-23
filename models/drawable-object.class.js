@@ -40,6 +40,12 @@ class DrawableObject extends CoordinateSystem {
     }
 
 
+    setFlipBookChapter(chapter) {
+        chapter = chapter.toUpperCase();
+        this.flipBook = this.flipBook[chapter];
+    }
+
+
     setPath(name) {    // anpassen!!!
         this.path = this.directory + `grass-${name}.png`;
     }
