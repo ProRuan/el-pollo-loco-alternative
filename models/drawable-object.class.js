@@ -81,8 +81,8 @@ class DrawableObject extends CoordinateSystem {
             ctx.beginPath();
             ctx.lineWidth = '1';
             ctx.strokeStyle = 'blue';
-            // ctx.rect(this.x + 44, this.y + 60, 0, 48);    // centerLine: x + 44, y + 60, 32, 48
-            ctx.rect(this.x + 28, this.y + 54, 32, 56);    // border: x + 28, y + 60, 32, 48
+            // ctx.rect(this.x + 44, this.y + 54, 0, 56);    // centerLine: x + 44, y + 60, 32, 48
+            // ctx.rect(this.x + 28, this.y + 54, 32, 56);    // border: x + 28, y + 54, 32, 56
             ctx.stroke();
 
             // attack range
