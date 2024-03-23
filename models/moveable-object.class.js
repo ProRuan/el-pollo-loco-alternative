@@ -4,14 +4,16 @@ class MoveableObject extends DrawableObject {
     flipBook;
     currentImage = 0;
 
+
     // to check
-    speed = 0.15;
-    otherDirection = false;
-    speedY = 0;
-    acceleration = 0.64;
-    jumpHeightMax = 540;
-    energy = 100;
-    lastHit = 0;
+
+    // speed = 0.15;
+    // otherDirection = false;
+    // speedY = 0;
+    // acceleration = 0.64;
+    // jumpHeightMax = 540;
+    // energy = 100;
+    // lastHit = 0;
 
 
     constructor(x, y, name) {
@@ -64,26 +66,27 @@ class MoveableObject extends DrawableObject {
 
 
     // to check
-    applyGravity() {
-        setInterval(() => {
-            if (this.isAboveGround() || this.speedY > 0) {
-                this.y -= this.speedY;
-                if (this.y < this.jumpHeightMax) {
-                    this.jumpHeightMax = this.y;
-                    console.log(372 - this.jumpHeightMax);
-                }
-                this.speedY -= this.acceleration;
-            }
-        }, 1000 / 60);
-    }
+
+    // applyGravity() {
+    //     setInterval(() => {
+    //         if (this.isAboveGround() || this.speedY > 0) {
+    //             this.y -= this.speedY;
+    //             if (this.y < this.jumpHeightMax) {
+    //                 this.jumpHeightMax = this.y;
+    //                 console.log(372 - this.jumpHeightMax);
+    //             }
+    //             this.speedY -= this.acceleration;
+    //         }
+    //     }, 1000 / 60);
+    // }
 
 
-    isAboveGround() {
-        return this.yBottom < 480;
-    }
+    // isAboveGround() {
+    //     return this.yBottom < 480;
+    // }
 
 
-    jump() {
-        this.speedY = 14;    // jump height 160
-    }
+    // jump() {
+    //     this.speedY = 14;    // jump height 160
+    // }
 }

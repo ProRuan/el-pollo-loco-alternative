@@ -1,8 +1,9 @@
 class World {
     level = level1;
-    character = new Character();
-    enemy = [new Enemy()];
+    // character = new Character();
+    // enemy = [new Enemy()];
     // stone = new Stone(1, 1);
+    hero = new Knight();
     canvas;
     ctx;
     keyboard;
@@ -29,7 +30,8 @@ class World {
         this.addGroupToMap(this.level.BACKGROUND);
         this.addGroupToMap(this.level.GRASS);
         this.addGroupToMap(this.level.COINS);
-        this.addToMap(this.character);
+        // this.addToMap(this.character);
+        this.addToMap(this.hero);
         // this.addToMap(this.stone);
 
 
@@ -43,8 +45,13 @@ class World {
 
 
     setWorld() {
-        this.character.world = this;
+        this.hero.world = this;
     }
+
+
+    // setWorld() {
+    //     this.character.world = this;
+    // }
 
 
     addGroupToMap(moGroup) {

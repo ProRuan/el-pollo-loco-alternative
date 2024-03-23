@@ -74,7 +74,7 @@ Tipp
 
 
 
-  Classes (21/27) + game.js (1/1)
+  Classes (21/28) + game.js (1/1)
   -------
     - AnimatedObject - check
     - Background - check
