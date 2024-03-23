@@ -2,10 +2,19 @@ class DrawableObject extends CoordinateSystem {
     width;
     height;
     img;
+    imageCache = [];
+    patternFile = /([a-z]+\_?[a-z]*)(\d+)(.png)/;
 
 
-    constructor() {
+    constructor(x, y, width, height) {    // anpassen!!!
         super();
+        this.setDimension(x, y, width, height);    // anpassen!!!
+    }
+
+
+    setDimension(x, y, width, height) {
+        this.setSize(width, height);
+        this.setPosition(x, y);
     }
 
 
@@ -25,7 +34,13 @@ class DrawableObject extends CoordinateSystem {
     }
 
 
-    setPath(name) {
+    setCover(folder) {
+        let file = folder.toLowerCase() + '.png';
+        this.cover = this.directory + file;
+    }
+
+
+    setPath(name) {    // anpassen!!!
         this.path = this.directory + `grass-${name}.png`;
     }
 
@@ -37,14 +52,13 @@ class DrawableObject extends CoordinateSystem {
 
 
     loadImages(flipBook) {
-        this.imageCache = [];
         flipBook.forEach(chapter => {
             let img = new Image();
             img.src = chapter;
             let file = chapter.match(this.patternFile);
+            file = file[0];
             this.imageCache[file] = img;
         });
-        return this.imageCache;
     }
 
 

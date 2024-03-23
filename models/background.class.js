@@ -1,24 +1,29 @@
 class Background extends DrawableObject {
-    cover = 'img/background/background.png';
+    directory = 'img/background/';
+    layers = [];
 
 
     constructor(x) {
-        super();
-        this.setSize(CANVAS_WIDTH, CANVAS_HEIGHT);
-        this.setPosition(x, 0);
+        super(x, 0, CANVAS_WIDTH, CANVAS_HEIGHT);    // anpassen!!!
+        this.setCover('background');
+        this.setLayers();
         this.loadImage(this.cover);
-        this.loadLayers();
+        this.loadImages(this.layers);
     }
 
 
-    loadLayers() {
-        this.layers = [];
-        for (let i = 0; i < 6; i++) {
+    setLayers() {
+        let amount = this.getFileId('background5.png');
+        for (let i = 0; i < amount; i++) {
             let path = `img/background/background${i}.png`;
-            let layer = new Image();
-            layer.src = path;
-            this.layers[i] = layer;
+            this.layers.push(path);
         }
-        return this.layers;
+    }
+
+
+    getFileId(file) {
+        file = file.match(this.patternFile);
+        let fileId = file[2];
+        return fileId;
     }
 }

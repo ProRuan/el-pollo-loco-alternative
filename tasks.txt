@@ -114,6 +114,9 @@ Tipp
 
   Current Task
   ------------
+    --> double code: animated-object, background, drawable-object, moveable-object ...
+          - flipBook nur fuer animated object ...
+
     - rename Grass
     - class Grass
     - class GrassCenter
