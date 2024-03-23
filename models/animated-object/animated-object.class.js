@@ -5,22 +5,11 @@ class AnimatedObject extends DrawableObject {
 
 
     constructor(x, y, name) {
-        super(x, y, 32);    // anpassen!!!
-        this.setSource(name);
-        this.loadImage(this.cover);
-        this.loadImages(this.flipBook);
-    }
-
-
-    setSource(name) {
-        this.setName(name);
+        super(x, y, 32);
         this.setCover(name);
         this.setFlipBook(name);
-    }
-
-
-    setName(name) {
-        this.name = name;
+        this.loadImage(this.cover);
+        this.loadImages(this.flipBook);
     }
 
 
