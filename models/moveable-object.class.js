@@ -1,36 +1,55 @@
 class MoveableObject extends DrawableObject {
-    speed = 0.15;    // to edit
+    directory = 'img/characters/knight/';
+    cover;
+    flipBook;
+    currentImage = 0;
+
+    // to check
+    speed = 0.15;
     otherDirection = false;
     speedY = 0;
-    acceleration = 0.64;    // to edit - 1/20 from jump height
+    acceleration = 0.64;
     jumpHeightMax = 540;
     energy = 100;
-    lastHit = 0;    // to rename?
+    lastHit = 0;
 
 
-    moveLeft() {
-        this.x -= this.speed;
-        if (keyboard.arrowLeft.doubleClick) {
-            this.x -= this.runSpeed;
-        }
+    constructor(x, y, name) {
+        super(x, y, 128);    // anpassen!!!
+        this.setCover(name);
+        this.loadImage(this.cover);
+        this.loadImages(FLIP_BOOK_HERO.WALK);    // nur ein Kapitel von ...
     }
 
 
-    climbUp() {
-        this.y -= this.speed;
+    setFlipBook(name) {    // doppelt???
+        name = name.toUpperCase();
+        this.flipBook = FLIP_BOOK_OBJECTS[name];
+    }
+
+
+
+
+    moveLeft() {
+        if (keyboard.arrowLeft.doubleClick && keyboard.arrowLeft.keydown) {
+            this.x -= this.speedRun;
+        } else if (keyboard.arrowLeft.keydown) {
+            this.x -= this.speed;
+        }
     }
 
 
     moveRight() {
-        this.x += this.speed;
-        if (keyboard.arrowRight.doubleClick) {
-            this.x += this.runSpeed;
+        if (keyboard.arrowRight.doubleClick && keyboard.arrowRight.keydown) {
+            this.x += this.speedRun;
+        } else if (keyboard.arrowRight.keydown) {
+            this.x += this.speed;
         }
     }
 
 
-    climbDown() {
-        this.y += this.speed;
+    climb(locigal) {
+        (locigal) ? this.y -= this.speed : this.y += this.speed;
     }
 
 
@@ -42,6 +61,9 @@ class MoveableObject extends DrawableObject {
     }
 
 
+
+
+    // to check
     applyGravity() {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
