@@ -20,7 +20,6 @@ class MoveableObject extends DrawableObject {
         super(x, y, 128);    // anpassen!!!
         this.setCover(name);
         this.loadImage(this.cover);
-        this.loadImages(FLIP_BOOK_HERO.WALK);    // nur ein Kapitel von ...
     }
 
 

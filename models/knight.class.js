@@ -1,8 +1,10 @@
 class Knight extends MoveableObject {
+    flipBook = FLIP_BOOK_HERO;
 
 
     constructor() {
         super(0, 0.625, 'knight');
+        this.loadFlipBookImages(this.flipBook);
     }
 
 
@@ -28,5 +30,14 @@ class Knight extends MoveableObject {
 
     get yBottom() {
         return this.y + 110;
+    }
+
+
+    loadFlipBookImages(flipBook) {
+        for (const [key, value] of Object.entries(flipBook)) {
+            if (Array.isArray(value)) {
+                this.loadImages(flipBook[key]);
+            }
+        }
     }
 }
