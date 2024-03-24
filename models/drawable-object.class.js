@@ -3,7 +3,7 @@ class DrawableObject extends CoordinateSystem {
     height;
     img;
     imageCache = [];
-    patternFile = /([a-z]+\_?[a-z]*)(\d+)(.png)/;
+    patternFile = /([a-z]+\_?[a-z]*)(\d+)(.png)/;    // notwendig?
 
 
     constructor(x, y, width, height) {    // anpassen!!!
@@ -61,9 +61,7 @@ class DrawableObject extends CoordinateSystem {
         flipBook.forEach(chapter => {
             let img = new Image();
             img.src = chapter;
-            let file = chapter.match(this.patternFile);
-            file = file[0];
-            this.imageCache[file] = img;
+            this.imageCache[chapter] = img;
         });
     }
 

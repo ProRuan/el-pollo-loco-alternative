@@ -54,11 +54,17 @@ class MoveableObject extends DrawableObject {
     }
 
 
-    playAnimation(images) {
-        let i = this.currentImage % images.length;
-        let path = images[i];
+    playAnimation(flipBook) {
+        let i = this.currentImage % flipBook.length;
+        let path = flipBook[i];
         this.img = this.imageCache[path];
         this.currentImage++;
+
+
+        // let i = this.currentImage % images.length;
+        // let path = images[i];
+        // this.img = this.imageCache[path];
+        // this.currentImage++;
     }
 
 
