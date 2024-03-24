@@ -54,6 +54,10 @@ class Knight extends MoveableObject {
             if (this.isKey('keydown', 'keyE')) {
                 this.otherDirection = false;
             }
+            if (this.isKey('keydown', 'arrowRight') && this.x < this.world.level.X_LEVEL_END) {
+                this.moveRight();
+                this.otherDirection = false;
+            }
 
 
             this.world.camera_x = -this.x;
