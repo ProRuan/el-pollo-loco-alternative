@@ -1,9 +1,7 @@
 class Knight extends MoveableObject {
     flipBook = FLIP_BOOK_HERO;
-
-    speed = 1.5;
-    speedRun = 2;
-    world;    // notwendig
+    speed = 1.6;
+    // speedRun = 2;
 
     constructor() {
         super(0, 0.625, 'knight');
@@ -49,14 +47,14 @@ class Knight extends MoveableObject {
     animate() {
         setInterval(() => {
             if (this.isKey('keydown', 'keyQ')) {
-                this.otherDirection = true;
+                this.setOtherDirection(true)
             }
             if (this.isKey('keydown', 'keyE')) {
-                this.otherDirection = false;
+                this.setOtherDirection(false);
             }
             if (this.isKey('keydown', 'arrowRight') && this.x < this.world.level.X_LEVEL_END) {
                 this.moveRight();
-                this.otherDirection = false;
+                this.setOtherDirection(false);
             }
 
 
@@ -100,5 +98,10 @@ class Knight extends MoveableObject {
 
     getKeyValue(keyCode, keyValue) {
         return this.world.keyboard[keyCode][keyValue];
+    }
+
+
+    setOtherDirection(locigal) {
+        this.otherDirection = (locigal) ? true : false;
     }
 }

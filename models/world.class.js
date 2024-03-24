@@ -1,8 +1,10 @@
 class World {
     level = level1;
+
     // character = new Character();
     // enemy = [new Enemy()];
     // stone = new Stone(1, 1);
+    
     hero = new Knight();
     canvas;
     ctx;
@@ -47,11 +49,6 @@ class World {
     setWorld() {
         this.hero.world = this;
     }
-
-
-    // setWorld() {
-    //     this.character.world = this;
-    // }
 
 
     addGroupToMap(moGroup) {
