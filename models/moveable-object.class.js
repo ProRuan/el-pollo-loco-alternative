@@ -95,7 +95,7 @@ class MoveableObject extends DrawableObject {
 
 
     isAboveGround() {
-        return this.yBottom < 480;
+        return this.yBottom < 482;
     }
 
 
