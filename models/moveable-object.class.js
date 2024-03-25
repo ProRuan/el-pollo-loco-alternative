@@ -81,12 +81,11 @@ class MoveableObject extends DrawableObject {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0) {
                 this.y -= this.speedY;
-                if (this.y < this.jumpHeightMax) {
+                if (this.y < this.jumpHeightMax) {    // Please delete!!!
                     this.jumpHeightMax = this.y;
                     // console.log(372 - this.jumpHeightMax);
                 }
                 this.speedY -= this.acceleration;
-                console.log(this.speedY);
             } else {
                 this.speedY = 0;
             }
