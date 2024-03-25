@@ -1,14 +1,15 @@
 class Knight extends MoveableObject {
     flipBook = FLIP_BOOK_HERO;
-    speed = 1.6;
+    speed = 128 / 60;
     speedExtraAttack = 0;
-    speedRun = 3.2;
+    speedRun = 256 / 60;
 
 
     constructor() {
         super(0, 0.625, 'knight');
         this.loadFlipBookImages(this.flipBook);
         this.animate();
+        this.applyGravity();
     }
 
 
@@ -62,6 +63,9 @@ class Knight extends MoveableObject {
                 this.move(true);
                 this.setOtherDirection(false);
             }
+            if (this.isKey('keydown', 'space') && !this.isAboveGround()) {
+                this.jump();
+            }
             if (this.isKey('keydown', 'keyQ')) {
                 this.setOtherDirection(true)
             }
@@ -79,6 +83,9 @@ class Knight extends MoveableObject {
                 this.playAnimation(FLIP_BOOK_HERO.CLIMB);    // still to edit
             } else if (this.isKey('keydown', 'keyD')) {
                 this.playAnimation(FLIP_BOOK_HERO.EXTRA_ATTACK);
+                this.idleDelay = new Date().getTime();
+            } else if (this.isKey('keydown', 'space') || this.isAboveGround()) {
+                this.playAnimation(FLIP_BOOK_HERO.JUMP);
                 this.idleDelay = new Date().getTime();
             } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
                 this.playAnimation(FLIP_BOOK_HERO.RUN_ATTACK);
