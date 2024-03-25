@@ -84,9 +84,20 @@ class Knight extends MoveableObject {
             } else if (this.isKey('keydown', 'keyD')) {
                 this.playAnimation(FLIP_BOOK_HERO.EXTRA_ATTACK);
                 this.idleDelay = new Date().getTime();
-            } else if (this.isKey('keydown', 'space') || this.isAboveGround()) {
-                this.playAnimation(FLIP_BOOK_HERO.JUMP);
-                this.idleDelay = new Date().getTime();
+            } else if (this.isJumpStart && this.speedY > 0) {
+                this.playAnimationJumpStart(FLIP_BOOK_HERO.JUMP);
+                this.isJumpStart = false;
+            } else if (this.isJumping && this.speedY > 0) {
+                this.loadImage(FLIP_BOOK_HERO.JUMP[2]);
+            } else if (this.isFallStart && this.speedY <= 0) {
+                this.playAnimationFallStart(FLIP_BOOK_HERO.JUMP);
+                this.isJumping = false;
+                this.isFallStart = false;
+            } else if (this.isFalling && this.speedY < 0) {
+                this.loadImage(FLIP_BOOK_HERO.JUMP[5]);
+            } else if (this.isFalling && this.speedY == 0) {
+                this.loadImage(FLIP_BOOK_HERO.JUMP[6]);
+                this.isFalling = false;
             } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
                 this.playAnimation(FLIP_BOOK_HERO.RUN_ATTACK);
                 this.idleDelay = new Date().getTime();

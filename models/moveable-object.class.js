@@ -83,9 +83,12 @@ class MoveableObject extends DrawableObject {
                 this.y -= this.speedY;
                 if (this.y < this.jumpHeightMax) {
                     this.jumpHeightMax = this.y;
-                    console.log(372 - this.jumpHeightMax);
+                    // console.log(372 - this.jumpHeightMax);
                 }
                 this.speedY -= this.acceleration;
+                console.log(this.speedY);
+            } else {
+                this.speedY = 0;
             }
         }, 1000 / 60);
     }
@@ -98,5 +101,29 @@ class MoveableObject extends DrawableObject {
 
     jump() {
         this.speedY = 10;    // jump height 160
+        this.isJumpStart = true;
+        this.isJumping = true;
+        this.isFallStart = true;
+        this.isFalling = true;
+    }
+
+
+    playAnimationJumpStart(flipBook) {
+        let path = flipBook[0];
+        this.img = this.imageCache[path];
+        setTimeout(() => {
+            path = flipBook[1];
+            this.img = this.imageCache[path];
+        }, 100);
+    }
+
+
+    playAnimationFallStart(flipBook) {
+        let path = flipBook[3];
+        this.img = this.imageCache[path];
+        setTimeout(() => {
+            path = flipBook[4];
+            this.img = this.imageCache[path];
+        }, 100);
     }
 }
