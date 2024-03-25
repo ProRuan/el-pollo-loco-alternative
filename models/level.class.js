@@ -7,12 +7,18 @@ class Level {
 
 
     constructor() {
+        this.setXLevelStart();
         this.setXLevelEnd(LEVEL_SIZE);
     }
 
 
+    setXLevelStart() {
+        this.X_LEVEL_START = 4;
+    }
+
+
     setXLevelEnd(amount) {
-        this.X_LEVEL_END = amount * CANVAS_WIDTH;
+        this.X_LEVEL_END = (amount - 1) * CANVAS_WIDTH - 4;
     }
 
 

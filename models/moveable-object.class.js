@@ -29,6 +29,9 @@ class MoveableObject extends DrawableObject {
     }
 
 
+    move(locigal) {
+        (locigal) ? this.moveRight() : this.moveLeft();
+    }
 
 
     moveLeft() {

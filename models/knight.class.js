@@ -1,7 +1,9 @@
 class Knight extends MoveableObject {
     flipBook = FLIP_BOOK_HERO;
     speed = 1.6;
-    // speedRun = 2;
+    speedExtraAttack = 0;
+    speedRun = 3.2;
+
 
     constructor() {
         super(0, 0.625, 'knight');
@@ -46,14 +48,24 @@ class Knight extends MoveableObject {
 
     animate() {
         setInterval(() => {
+            if (this.isKey('keydown', 'arrowUp')) {
+                this.climb(true);
+            }
+            if (this.isKey('keydown', 'arrowDown')) {
+                this.climb(false);
+            }
+            if (this.isKey('keydown', 'arrowLeft') && this.x > this.world.level.X_LEVEL_START) {
+                this.move(false);
+                this.setOtherDirection(true);
+            }
+            if (this.isKey('keydown', 'arrowRight') && this.x < this.world.level.X_LEVEL_END) {
+                this.move(true);
+                this.setOtherDirection(false);
+            }
             if (this.isKey('keydown', 'keyQ')) {
                 this.setOtherDirection(true)
             }
             if (this.isKey('keydown', 'keyE')) {
-                this.setOtherDirection(false);
-            }
-            if (this.isKey('keydown', 'arrowRight') && this.x < this.world.level.X_LEVEL_END) {
-                this.moveRight();
                 this.setOtherDirection(false);
             }
 
@@ -63,7 +75,9 @@ class Knight extends MoveableObject {
 
 
         setInterval(() => {
-            if (this.isKey('keydown', 'keyD')) {
+            if (this.isKey('keydown', 'arrowUp', 'arrowDown')) {
+                this.playAnimation(FLIP_BOOK_HERO.CLIMB);    // still to edit
+            } else if (this.isKey('keydown', 'keyD')) {
                 this.playAnimation(FLIP_BOOK_HERO.EXTRA_ATTACK);
                 this.idleDelay = new Date().getTime();
             } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
