@@ -136,4 +136,22 @@ class Knight extends MoveableObject {
     setOtherDirection(locigal) {
         this.otherDirection = (locigal) ? true : false;
     }
+
+
+    isOnGrass() {
+        let grassArray = [];
+        for (let i = 0; i < this.world.level.GRASS.length; i++) {
+            let grass = this.world.level.GRASS[i];
+            if (this.xLeft > grass.x || this.xRight < grass.x + grass.width) {
+                grassArray.push(true);
+            } else {
+                grassArray.push(false);
+            }
+        }
+        if (grassArray.includes(true)) {
+            this.onGrass = true;
+        } else {
+            this.onGrass = false;
+        }
+    }
 }
