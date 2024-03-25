@@ -75,6 +75,7 @@ class Knight extends MoveableObject {
 
 
             this.world.camera_x = -this.x;
+            this.isOnGrass();
         }, 1000 / 60);
 
 
@@ -139,19 +140,14 @@ class Knight extends MoveableObject {
 
 
     isOnGrass() {
-        let grassArray = [];
-        for (let i = 0; i < this.world.level.GRASS.length; i++) {
-            let grass = this.world.level.GRASS[i];
-            if (this.xLeft > grass.x || this.xRight < grass.x + grass.width) {
-                grassArray.push(true);
-            } else {
-                grassArray.push(false);
-            }
+        let onGrass = this.world.level.GRASS.find(g => g.xLeft < this.xCenter && this.xCenter < g.xRight);
+        if (onGrass === undefined) {
+            onGrass = this.world.level.GRASS.find(g => this.xLeft < g.xRight && this.xCenter > g.xRight || this.xCenter < g.xLeft && this.xRight > g.xLeft);
         }
-        if (grassArray.includes(true)) {
-            this.onGrass = true;
+        if (onGrass === undefined || this.y > 405) {
+            this.grounded = false;
         } else {
-            this.onGrass = false;
+            this.grounded = true;
         }
     }
 }

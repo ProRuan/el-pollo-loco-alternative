@@ -14,6 +14,7 @@ class MoveableObject extends DrawableObject {
     speedHighJump = 13;
     acceleration = 0.5;
     jumpHeightMax = 540;
+    grounded = true;
     // energy = 100;
     // lastHit = 0;
 
@@ -94,7 +95,7 @@ class MoveableObject extends DrawableObject {
 
 
     isAboveGround() {
-        return this.yBottom < 482;
+        return this.yBottom < 482 || !this.grounded && this.y < 540;
     }
 
 

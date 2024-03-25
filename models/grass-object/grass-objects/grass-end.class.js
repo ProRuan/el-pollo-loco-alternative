@@ -6,7 +6,17 @@ class GrassEnd extends GrassObject {
     }
 
 
-    get yTop() {
-        return this.y + 6;
+    get xLeft() {
+        return this.x;
+    }
+
+
+    get xCenter() {
+        return this.x + this.width / 2;
+    }
+
+
+    get xRight() {
+        return this.x + this.width - 20;
     }
 }
