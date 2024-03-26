@@ -4,6 +4,7 @@ class Level {
     BACKGROUND = [];
     GRASS = [];
     COINS = [];
+    STONES = [];
     levelEndPreviousOtherDirection = false;
     levelEndPrevious = false;
 
@@ -48,6 +49,16 @@ class Level {
             let coin = this.cache[i];
             coin.x += n * this.translation;
             this.COINS.push(coin);
+        }
+        this.cache = [];
+    }
+
+
+    loadStones(n) {
+        for (let i = 0; i < this.cache.length; i++) {
+            let stone = this.cache[i];
+            stone.x += n * this.translation;
+            this.STONES.push(stone);
         }
         this.cache = [];
     }

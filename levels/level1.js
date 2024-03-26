@@ -55,3 +55,9 @@ level1.cache = [
 level1.loadCoins(2);
 
 // continue with coins ...
+
+
+level1.cache = [
+    new Stone(8, 1.15625)
+];
+level1.loadStones(0);

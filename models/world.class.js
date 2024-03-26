@@ -31,6 +31,11 @@ class World {
     }
 
 
+    get STONES() {
+        return this.level.STONES;
+    }
+
+
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -42,6 +47,7 @@ class World {
         this.addGroupToMap(this.level.BACKGROUND);
         this.addGroupToMap(this.level.GRASS);
         this.addGroupToMap(this.level.COINS);
+        this.addGroupToMap(this.level.STONES);
         // this.addToMap(this.character);
         this.addToMap(this.hero);
         // this.addToMap(this.stone);
