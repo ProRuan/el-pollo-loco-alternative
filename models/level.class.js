@@ -4,7 +4,7 @@ class Level {
     BACKGROUND = [];
     GRASS = [];
     COINS = [];
-    levelEndPreviousLeft = false;
+    levelEndPreviousOtherDirection = false;
     levelEndPrevious = false;
 
 
@@ -15,7 +15,7 @@ class Level {
 
 
     setXLevelStart() {
-        this.X_LEVEL_START = 4;
+        this.X_LEVEL_START = 28;
     }
 
 

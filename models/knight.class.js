@@ -6,7 +6,7 @@ class Knight extends MoveableObject {
 
 
     constructor() {
-        super(0, 0.625, 'knight');
+        super(4.4375, 0.625, 'knight');
         this.loadFlipBookImages(this.flipBook);
         this.animate();
         this.applyGravity();
@@ -73,8 +73,10 @@ class Knight extends MoveableObject {
                 this.setOtherDirection(false);
             }
 
-
-            this.world.camera_x = -this.x;
+            if (this.x > 284) {
+                this.world.camera_x = -this.x + 4 * 64 + 28;    // + 4 * 64 + 28
+            }
+            
             this.isOnGrass();
         }, 1000 / 60);
 
@@ -142,9 +144,9 @@ class Knight extends MoveableObject {
     isOnGrass() {
         if (!this.isOnGrassStart() && !this.isOnGrassCenter() && !this.isOnGrassEnd() || this.y > 405) {
             this.grounded = false;
-            if (this.otherDirection && !this.world.level.previousLevelEndLeft && this.yBottom > 482) {
+            if (this.otherDirection && !this.world.level.previousLevelEndOtherDirection && this.yBottom > 482) {
                 this.world.level.X_LEVEL_START = this.xLeft - 52;
-                this.world.level.previousLevelEndLeft = true;
+                this.world.level.previousLevelEndOtherDirection = true;
             } else if (!this.world.level.previousLevelEnd && this.yBottom > 482) {
                 this.world.level.X_LEVEL_END = this.xLeft + 20;
                 this.world.level.previousLevelEnd = true;
