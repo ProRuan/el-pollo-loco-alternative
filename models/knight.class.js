@@ -176,15 +176,26 @@ class Knight extends MoveableObject {
 
 
     collectCoin() {
-        let coin = this.world.COINS.find(c => this.xLeft < c.xCenter && c.xCenter < this.xRight);
+        let coin = this.world.COINS.find(c => this.isIncluding(c.xCenter, c.yCenter));
         if (coin) {
-            coin = this.world.COINS.find(c => this.yTop < c.yCenter && c.yCenter < this.yBottom);
-            if (coin) {
-                let coinId = this.world.COINS.findIndex(c => this.yTop < c.yCenter && c.yCenter < this.yBottom);
-                this.world.COINS.splice(coinId, 1);
-                this.coins++;
-                console.log('Coin collected');
-            }
+            let coinId = this.world.COINS.findIndex(c => coin.xCenter);
+            this.world.COINS.splice(coinId, 1);
+            this.coins++;
         }
+    }
+
+
+    isIncluding(x, y) {
+        return this.isHorizontalCenter(x) && this.isVerticalCenter(y);
+    }
+
+
+    isHorizontalCenter(x) {
+        return this.xLeft < x && x < this.xRight;
+    }
+
+
+    isVerticalCenter(y) {
+        return this.yTop < y && y < this.yBottom;
     }
 }
