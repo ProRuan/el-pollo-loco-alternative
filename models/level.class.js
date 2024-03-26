@@ -4,6 +4,7 @@ class Level {
     BACKGROUND = [];
     GRASS = [];
     COINS = [];
+    levelEndPreviousLeft = false;
     levelEndPrevious = false;
 
 

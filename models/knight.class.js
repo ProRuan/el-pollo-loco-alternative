@@ -140,18 +140,32 @@ class Knight extends MoveableObject {
 
 
     isOnGrass() {
-        let onGrass = this.world.level.GRASS.find(g => g.xLeft < this.xCenter && this.xCenter < g.xRight);
-        if (onGrass === undefined) {
-            onGrass = this.world.level.GRASS.find(g => this.xLeft < g.xRight && this.xCenter > g.xRight || this.xCenter < g.xLeft && this.xRight > g.xLeft);
-        }
-        if (onGrass === undefined || this.y > 405) {
+        if (!this.isOnGrassStart() && !this.isOnGrassCenter() && !this.isOnGrassEnd() || this.y > 405) {
             this.grounded = false;
-            if (!this.world.level.previousLevelEnd && this.yBottom > 482) {
-                this.world.level.X_LEVEL_END = this.xLeft + 16;
+            if (this.otherDirection && !this.world.level.previousLevelEndLeft && this.yBottom > 482) {
+                this.world.level.X_LEVEL_START = this.xLeft - 52;
+                this.world.level.previousLevelEndLeft = true;
+            } else if (!this.world.level.previousLevelEnd && this.yBottom > 482) {
+                this.world.level.X_LEVEL_END = this.xLeft + 20;
                 this.world.level.previousLevelEnd = true;
             }
         } else {
             this.grounded = true;
         }
+    }
+
+
+    isOnGrassStart() {
+        return this.world.level.GRASS.find(g => this.xCenter < g.xLeft && g.xLeft < this.xRight);
+    }
+
+
+    isOnGrassCenter() {
+        return this.world.level.GRASS.find(g => g.xLeft < this.xCenter && this.xCenter < g.xRight);
+    }
+
+
+    isOnGrassEnd() {
+        return this.world.level.GRASS.find(g => this.xLeft < g.xRight && g.xRight < this.xCenter);
     }
 }
