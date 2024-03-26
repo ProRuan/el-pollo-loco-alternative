@@ -104,6 +104,16 @@ class DrawableObject extends CoordinateSystem {
         }
 
 
+        if (this instanceof Coin) {
+            // body + center line
+            ctx.beginPath();
+            ctx.lineWidth = '1';
+            ctx.strokeStyle = 'purple';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
+
+
 
 
         if (this instanceof Character) {

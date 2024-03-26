@@ -21,6 +21,16 @@ class World {
     }
 
 
+    get COINS() {
+        return this.level.COINS;
+    }
+
+
+    get GRASS() {
+        return this.level.GRASS;
+    }
+
+
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 

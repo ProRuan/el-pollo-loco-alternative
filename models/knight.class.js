@@ -76,7 +76,7 @@ class Knight extends MoveableObject {
             if (this.x > 284) {
                 this.world.camera_x = -this.x + 4 * 64 + 28;    // + 4 * 64 + 28
             }
-            
+
             this.isOnGrass();
         }, 1000 / 60);
 
@@ -158,16 +158,16 @@ class Knight extends MoveableObject {
 
 
     isOnGrassStart() {
-        return this.world.level.GRASS.find(g => this.xCenter < g.xLeft && g.xLeft < this.xRight);
+        return this.world.GRASS.find(g => this.xCenter < g.xLeft && g.xLeft < this.xRight);
     }
 
 
     isOnGrassCenter() {
-        return this.world.level.GRASS.find(g => g.xLeft < this.xCenter && this.xCenter < g.xRight);
+        return this.world.GRASS.find(g => g.xLeft < this.xCenter && this.xCenter < g.xRight);
     }
 
 
     isOnGrassEnd() {
-        return this.world.level.GRASS.find(g => this.xLeft < g.xRight && g.xRight < this.xCenter);
+        return this.world.GRASS.find(g => this.xLeft < g.xRight && g.xRight < this.xCenter);
     }
 }
