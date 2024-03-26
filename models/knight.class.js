@@ -4,6 +4,8 @@ class Knight extends MoveableObject {
     speedExtraAttack = 0;
     speedRun = 256 / 60;
 
+    coins = 0;
+
 
     constructor() {
         super(4.4375, 0.625, 'knight');
@@ -78,6 +80,7 @@ class Knight extends MoveableObject {
             }
 
             this.isOnGrass();
+            this.collectCoin();
         }, 1000 / 60);
 
 
@@ -169,5 +172,19 @@ class Knight extends MoveableObject {
 
     isOnGrassEnd() {
         return this.world.GRASS.find(g => this.xLeft < g.xRight && g.xRight < this.xCenter);
+    }
+
+
+    collectCoin() {
+        let coin = this.world.COINS.find(c => this.xLeft < c.xCenter && c.xCenter < this.xRight);
+        if (coin) {
+            coin = this.world.COINS.find(c => this.yTop < c.yCenter && c.yCenter < this.yBottom);
+            if (coin) {
+                let coinId = this.world.COINS.findIndex(c => this.yTop < c.yCenter && c.yCenter < this.yBottom);
+                this.world.COINS.splice(coinId, 1);
+                this.coins++;
+                console.log('Coin collected');
+            }
+        }
     }
 }

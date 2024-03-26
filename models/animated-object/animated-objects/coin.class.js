@@ -14,12 +14,4 @@ class Coin extends AnimatedObject {
     get yCenter() {
         return this.y + this.height / 2;
     }
-
-
-    get center() {    // create object point(x, y)!!!
-        return {
-            x: this.xCenter,
-            y: this.yCenter
-        }
-    }
 }
