@@ -30,8 +30,18 @@ class Knight extends MoveableObject {
     }
 
 
+    get xPush() {
+        return this.x + 66;
+    }
+
+
     get yTop() {
         return this.y + 54;
+    }
+
+
+    get yPush() {
+        return this.y + 96;
     }
 
 
@@ -81,6 +91,7 @@ class Knight extends MoveableObject {
 
             this.isOnGrass();
             this.collectCoin();
+            this.pushStone();
         }, 1000 / 60);
 
 
@@ -197,5 +208,17 @@ class Knight extends MoveableObject {
 
     isVerticalCenter(y) {
         return this.yTop < y && y < this.yBottom;
+    }
+
+
+    pushStone() {    // isPushing() is missing!!!
+        let inTouch = this.world.STONES.find(s => s.xLeft < this.xPush && this.xPush < s.xRight);
+        if (inTouch) {
+            this.isPushing = true;
+            inTouch.x += this.speed;
+            // inTouch.playAnimation(inTouch.flipBook);
+        } else {
+            this.isPushing = false;
+        }
     }
 }
