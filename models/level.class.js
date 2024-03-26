@@ -4,6 +4,7 @@ class Level {
     BACKGROUND = [];
     GRASS = [];
     COINS = [];
+    levelEndPrevious = false;
 
 
     constructor() {

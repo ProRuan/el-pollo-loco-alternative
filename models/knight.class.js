@@ -4,8 +4,6 @@ class Knight extends MoveableObject {
     speedExtraAttack = 0;
     speedRun = 256 / 60;
 
-    levelEndPrevious = false;
-
 
     constructor() {
         super(0, 0.625, 'knight');
@@ -148,9 +146,9 @@ class Knight extends MoveableObject {
         }
         if (onGrass === undefined || this.y > 405) {
             this.grounded = false;
-            if (!this.levelEndPrevious && this.yBottom > 482) {
+            if (!this.world.level.previousLevelEnd && this.yBottom > 482) {
                 this.world.level.X_LEVEL_END = this.xLeft + 16;
-                this.levelEndPrevious = true;
+                this.world.level.previousLevelEnd = true;
             }
         } else {
             this.grounded = true;
