@@ -13,8 +13,8 @@ class Background extends DrawableObject {
 
 
     setLayers() {
-        let amount = this.getFileId('background5.png');
-        for (let i = 0; i < amount; i++) {
+        let amount = +this.getFileId('background6.png');
+        for (let i = 1; i < amount + 1; i++) {
             let path = `img/background/background${i}.png`;
             this.layers.push(path);
         }
