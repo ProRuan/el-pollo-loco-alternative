@@ -53,10 +53,10 @@ class Level {
 
 
     loadBirds(n) {
-        let amount = Math.round(Math.random() * 3);
+        let amount = 3 - Math.round(Math.random() * 2);
         for (let i = 0; i < amount; i++) {
-            let x = 14 - Math.round(Math.random() * 12) + n * this.translation / 64;
-            let y = 8 - Math.round(Math.random() * 4);
+            let x = 13.75 - Math.round(Math.random() * 12) + n * this.translation / 64;
+            let y = 7.415 - Math.round(Math.random() * 4);
             let bird = new Bird(x, y);
             this.BIRDS.push(bird);
         }
