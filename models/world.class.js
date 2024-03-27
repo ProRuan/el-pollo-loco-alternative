@@ -6,6 +6,7 @@ class World {
     // stone = new Stone(1, 1);
     
     hero = new Knight();
+    bird = new Bird(3.75, 7.415);
     canvas;
     ctx;
     keyboard;
@@ -49,6 +50,7 @@ class World {
         this.addGroupToMap(this.level.COINS);
         this.addGroupToMap(this.level.STONES);
         // this.addToMap(this.character);
+        this.addToMap(this.bird);
         this.addToMap(this.hero);
         // this.addToMap(this.stone);
 
