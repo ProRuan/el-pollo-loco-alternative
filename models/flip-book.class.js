@@ -1,6 +1,6 @@
 class FlipBook {
     patternDirectory = /[a-z]+\/[a-z]+\/([a-z]+)\//;
-    patternSource = /([a-z]+\_?[a-z]*)(\d+)/;
+    patternSource = /([A-Z]?[a-z]+\_?[A-z]?[a-z]*)(\d+)/;
 
 
     constructor(directory, sources) {

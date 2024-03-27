@@ -21,4 +21,11 @@ const OBJECTS_SOURCES = [
 ];
 
 
+const SHAMAN_DIRECTORY = 'bosses/shaman/';
+const SHAMAN_SOURCES = [
+    'Anger5', 'Attack7', 'Death6', 'Hurt2', 'Idle3',
+    'Magic_Blade4', 'Magic_Fire5', 'Magic_Lightning5', 'Run6', 'Walk6'
+];
+
+
 const LEVEL_SIZE = 6;

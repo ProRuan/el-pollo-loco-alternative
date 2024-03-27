@@ -1,5 +1,5 @@
 class MoveableObject extends DrawableObject {
-    directory = 'img/characters/knight/';
+    // directory = 'img/characters/knight/';
     cover;
     flipBook;
     currentImage = 0;
@@ -19,10 +19,10 @@ class MoveableObject extends DrawableObject {
     // lastHit = 0;
 
 
-    constructor(x, y, name) {
+    constructor(x, y) {
         super(x, y, 128);    // anpassen!!!
-        this.setCover(name);
-        this.loadImage(this.cover);
+        // this.setCover(name);
+        // this.loadImage(this.cover);
     }
 
 

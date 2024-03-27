@@ -1,4 +1,5 @@
 class Knight extends MoveableObject {
+    directory = 'img/characters/knight/';
     flipBook = FLIP_BOOK_HERO;
     speed = 128 / 60;
     speedExtraAttack = 0;
@@ -8,7 +9,9 @@ class Knight extends MoveableObject {
 
 
     constructor() {
-        super(4.4375, 0.625, 'knight');
+        super(4.4375, 0.625);
+        this.setCover('knight');
+        this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
         this.animate();
         this.applyGravity();
