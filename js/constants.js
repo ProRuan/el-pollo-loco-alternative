@@ -9,15 +9,15 @@ const HERO_SOURCES = [
 ];
 
 
-const DINO_DIRECTORY = 'enemies/dino/';
-const DINO_SOURCES = [
-    'attack5', 'death6', 'hurt4', 'idle5', 'walk4'
-];
-
-
 const OBJECTS_DIRECTORY = 'objects_animated/';
 const OBJECTS_SOURCES = [
     'bird8', 'coin10', 'crystal10', 'heart10', 'hit_point10', 'star10', 'stone8'
+];
+
+
+const DINO_DIRECTORY = 'enemies/dino/';
+const DINO_SOURCES = [
+    'attack5', 'death6', 'hurt4', 'idle5', 'walk4'
 ];
 
 
@@ -25,6 +25,12 @@ const SHAMAN_DIRECTORY = 'bosses/shaman/';
 const SHAMAN_SOURCES = [
     'Anger5', 'Attack7', 'Death6', 'Hurt2', 'Idle3',
     'Magic_Blade4', 'Magic_Fire5', 'Magic_Lightning5', 'Run6', 'Walk6'
+];
+
+
+const MAGIC_DIRECTORY = 'bosses/magic/';
+const MAGIC_SOURCES = [
+    'blade7', 'fire10', 'lightning9'
 ];
 
 

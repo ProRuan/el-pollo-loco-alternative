@@ -1,7 +1,7 @@
 class Shaman extends MoveableObject {
     directory = 'img/bosses/shaman/';
     flipBook = FLIP_BOOK_SHAMAN;
-    // flipBookMagic is missing ...
+    // magicalBook = FLIP_BOOK_MAGIC;
     speed = 128 / 60;    // to edit
     speedRun = 256 / 60;    // to edit
     otherDirection = true;
@@ -13,7 +13,28 @@ class Shaman extends MoveableObject {
         this.setCover('shaman')
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
-        // this.animate();
+        // this.loadFlipBookImages(this.magicalBook);
+        this.animate();
+    }
+
+
+    get xLeft() {
+        return this.x + 50;
+    }
+
+
+    get xRight() {
+        return this.x + 110;
+    }
+
+
+    get yTop() {
+        return this.y + 100;
+    }
+
+
+    get yBottom() {
+        return this.y + 204;
     }
 
 
@@ -28,7 +49,9 @@ class Shaman extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            this.playAnimation(FLIP_BOOK_SHAMAN.WALK);
+            if (world.hero.xCenter > this.x) {
+                this.playAnimation(FLIP_BOOK_SHAMAN.ATTACK);
+            }
         }, 100);
     }
 }
