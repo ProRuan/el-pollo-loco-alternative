@@ -2,6 +2,7 @@ class Level {
     translation = CANVAS_WIDTH;
     cache = [];
     BACKGROUND = [];
+    CLOUDS = [];
     GRASS = [];
     COINS = [];
     STONES = [];
@@ -29,10 +30,23 @@ class Level {
         for (let i = 0; i < LEVEL_SIZE; i++) {
             let t = i * this.translation / 64;
             let background = new Background(t);
-            for (let j = 0; j < background.layers.length; j++) {
+            for (let j = 0; j < background.layers.length - 1; j++) {
                 let layer = new Layer(background, j);
                 this.BACKGROUND.push(layer);
             }
+            let cloud = new Cloud(background);
+            this.CLOUDS.push(cloud);
+            this.loadLastCloud(i);
+        }
+    }
+
+
+    loadLastCloud(i) {
+        if (i == LEVEL_SIZE - 1) {
+            let t = ++i * this.translation / 64;
+            let background = new Background(t);
+            let cloud = new Cloud(background);
+            this.CLOUDS.push(cloud);
         }
     }
 

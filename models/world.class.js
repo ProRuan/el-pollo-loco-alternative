@@ -27,13 +27,18 @@ class World {
     }
 
 
-    get COINS() {
-        return this.level.COINS;
+    get CLOUDS() {
+        return this.level.CLOUDS;
     }
 
 
     get GRASS() {
         return this.level.GRASS;
+    }
+
+
+    get COINS() {
+        return this.level.COINS;
     }
 
 
@@ -50,10 +55,11 @@ class World {
         // if (this.enemy[0] !== undefined) {
         //     this.addToMap(this.enemy[0]);
         // }
-        this.addGroupToMap(this.level.BACKGROUND);
-        this.addGroupToMap(this.level.GRASS);
-        this.addGroupToMap(this.level.COINS);
-        this.addGroupToMap(this.level.STONES);
+        this.addGroupToMap(this.BACKGROUND);
+        this.addGroupToMap(this.CLOUDS);
+        this.addGroupToMap(this.GRASS);
+        this.addGroupToMap(this.COINS);
+        this.addGroupToMap(this.STONES);
         // this.addToMap(this.character);
         this.addToMap(this.bird);
         this.addToMap(this.hero);

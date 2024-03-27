@@ -74,13 +74,14 @@ Tipp
 
 
 
-  Classes (21/30) + game.js (1/1)
+  Classes (22/31) + game.js (1/1)
   -------
     - AnimatedObject - check
-    - Bird - ...
+    - Bird ...
     - Background - check
     - Canvas - check
     - Character ...
+    - Cloud - check
     - Coordinate System - check
     - Coin, Crystal, Heart, HitPoint, Star, Stone - check
     - DrawableObject ...
