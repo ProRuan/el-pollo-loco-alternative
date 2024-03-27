@@ -91,7 +91,7 @@ class Knight extends MoveableObject {
 
             this.isOnGrass();
             this.collectCoin();
-            this.pushStone();
+            // this.pushStone();
         }, 1000 / 60);
 
 
@@ -213,7 +213,7 @@ class Knight extends MoveableObject {
 
     pushStone() {    // isPushing() is missing!!!
         let inTouch = this.world.STONES.find(s => s.xLeft < this.xPush && this.xPush < s.xRight);
-        if (inTouch) {
+        if (inTouch) {    // only x --> y is missing!!!
             this.isPushing = true;
             inTouch.x += this.speed;
             // inTouch.playAnimation(inTouch.flipBook);
