@@ -124,6 +124,9 @@ class Knight extends MoveableObject {
             } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
                 this.playAnimation(FLIP_BOOK_HERO.WALK_ATTACK);
                 this.idleDelay = new Date().getTime();
+            } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isPushing()) {
+                this.playAnimation(FLIP_BOOK_HERO.PUSH);
+                this.idleDelay = new Date().getTime();
             } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight')) {
                 this.playAnimation(FLIP_BOOK_HERO.WALK);
                 this.idleDelay = new Date().getTime();
@@ -212,18 +215,23 @@ class Knight extends MoveableObject {
 
 
     pushStone() {    // isPushing() is missing!!!
-        let inTouch = this.world.STONES.find(s => s.xLeft < this.xPush && this.xPush < s.xRight);
+        let inTouch = this.world.STONES.find(s => s.xLeft < this.xPush && this.xPush < s.xRight && s.yTop < this.yPush && this.yPush < s.yBottom);
         if (inTouch) {    // only x --> y is missing!!!
-            this.isPushing = true;
+            this.pushing = true;
             this.lastStone = inTouch;
             inTouch.x += this.speed;
             inTouch.rolling = true;
             // inTouch.playAnimation(inTouch.flipBook);
         } else {
-            this.isPushing = false;
+            this.pushing = false;
             if (this.lastStone !== undefined) {
                 this.lastStone.rolling = false;
             }
         }
+    }
+
+
+    isPushing() {
+        return this.pushing !== undefined && this.pushing;
     }
 }

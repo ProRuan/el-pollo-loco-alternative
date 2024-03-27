@@ -1,12 +1,15 @@
 class Stone extends AnimatedObject {
     currentImage = 0;
     rolling = false;
+    speedY = 0;
+    acceleration = 0.5;
 
 
     constructor(x, y) {
         super(x, y, 'Stone');
         this.setSize(64);
         this.animate();
+        // this.applyGravity();
     }
 
 
@@ -39,5 +42,15 @@ class Stone extends AnimatedObject {
                 this.currentImage++;
             }
         }, 100);
+    }
+
+
+    applyGravity() {    // set values + global function!!!
+        setInterval(() => {
+            if (this.y < 434.5) {
+                this.y += this.speedY;
+                this.speedY += this.acceleration;
+            }
+        }, 1000 / 60);
     }
 }
