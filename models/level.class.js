@@ -28,23 +28,12 @@ class Level {
     loadBackground() {
         for (let i = 0; i < LEVEL_SIZE; i++) {
             let t = i * this.translation / 64;
-            for (let j = 0; j < LEVEL_SIZE; j++) {
-                let layer = new Background(t);
-                let path = layer.layers[j];
-                layer.img = layer.imageCache[path];
-                this.deleteLayerProperties(layer);
+            let background = new Background(t);
+            for (let j = 0; j < background.layers.length; j++) {
+                let layer = new Layer(background, j);
                 this.BACKGROUND.push(layer);
             }
         }
-    }
-
-
-    deleteLayerProperties(layer) {
-        delete layer.cover;
-        delete layer.directory;
-        delete layer.imageCache;
-        delete layer.layers;
-        delete layer.patternFile;
     }
 
 

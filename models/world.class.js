@@ -4,7 +4,7 @@ class World {
     // character = new Character();
     // enemy = [new Enemy()];
     // stone = new Stone(1, 1);
-    
+
     hero = new Knight();
     bird = new Bird(3.75, 7.415);
     canvas;
@@ -19,6 +19,11 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
+    }
+
+
+    get BACKGROUND() {
+        return this.level.BACKGROUND;
     }
 
 

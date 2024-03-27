@@ -74,9 +74,10 @@ Tipp
 
 
 
-  Classes (20/28) + game.js (1/1)
+  Classes (21/30) + game.js (1/1)
   -------
     - AnimatedObject - check
+    - Bird - ...
     - Background - check
     - Canvas - check
     - Character ...
@@ -87,6 +88,7 @@ Tipp
     - FlipBook - check
     - Keyboard ...
     - Knight ...
+    - Layer - check
     - Grass - check
     - GrassCenter, GrassEnd, GrassFlying, GrassStart - check
     - GrassFlyingStart, GrassFlyingCenter, GrassFlyingEnd - check
