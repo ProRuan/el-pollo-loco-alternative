@@ -3,24 +3,19 @@ class Cloud extends Layer {
 
     constructor(background) {
         super(background, 5);
-        this.animate();
-    }
-
-
-    animate() {
-        setInterval(() => {
-            this.move();
-            this.reset();
-        }, 1000 / 60);
+        this.move();
     }
 
 
     move() {
-        this.x -= 4 / 60;
+        setInterval(() => {
+            this.x -= 4 / 60;
+            this.keep();
+        }, 1000 / 60);
     }
 
 
-    reset() {
+    keep() {
         if (this.x < -this.width) {
             this.x = LEVEL_SIZE * this.width;
         }

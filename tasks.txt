@@ -74,10 +74,10 @@ Tipp
 
 
 
-  Classes (22/31) + game.js (1/1)
+  Classes (23/31) + game.js (1/1)
   -------
     - AnimatedObject - check
-    - Bird ...
+    - Bird - check
     - Background - check
     - Canvas - check
     - Character ...
