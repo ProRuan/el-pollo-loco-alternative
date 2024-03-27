@@ -160,3 +160,37 @@ Tipp
     - runAttack + ... + ...
     - walk + ...  + ...
     - walkAttack + ... + ...
+
+
+
+
+Checkliste (active ...) (completed: 0 / ...)
+----------
+  - hurt
+  - death
+  - idle
+
+  - enemies
+  - boss ...
+
+  - objects
+  - animated objects
+  - tiles
+
+  - throwable item bomb
+
+  - black top bar
+
+  - menu
+  - game over
+  - new game
+  - save game
+  - pause
+
+  - audio (music + sound)
+
+  - level 2
+
+  - checklist
+  - clean coding
+  
