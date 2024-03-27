@@ -29,6 +29,21 @@ class Level {
         for (let i = 0; i < LEVEL_SIZE; i++) {
             let t = i * this.translation / 64;
             let background = new Background(t);
+
+            // create layer with background and delete unneccessary properties ...
+            // fix missing layer ...
+            // fix bird ...
+
+            // for (let j = 0; j < background.layers.length; j++) {
+            //     let layer = new DrawableObject(background.x / 64, background.y / 64, background.width, background.height);
+            //     let path = background.layers[j];
+            //     layer.img = background.imageCache[path];
+            //     delete layer.imageCache;
+            //     delete layer.patternFile;
+            //     // console.log(layer);
+            //     this.BACKGROUND.push(layer);
+            // }
+
             this.BACKGROUND.push(background);
         }
     }
