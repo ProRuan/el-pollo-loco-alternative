@@ -12,7 +12,7 @@ class Bird extends AnimatedObject {
     animate() {
         setInterval(() => {
             this.x -= 32 / 60;
-            if (this.x < -64) {
+            if (this.x < -this.width) {
                 this.x = 6 * CANVAS_WIDTH;
                 this.y = Math.random() * (CANVAS_HEIGHT - 4 * 64);
             }

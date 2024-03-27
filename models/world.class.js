@@ -6,7 +6,7 @@ class World {
     // stone = new Stone(1, 1);
 
     hero = new Knight();
-    bird = new Bird(3.75, 7.415);
+    // bird = new Bird(3.75, 7.415);
     canvas;
     ctx;
     keyboard;
@@ -29,6 +29,11 @@ class World {
 
     get CLOUDS() {
         return this.level.CLOUDS;
+    }
+
+
+    get BIRDS() {
+        return this.level.BIRDS;
     }
 
 
@@ -57,11 +62,12 @@ class World {
         // }
         this.addGroupToMap(this.BACKGROUND);
         this.addGroupToMap(this.CLOUDS);
+        this.addGroupToMap(this.BIRDS);
         this.addGroupToMap(this.GRASS);
         this.addGroupToMap(this.COINS);
         this.addGroupToMap(this.STONES);
         // this.addToMap(this.character);
-        this.addToMap(this.bird);
+        // this.addToMap(this.bird);
         this.addToMap(this.hero);
         // this.addToMap(this.stone);
 

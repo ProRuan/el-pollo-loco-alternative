@@ -3,6 +3,7 @@ class Level {
     cache = [];
     BACKGROUND = [];
     CLOUDS = [];
+    BIRDS = [];
     GRASS = [];
     COINS = [];
     STONES = [];
@@ -47,6 +48,17 @@ class Level {
             let background = new Background(t);
             let cloud = new Cloud(background);
             this.CLOUDS.push(cloud);
+        }
+    }
+
+
+    loadBirds(n) {
+        let amount = Math.round(Math.random() * 3);
+        for (let i = 0; i < amount; i++) {
+            let x = 14 - Math.round(Math.random() * 12) + n * this.translation / 64;
+            let y = 8 - Math.round(Math.random() * 4);
+            let bird = new Bird(x, y);
+            this.BIRDS.push(bird);
         }
     }
 

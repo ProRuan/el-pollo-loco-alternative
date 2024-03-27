@@ -3,6 +3,13 @@ level1 = new Level(1);
 
 level1.loadBackground();
 
+level1.loadBirds(0);
+level1.loadBirds(1);
+level1.loadBirds(2);
+level1.loadBirds(3);
+level1.loadBirds(4);
+level1.loadBirds(5);
+
 
 level1.cache = [
     new GrassCenter(0, 0), new GrassCenter(1, 0), new GrassCenter(2, 0), new GrassCenter(3, 0),
