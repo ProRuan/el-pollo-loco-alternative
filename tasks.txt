@@ -191,6 +191,9 @@ Checkliste (active ...) (completed: 0 / ...)
   - save game
   - pause
 
+  - responsiveness
+  - mobile version
+
   - audio (music + sound)
 
   - level 2

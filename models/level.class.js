@@ -4,6 +4,8 @@ class Level {
     BACKGROUND = [];
     CLOUDS = [];
     BIRDS = [];
+    TREES = [];
+    LEAVES = [];
     GRASS = [];
     COINS = [];
     STONES = [];
@@ -60,6 +62,26 @@ class Level {
             let bird = new Bird(x, y);
             this.BIRDS.push(bird);
         }
+    }
+
+
+    loadTrees(n) {
+        for (let i = 0; i < this.cache.length; i++) {
+            let tree = this.cache[i];
+            tree.x += n * this.translation;
+            this.TREES.push(tree);
+        }
+        this.cache = [];
+    }
+
+
+    loadLeaves(n) {
+        for (let i = 0; i < this.cache.length; i++) {
+            let leaf = this.cache[i];
+            leaf.x += n * this.translation;
+            this.LEAVES.push(leaf);
+        }
+        this.cache = [];
     }
 
 

@@ -4,6 +4,7 @@ class Knight extends MoveableObject {
     speed = 128 / 60;
     speedExtraAttack = 0;
     speedRun = 256 / 60;
+    energy = 100;
 
     coins = 0;
 

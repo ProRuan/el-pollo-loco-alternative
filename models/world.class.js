@@ -38,6 +38,16 @@ class World {
     }
 
 
+    get TREES() {
+        return this.level.TREES;
+    }
+
+
+    get LEAVES() {
+        return this.level.LEAVES;
+    }
+
+
     get GRASS() {
         return this.level.GRASS;
     }
@@ -64,12 +74,14 @@ class World {
         this.addGroupToMap(this.BACKGROUND);
         this.addGroupToMap(this.CLOUDS);
         this.addGroupToMap(this.BIRDS);
+        this.addGroupToMap(this.TREES);
+        this.addGroupToMap(this.LEAVES);
         this.addGroupToMap(this.GRASS);
+        
         this.addGroupToMap(this.COINS);
-        this.addGroupToMap(this.STONES);
+        // this.addGroupToMap(this.STONES);
         // this.addToMap(this.character);
-        // this.addToMap(this.bird);
-        this.addToMap(this.endboss);
+        // this.addToMap(this.endboss);
         this.addToMap(this.hero);
         // this.addToMap(this.stone);
 

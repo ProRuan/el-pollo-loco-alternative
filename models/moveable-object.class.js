@@ -100,7 +100,7 @@ class MoveableObject extends DrawableObject {
 
 
     jump() {
-        this.speedY = 10;    // jump height 160
+        this.speedY = 12.5;    // jump height 160
         this.isJumpStart = true;
         this.isJumping = true;
         this.isFallStart = true;
