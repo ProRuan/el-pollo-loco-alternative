@@ -1,6 +1,4 @@
 class Sword {
-    width = 40;
-    height = 56;
 
 
     constructor(knight) {
@@ -15,7 +13,7 @@ class Sword {
 
 
     get xRightAttack() {
-        return this.xLeftAttack + this.width;
+        return this.xLeftAttack + 40;
     }
 
 
@@ -25,7 +23,7 @@ class Sword {
 
 
     get yBottomAttack() {
-        return this.yTopAttack + this.height;
+        return this.yTopAttack + 56;
     }
 
 

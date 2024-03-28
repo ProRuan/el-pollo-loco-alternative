@@ -23,6 +23,11 @@ class Shaman extends MoveableObject {
     }
 
 
+    get xCenter() {
+        return this.x + 72;
+    }
+
+
     get xRight() {
         return this.x + 110;
     }
@@ -38,6 +43,11 @@ class Shaman extends MoveableObject {
     }
 
 
+    attack() {
+        return new ShamanBlade(this).attack(world.hero);
+    }
+
+
     loadFlipBookImages(flipBook) {    // double code !!!
         for (const [key, value] of Object.entries(flipBook)) {
             if (Array.isArray(value)) {
@@ -49,9 +59,15 @@ class Shaman extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            if (world.hero.xCenter > this.x) {
-                this.playAnimation(FLIP_BOOK_SHAMAN.ATTACK);
-            }
+            this.attack();
+        }, 1000 / 60);
+
+        setInterval(() => {
+            this.playAnimation(FLIP_BOOK_SHAMAN.ATTACK);
+
+            // if (world.hero.xCenter > this.x) {
+            //     this.playAnimation(FLIP_BOOK_SHAMAN.ATTACK);
+            // }
         }, 100);
     }
 }

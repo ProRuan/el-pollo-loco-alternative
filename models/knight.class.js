@@ -97,7 +97,7 @@ class Knight extends MoveableObject {
                 this.jump();
             }
             if (this.isKey('keydown', 'keyQ')) {
-                this.setOtherDirection(true)
+                this.setOtherDirection(true);
             }
             if (this.isKey('keydown', 'keyE')) {
                 this.setOtherDirection(false);
