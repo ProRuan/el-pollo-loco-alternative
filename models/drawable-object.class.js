@@ -88,9 +88,9 @@ class DrawableObject extends CoordinateSystem {
             ctx.beginPath();
             ctx.lineWidth = '2';
             ctx.strokeStyle = 'red';
-            ctx.rect(this.x + 68, this.y + 54, 40, 56);    // attack: x + 60, y + 60, 48, 48
-            // ctx.rect(this.x + 60, this.y + 60, 36, 48);    // walk atttack, run attack: x + 60, y + 60, 36, 48
-            // ctx.rect(this.x + 60, this.y + 32, 48, 80);    // attack: x + 60, y + 60, 48, 48
+            // ctx.rect(this.x + 68, this.y + 54, 40, 56);    // attack: x + 60, y + 60, 48, 48
+            // ctx.rect(this.x + 60, this.y + 54, 36, 56);    // walk atttack, run attack: x + 60, y + 60, 36, 48
+            ctx.rect(this.x + 64, this.y + 32, 40, 78);    // attack: x + 60, y + 60, 48, 48
             ctx.stroke();
         }
 

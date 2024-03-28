@@ -58,6 +58,16 @@ class Knight extends MoveableObject {
     }
 
 
+    attackWalk() {
+        return new Sword(this).attackWalk(world.endboss);
+    }
+
+
+    attackExtra() {
+        return new Sword(this).attackExtra(world.endboss);
+    }
+
+
     loadFlipBookImages(flipBook) {
         for (const [key, value] of Object.entries(flipBook)) {
             if (Array.isArray(value)) {
