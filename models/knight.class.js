@@ -211,7 +211,7 @@ class Knight extends MoveableObject {
             this.grounded = true;
         } else {
             this.grounded = false;
-            this.groundLevel = 540;
+            this.groundLevel = 650;
             if (this.otherDirection && !this.world.level.previousLevelEndOtherDirection && this.yBottom > 482) {
                 this.world.level.X_LEVEL_START = this.xLeft - 52;
                 this.world.level.previousLevelEndOtherDirection = true;
