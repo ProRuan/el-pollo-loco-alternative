@@ -31,7 +31,7 @@ class ShamanBlade {
     attack(hero) {    // double code!!!
         let hit = this.isSubtending(hero, this.xLeft, this.xRight, this.yTop, this.yBottom);
         if (hit) {
-            console.log(hit);
+            // console.log(hit);
         }
         return hit;
     }

@@ -48,6 +48,11 @@ class World {
     }
 
 
+    get GRASS_FLYING() {
+        return this.level.GRASS_FLYING;
+    }
+
+
     get GRASS() {
         return this.level.GRASS;
     }
@@ -76,6 +81,7 @@ class World {
         this.addGroupToMap(this.BIRDS);
         this.addGroupToMap(this.TREES);
         this.addGroupToMap(this.LEAVES);
+        this.addGroupToMap(this.GRASS_FLYING);
         this.addGroupToMap(this.GRASS);
         
         this.addGroupToMap(this.COINS);

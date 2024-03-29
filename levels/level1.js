@@ -50,7 +50,7 @@ level1.cache = [
     new GrassFlyingStart(6, 2), new GrassFlyingCenter(7, 2), new GrassFlyingEnd(8, 2),
     new GrassFlyingStart(11, 4), new GrassFlyingCenter(12, 4), new GrassFlyingEnd(13, 4)
 ];
-level1.loadGrass(0);
+level1.loadGrassFlying(0);
 
 
 level1.cache = [

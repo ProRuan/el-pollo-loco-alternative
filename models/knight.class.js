@@ -9,6 +9,9 @@ class Knight extends MoveableObject {
     coins = 0;
 
 
+    groundLevel = 482;
+
+
     constructor() {
         super(4.4375, 0.625);
         this.setCover('knight');
@@ -108,7 +111,7 @@ class Knight extends MoveableObject {
                 this.world.camera_x = -this.x + 4 * 64 + 28;    // + 4 * 64 + 28
             }
 
-            this.isOnGrass();
+            this.isOnTile();
             this.collectCoin();
             this.pushStone();
         }, 1000 / 60);
@@ -177,9 +180,38 @@ class Knight extends MoveableObject {
     }
 
 
-    isOnGrass() {
-        if (!this.isOnGrassStart() && !this.isOnGrassCenter() && !this.isOnGrassEnd() || this.y > 405) {
+    amBoden() {
+        let tempGrass = [];
+        world.GRASS_FLYING.forEach((grass) => {if (grass.y + 16 > this.yBottom && (grass.xLeft < this.xCenter && this.xCenter < grass.xRight)) {
+            tempGrass.push(grass);
+        }});
+        console.log(tempGrass);
+        return tempGrass;
+    }
+
+
+    isOnTile() {
+        if (this.isOnGrassFlying()) {
+            if (this.isOnGrassFlyingStart()) {
+                this.groundLevel = this.isOnGrassFlyingStart().y + 6;
+            } else if (this.isOnGrassFlyingCenter()) {
+                this.groundLevel = this.isOnGrassFlyingCenter().y + 6;
+            } else if (this.isOnGrassFlyingEnd()) {
+                this.groundLevel = this.isOnGrassFlyingEnd().y + 6;
+            } 
+            this.grounded = true;
+        } else if (this.isOnGrassStart() || this.isOnGrassCenter() || this.isOnGrassEnd()) {
+            if (this.isOnGrassStart()) {
+                this.groundLevel = this.isOnGrassStart().y + 6;
+            } else if (this.isOnGrassCenter()) {
+                this.groundLevel = this.isOnGrassCenter().y + 6;
+            } else if (this.isOnGrassEnd()) {
+                this.groundLevel = this.isOnGrassEnd().y + 6;
+            } 
+            this.grounded = true;
+        } else {
             this.grounded = false;
+            this.groundLevel = 540;
             if (this.otherDirection && !this.world.level.previousLevelEndOtherDirection && this.yBottom > 482) {
                 this.world.level.X_LEVEL_START = this.xLeft - 52;
                 this.world.level.previousLevelEndOtherDirection = true;
@@ -187,9 +219,47 @@ class Knight extends MoveableObject {
                 this.world.level.X_LEVEL_END = this.xLeft + 20;
                 this.world.level.previousLevelEnd = true;
             }
-        } else {
-            this.grounded = true;
         }
+    }
+
+
+    isOnGrassFlying() {
+        let tempGrass = [];
+        world.GRASS_FLYING.forEach((grass) => {if (grass.y + 16 > this.yBottom && (
+            this.xCenter < grass.xLeft && grass.xLeft < this.xRight ||
+            grass.xLeft < this.xCenter && this.xCenter < grass.xRight ||
+            this.xLeft < grass.xRight && grass.xRight < this.xCenter)) {
+            tempGrass.push(grass);
+        }});
+        return (tempGrass.length > 0) ? true : false;
+
+        // return this.world.GRASS_FLYING.find(g =>
+        //     this.yBottom > g.y &&
+        //     (this.xCenter < g.xLeft && g.xLeft < this.xRight ||
+        //     g.xLeft < this.xCenter && this.xCenter < g.xRight ||
+        //     this.xLeft < g.xRight && g.xRight < this.xCenter)
+        // );
+    }
+
+
+    isOnGrassFlyingStart() {
+        return this.world.GRASS_FLYING.find(g => (this.xCenter < g.xLeft && g.xLeft < this.xRight) && this.yBottom > g.y);
+    }
+
+
+    isOnGrassFlyingCenter() {
+        return this.world.GRASS_FLYING.find(g => (g.xLeft < this.xCenter && this.xCenter < g.xRight) && this.yBottom > g.y);
+    }
+
+
+    isOnGrassFlyingEnd() {
+        return this.world.GRASS_FLYING.find(g => (this.xLeft < g.xRight && g.xRight < this.xCenter) && this.yBottom > g.y);
+    }
+
+
+    isOnGrassFlyingTop() {
+        console.log('yes');
+        return this.world.GRASS_FLYING.find(g => this.yBottom > g.y + 6);
     }
 
 

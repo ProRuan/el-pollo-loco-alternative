@@ -6,6 +6,7 @@ class Level {
     BIRDS = [];
     TREES = [];
     LEAVES = [];
+    GRASS_FLYING = [];
     GRASS = [];
     COINS = [];
     STONES = [];
@@ -90,6 +91,16 @@ class Level {
             let grass = this.cache[i];
             grass.x += n * this.translation;
             this.GRASS.push(grass);
+        }
+        this.cache = [];
+    }
+
+
+    loadGrassFlying(n) {
+        for (let i = 0; i < this.cache.length; i++) {
+            let grass = this.cache[i];
+            grass.x += n * this.translation;
+            this.GRASS_FLYING.push(grass);
         }
         this.cache = [];
     }
