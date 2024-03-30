@@ -14,6 +14,12 @@ class World {
     camera_x = 0;
 
 
+    // temp
+    blade = new Blade(10, -0.5);
+    fire = new Fire(8, -0.5);
+    lightning = new Lightning(3.2, 0.4);
+
+
     constructor(canvas, keyboard) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
@@ -99,9 +105,14 @@ class World {
         this.addGroupToMap(this.HIT_POINTS);
         // this.addGroupToMap(this.STONES);
         // this.addToMap(this.character);
-        // this.addToMap(this.endboss);
+        this.addToMap(this.endboss);
         this.addToMap(this.hero);
         // this.addToMap(this.stone);
+        this.addToMap(this.blade);
+        // this.addToMap(this.fire);
+        // this.addToMap(this.lightning);
+
+        
 
 
         this.ctx.translate(-this.camera_x, 0);

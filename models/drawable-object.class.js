@@ -96,14 +96,14 @@ class DrawableObject extends CoordinateSystem {
         }
 
 
-        if (this instanceof Shaman) {
+        if (this instanceof Shaman || this instanceof Blade || this instanceof Fire || this instanceof Lightning) {
             // body + center line
             ctx.beginPath();
             ctx.lineWidth = '1';
             ctx.strokeStyle = 'purple';
-            // ctx.rect(this.x + 50, this.y + 100, 60, 104);
+            ctx.rect(this.x + 50, this.y + 100, 60, 104);
             ctx.rect(this.x + 72, this.y + 100, 0, 104);
-            ctx.rect(this.x + 156, this.y + 56, 68, 128);
+            // ctx.rect(this.x + 156, this.y + 56, 68, 128);
             // ctx.rect(this.x - 156 + 72, this.y + 56, 68, 128);
             ctx.stroke();
         }

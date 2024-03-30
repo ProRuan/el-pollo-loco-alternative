@@ -8,13 +8,13 @@ class Shaman extends MoveableObject {
 
 
     constructor() {
-        super(8, 2.09375);    // to edit
+        super(11, 2.09375);    // to edit
         this.setSize(256);
         this.setCover('shaman')
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
         // this.loadFlipBookImages(this.magicalBook);
-        this.animate();
+        // this.animate();
     }
 
 

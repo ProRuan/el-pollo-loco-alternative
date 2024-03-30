@@ -47,6 +47,11 @@ class Knight extends MoveableObject {
     }
 
 
+    get yCenter() {
+        return this.y + 55;
+    }
+
+
     get yPush() {
         return this.y + 96;
     }
