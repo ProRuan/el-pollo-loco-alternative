@@ -182,9 +182,11 @@ class Knight extends MoveableObject {
 
     amBoden() {
         let tempGrass = [];
-        world.GRASS_FLYING.forEach((grass) => {if (grass.y + 16 > this.yBottom && (grass.xLeft < this.xCenter && this.xCenter < grass.xRight)) {
-            tempGrass.push(grass);
-        }});
+        world.GRASS_FLYING.forEach((grass) => {
+            if (grass.y + 16 > this.yBottom && (grass.xLeft < this.xCenter && this.xCenter < grass.xRight)) {
+                tempGrass.push(grass);
+            }
+        });
         console.log(tempGrass);
         return tempGrass;
     }
@@ -198,7 +200,7 @@ class Knight extends MoveableObject {
                 this.groundLevel = this.isOnGrassFlyingCenter().y + 6;
             } else if (this.isOnGrassFlyingEnd()) {
                 this.groundLevel = this.isOnGrassFlyingEnd().y + 6;
-            } 
+            }
             this.grounded = true;
         } else if (this.isOnGrassStart() || this.isOnGrassCenter() || this.isOnGrassEnd()) {
             if (this.isOnGrassStart()) {
@@ -207,7 +209,7 @@ class Knight extends MoveableObject {
                 this.groundLevel = this.isOnGrassCenter().y + 6;
             } else if (this.isOnGrassEnd()) {
                 this.groundLevel = this.isOnGrassEnd().y + 6;
-            } 
+            }
             this.grounded = true;
         } else {
             this.grounded = false;
@@ -225,12 +227,14 @@ class Knight extends MoveableObject {
 
     isOnGrassFlying() {
         let tempGrass = [];
-        world.GRASS_FLYING.forEach((grass) => {if (grass.y + 16 > this.yBottom && (
-            this.xCenter < grass.xLeft && grass.xLeft < this.xRight ||
-            grass.xLeft < this.xCenter && this.xCenter < grass.xRight ||
-            this.xLeft < grass.xRight && grass.xRight < this.xCenter)) {
-            tempGrass.push(grass);
-        }});
+        world.GRASS_FLYING.forEach((grass) => {
+            if (grass.y + 16 > this.yBottom && (
+                this.xCenter < grass.xLeft && grass.xLeft < this.xRight ||
+                grass.xLeft < this.xCenter && this.xCenter < grass.xRight ||
+                this.xLeft < grass.xRight && grass.xRight < this.xCenter)) {
+                tempGrass.push(grass);
+            }
+        });
         return (tempGrass.length > 0) ? true : false;
 
         // return this.world.GRASS_FLYING.find(g =>
@@ -281,7 +285,7 @@ class Knight extends MoveableObject {
     collectCoin() {
         let coin = this.world.COINS.find(c => this.isIncluding(c.xCenter, c.yCenter));
         if (coin) {
-            let coinId = this.world.COINS.findIndex(c => coin.xCenter);
+            let coinId = this.world.COINS.findIndex(c => c.xCenter == coin.xCenter && c.yCenter == coin.yCenter);
             this.world.COINS.splice(coinId, 1);
             this.coins++;
         }
