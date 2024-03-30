@@ -124,6 +124,9 @@ Tipp
 
   Current Task
   ------------
+    - animate fire + lightning
+    - throwable item
+    
     - speed = speedRun || speedPush ...
     - global animations ...
     - getter in DrawableObject definieren (double code) ...

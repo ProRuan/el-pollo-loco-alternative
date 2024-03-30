@@ -10,6 +10,16 @@ class Blade extends MagicObject {
     }
 
 
+    get xCenter() {    // set value!!!
+        return this.x;
+    }
+
+
+    get yCenter() {    // set value!!!
+        return this.y + this.height / 2;
+    }
+
+
     move() {
         setInterval(() => {
             this.x -= 192 / 60;

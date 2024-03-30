@@ -96,7 +96,7 @@ class DrawableObject extends CoordinateSystem {
         }
 
 
-        if (this instanceof Shaman || this instanceof Blade || this instanceof Fire || this instanceof Lightning) {
+        if (this instanceof Shaman) {
             // body + center line
             ctx.beginPath();
             ctx.lineWidth = '1';
@@ -105,6 +105,17 @@ class DrawableObject extends CoordinateSystem {
             ctx.rect(this.x + 72, this.y + 100, 0, 104);
             // ctx.rect(this.x + 156, this.y + 56, 68, 128);
             // ctx.rect(this.x - 156 + 72, this.y + 56, 68, 128);
+            ctx.stroke();
+        }
+
+
+        if (this instanceof Blade) {
+            // body + center line
+            ctx.beginPath();
+            ctx.lineWidth = '1';
+            ctx.strokeStyle = 'purple';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.rect(this.x, this.y, this.width / 2, this.height / 2);
             ctx.stroke();
         }
 

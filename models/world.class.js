@@ -15,7 +15,7 @@ class World {
 
 
     // temp
-    blade = new Blade(10, -0.5);
+    blade = new Blade(10.75, -0.5);
     fire = new Fire(8, -0.5);
     lightning = new Lightning(3.2, 0.4);
 
