@@ -82,7 +82,27 @@ level1.cache = [
 ];
 level1.loadCoins(2);
 
+level1.cache = [
+    new Coin(3.25, 5.25), new Coin(11.25, 5.25),
+    new Coin(6.25, 3.25), new Coin(8.25, 3.25),
+    new Coin(4.25, 1.25), new Coin(10.25, 1.25)
+];
+level1.loadCoins(0);
+
 // continue with coins ...
+
+
+level1.cache = [
+    new Crystal(13.25, 5.25)
+];
+level1.loadCrystals(0);
+
+
+level1.cache = [
+    new HitPoint(1.25, 5.25)
+];
+level1.loadHitPoints(0);
+
 
 
 level1.cache = [

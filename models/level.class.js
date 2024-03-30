@@ -9,6 +9,8 @@ class Level {
     GRASS_FLYING = [];
     GRASS = [];
     COINS = [];
+    CRYSTALS = [];
+    HIT_POINTS = [];
     STONES = [];
     levelEndPreviousOtherDirection = false;
     levelEndPrevious = false;
@@ -111,6 +113,26 @@ class Level {
             let coin = this.cache[i];
             coin.x += n * this.translation;
             this.COINS.push(coin);
+        }
+        this.cache = [];
+    }
+
+
+    loadCrystals(n) {    // double code!!!
+        for (let i = 0; i < this.cache.length; i++) {
+            let crystal = this.cache[i];
+            crystal.x += n * this.translation;
+            this.CRYSTALS.push(crystal);
+        }
+        this.cache = [];
+    }
+
+
+    loadHitPoints(n) {    // double code!!!
+        for (let i = 0; i < this.cache.length; i++) {
+            let hitPoint = this.cache[i];
+            hitPoint.x += n * this.translation;
+            this.HIT_POINTS.push(hitPoint);
         }
         this.cache = [];
     }
