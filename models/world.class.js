@@ -8,6 +8,7 @@ class World {
     hero = new Knight();
     endboss = new Shaman();
     // bird = new Bird(3.75, 7.415);
+    bomb = new Bomb(3.75, 3);
     canvas;
     ctx;
     keyboard;
@@ -109,6 +110,7 @@ class World {
         this.addToMap(this.hero);
         // this.addToMap(this.stone);
         this.addToMap(this.blade);
+        this.addToMap(this.bomb);
         // this.addToMap(this.fire);
         // this.addToMap(this.lightning);
 

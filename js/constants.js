@@ -11,7 +11,7 @@ const HERO_SOURCES = [
 
 const OBJECTS_DIRECTORY = 'objects_animated/';
 const OBJECTS_SOURCES = [
-    'bird8', 'coin10', 'crystal10', 'heart10', 'hit_point10', 'star10', 'stone8'
+    'bird8', 'bomb11', 'coin10', 'crystal10', 'heart10', 'hit_point10', 'star10', 'stone8'
 ];
 
 
