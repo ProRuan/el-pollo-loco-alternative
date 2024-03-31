@@ -30,9 +30,11 @@ class Bomb extends AnimatedObject {
                 this.y = 540 - 3.5 * 64;
                 this.speedY = 12.5;
             }
-            this.x += 8.5;
-            this.y -= this.speedY;
-            this.speedY -= this.acceleration;
+            if (!this.inTouch) {
+                this.x += 8.5;
+                this.y -= this.speedY;
+                this.speedY -= this.acceleration;
+            }
         }, 1000 / 60);
     }
 
@@ -57,5 +59,8 @@ class Bomb extends AnimatedObject {
         let path = this.flipBook[i];
         this.img = this.imageCache[path];
         this.currentImage++;
+        setTimeout(() => {
+            delete world.bomb;
+        }, 700);
     }
 }

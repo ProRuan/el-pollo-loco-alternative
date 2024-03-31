@@ -9,6 +9,7 @@ class World {
     endboss = new Shaman();
     // bird = new Bird(3.75, 7.415);
     bomb = new Bomb(3.75, 3);
+    bombs = [new Bomb(3.75, 3)];
     canvas;
     ctx;
     keyboard;
@@ -110,11 +111,13 @@ class World {
         this.addToMap(this.hero);
         // this.addToMap(this.stone);
         this.addToMap(this.blade);
-        this.addToMap(this.bomb);
+        if (this.bomb !== undefined) {
+            this.addToMap(this.bomb);
+        }
         // this.addToMap(this.fire);
         // this.addToMap(this.lightning);
 
-        
+
 
 
         this.ctx.translate(-this.camera_x, 0);

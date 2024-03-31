@@ -5,6 +5,8 @@ class Shaman extends MoveableObject {
     speed = 128 / 60;    // to edit
     speedRun = 256 / 60;    // to edit
     otherDirection = true;
+    energy = 300;
+    hit = false;
 
 
     constructor() {
@@ -63,8 +65,19 @@ class Shaman extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            if (this.isIncluding(world.bomb.xCenter, world.bomb.yCenter)) {
-                this.playAnimation(FLIP_BOOK_SHAMAN.HURT);    // if for faster intervall!!!
+            if (world.bomb !== undefined && this.isIncluding(world.bomb.xCenter, world.bomb.yCenter)) {
+                world.bomb.inTouch = true;
+                if (!this.isHit) {
+                    this.isHit = true;
+                    this.energy -= 30;
+                    console.log(this.energy);
+                    this.playAnimation(FLIP_BOOK_SHAMAN.HURT);
+                    setTimeout(() => {
+                        this.isHit = false;
+                    }, 700);
+                }
+            } else {
+                this.loadImage(FLIP_BOOK_SHAMAN.cover);
             }
             // this.playAnimation(FLIP_BOOK_SHAMAN.ATTACK);
 

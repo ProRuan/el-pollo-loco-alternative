@@ -90,7 +90,7 @@ class Knight extends MoveableObject {
         setInterval(() => {
             if (this.hit()) {
                 this.energy -= 5;
-                console.log(this.energy);
+                // console.log(this.energy);
                 setTimeout(() => {
                     this.world.blade = new Blade(10.75, -0.5);
                 }, 500);
@@ -123,6 +123,7 @@ class Knight extends MoveableObject {
                 this.world.camera_x = -this.x + 4 * 64 + 28;    // + 4 * 64 + 28
             }
 
+
             this.isOnTile();
             this.collectCoin();
             this.pushStone();
@@ -136,7 +137,7 @@ class Knight extends MoveableObject {
             // } else
             if (this.hit()) {
                 this.playAnimation(FLIP_BOOK_HERO.HURT);
-                console.log('play hit');
+                // console.log('play hit');
             } else if (this.isKey('keydown', 'arrowUp', 'arrowDown')) {
                 this.playAnimation(FLIP_BOOK_HERO.CLIMB);    // still to edit
             } else if (this.isKey('keydown', 'keyD')) {
@@ -350,7 +351,7 @@ class Knight extends MoveableObject {
 
     hit() {
         if (this.isIncluding(this.world.blade.xCenter, this.world.blade.yCenter)) {
-            console.log('blade hit');
+            // console.log('blade hit');
             // this.playAnimation(FLIP_BOOK_HERO.HURT);
             return true;
         };

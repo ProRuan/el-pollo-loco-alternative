@@ -126,6 +126,7 @@ Tipp
   ------------
     - animate fire + lightning
     - throwable item
+    - ladder + climb
     
     - speed = speedRun || speedPush ...
     - global animations ...
