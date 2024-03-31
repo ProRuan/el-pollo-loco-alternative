@@ -14,7 +14,7 @@ class Shaman extends MoveableObject {
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
         // this.loadFlipBookImages(this.magicalBook);
-        // this.animate();
+        this.animate();
     }
 
 
@@ -59,15 +59,33 @@ class Shaman extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            this.attack();
+            // this.attack();
         }, 1000 / 60);
 
         setInterval(() => {
-            this.playAnimation(FLIP_BOOK_SHAMAN.ATTACK);
+            if (this.isIncluding(world.bomb.xCenter, world.bomb.yCenter)) {
+                this.playAnimation(FLIP_BOOK_SHAMAN.HURT);    // if for faster intervall!!!
+            }
+            // this.playAnimation(FLIP_BOOK_SHAMAN.ATTACK);
 
             // if (world.hero.xCenter > this.x) {
             //     this.playAnimation(FLIP_BOOK_SHAMAN.ATTACK);
             // }
         }, 100);
+    }
+
+
+    isIncluding(x, y) {    // double code!!!
+        return this.isHorizontalCenter(x) && this.isVerticalCenter(y);
+    }
+
+
+    isHorizontalCenter(x) {
+        return this.xLeft < x && x < this.xRight;
+    }
+
+
+    isVerticalCenter(y) {
+        return this.yTop < y && y < this.yBottom;
     }
 }
