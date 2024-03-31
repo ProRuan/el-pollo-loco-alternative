@@ -7,6 +7,8 @@ class Shaman extends MoveableObject {
     otherDirection = true;
     energy = 300;
     hit = false;
+    // dying = false;
+    dead = false;
 
 
     constructor() {
@@ -65,11 +67,19 @@ class Shaman extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            if (world.bombs.length > 0 && world.bombs[0] !== undefined && this.isIncluding(world.bombs[0].xCenter, world.bombs[0].yCenter)) {
+            if (this.dead) {
+                this.loadImage(FLIP_BOOK_SHAMAN.DEATH[FLIP_BOOK_SHAMAN.DEATH.length - 1]);
+            } else if (this.energy <= 0) {
+                this.playAnimation(FLIP_BOOK_SHAMAN.DEATH);
+                setTimeout(() => {
+                    this.dead = true;
+                }, 500);
+            } else if (world.bombs.length > 0 && world.bombs[0] !== undefined && this.isIncluding(world.bombs[0].xCenter, world.bombs[0].yCenter)) {
                 world.bombs[0].inTouch = true;
                 if (!this.isHit) {
                     this.isHit = true;
-                    this.energy -= 30;
+                    this.energy -= 100;
+                    // this.energy -= 30;
                     console.log(this.energy);
                     this.playAnimation(FLIP_BOOK_SHAMAN.HURT);
                     setTimeout(() => {
