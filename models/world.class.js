@@ -111,8 +111,11 @@ class World {
         this.addToMap(this.hero);
         // this.addToMap(this.stone);
         this.addToMap(this.blade);
-        if (this.bomb !== undefined) {
-            this.addToMap(this.bomb);
+        // if (this.bomb !== undefined) {
+        //     this.addToMap(this.bomb);
+        // }
+        if (this.bombs.length > 0 && this.bombs[0] !== undefined) {
+            this.addToMap(this.bombs[0]);
         }
         // this.addToMap(this.fire);
         // this.addToMap(this.lightning);

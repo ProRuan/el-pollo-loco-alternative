@@ -59,8 +59,8 @@ class Bomb extends AnimatedObject {
         let path = this.flipBook[i];
         this.img = this.imageCache[path];
         this.currentImage++;
-        setTimeout(() => {
-            delete world.bomb;
-        }, 700);
+        // setTimeout(() => {
+        //     world.bombs.splice[0, 1];
+        // }, 700);
     }
 }
