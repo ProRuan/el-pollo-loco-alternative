@@ -21,7 +21,8 @@ class World {
     blades = [new Blade(10.57, -0.5)];
     fire = new Fire(8, -0.5);
     fires = [new Fire(8, -0.5)];
-    lightning = new Lightning(3.2, 0.4);
+    lightning = new Lightning(4.75, 0.4);
+    lightnings = [new Lightning(4.75, 0.4)];
 
 
     constructor(canvas, keyboard) {
@@ -112,13 +113,18 @@ class World {
         this.addToMap(this.endboss);
         this.addToMap(this.hero);
         // this.addToMap(this.stone);
+
         // this.addToMap(this.blade);
         // if (this.blades.length > 0 && this.blades[0] !== undefined) {
         //     this.addToMap(this.blades[0]);
         // }
-        if (this.fires.length > 0 && this.fires[0] !== undefined) {
-            this.addToMap(this.fires[0]);
+        // if (this.fires.length > 0 && this.fires[0] !== undefined) {
+        //     this.addToMap(this.fires[0]);
+        // }
+        if (this.lightnings.length > 0 && this.lightnings[0] !== undefined) {
+            this.addToMap(this.lightnings[0]);
         }
+
         // if (this.bomb !== undefined) {
         //     this.addToMap(this.bomb);
         // }

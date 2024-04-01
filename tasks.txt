@@ -124,7 +124,10 @@ Tipp
 
   Current Task
   ------------
+    - magic lightning with double img???
+    - set magic xCenter and yCenter
     - improve knight + shaman hurt animation
+    - improve magic arrays + code + etc
     - animate fire + lightning (+ shaman animation x 3)
     - throwable item - check
     - ladder + climb
