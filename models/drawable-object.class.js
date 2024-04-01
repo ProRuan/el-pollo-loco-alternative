@@ -109,13 +109,24 @@ class DrawableObject extends CoordinateSystem {
         }
 
 
-        if (this instanceof Blade) {
+        if (this instanceof Blade || this instanceof Fire) {
             // body + center line
             ctx.beginPath();
             ctx.lineWidth = '1';
             ctx.strokeStyle = 'purple';
             ctx.rect(this.x, this.y, this.width, this.height);
             ctx.rect(this.x, this.y, this.width / 2, this.height / 2);
+            ctx.stroke();
+        }
+
+
+        if (this instanceof Lightning) {
+            // body + center line
+            ctx.beginPath();
+            ctx.lineWidth = '1';
+            ctx.strokeStyle = 'purple';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.rect(this.x, this.y, this.width / 2, this.height / 4 * 3);
             ctx.stroke();
         }
 

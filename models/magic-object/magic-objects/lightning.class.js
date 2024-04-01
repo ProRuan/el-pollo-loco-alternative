@@ -20,12 +20,12 @@ class Lightning extends MagicObject {
 
 
     get xCenter() {    // set value!!!
-        return this.x;
+        return this.x + 28;    // please verify!!!
     }
 
 
     get yCenter() {    // set value!!!
-        return this.y + this.height / 2;
+        return this.y + this.height / 4 * 3;
     }
 
 
@@ -46,12 +46,12 @@ class Lightning extends MagicObject {
                         }, 500);
                     }, 2500);
                 }
-                this.x = world.hero.xCenter - 28;
+                this.x = world.hero.xCenter - 28;    // please verify!!!
                 this.xTargeted = this.x;
                 this.y = world.hero.yCenter - 168 - 128;
                 this.yTargeted = this.y;
             } else if (!this.magicDelay) {
-                this.x = this.xTargeted;
+                this.x = this.xTargeted;    // please verify!!!
                 this.y = this.yTargeted + 128;
             }
         }, 1000 / 60);

@@ -149,11 +149,14 @@ class Knight extends MoveableObject {
                 }, 900);
             } else if (world.lightnings.length > 0 && world.lightnings[0] !== undefined && this.isIncluding(world.lightnings[0].xCenter, world.lightnings[0].yCenter)) {
                 world.lightnings[0].inTouch = true;
+                if (this.isIncluding(this.world.lightnings[0].xCenter, this.world.lightnings[0].yCenter)) {
+                    console.log('lightning touch');
+                }
                 if (!this.isHit) {
                     this.isHit = true;
                     this.energy -= 15;
                     // this.energy -= 30;
-                    // console.log(this.energy);
+                    console.log(this.energy);
                     this.playAnimation(FLIP_BOOK_HERO.HURT);
                     setTimeout(() => {
                         delete world.lightnings[0];
