@@ -7,7 +7,7 @@ class Shaman extends MoveableObject {
     otherDirection = true;
     energy = 300;
     hit = false;
-    // dying = false;
+    dying = false;
     dead = false;
 
 
@@ -70,7 +70,12 @@ class Shaman extends MoveableObject {
             if (this.dead) {
                 this.loadImage(FLIP_BOOK_SHAMAN.DEATH[FLIP_BOOK_SHAMAN.DEATH.length - 1]);
             } else if (this.energy <= 0) {
+                if (!this.dying) {
+                    this.currentImage = 0;
+                    this.dying = true;
+                }
                 this.playAnimation(FLIP_BOOK_SHAMAN.DEATH);
+                console.log(this.img);
                 setTimeout(() => {
                     this.dead = true;
                 }, 500);
@@ -78,8 +83,8 @@ class Shaman extends MoveableObject {
                 world.bombs[0].inTouch = true;
                 if (!this.isHit) {
                     this.isHit = true;
-                    this.energy -= 100;
-                    // this.energy -= 30;
+                    // this.energy -= 100;
+                    this.energy -= 30;
                     console.log(this.energy);
                     this.playAnimation(FLIP_BOOK_SHAMAN.HURT);
                     setTimeout(() => {
