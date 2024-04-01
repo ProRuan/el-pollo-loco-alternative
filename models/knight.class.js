@@ -147,13 +147,31 @@ class Knight extends MoveableObject {
                 setTimeout(() => {
                     this.dead = true;
                 }, 900);
+            } else if (world.fires.length > 0 && world.fires[0] !== undefined && this.isIncluding(world.fires[0].xCenter, world.fires[0].yCenter)) {
+                world.fires[0].inTouch = true;
+                if (!this.isHit) {
+                    this.isHit = true;
+                    this.energy -= 15;
+                    // this.energy -= 30;
+                    // console.log(this.energy);
+                    this.playAnimation(FLIP_BOOK_HERO.HURT);
+                    setTimeout(() => {
+                        delete world.fires[0];
+                        // world.bombs.splice(0, 1);
+                        this.isHit = false;
+                        setTimeout(() => {
+                            world.fires.splice(0, 1);
+                            world.fires.push(new Fire(8, -0.5));
+                        }, 1000);
+                    }, 700);
+                }
             } else if (world.blades.length > 0 && world.blades[0] !== undefined && this.isIncluding(world.blades[0].xCenter, world.blades[0].yCenter)) {
                 world.blades[0].inTouch = true;
                 if (!this.isHit) {
                     this.isHit = true;
                     this.energy -= 15;
                     // this.energy -= 30;
-                    console.log(this.energy);
+                    // console.log(this.energy);
                     this.playAnimation(FLIP_BOOK_HERO.HURT);
                     setTimeout(() => {
                         delete world.blades[0];

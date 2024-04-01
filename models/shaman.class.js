@@ -85,7 +85,7 @@ class Shaman extends MoveableObject {
                     this.isHit = true;
                     // this.energy -= 100;
                     this.energy -= 30;
-                    console.log(this.energy);
+                    // console.log(this.energy);
                     this.playAnimation(FLIP_BOOK_SHAMAN.HURT);
                     setTimeout(() => {
                         delete world.bombs[0];

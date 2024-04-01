@@ -124,8 +124,9 @@ Tipp
 
   Current Task
   ------------
-    - animate fire + lightning
-    - throwable item
+    - improve knight + shaman hurt animation
+    - animate fire + lightning (+ shaman animation x 3)
+    - throwable item - check
     - ladder + climb
 
     - fix hero death ...
