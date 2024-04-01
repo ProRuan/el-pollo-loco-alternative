@@ -1,6 +1,9 @@
 class Blade extends MagicObject {
     currentImage = 0;
+    prolog = 3;
     otherDirection = true;
+    inTouch = false;
+    colliding = false;
 
 
     constructor(x, y) {
@@ -22,7 +25,10 @@ class Blade extends MagicObject {
 
     move() {
         setInterval(() => {
-            this.x -= 192 / 60;
+            if (!this.inTouch) {
+                this.x -= 192 / 60;
+            }
+            // this.x -= 192 / 60;
             // this.keep();
         }, 1000 / 60);
     }
@@ -30,10 +36,27 @@ class Blade extends MagicObject {
 
     animate() {
         setInterval(() => {
-            let i = this.currentImage % 3;
-            let path = this.flipBook[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            (!this.inTouch) ? this.animateFlight() : this.animateCollision();
         }, 100);
+    }
+
+
+    animateFlight() {
+        let i = this.currentImage % this.prolog;
+        let path = this.flipBook[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+    }
+
+
+    animateCollision() {
+        if (!this.colliding) {
+            this.currentImage = 0;
+            this.colliding = true;
+        }
+        let i = (this.currentImage % (this.flipBook.length - this.prolog) + this.prolog) % this.flipBook.length;
+        let path = this.flipBook[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
     }
 }

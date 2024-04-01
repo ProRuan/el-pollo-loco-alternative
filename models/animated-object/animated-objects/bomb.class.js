@@ -2,7 +2,9 @@ class Bomb extends AnimatedObject {
     currentImage = 0;
     speedY = 12.5;
     acceleration = 0.5;
+    prolog = 4;
     inTouch = false;
+    exploding = false;
 
 
     constructor(x, y) {
@@ -47,7 +49,7 @@ class Bomb extends AnimatedObject {
 
 
     animateThrow() {
-        let i = this.currentImage % 4;
+        let i = this.currentImage % this.prolog;
         let path = this.flipBook[i];
         this.img = this.imageCache[path];
         this.currentImage++;
@@ -55,7 +57,11 @@ class Bomb extends AnimatedObject {
 
 
     animateExplosion() {
-        let i = (this.currentImage % 7 + 4) % this.flipBook.length;
+        if (!this.exploding) {
+            this.currentImage = 0;
+            this.exploding = true;
+        }
+        let i = (this.currentImage % (this.flipBook.length - this.prolog) + this.prolog) % this.flipBook.length;
         let path = this.flipBook[i];
         this.img = this.imageCache[path];
         this.currentImage++;
