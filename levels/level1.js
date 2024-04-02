@@ -63,6 +63,13 @@ level1.loadGrass(0);
 
 
 level1.cache = [
+    new GrassFlyingStart(2, 4), new GrassFlyingCenter(3, 4), new GrassFlyingCenter(4, 4), new GrassFlyingCenter(5, 4),
+    new GrassFlyingEnd(6, 4)
+];
+level1.loadGrassFlying(0);
+
+
+level1.cache = [
     new Tree(0.5, 4), new Tree(5.5, 2), new Tree(10.5, 4)
 ];
 level1.loadTrees(3);

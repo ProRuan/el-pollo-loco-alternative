@@ -124,9 +124,10 @@ Tipp
 
   Current Task
   ------------
+    - set constants in classes
     - magic lightning with double img???
     - set magic xCenter and yCenter + hit values
-    - improve knight + shaman hurt animation
+    - improve knight + shaman hurt animation - prepared
     - improve magic arrays + code + etc
     - animate fire + lightning (+ shaman animation x 3)
     - throwable item - check

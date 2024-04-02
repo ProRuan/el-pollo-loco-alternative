@@ -24,6 +24,10 @@ class World {
     lightning = new Lightning(4.75, 0.4);
     lightnings = [new Lightning(4.75, 0.4)];
 
+    stairwayBottom = new StairwayBottom(4.25, 0.875);
+    // stairwayCenter is still missing ...
+    stairwayTop = new StairwayTop(4.25, 4.375);
+
 
     constructor(canvas, keyboard) {
         this.canvas = canvas;
@@ -105,6 +109,9 @@ class World {
         this.addGroupToMap(this.GRASS_FLYING);
         this.addGroupToMap(this.GRASS);
 
+        this.addToMap(this.stairwayBottom);
+        this.addToMap(this.stairwayTop);
+
         this.addGroupToMap(this.COINS);
         this.addGroupToMap(this.CRYSTALS);
         this.addGroupToMap(this.HIT_POINTS);
@@ -118,9 +125,9 @@ class World {
         // if (this.blades.length > 0 && this.blades[0] !== undefined) {
         //     this.addToMap(this.blades[0]);
         // }
-        if (this.fires.length > 0 && this.fires[0] !== undefined) {
-            this.addToMap(this.fires[0]);
-        }
+        // if (this.fires.length > 0 && this.fires[0] !== undefined) {
+        //     this.addToMap(this.fires[0]);
+        // }
         // if (this.lightnings.length > 0 && this.lightnings[0] !== undefined) {
         //     this.addToMap(this.lightnings[0]);
         // }
@@ -128,9 +135,9 @@ class World {
         // if (this.bomb !== undefined) {
         //     this.addToMap(this.bomb);
         // }
-        if (this.bombs.length > 0 && this.bombs[0] !== undefined) {
-            this.addToMap(this.bombs[0]);
-        }
+        // if (this.bombs.length > 0 && this.bombs[0] !== undefined) {
+        //     this.addToMap(this.bombs[0]);
+        // }
         // this.addToMap(this.fire);
         // this.addToMap(this.lightning);
 
