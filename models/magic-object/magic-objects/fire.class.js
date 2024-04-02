@@ -19,7 +19,7 @@ class Fire extends MagicObject {
 
 
     get yCenter() {    // set value!!!
-        return this.y + this.height / 2;
+        return this.y + this.height / 2 - 17;
     }
 
 
@@ -28,7 +28,11 @@ class Fire extends MagicObject {
             if (!this.inTouch) {
                 this.x -= 128 / 60;
             }
-            // this.x -= 192 / 60;
+            if (this.yCenter < world.hero.yCenter) {
+                this.y += 0.25;
+            } else if (this.yCenter > world.hero.yCenter) {
+                this.y -= 0.25;
+            }
             // this.keep();
         }, 1000 / 60);
     }

@@ -147,28 +147,31 @@ class Knight extends MoveableObject {
                 setTimeout(() => {
                     this.dead = true;
                 }, 900);
-            } else if (world.lightnings.length > 0 && world.lightnings[0] !== undefined && this.isIncluding(world.lightnings[0].xCenter, world.lightnings[0].yCenter)) {
-                world.lightnings[0].inTouch = true;
-                if (this.isIncluding(this.world.lightnings[0].xCenter, this.world.lightnings[0].yCenter)) {
-                    console.log('lightning touch');
-                }
-                if (!this.isHit) {
-                    this.isHit = true;
-                    this.energy -= 15;
-                    // this.energy -= 30;
-                    console.log(this.energy);
-                    this.playAnimation(FLIP_BOOK_HERO.HURT);
-                    setTimeout(() => {
-                        delete world.lightnings[0];
-                        // world.bombs.splice(0, 1);
-                        this.isHit = false;
-                        setTimeout(() => {
-                            world.lightnings.splice(0, 1);
-                            world.lightnings.push(new Lightning(4.75, 0.4));
-                        }, 1000);
-                    }, 700);
-                }
-            } else if (world.fires.length > 0 && world.fires[0] !== undefined && this.isIncluding(world.fires[0].xCenter, world.fires[0].yCenter)) {
+            } else
+
+            // if (world.lightnings.length > 0 && world.lightnings[0] !== undefined && this.isIncluding(world.lightnings[0].xCenter, world.lightnings[0].yCenter)) {
+            //     world.lightnings[0].inTouch = true;
+            //     if (this.isIncluding(this.world.lightnings[0].xCenter, this.world.lightnings[0].yCenter)) {
+            //         console.log('lightning touch');
+            //     }
+            //     if (!this.isHit) {
+            //         this.isHit = true;
+            //         this.energy -= 15;
+            //         // this.energy -= 30;
+            //         console.log(this.energy);
+            //         this.playAnimation(FLIP_BOOK_HERO.HURT);
+            //         setTimeout(() => {
+            //             delete world.lightnings[0];
+            //             // world.bombs.splice(0, 1);
+            //             this.isHit = false;
+            //             setTimeout(() => {
+            //                 world.lightnings.splice(0, 1);
+            //                 world.lightnings.push(new Lightning(4.75, 0.4));
+            //             }, 1000);
+            //         }, 700);
+            //     }
+            // } else 
+            if (world.fires.length > 0 && world.fires[0] !== undefined && this.isIncluding(world.fires[0].xCenter, world.fires[0].yCenter)) {
                 world.fires[0].inTouch = true;
                 if (!this.isHit) {
                     this.isHit = true;
@@ -186,32 +189,27 @@ class Knight extends MoveableObject {
                         }, 1000);
                     }, 700);
                 }
-            } else if (world.blades.length > 0 && world.blades[0] !== undefined && this.isIncluding(world.blades[0].xCenter, world.blades[0].yCenter)) {
-                world.blades[0].inTouch = true;
-                if (!this.isHit) {
-                    this.isHit = true;
-                    this.energy -= 15;
-                    // this.energy -= 30;
-                    // console.log(this.energy);
-                    this.playAnimation(FLIP_BOOK_HERO.HURT);
-                    setTimeout(() => {
-                        delete world.blades[0];
-                        // world.bombs.splice(0, 1);
-                        this.isHit = false;
-                        setTimeout(() => {
-                            world.blades.splice(0, 1);
-                            world.blades.push(new Blade(10.75, -0.5));
-                        }, 1000);
-                    }, 400);
-                }
-            } else
-                // if (this.hit() && this.energy <= 0) {
-                //     this.playAnimation(FLIP_BOOK_HERO.DEATH);
-                // } else
-                // if (this.hit()) {
-                //     this.playAnimation(FLIP_BOOK_HERO.HURT);
-                //     // console.log('play hit');
-                // } else
+            } else 
+            // if (world.blades.length > 0 && world.blades[0] !== undefined && this.isIncluding(world.blades[0].xCenter, world.blades[0].yCenter)) {
+            //     world.blades[0].inTouch = true;
+            //     if (!this.isHit) {
+            //         this.isHit = true;
+            //         this.energy -= 15;
+            //         // this.energy -= 30;
+            //         // console.log(this.energy);
+            //         this.playAnimation(FLIP_BOOK_HERO.HURT);
+            //         setTimeout(() => {
+            //             delete world.blades[0];
+            //             // world.bombs.splice(0, 1);
+            //             this.isHit = false;
+            //             setTimeout(() => {
+            //                 world.blades.splice(0, 1);
+            //                 world.blades.push(new Blade(10.75, -0.5));
+            //             }, 1000);
+            //         }, 400);
+            //     }
+            // } else
+                
                 if (this.isKey('keydown', 'arrowUp', 'arrowDown')) {
                     this.playAnimation(FLIP_BOOK_HERO.CLIMB);    // still to edit
                 } else if (this.isKey('keydown', 'keyD')) {

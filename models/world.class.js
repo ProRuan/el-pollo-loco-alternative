@@ -118,12 +118,12 @@ class World {
         // if (this.blades.length > 0 && this.blades[0] !== undefined) {
         //     this.addToMap(this.blades[0]);
         // }
-        // if (this.fires.length > 0 && this.fires[0] !== undefined) {
-        //     this.addToMap(this.fires[0]);
-        // }
-        if (this.lightnings.length > 0 && this.lightnings[0] !== undefined) {
-            this.addToMap(this.lightnings[0]);
+        if (this.fires.length > 0 && this.fires[0] !== undefined) {
+            this.addToMap(this.fires[0]);
         }
+        // if (this.lightnings.length > 0 && this.lightnings[0] !== undefined) {
+        //     this.addToMap(this.lightnings[0]);
+        // }
 
         // if (this.bomb !== undefined) {
         //     this.addToMap(this.bomb);
