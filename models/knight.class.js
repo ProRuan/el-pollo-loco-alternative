@@ -13,6 +13,9 @@ class Knight extends MoveableObject {
 
     dying = false;
     dead = false;
+    yStairwayMax = 228 - 108;
+    yStairwayMin = 272 + 100;
+    climbing = false;
 
 
     constructor() {
@@ -26,7 +29,7 @@ class Knight extends MoveableObject {
 
 
     get xLeft() {
-        return this.x + 16;
+        return this.x + 28;    // before a wrong value - is all working?!?
     }
 
 
@@ -98,11 +101,20 @@ class Knight extends MoveableObject {
             //         this.world.blade = new Blade(10.75, -0.5);
             //     }, 500);
             // }
-            if (this.isKey('keydown', 'arrowUp')) {
-                this.climb(true);
+            this.climbing = false;
+            if (this.isKey('keydown', 'arrowUp') && this.world.stairway.length > 0 && this.isIncluding(this.world.stairway[0].xCenter, this.yCenter)) {
+                console.log('climbing up', this.y);
+                if (this.y > this.yStairwayMax) {
+                    this.climbing = true;
+                    this.climb(true);
+                }
             }
-            if (this.isKey('keydown', 'arrowDown')) {
-                this.climb(false);
+            if (this.isKey('keydown', 'arrowDown') && this.world.stairway.length > 0 && this.isIncluding(this.world.stairway[0].xCenter, this.yCenter)) {
+                console.log('climbing down', this.y);
+                if (this.y < this.yStairwayMin) {
+                    this.climbing = true;
+                    this.climb(false);
+                }
             }
             if (this.isKey('keydown', 'arrowLeft') && this.x > this.world.level.X_LEVEL_START) {
                 this.move(false);
@@ -212,7 +224,7 @@ class Knight extends MoveableObject {
                 //     }
                 // } else
 
-                if (this.isKey('keydown', 'arrowUp', 'arrowDown')) {
+                if (this.isKey('keydown', 'arrowUp', 'arrowDown') && this.climbing) {
                     this.playAnimation(FLIP_BOOK_HERO.CLIMB);    // still to edit
                 } else if (this.isKey('keydown', 'keyD')) {
                     this.playAnimation(FLIP_BOOK_HERO.EXTRA_ATTACK);

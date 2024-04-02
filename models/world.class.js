@@ -25,8 +25,14 @@ class World {
     lightnings = [new Lightning(4.75, 0.4)];
 
     stairwayBottom = new StairwayBottom(4.25, 0.875);
-    // stairwayCenter is still missing ...
+    stairwayCenter = new StairwayCenter(4.25, 3.875);
     stairwayTop = new StairwayTop(4.25, 4.375);
+    stairway = [
+        new StairwayBottom(4.25, 0.875),
+        new StairwayCenter(4.25, 1.375), new StairwayCenter(4.25, 1.875), new StairwayCenter(4.25, 2.375), new StairwayCenter(4.25, 2.875),
+        new StairwayCenter(4.25, 3.375), new StairwayCenter(4.25, 3.875),
+        new StairwayTop(4.25, 4.375)
+    ];
 
 
     constructor(canvas, keyboard) {
@@ -109,8 +115,7 @@ class World {
         this.addGroupToMap(this.GRASS_FLYING);
         this.addGroupToMap(this.GRASS);
 
-        this.addToMap(this.stairwayBottom);
-        this.addToMap(this.stairwayTop);
+        this.addGroupToMap(this.stairway);
 
         this.addGroupToMap(this.COINS);
         this.addGroupToMap(this.CRYSTALS);

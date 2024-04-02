@@ -131,6 +131,17 @@ class DrawableObject extends CoordinateSystem {
         }
 
 
+        if (this instanceof StairwayCenter) {
+            // body + center line
+            ctx.beginPath();
+            ctx.lineWidth = '1';
+            ctx.strokeStyle = 'purple';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.rect(this.x, this.y, this.width / 2, this.height);
+            ctx.stroke();
+        }
+
+
         if (this instanceof Stone) {
             // body + center line
             ctx.beginPath();
