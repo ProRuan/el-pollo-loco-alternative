@@ -38,7 +38,9 @@ class World {
     avatarImage = new AvatarImage(0.375, 7.073125);
     avatarFrame = new AvatarFrame(0.25, 6.953125);
     hpBar = new HpBar(1.4375, 7.8125);
-    energyBar = new StateBarBorder(1.4375, 7.53125);
+
+    energyPoints = [];
+    energyBarBorder = new StateBarBorder(1.4375, 7.53125);
     staminaBarBg = new StateBarBg(1.4765625, 7.2890625);
     // staminaPoint = new StaminaPoint(1.453125, 7.3125);
     staminaPoints = [];
@@ -48,6 +50,7 @@ class World {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.keyboard = keyboard;
+        this.fillEnergy();
         this.fillStamina();
         this.draw();
         this.setWorld();
@@ -109,6 +112,15 @@ class World {
     }
 
 
+    fillEnergy() {
+        for (let i = 0; i < 100; i++) {
+            let x = (93 + i * 1) / 64;
+            let energyPoint = new EnergyPoint(x , 7.59375);
+            this.energyPoints.push(energyPoint);
+        }
+    }
+
+
     fillStamina() {
         for (let i = 0; i < 100; i++) {
             let x = (93 + i * 1) / 64;
@@ -147,7 +159,8 @@ class World {
         this.addToMap(this.avatarImage);
         this.addToMap(this.avatarFrame);
         this.addToMap(this.hpBar);
-        this.addToMap(this.energyBar);
+        this.addGroupToMap(this.energyPoints);
+        this.addToMap(this.energyBarBorder);
         this.addToMap(this.staminaBarBg);
         // this.addToMap(this.staminaPoint);
         this.addGroupToMap(this.staminaPoints);

@@ -124,8 +124,8 @@ Tipp
 
   Current Task
   ------------
+    - add hero state (folder + class + methods)
     - throw bomb from higher plattform
-    - add hero state
     - set constants in classes
     - magic lightning with double img???
     - set magic xCenter and yCenter + hit values
