@@ -35,17 +35,20 @@ class World {
         new StairwayTop(4.25, 4.375)
     ];
 
-    avatarImage = new AvatarImage(0.375, 7.125);
-    avatarFrame = new AvatarFrame(0.25, 7.015625);
-    hpBar = new HpBar(1.4375, 7.875);
-    energyBar = new StateBar(1.4375, 7.59375);
-    staminaBar = new StateBar(1.4375, 7.3125);
-
+    avatarImage = new AvatarImage(0.375, 7.073125);
+    avatarFrame = new AvatarFrame(0.25, 6.953125);
+    hpBar = new HpBar(1.4375, 7.8125);
+    energyBar = new StateBarBorder(1.4375, 7.53125);
+    staminaBarBg = new StateBarBg(1.4765625, 7.2890625);
+    // staminaPoint = new StaminaPoint(1.453125, 7.3125);
+    staminaPoints = [];
+    staminaBarBorder = new StateBarBorder(1.4375, 7.25);
 
     constructor(canvas, keyboard) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.keyboard = keyboard;
+        this.fillStamina();
         this.draw();
         this.setWorld();
     }
@@ -106,6 +109,15 @@ class World {
     }
 
 
+    fillStamina() {
+        for (let i = 0; i < 100; i++) {
+            let x = (93 + i * 1) / 64;
+            let staminaPoint = new StaminaPoint(x , 7.3125);
+            this.staminaPoints.push(staminaPoint);
+        }
+    }
+
+
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -136,7 +148,11 @@ class World {
         this.addToMap(this.avatarFrame);
         this.addToMap(this.hpBar);
         this.addToMap(this.energyBar);
-        this.addToMap(this.staminaBar);
+        this.addToMap(this.staminaBarBg);
+        // this.addToMap(this.staminaPoint);
+        this.addGroupToMap(this.staminaPoints);
+        this.addToMap(this.staminaBarBorder);
+
         // this.addToMap(this.stone);
 
         // this.addToMap(this.blade);
