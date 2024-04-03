@@ -35,6 +35,12 @@ class World {
         new StairwayTop(4.25, 4.375)
     ];
 
+    avatarImage = new AvatarImage(0.375, 7.125);
+    avatarFrame = new AvatarFrame(0.25, 7.015625);
+    hpBar = new HpBar(1.4375, 7.875);
+    energyBar = new StateBar(1.4375, 7.59375);
+    staminaBar = new StateBar(1.4375, 7.3125);
+
 
     constructor(canvas, keyboard) {
         this.canvas = canvas;
@@ -125,6 +131,12 @@ class World {
         // this.addToMap(this.character);
         this.addToMap(this.endboss);
         this.addToMap(this.hero);
+
+        this.addToMap(this.avatarImage);
+        this.addToMap(this.avatarFrame);
+        this.addToMap(this.hpBar);
+        this.addToMap(this.energyBar);
+        this.addToMap(this.staminaBar);
         // this.addToMap(this.stone);
 
         // this.addToMap(this.blade);
