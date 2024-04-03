@@ -8,8 +8,9 @@ class World {
     hero = new Knight();
     endboss = new Shaman();
     // bird = new Bird(3.75, 7.415);
-    bomb = new Bomb(3.75, 3);
-    bombs = [new Bomb(3.75, 3)];
+    // bomb = new Bomb(3.75, 3);
+    bomb = undefined;
+    bombs = [];
     canvas;
     ctx;
     keyboard;
@@ -137,12 +138,12 @@ class World {
         //     this.addToMap(this.lightnings[0]);
         // }
 
-        // if (this.bomb !== undefined) {
-        //     this.addToMap(this.bomb);
-        // }
-        // if (this.bombs.length > 0 && this.bombs[0] !== undefined) {
-        //     this.addToMap(this.bombs[0]);
-        // }
+        if (this.bomb !== undefined) {
+            this.addToMap(this.bomb);
+        }
+        if (this.bombs.length > 0 && this.bombs[0] !== undefined) {
+            this.addToMap(this.bombs[0]);
+        }
         // this.addToMap(this.fire);
         // this.addToMap(this.lightning);
 

@@ -42,6 +42,11 @@ class Shaman extends MoveableObject {
     }
 
 
+    get yCenter() {
+        return this.y + 152;
+    }
+
+
     get yBottom() {
         return this.y + 204;
     }
@@ -80,25 +85,25 @@ class Shaman extends MoveableObject {
                     this.dead = true;
                 }, 500);
             } else
-            // if (world.bombs.length > 0 && world.bombs[0] !== undefined && this.isIncluding(world.bombs[0].xCenter, world.bombs[0].yCenter)) {
-            //     world.bombs[0].inTouch = true;
-            //     if (!this.isHit) {
-            //         this.isHit = true;
-            //         // this.energy -= 100;
-            //         this.energy -= 30;
-            //         // console.log(this.energy);
-            //         this.playAnimation(FLIP_BOOK_SHAMAN.HURT);
-            //         setTimeout(() => {
-            //             delete world.bombs[0];
-            //             // world.bombs.splice(0, 1);
-            //             this.isHit = false;
-            //             setTimeout(() => {
-            //                 world.bombs.splice(0, 1);
-            //                 world.bombs.push(new Bomb(3.75, 3));
-            //             }, 1000);
-            //         }, 700);
-            //     }
-            // } else 
+            if (world.bomb !== undefined && this.isIncluding(world.bomb.xCenter, world.bomb.yCenter)) {
+                world.bomb.inTouch = true;
+                if (!this.isHit) {
+                    this.isHit = true;
+                    // this.energy -= 100;
+                    this.energy -= 30;
+                    // console.log(this.energy);
+                    this.playAnimation(FLIP_BOOK_SHAMAN.HURT);
+                    setTimeout(() => {
+                        delete world.bomb;
+                        // world.bombs.splice(0, 1);
+                        this.isHit = false;
+                        // setTimeout(() => {
+                        //     world.bombs.splice(0, 1);
+                        //     world.bombs.push(new Bomb((world.hero.x - 40) / 64, (540 - world.hero.y + 17) / 64));
+                        // }, 1000);
+                    }, 700);
+                }
+            } else 
             {
                 this.loadImage(FLIP_BOOK_SHAMAN.cover);
             }

@@ -10,6 +10,7 @@ class Bomb extends AnimatedObject {
     constructor(x, y) {
         super(x, y, 'Bomb');
         this.setSize(256);
+        this.setOtherDirection();
         this.move();
         this.animate();
     }
@@ -25,15 +26,27 @@ class Bomb extends AnimatedObject {
     }
 
 
+    setOtherDirection() {
+        if (world.hero.otherDirection) {
+            this.otherDirection = true;
+            this.x += 16;    // set value!!!
+        } else {
+            this.otherDirection = false;
+        }
+    }
+
+
     move() {
         setInterval(() => {
-            if (this.y > 540) {
-                this.x = 3.75 * 64;
-                this.y = 540 - 3.5 * 64;
-                this.speedY = 12.5;
-            }
-            if (!this.inTouch) {
-                this.x += 8.5;
+            // if (this.y > 540) {
+            //     this.x = 3.75 * 64;
+            //     this.y = 540 - 3.5 * 64;
+            //     this.speedY = 12.5;
+            // }
+
+            if (!this.inTouch && this.y < 540) {    // set final y value!!!
+                let heightFactor = Math.round((480 - world.hero.yCenter) / 120);
+                (this.otherDirection) ? this.x -= 8.5 : this.x += 8.5 - heightFactor;
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
             }
