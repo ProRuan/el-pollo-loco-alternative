@@ -1,5 +1,5 @@
-class HpBar extends DrawableObject {
-    path = 'img/inner_interface/hp_bar.png';
+class HpBarBorder extends DrawableObject {
+    path = 'img/inner_interface/hp_bar_border.png';
 
 
     constructor(x, y) {
