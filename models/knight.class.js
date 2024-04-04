@@ -68,6 +68,21 @@ class Knight extends MoveableObject {
     }
 
 
+    get hpPoints() {
+        return this.world.characterInfo.hpPoints;
+    }
+
+
+    get energyPoints() {
+        return this.world.characterInfo.energyPoints;
+    }
+
+
+    get staminaPoints() {
+        return this.world.characterInfo.staminaPoints;
+    }
+
+
     attack() {    // add parameter enemy!!!
         return new Sword(this).attack(world.endboss);
     }
@@ -93,6 +108,13 @@ class Knight extends MoveableObject {
 
 
     animate() {
+        setInterval(() => {
+            if (this.isKey('keydown', 'keyA')) {
+                this.hpPoints.splice(this.hpPoints.length - 21, 20);
+            }
+        }, 1000 / 2);
+
+
         setInterval(() => {
             // if (this.hit()) {
             //     this.energy -= 5;
@@ -135,12 +157,20 @@ class Knight extends MoveableObject {
             }
             if (this.isKey('keydown', 'keyF') && this.world.bomb === undefined) {
                 this.world.bomb = new Bomb((world.hero.x - 40) / 64, (540 - world.hero.y + 17) / 64);
-                
+
                 // world.bombs.splice(0, 1);
                 // world.bombs.push(new Bomb((world.hero.x - 40) / 64, (540 - world.hero.y + 17) / 64));
             }
             if (this.world.bomb !== undefined && this.world.bomb.y > 540) {
                 delete this.world.bomb;
+            }
+
+            // if (this.isKey('keydown', 'keyA')) {
+            //     this.hpPoints.splice(this.hpPoints.length - 1, 4);
+            // }
+            if (this.isKey('keydown', 'keyA')) {
+                this.world.characterInfo.staminaCounter -= 1;
+                this.staminaPoints.splice(this.staminaPoints.length - 1, 1);
             }
 
             if (this.x > 284) {

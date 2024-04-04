@@ -1,4 +1,7 @@
 class CharacterInfo extends DrawableObject {
+    hpCounter = 120;
+    energyCounter = 100;
+    staminaCounter = 100;
     hpPoints = [];
     energyPoints = [];
     staminaPoints = [];
@@ -17,6 +20,7 @@ class CharacterInfo extends DrawableObject {
         this.fillHp();
         this.fillEnergy();
         this.fillStamina();
+        this.regenerateStamina();
     }
 
 
@@ -50,7 +54,7 @@ class CharacterInfo extends DrawableObject {
 
 
     fillHp() {
-        for (let i = 0; i < 120; i++) {
+        for (let i = 0; i < this.hpCounter; i++) {
             let x = (95.5 + i * 1) / 64;
             let hpPoint = new HpPoint(x, 7.90625);
             this.hpPoints.push(hpPoint);
@@ -59,7 +63,7 @@ class CharacterInfo extends DrawableObject {
 
 
     fillEnergy() {
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < this.energyCounter; i++) {
             let x = (93 + i * 1) / 64;
             let energyPoint = new EnergyPoint(x, 7.59375);
             this.energyPoints.push(energyPoint);
@@ -68,10 +72,22 @@ class CharacterInfo extends DrawableObject {
 
 
     fillStamina() {
-        for (let i = 0; i < 100; i++) {
+        for (let i = 100 - this.staminaCounter; i < this.staminaCounter; i++) {
             let x = (93 + i * 1) / 64;
             let staminaPoint = new StaminaPoint(x, 7.3125);
             this.staminaPoints.push(staminaPoint);
         }
+    }
+
+
+    regenerateStamina() {
+        setInterval(() => {
+            if (this.staminaCounter < 100 && !world.hero.isKey('keydown', 'keyA')) {
+                this.staminaCounter++;
+                let x = (93 + this.staminaPoints.length * 1) / 64;
+                let staminaPoint = new StaminaPoint(x, 7.3125);
+                this.staminaPoints.push(staminaPoint);
+            }
+        }, 16);
     }
 }
