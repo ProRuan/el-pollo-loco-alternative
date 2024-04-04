@@ -14,13 +14,13 @@ class CharacterInfo extends DrawableObject {
     staminaBarBg = new StateBarBg(1.4765625, 7.28125);
     staminaBarBorder = new StateBarBorder(1.4375, 7.25);
     itemBg = new ItemBg(0.359375, 6.4295875);
-    itemBorder = new ItemBorder(0.3125, 6.390625);
-
     itemBomb = new ItemBomb(0.3515625, 6.4296875);
+    itemBorder = new ItemBorder(0.3125, 6.390625);
 
 
     constructor() {
         super(0, 0, 203, 79);
+        this.updateAvatarImageX();
         this.fillHp();
         this.fillEnergy();
         this.fillStamina();
@@ -57,6 +57,61 @@ class CharacterInfo extends DrawableObject {
             this.avatarFrame, this.hpBarBorder, this.energyBarBorder, this.staminaBarBorder,
             this.itemBorder
         ];
+    }
+
+
+    updateAvatarImageX() {
+        this.avatarImage.x = this.x + 24;
+    }
+
+
+    updateAvatarFrameX() {
+        this.avatarFrame.x = this.x + 16;
+    }
+
+
+    updateHpBarBgX() {
+        this.hpBarBg.x = this.x + 95;
+    }
+
+
+    updateHpBarBorderX() {
+        this.hpBarBorder.x = this.x + 92;
+    }
+
+
+    updateEnergyBarBgX() {
+        this.energyBarBg.x = this.x + 94.5;
+    }
+
+
+    updateEnergyBarBorderX() {
+        this.energyBarBorder.x = this.x + 92;
+    }
+
+
+    updateStaminaBarBgX() {
+        this.staminaBarBg.x = this.x + 94.5;
+    }
+
+
+    updateStaminaBarBorderX() {
+        this.staminaBarBorder.x = this.x + 92;
+    }
+
+
+    updateItemBgX() {
+        this.itemBg.x = this.x + 23;
+    }
+
+
+    updateItemBombX() {
+        this.itemBomb.x = this.x + 22.5;
+    }
+
+
+    updateItemBorderX() {
+        this.itemBorder.x = this.x + 20;
     }
 
 
@@ -108,5 +163,26 @@ class CharacterInfo extends DrawableObject {
                 this.staminaPoints.push(staminaPoint);
             }
         }, 16);
+    }
+
+
+    updateHpPointX() {
+        for (let i = 0; i < this.hpPoints.length; i++) {
+            this.hpPoints[i].x = this.x + 95.5 + i;
+        }
+    }
+
+
+    updateEnergyPointX() {
+        for (let i = 0; i < this.energyPoints.length; i++) {
+            this.energyPoints[i].x = this.x + 93 + i;
+        }
+    }
+
+
+    updateStaminaPointX() {
+        for (let i = 0; i < this.staminaPoints.length; i++) {
+            this.staminaPoints[i].x = this.x + 93 + i;
+        }
     }
 }
