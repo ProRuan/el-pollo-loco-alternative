@@ -13,6 +13,10 @@ class CharacterInfo extends DrawableObject {
     energyBarBorder = new StateBarBorder(1.4375, 7.53125);
     staminaBarBg = new StateBarBg(1.4765625, 7.28125);
     staminaBarBorder = new StateBarBorder(1.4375, 7.25);
+    itemBg = new ItemBg(0.359375, 6.4295875);
+    itemBorder = new ItemBorder(0.3125, 6.390625);
+
+    itemBomb = new ItemBomb(0.3515625, 6.4296875);
 
 
     constructor() {
@@ -42,13 +46,15 @@ class CharacterInfo extends DrawableObject {
     get images() {
         return [
             this.avatarImage, this.hpBarBg, this.energyBarBg, this.staminaBarBg,
+            this.itemBg
         ];
     }
 
 
     get borders() {
         return [
-            this.avatarFrame, this.hpBarBorder, this.energyBarBorder, this.staminaBarBorder
+            this.avatarFrame, this.hpBarBorder, this.energyBarBorder, this.staminaBarBorder,
+            this.itemBorder
         ];
     }
 
