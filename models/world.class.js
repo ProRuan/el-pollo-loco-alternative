@@ -35,28 +35,13 @@ class World {
         new StairwayTop(4.25, 4.375)
     ];
 
-    avatarImage = new AvatarImage(0.375, 7.073125);
-    avatarFrame = new AvatarFrame(0.25, 6.953125);
+    characterInfo = new CharacterInfo(0, 0);
 
-    hpBarBg = new HpBarBg(1.484375, 7.859375);
-    hpPoints = [];
-    hpBarBorder = new HpBarBorder(1.4375, 7.8125);
-
-    energyBarBg = new StateBarBg(1.4765625, 7.5625);
-    energyPoints = [];
-    energyBarBorder = new StateBarBorder(1.4375, 7.53125);
-
-    staminaBarBg = new StateBarBg(1.4765625, 7.28125);
-    staminaPoints = [];
-    staminaBarBorder = new StateBarBorder(1.4375, 7.25);
 
     constructor(canvas, keyboard) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.keyboard = keyboard;
-        this.fillHp();
-        this.fillEnergy();
-        this.fillStamina();
         this.draw();
         this.setWorld();
     }
@@ -117,33 +102,6 @@ class World {
     }
 
 
-    fillHp() {
-        for (let i = 0; i < 120; i++) {
-            let x = (95.5 + i * 1) / 64;
-            let hpPoint = new HpPoint(x, 7.90625);
-            this.hpPoints.push(hpPoint);
-        }
-    }
-
-
-    fillEnergy() {
-        for (let i = 0; i < 100; i++) {
-            let x = (93 + i * 1) / 64;
-            let energyPoint = new EnergyPoint(x, 7.59375);
-            this.energyPoints.push(energyPoint);
-        }
-    }
-
-
-    fillStamina() {
-        for (let i = 0; i < 100; i++) {
-            let x = (93 + i * 1) / 64;
-            let staminaPoint = new StaminaPoint(x, 7.3125);
-            this.staminaPoints.push(staminaPoint);
-        }
-    }
-
-
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -170,20 +128,11 @@ class World {
         this.addToMap(this.endboss);
         this.addToMap(this.hero);
 
-        this.addToMap(this.avatarImage);
-        this.addToMap(this.avatarFrame);
-
-        this.addToMap(this.hpBarBg);
-        this.addGroupToMap(this.hpPoints);
-        this.addToMap(this.hpBarBorder);
-
-        this.addToMap(this.energyBarBg);
-        this.addGroupToMap(this.energyPoints);
-        this.addToMap(this.energyBarBorder);
-
-        this.addToMap(this.staminaBarBg);
-        this.addGroupToMap(this.staminaPoints);
-        this.addToMap(this.staminaBarBorder);
+        this.addGroupToMap(this.characterInfo.thisImages);
+        this.addGroupToMap(this.characterInfo.hpPoints);
+        this.addGroupToMap(this.characterInfo.energyPoints);
+        this.addGroupToMap(this.characterInfo.staminaPoints);
+        this.addGroupToMap(this.characterInfo.thisBorders);
 
         // this.addToMap(this.stone);
 
