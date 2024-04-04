@@ -24,6 +24,7 @@ class CharacterInfo extends DrawableObject {
         this.fillHp();
         this.fillEnergy();
         this.fillStamina();
+        this.regenerateEnergy();
         this.regenerateStamina();
     }
 
@@ -83,6 +84,18 @@ class CharacterInfo extends DrawableObject {
             let staminaPoint = new StaminaPoint(x, 7.3125);
             this.staminaPoints.push(staminaPoint);
         }
+    }
+
+
+    regenerateEnergy() {
+        setInterval(() => {
+            if (this.energyCounter < 100 && !world.hero.isKey('keydown', 'keyD')) {
+                this.energyCounter++;
+                let x = (93 + this.energyPoints.length * 1) / 64;
+                let energyPoint = new EnergyPoint(x, 7.59375);
+                this.energyPoints.push(energyPoint);
+            }
+        }, 160);
     }
 
 

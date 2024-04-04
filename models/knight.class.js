@@ -172,6 +172,10 @@ class Knight extends MoveableObject {
                 this.world.characterInfo.staminaCounter -= 1;
                 this.staminaPoints.splice(this.staminaPoints.length - 1, 1);
             }
+            if (this.isKey('keydown', 'keyD')) {
+                this.world.characterInfo.energyCounter -= 1;
+                this.energyPoints.splice(this.energyPoints.length - 1, 1);
+            }
 
             if (this.x > 284) {
                 this.world.camera_x = -this.x + 4 * 64 + 28;    // + 4 * 64 + 28
