@@ -35,7 +35,7 @@ class World {
         new StairwayTop(4.25, 4.375)
     ];
 
-    characterInfo = new CharacterInfo(0, 0);
+    characterInfo = new CharacterInfo();
 
 
     constructor(canvas, keyboard) {
@@ -128,11 +128,11 @@ class World {
         this.addToMap(this.endboss);
         this.addToMap(this.hero);
 
-        this.addGroupToMap(this.characterInfo.thisImages);
+        this.addGroupToMap(this.characterInfo.images);
         this.addGroupToMap(this.characterInfo.hpPoints);
         this.addGroupToMap(this.characterInfo.energyPoints);
         this.addGroupToMap(this.characterInfo.staminaPoints);
-        this.addGroupToMap(this.characterInfo.thisBorders);
+        this.addGroupToMap(this.characterInfo.borders);
 
         // this.addToMap(this.stone);
 

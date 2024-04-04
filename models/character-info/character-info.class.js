@@ -12,8 +12,8 @@ class CharacterInfo extends DrawableObject {
     staminaBarBorder = new StateBarBorder(1.4375, 7.25);
 
 
-    constructor(x, y) {
-        super(x, y, 203, 79);
+    constructor() {
+        super(0, 0, 203, 79);
         this.fillHp();
         this.fillEnergy();
         this.fillStamina();
@@ -35,14 +35,14 @@ class CharacterInfo extends DrawableObject {
     }
 
 
-    get thisImages() {
+    get images() {
         return [
             this.avatarImage, this.hpBarBg, this.energyBarBg, this.staminaBarBg,
         ];
     }
 
 
-    get thisBorders() {
+    get borders() {
         return [
             this.avatarFrame, this.hpBarBorder, this.energyBarBorder, this.staminaBarBorder
         ];
