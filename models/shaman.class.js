@@ -19,6 +19,9 @@ class Shaman extends MoveableObject {
         this.loadFlipBookImages(this.flipBook);
         // this.loadFlipBookImages(this.magicalBook);
         this.animate();
+
+
+        // this.idle();
     }
 
 
@@ -52,8 +55,41 @@ class Shaman extends MoveableObject {
     }
 
 
+    castBlade() {    // blade as of 500
+        setInterval(() => {
+            this.playAnimation(FLIP_BOOK_SHAMAN.MAGIC_BLADE);
+        }, 100);
+    }
+
+
+    castFire() {    // fire as of 500 (or 600)
+        setInterval(() => {
+            this.playAnimation(FLIP_BOOK_SHAMAN.MAGIC_FIRE);
+        }, 100);
+    }
+
+
+    castLightning() {    // lightning as of 500 (600)
+        setInterval(() => {
+            this.playAnimation(FLIP_BOOK_SHAMAN.MAGIC_LIGHTNING);
+        }, 100);
+    }
+
+
     attack() {
         return new ShamanBlade(this).attack(world.hero);
+    }
+
+
+    idle() {
+        // this.playAnimationIdle(FLIP_BOOK_SHAMAN.IDLE);
+        // setTimeout(() => {
+        //     this.idle();
+        // }, 4 * (1000 / 6));
+
+        setInterval(() => {
+            this.playAnimation(FLIP_BOOK_SHAMAN.IDLE);
+        }, 1000 / 6);
     }
 
 
@@ -85,28 +121,28 @@ class Shaman extends MoveableObject {
                     this.dead = true;
                 }, 500);
             } else
-            if (world.bomb !== undefined && this.isIncluding(world.bomb.xCenter, world.bomb.yCenter)) {
-                world.bomb.inTouch = true;
-                if (!this.isHit) {
-                    this.isHit = true;
-                    // this.energy -= 100;
-                    this.energy -= 30;
-                    // console.log(this.energy);
-                    this.playAnimation(FLIP_BOOK_SHAMAN.HURT);
-                    setTimeout(() => {
-                        delete world.bomb;
-                        // world.bombs.splice(0, 1);
-                        this.isHit = false;
-                        // setTimeout(() => {
-                        //     world.bombs.splice(0, 1);
-                        //     world.bombs.push(new Bomb((world.hero.x - 40) / 64, (540 - world.hero.y + 17) / 64));
-                        // }, 1000);
-                    }, 700);
+                if (world.bomb !== undefined && this.isIncluding(world.bomb.xCenter, world.bomb.yCenter)) {
+                    world.bomb.inTouch = true;
+                    if (!this.isHit) {
+                        this.isHit = true;
+                        // this.energy -= 100;
+                        this.energy -= 30;
+                        // console.log(this.energy);
+                        this.playAnimation(FLIP_BOOK_SHAMAN.HURT);
+                        setTimeout(() => {
+                            delete world.bomb;
+                            // world.bombs.splice(0, 1);
+                            this.isHit = false;
+                            // setTimeout(() => {
+                            //     world.bombs.splice(0, 1);
+                            //     world.bombs.push(new Bomb((world.hero.x - 40) / 64, (540 - world.hero.y + 17) / 64));
+                            // }, 1000);
+                        }, 700);
+                    }
                 }
-            } else 
-            {
-                this.loadImage(FLIP_BOOK_SHAMAN.cover);
-            }
+                else {
+                    this.loadImage(FLIP_BOOK_SHAMAN.cover);
+                }
             // this.playAnimation(FLIP_BOOK_SHAMAN.ATTACK);
 
             // if (world.hero.xCenter > this.x) {

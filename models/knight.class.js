@@ -83,6 +83,13 @@ class Knight extends MoveableObject {
     }
 
 
+    // idle() {
+    //     setInterval(() => {
+    //         this.playAnimation(FLIP_BOOK_HERO.IDLE);
+    //     }, 100);
+    // }
+
+
     attack() {    // add parameter enemy!!!
         return new Sword(this).attack(world.endboss);
     }
