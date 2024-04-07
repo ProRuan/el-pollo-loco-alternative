@@ -88,6 +88,15 @@ class Level {
     }
 
 
+    loadGrassNew(grassGroup, n) {
+        for (let i = 0; i < grassGroup.length; i++) {
+            let grass = grassGroup[i];
+            grass.x += n * this.translation;
+            this.GRASS.push(grass);
+        }
+    }
+
+
     loadGrass(n) {
         for (let i = 0; i < this.cache.length; i++) {
             let grass = this.cache[i];
@@ -103,6 +112,16 @@ class Level {
             let grass = this.cache[i];
             grass.x += n * this.translation;
             this.GRASS_FLYING.push(grass);
+        }
+        this.cache = [];
+    }
+
+
+    loadCoinsNew(coinGroup, n) {
+        for (let i = 0; i < coinGroup.length; i++) {
+            let coin = coinGroup[i];
+            coin.x += n * this.translation;
+            this.COINS.push(coin);
         }
         this.cache = [];
     }

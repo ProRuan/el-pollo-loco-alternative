@@ -118,14 +118,14 @@ class World {
         this.addGroupToMap(this.GRASS_FLYING);
         this.addGroupToMap(this.GRASS);
 
-        this.addGroupToMap(this.stairway);
+        // this.addGroupToMap(this.stairway);
 
         this.addGroupToMap(this.COINS);
         this.addGroupToMap(this.CRYSTALS);
         this.addGroupToMap(this.HIT_POINTS);
         // this.addGroupToMap(this.STONES);
         // this.addToMap(this.character);
-        this.addToMap(this.endboss);
+        // this.addToMap(this.endboss);
         this.addToMap(this.hero);
 
         this.addGroupToMap(this.characterInfo.images);
