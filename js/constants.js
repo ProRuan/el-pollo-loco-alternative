@@ -34,4 +34,4 @@ const MAGIC_SOURCES = [
 ];
 
 
-const LEVEL_SIZE = 6;
+const LEVEL_SIZE = 8;
