@@ -124,6 +124,7 @@ Tipp
 
   Current Task
   ------------
+    - drawIf() x +- 1.5 canvas width
     - add hero state (folder + class + methods)
     - throw bomb from higher plattform
     - set constants in classes
