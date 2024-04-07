@@ -6,6 +6,7 @@ class World {
     // stone = new Stone(1, 1);
 
     hero = new Knight();
+    dino = new Dino();
     endboss = new Shaman();
     // bird = new Bird(3.75, 7.415);
     // bomb = new Bomb(3.75, 3);
@@ -125,6 +126,8 @@ class World {
         this.addGroupToMap(this.HIT_POINTS);
         // this.addGroupToMap(this.STONES);
         // this.addToMap(this.character);
+
+        this.addToMap(this.dino);
         // this.addToMap(this.endboss);
         this.addToMap(this.hero);
 
