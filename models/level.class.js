@@ -28,7 +28,7 @@ class Level {
 
 
     setXLevelEnd(amount) {
-        this.X_LEVEL_END = (amount - 1) * CANVAS_WIDTH - 4;
+        this.X_LEVEL_END = (amount - 1) * CANVAS_WIDTH - 4 + 28;
     }
 
 

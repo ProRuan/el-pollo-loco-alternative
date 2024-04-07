@@ -67,17 +67,17 @@ const GRASS_FLYING1_6 = [
 ];
 
 const GRASS1_6 = [
-    new GrassCenter(0, 0), new GrassCenter(1, 0), new GrassCenter(2, 0), new GrassCenter(3, 0),
-    new GrassCenter(4, 0), new GrassEnd(5, 0), new GrassStart(9, 0), new GrassCenter(10, 0),
-    new GrassCenter(11, 0), new GrassCenter(12, 0), new GrassCenter(13, 0), new GrassCenter(14, 0)
+    new GrassCenter(0, 0), new GrassCenter(1, 0), new GrassCenter(2, 0), new GrassEnd(3, 0),
+    new GrassStart(11, 0), new GrassCenter(12, 0), new GrassCenter(13, 0), new GrassCenter(14, 0)
 ];
 
 
 // Section7
 const GRASS_FLYING1_7 = [
     new GrassFlyingStart(3, 3.5), new GrassFlyingCenter(4, 3.5), new GrassFlyingCenter(5, 3.5), new GrassFlyingEnd(6, 3.5),
-    new GrassFlyingStart(7.5, -2), new GrassFlyingEnd(8.5, -2)
+    new GrassFlyingStart(7.5, -2), new GrassFlyingCenter(8, 0)
 ];
+// Please use GrassFlying!!!
 
 
 const GRASS1_7 = [
