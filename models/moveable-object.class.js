@@ -106,9 +106,11 @@ class MoveableObject extends DrawableObject {
                 if (this.isAboveGround() || this.speedY > 0) {
                     this.y -= this.speedY;
                     this.speedY -= this.acceleration;
-                    // set speedYMax = 12!!!
+                    if (this.y > this.groundLevel - (this.yBottom - this.y)) {
+                        console.log(this.y);
+                        this.y = this.groundLevel - (this.yBottom - this.y);
+                    }
                 } else {
-                    this.y = this.groundLevel - 110;
                     this.speedY = 0;
                 }
             }
@@ -117,7 +119,7 @@ class MoveableObject extends DrawableObject {
 
 
     isAboveGround() {
-        return this.y + 112 < this.groundLevel || !this.grounded;
+        return this.yBottom < this.groundLevel || !this.grounded;
     }
 
 

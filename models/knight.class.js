@@ -9,7 +9,7 @@ class Knight extends MoveableObject {
     coins = 0;
 
 
-    groundLevel = 482;
+    groundLevel = 484;
 
     dying = false;
     dead = false;
@@ -123,6 +123,10 @@ class Knight extends MoveableObject {
 
 
         setInterval(() => {
+            if (this.yBottom > this.groundLevel) {
+                console.log('knight: ', this.yBottom, 'ground level: ', this.groundLevel);
+            }
+
             // if (this.hit()) {
             //     this.energy -= 5;
             //     // console.log(this.energy);
@@ -366,29 +370,29 @@ class Knight extends MoveableObject {
     isOnTile() {
         if (this.isOnGrassFlying()) {
             if (this.isOnGrassFlyingStart()) {
-                this.groundLevel = this.isOnGrassFlyingStart().y + 6;
+                this.groundLevel = this.isOnGrassFlyingStart().yTop;
             } else if (this.isOnGrassFlyingCenter()) {
-                this.groundLevel = this.isOnGrassFlyingCenter().y + 6;
+                this.groundLevel = this.isOnGrassFlyingCenter().yTop;
             } else if (this.isOnGrassFlyingEnd()) {
-                this.groundLevel = this.isOnGrassFlyingEnd().y + 6;
+                this.groundLevel = this.isOnGrassFlyingEnd().yTop;
             }
             this.grounded = true;
         } else if (this.isOnGrassStart() || this.isOnGrassCenter() || this.isOnGrassEnd()) {
             if (this.isOnGrassStart()) {
-                this.groundLevel = this.isOnGrassStart().y + 6;
+                this.groundLevel = this.isOnGrassStart().yTop;
             } else if (this.isOnGrassCenter()) {
-                this.groundLevel = this.isOnGrassCenter().y + 6;
+                this.groundLevel = this.isOnGrassCenter().yTop;
             } else if (this.isOnGrassEnd()) {
-                this.groundLevel = this.isOnGrassEnd().y + 6;
+                this.groundLevel = this.isOnGrassEnd().yTop;
             }
             this.grounded = true;
         } else {
             this.grounded = false;
             this.groundLevel = 650;
-            if (this.otherDirection && !this.world.level.previousLevelEndOtherDirection && this.yBottom > 482) {
+            if (this.otherDirection && !this.world.level.previousLevelEndOtherDirection && this.yBottom > 484) {
                 this.world.level.X_LEVEL_START = this.xLeft - 52;
                 this.world.level.previousLevelEndOtherDirection = true;
-            } else if (!this.world.level.previousLevelEnd && this.yBottom > 482) {
+            } else if (!this.world.level.previousLevelEnd && this.yBottom > 484) {
                 this.world.level.X_LEVEL_END = this.xLeft + 20;
                 this.world.level.previousLevelEnd = true;
             }
@@ -407,34 +411,27 @@ class Knight extends MoveableObject {
             }
         });
         return (tempGrass.length > 0) ? true : false;
-
-        // return this.world.GRASS_FLYING.find(g =>
-        //     this.yBottom > g.y &&
-        //     (this.xCenter < g.xLeft && g.xLeft < this.xRight ||
-        //     g.xLeft < this.xCenter && this.xCenter < g.xRight ||
-        //     this.xLeft < g.xRight && g.xRight < this.xCenter)
-        // );
     }
 
 
     isOnGrassFlyingStart() {
-        return this.world.GRASS_FLYING.find(g => (this.xCenter < g.xLeft && g.xLeft < this.xRight) && this.yBottom > g.y);
+        return this.world.GRASS_FLYING.find(g => this.xCenter < g.xLeft && g.xLeft < this.xRight);
     }
 
 
     isOnGrassFlyingCenter() {
-        return this.world.GRASS_FLYING.find(g => (g.xLeft < this.xCenter && this.xCenter < g.xRight) && this.yBottom > g.y);
+        return this.world.GRASS_FLYING.find(g => g.xLeft < this.xCenter && this.xCenter < g.xRight);
     }
 
 
     isOnGrassFlyingEnd() {
-        return this.world.GRASS_FLYING.find(g => (this.xLeft < g.xRight && g.xRight < this.xCenter) && this.yBottom > g.y);
+        return this.world.GRASS_FLYING.find(g => this.xLeft < g.xRight && g.xRight < this.xCenter);
     }
 
 
     isOnGrassFlyingTop() {
         console.log('yes');
-        return this.world.GRASS_FLYING.find(g => this.yBottom > g.y + 6);
+        return this.world.GRASS_FLYING.find(g => this.yBottom > g.yTop);
     }
 
 
