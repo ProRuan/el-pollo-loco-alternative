@@ -89,7 +89,7 @@ class Dino extends MoveableObject {
         } else {
             this.grounded = false;
             this.groundLevel = 650;
-            if (this.otherDirection && !this.world.level.previousLevelEndOtherDirection && this.yBottom > 482) {
+            if (this.otherDirection && !world.level.previousLevelEndOtherDirection && this.yBottom > 482) {
                 world.level.X_LEVEL_START = this.xLeft - 52;
                 world.level.previousLevelEndOtherDirection = true;
             } else if (!world.level.previousLevelEnd && this.yBottom > 482) {
