@@ -23,7 +23,7 @@ class Dino extends MoveableObject {
         super(7.4375, 0.25);    // Please verfiy!!!
         this.setCover('dino');
         this.loadImage(this.cover);
-        // this.loadFlipBookImages(this.flipBook);
+        this.loadFlipBookImages(this.flipBook);
         this.animate();
         this.applyGravity();
     }
@@ -59,11 +59,45 @@ class Dino extends MoveableObject {
     }
 
 
+    get xLeftAttack() {
+        return this.x + 96;
+    }
+
+
+    get xRightAttack() {
+        return this.x + 124;
+    }
+
+
+    get yTopAttack() {
+        return this.y + 52;
+    }
+
+
+    get yBottomAttack() {
+        return this.y + 80;
+    }
+
+
+    loadFlipBookImages(flipBook) {
+        for (const [key, value] of Object.entries(flipBook)) {
+            if (Array.isArray(value)) {
+                this.loadImages(flipBook[key]);
+            }
+        }
+    }
+
+
     animate() {
         setInterval(() => {
             // console.log('dino: ', this.yBottom);
             this.isOnTile();
         }, 1000 / 60);
+
+
+        setInterval(() => {
+            this.playAnimation(FLIP_BOOK_DINO.ATTACK);
+        }, 100);
     }
 
 

@@ -13,17 +13,17 @@ class Sword {
 
 
     get xRightAttack() {
-        return this.xLeftAttack + 40;
+        return this.xLeftAttack + 36;
     }
 
 
     get yTopAttack() {
-        return this.y + 54;
+        return this.y + 56;
     }
 
 
     get yBottomAttack() {
-        return this.yTopAttack + 56;
+        return this.yTopAttack + 48;
     }
 
 
@@ -37,23 +37,13 @@ class Sword {
     }
 
 
-    get xLeftExtraAttack() {
-        return this.x + 64;
-    }
-
-
-    get xRightExtraAttack() {
-        return this.xLeftExtraAttack + 40;
-    }
-
-
     get yTopExtraAttack() {
-        return this.y + 32;
+        return this.y + 40;
     }
 
 
     get yBottomExtraAttack() {
-        return this.yTopExtraAttack + 78;
+        return this.yTopExtraAttack + 72;
     }
 
 
