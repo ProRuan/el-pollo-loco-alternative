@@ -60,12 +60,14 @@ class Dino extends MoveableObject {
 
 
     get xLeftAttack() {
-        return this.x + 96;
+        return (this.otherDirection) ? this.xCenter - 44 - 16 : this.xCenter + 44;
+        // return this.x + 96;
     }
 
 
     get xRightAttack() {
-        return this.x + 124;
+        return (this.otherDirection) ? this.xCenter - 72 - 16 : this.xCenter + 72;
+        // return this.x + 124;
     }
 
 
@@ -92,7 +94,7 @@ class Dino extends MoveableObject {
         setInterval(() => {
             // console.log('dino: ', this.yBottom);
 
-            
+
 
             this.isOnTile();
             if (this.isSubtending(world.hero)) {

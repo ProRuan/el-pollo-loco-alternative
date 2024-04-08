@@ -124,6 +124,9 @@ Tipp
 
   Current Task
   ------------
+    - dino xAttack
+    - mirror by xCenter!!!
+    
     - drawIf() x +- 1.5 canvas width
     - add hero state (folder + class + methods)
     - throw bomb from higher plattform
