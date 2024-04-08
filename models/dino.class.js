@@ -91,7 +91,13 @@ class Dino extends MoveableObject {
     animate() {
         setInterval(() => {
             // console.log('dino: ', this.yBottom);
+
+            
+
             this.isOnTile();
+            if (this.isSubtending(world.hero)) {
+                console.log('bite');
+            }
         }, 1000 / 60);
 
 
@@ -169,5 +175,13 @@ class Dino extends MoveableObject {
         return world.GRASS.find(g => this.xLeft < g.xRight && g.xRight < this.xCenter);
     }
 
+
+    isSubtending(enemy) {
+        let hitLeft = enemy.xLeft < this.xLeftAttack && this.xLeftAttack < enemy.xRight;
+        let hitRight = enemy.xLeft < this.xRightAttack && this.xRightAttack < enemy.xRight;
+        let hitTop = enemy.yTop < this.yTopAttack && this.yTopAttack < enemy.yBottom;
+        let hitBottom = enemy.yTop < this.yBottomAttack && this.yBottomAttack < enemy.yBottom;
+        return (hitLeft || hitRight) && (hitTop || hitBottom);
+    }
 
 }
