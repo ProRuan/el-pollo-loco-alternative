@@ -79,19 +79,29 @@ class DrawableObject extends CoordinateSystem {
             ctx.beginPath();
             ctx.lineWidth = '1';
             ctx.strokeStyle = 'blue';
-            // ctx.rect(this.x + 44, this.y + 54, 0, 56);    // centerLine: x + 44, y + 60, 32, 48
-            ctx.rect(this.x + 28, this.y + 54, 32, 56);    // border: x + 28, y + 54, 32, 56
-            // ctx.rect(this.x + 28, this.y + 54, 38, 42);    // border: xRight + 6, yTop + 42
+            // ctx.rect(this.x + 44, this.y + 60, 0, 48);    // centerLine: x + 44, y + 60, 32, 48
+            // ctx.rect(this.x + 28, this.y + 64, 32, 48);    // border: x + 28, y + 54, 32, 56
             ctx.stroke();
         }
 
 
-        if (this instanceof GrassFlying) {
+        if (this instanceof Dino) {
+            // body + center line
+            ctx.beginPath();
+            ctx.lineWidth = '1';
+            ctx.strokeStyle = 'blue';
+            // ctx.rect(this.x + 4, this.y + 44, 96, 44);    // border: x + 28, y + 54, 32, 56
+            ctx.stroke();
+        }
+
+
+        if (this instanceof GrassCenter) {
             // body + center line
             ctx.beginPath();
             ctx.lineWidth = '1';
             ctx.strokeStyle = 'yellow';
-            ctx.rect(this.x + 8, this.y + 8, 48, 44);
+            // ctx.rect(this.x , this.y + 8, 64, 56);    // border: x + 28, y + 54, 32, 56
+            // ctx.rect(this.x + 28, this.y + 54, 38, 42);    // border: xRight + 6, yTop + 42
             ctx.stroke();
         }
 

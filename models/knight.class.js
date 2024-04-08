@@ -49,12 +49,12 @@ class Knight extends MoveableObject {
 
 
     get yTop() {
-        return this.y + 54;
+        return this.y + 64;
     }
 
 
     get yCenter() {
-        return this.y + 55;
+        return this.y + 88;
     }
 
 
@@ -64,7 +64,7 @@ class Knight extends MoveableObject {
 
 
     get yBottom() {
-        return this.y + 110;
+        return this.y + 112;
     }
 
 

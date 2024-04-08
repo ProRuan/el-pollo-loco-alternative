@@ -29,4 +29,34 @@ class Dino extends MoveableObject {
     }
 
 
+    get xLeft() {
+        return this.x + 4;
+    }
+
+
+    get xCenter() {
+        return this.x + 52;
+    }
+
+
+    get xRight() {
+        return this.x + 100;
+    }
+
+
+    get yTop() {
+        return this.y + 44;
+    }
+
+
+    get yCenter() {
+        return this.y + 66;
+    }
+
+
+    get yBottom() {
+        return this.y + 88;
+    }
+
+
 }

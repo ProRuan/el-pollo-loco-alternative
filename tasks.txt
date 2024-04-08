@@ -226,4 +226,5 @@ Checkliste (active ...) (completed: 0 / ...)
     - GrassFlyingStart, GrassFlyingCenter, GrassFlyingEnd - check
     - GrassFlying - check
 
-    - 
+    - Knight Body, Knight attack range ...
+    - Dino body, Dino attack range ...
