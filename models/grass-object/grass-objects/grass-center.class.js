@@ -19,4 +19,19 @@ class GrassCenter extends GrassObject {
     get xRight() {
         return this.x + this.width;
     }
+
+
+    get yTop() {
+        return this.y + 8;
+    }
+
+
+    get yCenter() {
+        return this.y + 36;
+    }
+
+
+    get yBottom() {
+        return this.y + this.height;
+    }
 }
