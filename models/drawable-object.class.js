@@ -86,12 +86,12 @@ class DrawableObject extends CoordinateSystem {
         }
 
 
-        if (this instanceof GrassStart) {
+        if (this instanceof GrassFlying) {
             // body + center line
             ctx.beginPath();
             ctx.lineWidth = '1';
             ctx.strokeStyle = 'yellow';
-            ctx.rect(this.x + 8, this.y + 8, 56, 56);
+            ctx.rect(this.x + 8, this.y + 8, 48, 44);
             ctx.stroke();
         }
 

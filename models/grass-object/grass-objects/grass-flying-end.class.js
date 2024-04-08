@@ -12,11 +12,26 @@ class GrassFlyingEnd extends GrassObject {
 
 
     get xCenter() {
-        return this.x + this.width / 2;
+        return this.x + (this.width - 8) / 2;
     }
 
 
     get xRight() {
-        return this.x + this.width - 20;
+        return this.x + this.width - 8;
+    }
+
+
+    get yTop() {
+        return this.y + 8;
+    }
+
+
+    get yCenter() {
+        return this.y + 36;
+    }
+
+
+    get yBottom() {
+        return this.y + this.height - 8;
     }
 }
