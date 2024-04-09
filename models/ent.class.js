@@ -29,55 +29,33 @@ class Ent extends MoveableObject {
     }
 
 
-    get xLeft() {
-        return this.x + 4 - 16;
+    get xCenter() {
+        return this.x + 116;    // Edit flip image or this!!!
     }
 
 
-    get xCenter() {
-        return this.x + 52;
+    get xLeft() {
+        return this.x + 76;
     }
 
 
     get xRight() {
-        return this.x + 100 - 32;
-    }
-
-
-    get yTop() {
-        return this.y + 44;
+        return this.x + 156;
     }
 
 
     get yCenter() {
-        return this.y + 66;
+        return this.y + 132;
     }
 
 
-    get yBottom() {
+    get yTop() {
         return this.y + 88;
     }
 
 
-    get xLeftAttack() {
-        return (this.otherDirection) ? this.xCenter - 44 - 16 : this.xCenter + 44;
-        // return this.x + 96;
-    }
-
-
-    get xRightAttack() {
-        return (this.otherDirection) ? this.xCenter - 72 - 16 : this.xCenter + 72;
-        // return this.x + 124;
-    }
-
-
-    get yTopAttack() {
-        return this.y + 52;
-    }
-
-
-    get yBottomAttack() {
-        return this.y + 80;
+    get yBottom() {
+        return this.y + 176;
     }
 
 

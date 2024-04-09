@@ -124,6 +124,7 @@ Tipp
 
   Current Task
   ------------
+    - Think about mirror translate.
     - dino hurt, death
     - dino patrolling xPoints
     - array Enemy

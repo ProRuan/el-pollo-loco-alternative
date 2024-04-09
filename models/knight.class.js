@@ -155,9 +155,15 @@ class Knight extends MoveableObject {
             }
             if (this.isKey('keydown', 'keyQ')) {
                 this.setOtherDirection(true);
+                this.world.dino.otherDirection = true;
+                this.world.ent.otherDirection = true;
+                this.world.spider.otherDirection = true;
             }
             if (this.isKey('keydown', 'keyE')) {
                 this.setOtherDirection(false);
+                this.world.dino.otherDirection = false;
+                this.world.ent.otherDirection = false;
+                this.world.spider.otherDirection = false;
             }
             if (this.isKey('keydown', 'keyF') && this.world.bomb === undefined) {
                 this.world.bomb = new Bomb((world.hero.x - 40) / 64, (540 - world.hero.y + 17) / 64);

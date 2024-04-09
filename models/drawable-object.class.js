@@ -80,7 +80,7 @@ class DrawableObject extends CoordinateSystem {
             ctx.lineWidth = '1';
             ctx.strokeStyle = 'blue';
             // ctx.rect(this.x, this.y, this.width, this.height);
-            // ctx.rect(this.x + 44, this.y + 60, 0, 48);    // centerLine: x + 44, y + 60, 32, 48
+            ctx.rect(this.x + 44, this.y + 60, 0, 48);    // centerLine: x + 44, y + 60, 32, 48
             // ctx.rect(this.x + 28, this.y + 64, 32, 48);    // border: x + 28, y + 54, 32, 56
             ctx.stroke();
         }
@@ -103,7 +103,7 @@ class DrawableObject extends CoordinateSystem {
             ctx.lineWidth = '1';
             ctx.strokeStyle = 'blue';
             // ctx.rect(this.x, this.y, this.width, this.height);
-            // ctx.rect(this.x + 52, this.y + 44, 0, 44);
+            ctx.rect(this.x + 52, this.y + 44, 0, 44);
             // ctx.rect(this.x + 4, this.y + 44, 96, 44);    // border: x + 28, y + 54, 32, 56
             ctx.stroke();
         }
@@ -115,6 +115,48 @@ class DrawableObject extends CoordinateSystem {
             ctx.lineWidth = '1';
             ctx.strokeStyle = 'red';
             // ctx.rect(this.x + 96, this.y + 52, 28, 28);    // border: x + 28, y + 54, 32, 56
+            ctx.stroke();
+        }
+
+
+        if (this instanceof Ent) {
+            // body + center line
+            ctx.beginPath();
+            ctx.lineWidth = '1';
+            ctx.strokeStyle = 'blue';
+            // ctx.rect(this.x + 116, this.y, 0, this.height);
+            ctx.rect(this.x + 76, this.y + 88, 80, 88);
+            ctx.stroke();
+        }
+
+
+        if (this instanceof Ent) {
+            // body + center line
+            ctx.beginPath();
+            ctx.lineWidth = '1';
+            ctx.strokeStyle = 'red';
+            // ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
+
+
+        if (this instanceof Spider) {
+            // body + center line
+            ctx.beginPath();
+            ctx.lineWidth = '1';
+            ctx.strokeStyle = 'blue';
+            // ctx.rect(this.x + 64, this.y, 0, this.height);
+            ctx.rect(this.x + 40, this.y + 44, 48, + 40);
+            ctx.stroke();
+        }
+
+
+        if (this instanceof Spider) {
+            // body + center line
+            ctx.beginPath();
+            ctx.lineWidth = '1';
+            ctx.strokeStyle = 'red';
+            // ctx.rect(this.x, this.y, this.width, this.height);
             ctx.stroke();
         }
 

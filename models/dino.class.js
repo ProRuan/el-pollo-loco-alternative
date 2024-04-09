@@ -34,7 +34,7 @@ class Dino extends MoveableObject {
 
 
     get xCenter() {
-        return this.x + 52;
+        return this.x + 52;    // Edit flipImage() or this!!!
     }
 
 

@@ -161,6 +161,7 @@ class CharacterInfo extends DrawableObject {
                 let x = (93 + this.staminaPoints.length * 1) / 64;
                 let staminaPoint = new StaminaPoint(x, 7.3125);
                 this.staminaPoints.push(staminaPoint);
+                this.staminaCounter = this.staminaPoints.length;
             }
         }, 16);
     }

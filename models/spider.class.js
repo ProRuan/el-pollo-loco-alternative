@@ -19,7 +19,7 @@ class Spider extends MoveableObject {
 
 
     constructor() {
-        super(12.25, 0.20);    // Please verfiy!!!
+        super(12.25, 0.1875);    // Please verfiy!!!
         this.setCover('spider');
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
@@ -28,18 +28,23 @@ class Spider extends MoveableObject {
     }
 
 
-    get xLeft() {
-        return this.x + 4 - 16;
+    get xCenter() {
+        return this.x + 64;
     }
 
 
-    get xCenter() {
-        return this.x + 52;
+    get xLeft() {
+        return this.x + 40;
     }
 
 
     get xRight() {
-        return this.x + 100 - 32;
+        return this.x + 88;
+    }
+
+
+    get yCenter() {
+        return this.y + 64;
     }
 
 
@@ -48,35 +53,8 @@ class Spider extends MoveableObject {
     }
 
 
-    get yCenter() {
-        return this.y + 66;
-    }
-
-
     get yBottom() {
-        return this.y + 88;
-    }
-
-
-    get xLeftAttack() {
-        return (this.otherDirection) ? this.xCenter - 44 - 16 : this.xCenter + 44;
-        // return this.x + 96;
-    }
-
-
-    get xRightAttack() {
-        return (this.otherDirection) ? this.xCenter - 72 - 16 : this.xCenter + 72;
-        // return this.x + 124;
-    }
-
-
-    get yTopAttack() {
-        return this.y + 52;
-    }
-
-
-    get yBottomAttack() {
-        return this.y + 80;
+        return this.y + 84;
     }
 
 
