@@ -23,8 +23,8 @@ class Spider extends MoveableObject {
         this.setCover('spider');
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
-        // this.animate();
-        // this.applyGravity();
+        this.animate();
+        this.applyGravity();
     }
 
 
@@ -110,7 +110,7 @@ class Spider extends MoveableObject {
             //     this.patrol();
             // }
 
-
+            
             if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
                 let currentTime = new Date().getTime();
                 if (currentTime - this.lastHit > 500) {

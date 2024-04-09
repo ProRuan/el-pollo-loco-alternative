@@ -24,8 +24,8 @@ class Ent extends MoveableObject {
         this.setCover('ent');
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
-        // this.animate();
-        // this.applyGravity();
+        this.animate();
+        this.applyGravity();
     }
 
 
