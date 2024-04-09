@@ -1,12 +1,8 @@
 class Dino extends MoveableObject {
     directory = 'img/enemies/dino/';
     flipBook = FLIP_BOOK_DINO;
-    speed = 128 / 60;
-    speedExtraAttack = 0;
-    speedRun = 256 / 60;
+    speed = 64 / 60;
     energy = 100;
-
-    coins = 0;
 
 
     groundLevel = 484;
@@ -18,9 +14,11 @@ class Dino extends MoveableObject {
     yStairwayMin = 272 + 100;
     climbing = false;
 
+    startTime = new Date().getTime();
+
 
     constructor() {
-        super(7.4375, 0.25);    // Please verfiy!!!
+        super(12.75, 0.25);    // Please verfiy!!!
         this.setCover('dino');
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
@@ -66,7 +64,7 @@ class Dino extends MoveableObject {
 
 
     get xRightAttack() {
-        return (this.otherDirection) ? this.xCenter - 72 - 16 : this.xCenter + 72;
+        return (this.otherDirection) ? this.xCenter - 72 - 4 : this.xCenter + 72 + 4;
         // return this.x + 124;
     }
 
@@ -78,6 +76,40 @@ class Dino extends MoveableObject {
 
     get yBottomAttack() {
         return this.y + 80;
+    }
+
+
+    attack() {
+        if (this.isSubtending(world.hero)) {
+            // console.log('bite');
+            this.walking = false;
+            this.x = this.x;
+            return true;
+        }
+    }
+
+
+    walk() {
+        (this.otherDirection) ? this.x -= this.speed : this.x += this.speed;
+    }
+
+
+    patrol() {
+        this.currentTime = new Date().getTime();
+        if ((this.currentTime - this.startTime) % 40000 > 20000) {
+            this.otherDirection = false;
+        } else {
+            this.otherDirection = true;
+        }
+
+        if ((this.currentTime - this.startTime) % 4000 > 2000) {
+            this.walking = true;
+            this.walk();
+            // console.log('walking', (this.currentTime - this.startTime) % 4000);
+        } else {
+            this.walking = false;
+            // console.log('idling', (this.currentTime - this.startTime) % 4000);
+        }
     }
 
 
@@ -93,18 +125,29 @@ class Dino extends MoveableObject {
     animate() {
         setInterval(() => {
             // console.log('dino: ', this.yBottom);
+            this.attack();
+            if (!this.attack()) {
+                this.patrol();
+            }
+
 
 
 
             this.isOnTile();
-            if (this.isSubtending(world.hero)) {
-                console.log('bite');
-            }
+            // this.attack();
         }, 1000 / 60);
 
 
         setInterval(() => {
-            this.playAnimation(FLIP_BOOK_DINO.ATTACK);
+            if (this.attack()) {
+                this.playAnimation(FLIP_BOOK_DINO.ATTACK);
+            } else if (this.walking) {
+                this.playAnimation(FLIP_BOOK_DINO.WALK);
+            } else {
+                this.playAnimation(FLIP_BOOK_DINO.IDLE);
+            }
+
+            this.patrol();
         }, 100);
     }
 
@@ -131,13 +174,13 @@ class Dino extends MoveableObject {
         } else {
             this.grounded = false;
             this.groundLevel = 650;
-            if (this.otherDirection && !world.level.previousLevelEndOtherDirection && this.yBottom > 482) {
-                world.level.X_LEVEL_START = this.xLeft - 52;
-                world.level.previousLevelEndOtherDirection = true;
-            } else if (!world.level.previousLevelEnd && this.yBottom > 482) {
-                world.level.X_LEVEL_END = this.xLeft + 20;
-                world.level.previousLevelEnd = true;
-            }
+            // if (this.otherDirection && !world.level.previousLevelEndOtherDirection && this.yBottom > 482) {
+            //     world.level.X_LEVEL_START = this.xLeft - 52;
+            //     world.level.previousLevelEndOtherDirection = true;
+            // } else if (!world.level.previousLevelEnd && this.yBottom > 482) {
+            //     world.level.X_LEVEL_END = this.xLeft + 20;
+            //     world.level.previousLevelEnd = true;
+            // }
         }
     }
 
