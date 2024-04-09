@@ -21,6 +21,18 @@ const DINO_SOURCES = [
 ];
 
 
+const ENT_DIRECTORY = 'enemies/ent/';
+const ENT_SOURCES = [
+    'attack5', 'death7', 'hurt3', 'idle4', 'walk6'
+];
+
+
+const SPIDER_DIRECTORY = 'enemies/spider/';
+const SPIDER_SOURCES = [
+    'attack3', 'death4', 'hurt3', 'idle4', 'walk6', 'web5'
+];
+
+
 const SHAMAN_DIRECTORY = 'bosses/shaman/';
 const SHAMAN_SOURCES = [
     'Anger5', 'Attack7', 'Death6', 'Hurt2', 'Idle4',

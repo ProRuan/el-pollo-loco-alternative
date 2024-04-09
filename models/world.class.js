@@ -7,6 +7,8 @@ class World {
 
     hero = new Knight();
     dino = new Dino();
+    ent = new Ent();
+    spider = new Spider();
     endboss = new Shaman();
     // bird = new Bird(3.75, 7.415);
     // bomb = new Bomb(3.75, 3);
@@ -128,6 +130,8 @@ class World {
         // this.addToMap(this.character);
 
         this.addToMap(this.dino);
+        this.addToMap(this.ent);
+        this.addToMap(this.spider);
         // this.addToMap(this.endboss);
         this.addToMap(this.hero);
 

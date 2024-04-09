@@ -1,6 +1,6 @@
-class Dino extends MoveableObject {
-    directory = 'img/enemies/dino/';
-    flipBook = FLIP_BOOK_DINO;
+class Ent extends MoveableObject {
+    directory = 'img/enemies/ent/';
+    flipBook = FLIP_BOOK_ENT;
     speed = 64 / 60;
     energy = 100;
 
@@ -19,12 +19,13 @@ class Dino extends MoveableObject {
 
 
     constructor() {
-        super(7.75, 0.25);    // Please verfiy!!!
-        this.setCover('dino');
+        super(10.25, 1.625);    // Please verfiy!!!
+        this.setSize(256);
+        this.setCover('ent');
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
-        this.animate();
-        this.applyGravity();
+        // this.animate();
+        // this.applyGravity();
     }
 
 
@@ -125,7 +126,7 @@ class Dino extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            // console.log('dino: ', this.yBottom);
+            // console.log('ent: ', this.yBottom);
 
             // this.attack();
             // if (!this.attack()) {
@@ -151,7 +152,7 @@ class Dino extends MoveableObject {
             if (this.dying) {
                 if (!this.dead) {
                     this.currentImage = 0;
-                    this.playAnimationOnce(FLIP_BOOK_DINO.DEATH);
+                    this.playAnimationOnce(FLIP_BOOK_ENT.DEATH);
                     this.dead = true;
                     // splice!!!
                 }
@@ -163,16 +164,16 @@ class Dino extends MoveableObject {
                         this.paralysed = false;
                     }, 400);
                 }
-                this.playAnimation(FLIP_BOOK_DINO.HURT);
+                this.playAnimation(FLIP_BOOK_ENT.HURT);
                 if (this.energy <= 0) {
                     this.dying = true;
                 }
             } else if (this.attack()) {
-                this.playAnimation(FLIP_BOOK_DINO.ATTACK);
+                this.playAnimation(FLIP_BOOK_ENT.ATTACK);
             } else if (this.walking) {
-                this.playAnimation(FLIP_BOOK_DINO.WALK);
+                this.playAnimation(FLIP_BOOK_ENT.WALK);
             } else {
-                this.playAnimation(FLIP_BOOK_DINO.IDLE);
+                this.playAnimation(FLIP_BOOK_ENT.IDLE);
             }
         }, 100);
     }
