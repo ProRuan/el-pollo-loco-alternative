@@ -15,10 +15,11 @@ class Dino extends MoveableObject {
     climbing = false;
 
     startTime = new Date().getTime();
+    lastHit = 0;
 
 
     constructor() {
-        super(12.75, 0.25);    // Please verfiy!!!
+        super(7.75, 0.25);    // Please verfiy!!!
         this.setCover('dino');
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
@@ -28,7 +29,7 @@ class Dino extends MoveableObject {
 
 
     get xLeft() {
-        return this.x + 4;
+        return this.x + 4 - 16;
     }
 
 
@@ -38,7 +39,7 @@ class Dino extends MoveableObject {
 
 
     get xRight() {
-        return this.x + 100;
+        return this.x + 100 - 32;
     }
 
 
@@ -64,7 +65,7 @@ class Dino extends MoveableObject {
 
 
     get xRightAttack() {
-        return (this.otherDirection) ? this.xCenter - 72 - 4 : this.xCenter + 72 + 4;
+        return (this.otherDirection) ? this.xCenter - 72 - 16 : this.xCenter + 72;
         // return this.x + 124;
     }
 
@@ -125,29 +126,54 @@ class Dino extends MoveableObject {
     animate() {
         setInterval(() => {
             // console.log('dino: ', this.yBottom);
-            this.attack();
-            if (!this.attack()) {
-                this.patrol();
+
+            // this.attack();
+            // if (!this.attack()) {
+            //     this.patrol();
+            // }
+
+
+            if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
+                let currentTime = new Date().getTime();
+                if (currentTime - this.lastHit > 500) {
+                    this.energy -= 10;
+                    console.log(this.energy);
+                    this.lastHit = currentTime;
+                }
             }
 
 
-
-
             this.isOnTile();
-            // this.attack();
         }, 1000 / 60);
 
 
         setInterval(() => {
-            if (this.attack()) {
+            if (this.dying) {
+                if (!this.dead) {
+                    this.currentImage = 0;
+                    this.playAnimationOnce(FLIP_BOOK_DINO.DEATH);
+                    this.dead = true;
+                    // splice!!!
+                }
+            } else if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
+                if (!this.paralysed) {
+                    this.currentImage = 0;
+                    this.paralysed = true;
+                    setTimeout(() => {
+                        this.paralysed = false;
+                    }, 400);
+                }
+                this.playAnimation(FLIP_BOOK_DINO.HURT);
+                if (this.energy <= 0) {
+                    this.dying = true;
+                }
+            } else if (this.attack()) {
                 this.playAnimation(FLIP_BOOK_DINO.ATTACK);
             } else if (this.walking) {
                 this.playAnimation(FLIP_BOOK_DINO.WALK);
             } else {
                 this.playAnimation(FLIP_BOOK_DINO.IDLE);
             }
-
-            this.patrol();
         }, 100);
     }
 

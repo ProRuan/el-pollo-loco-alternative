@@ -91,17 +91,17 @@ class Knight extends MoveableObject {
 
 
     attack() {    // add parameter enemy!!!
-        return new Sword(this).attack(world.endboss);
+        return new Sword(this).attack(world.dino);
     }
 
 
     attackWalk() {
-        return new Sword(this).attackWalk(world.endboss);
+        return new Sword(this).attackWalk(world.dino);
     }
 
 
     attackExtra() {
-        return new Sword(this).attackExtra(world.endboss);
+        return new Sword(this).attackExtra(world.dino);
     }
 
 
@@ -175,6 +175,7 @@ class Knight extends MoveableObject {
             if (this.isKey('keydown', 'keyA')) {
                 this.world.characterInfo.staminaCounter -= 1;
                 this.staminaPoints.splice(this.staminaPoints.length - 1, 1);
+                this.attack();
             }
             if (this.isKey('keydown', 'keyD')) {
                 this.world.characterInfo.energyCounter -= 1;
@@ -286,60 +287,60 @@ class Knight extends MoveableObject {
                 //     }
                 // } else
 
-                if (world.dino.attack()) {
-                    if (!this.isHit) {
-                        console.log('hit');
-                        this.currentImage = 0;
-                        this.isHit = true;
-                        this.energy -= 20;
-                        this.world.characterInfo.hpCounter -= 20;
-                        this.hpPoints.splice(this.hpPoints.length - 20, 20);
-                        this.playAnimationOnce(FLIP_BOOK_HERO.HURT);
-                        setTimeout(() => {
-                            this.isHit = false;
-                        }, 500);
-                    }
-                } else
+                // if (world.dino.attack()) {
+                //     if (!this.isHit) {
+                //         console.log('hit');
+                //         this.currentImage = 0;
+                //         this.isHit = true;
+                //         this.energy -= 20;
+                //         this.world.characterInfo.hpCounter -= 20;
+                //         this.hpPoints.splice(this.hpPoints.length - 20, 20);
+                //         this.playAnimationOnce(FLIP_BOOK_HERO.HURT);
+                //         setTimeout(() => {
+                //             this.isHit = false;
+                //         }, 500);
+                //     }
+                // } else
 
-                    if (this.isKey('keydown', 'arrowUp', 'arrowDown') && this.climbing) {
-                        this.playAnimation(FLIP_BOOK_HERO.CLIMB);    // still to edit
-                    } else if (this.isKey('keydown', 'keyD')) {
-                        this.playAnimation(FLIP_BOOK_HERO.EXTRA_ATTACK);
-                        this.idleDelay = new Date().getTime();
-                    } else if (this.isJumpStart && this.speedY > 0) {
-                        this.playAnimationJumpStart(FLIP_BOOK_HERO.JUMP);
-                        this.isJumpStart = false;
-                    } else if (this.isJumping && this.speedY > 0) {
-                        this.loadImage(FLIP_BOOK_HERO.JUMP[2]);
-                    } else if (this.isFallStart && this.speedY <= 0) {
-                        this.playAnimationFallStart(FLIP_BOOK_HERO.JUMP);
-                        this.isJumping = false;
-                        this.isFallStart = false;
-                    } else if (this.isFalling && this.speedY < 0) {
-                        this.loadImage(FLIP_BOOK_HERO.JUMP[5]);
-                    } else if (this.isFalling && this.speedY == 0) {
-                        this.loadImage(FLIP_BOOK_HERO.JUMP[6]);
-                        this.isFalling = false;
-                    } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
-                        this.playAnimation(FLIP_BOOK_HERO.RUN_ATTACK);
-                        this.idleDelay = new Date().getTime();
-                    } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight')) {
-                        this.playAnimation(FLIP_BOOK_HERO.RUN);
-                        this.idleDelay = new Date().getTime();
-                    } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
-                        this.playAnimation(FLIP_BOOK_HERO.WALK_ATTACK);
-                        this.idleDelay = new Date().getTime();
-                    } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isPushing()) {
-                        this.playAnimation(FLIP_BOOK_HERO.PUSH);
-                        this.idleDelay = new Date().getTime();
-                    } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight')) {
-                        this.playAnimation(FLIP_BOOK_HERO.WALK);
-                        this.idleDelay = new Date().getTime();
-                    } else if (this.isKey('keydown', 'keyA')) {
-                        this.playAnimation(FLIP_BOOK_HERO.ATTACK);
-                    } else if (!keyboard.keydown) {
-                        this.loadImage(FLIP_BOOK_HERO.cover);
-                    }
+                if (this.isKey('keydown', 'arrowUp', 'arrowDown') && this.climbing) {
+                    this.playAnimation(FLIP_BOOK_HERO.CLIMB);    // still to edit
+                } else if (this.isKey('keydown', 'keyD')) {
+                    this.playAnimation(FLIP_BOOK_HERO.EXTRA_ATTACK);
+                    this.idleDelay = new Date().getTime();
+                } else if (this.isJumpStart && this.speedY > 0) {
+                    this.playAnimationJumpStart(FLIP_BOOK_HERO.JUMP);
+                    this.isJumpStart = false;
+                } else if (this.isJumping && this.speedY > 0) {
+                    this.loadImage(FLIP_BOOK_HERO.JUMP[2]);
+                } else if (this.isFallStart && this.speedY <= 0) {
+                    this.playAnimationFallStart(FLIP_BOOK_HERO.JUMP);
+                    this.isJumping = false;
+                    this.isFallStart = false;
+                } else if (this.isFalling && this.speedY < 0) {
+                    this.loadImage(FLIP_BOOK_HERO.JUMP[5]);
+                } else if (this.isFalling && this.speedY == 0) {
+                    this.loadImage(FLIP_BOOK_HERO.JUMP[6]);
+                    this.isFalling = false;
+                } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
+                    this.playAnimation(FLIP_BOOK_HERO.RUN_ATTACK);
+                    this.idleDelay = new Date().getTime();
+                } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight')) {
+                    this.playAnimation(FLIP_BOOK_HERO.RUN);
+                    this.idleDelay = new Date().getTime();
+                } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
+                    this.playAnimation(FLIP_BOOK_HERO.WALK_ATTACK);
+                    this.idleDelay = new Date().getTime();
+                } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isPushing()) {
+                    this.playAnimation(FLIP_BOOK_HERO.PUSH);
+                    this.idleDelay = new Date().getTime();
+                } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight')) {
+                    this.playAnimation(FLIP_BOOK_HERO.WALK);
+                    this.idleDelay = new Date().getTime();
+                } else if (this.isKey('keydown', 'keyA') && this.world.characterInfo.staminaCounter > 0) {
+                    this.playAnimation(FLIP_BOOK_HERO.ATTACK);
+                } else if (!keyboard.keydown) {
+                    this.loadImage(FLIP_BOOK_HERO.cover);
+                }
         }, 100);
     }
 

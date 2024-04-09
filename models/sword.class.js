@@ -58,7 +58,7 @@ class Sword {
 
 
     attackExtra(enemy) {
-        return this.isSubtending(enemy, this.xLeftExtraAttack, this.xRightExtraAttack, this.yTopExtraAttack, this.yBottomExtraAttack);
+        return this.isSubtending(enemy, this.xLeftAttack, this.xRightAttack, this.yTopExtraAttack, this.yBottomExtraAttack);
     }
 
 

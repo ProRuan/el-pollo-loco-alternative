@@ -144,8 +144,8 @@ class CharacterInfo extends DrawableObject {
 
     regenerateEnergy() {
         setInterval(() => {
-            if (this.energyCounter < 100 && !world.hero.isKey('keydown', 'keyD')) {
-                this.energyCounter++;
+            if (this.energyPoints.length < 100 && !world.hero.isKey('keydown', 'keyD')) {
+                // this.energyCounter++;
                 let x = (93 + this.energyPoints.length * 1) / 64;
                 let energyPoint = new EnergyPoint(x, 7.59375);
                 this.energyPoints.push(energyPoint);
@@ -156,8 +156,8 @@ class CharacterInfo extends DrawableObject {
 
     regenerateStamina() {
         setInterval(() => {
-            if (this.staminaCounter < 100 && !world.hero.isKey('keydown', 'keyA')) {
-                this.staminaCounter++;
+            if (this.staminaPoints.length < 100 && !world.hero.isKey('keydown', 'keyA')) {
+                // this.staminaCounter++;
                 let x = (93 + this.staminaPoints.length * 1) / 64;
                 let staminaPoint = new StaminaPoint(x, 7.3125);
                 this.staminaPoints.push(staminaPoint);

@@ -124,6 +124,12 @@ Tipp
 
   Current Task
   ------------
+    - dino hurt, death
+    - dino patrolling xPoints
+    - array Enemy
+    - other enemies
+    - enemy info bar
+
     - dino xAttack
     - mirror by xCenter!!!
     
