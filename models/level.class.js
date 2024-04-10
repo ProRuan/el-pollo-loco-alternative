@@ -40,20 +40,37 @@ class Level {
                 let layer = new Layer(background, j);
                 this.BACKGROUND.push(layer);
             }
-            let cloud = new Cloud(background);
-            this.CLOUDS.push(cloud);
-            this.loadLastCloud(i);
+            // let cloud = new Cloud(background);
+            // this.CLOUDS.push(cloud);
+            // this.loadLastCloud(i);
         }
     }
 
 
-    loadLastCloud(i) {
-        if (i == LEVEL_SIZE - 1) {
-            let t = ++i * this.translation / 64;
+    // loadLastCloud(i) {
+    //     if (i == LEVEL_SIZE - 1) {
+    //         let t = ++i * this.translation / 64;
+    //         let background = new Background(t);
+    //         let cloud = new Cloud(background);
+    //         this.CLOUDS.push(cloud);
+    //     }
+    // }
+
+
+    loadClouds() {
+        for (let i = 0; i < LEVEL_SIZE + 1; i++) {
+            let t = i * this.translation / 64;
             let background = new Background(t);
             let cloud = new Cloud(background);
             this.CLOUDS.push(cloud);
         }
+    }
+
+
+    loadCloud(n) {
+        let background = new Background(n);
+        let cloud = new Cloud(background);
+        this.CLOUDS.push(cloud);
     }
 
 

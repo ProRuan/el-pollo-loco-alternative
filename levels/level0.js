@@ -5,7 +5,8 @@ initLevel1();
 
 function initLevel1() {
     level1 = new Level(1);
-    level1.loadBackground();    // Please review
+    level1.loadBackground();    // Please review!!!
+    level1.loadClouds();    // Please review!!!
     initSection(0);
     initSection(1);
     initSection(2);
