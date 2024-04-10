@@ -18,6 +18,7 @@ class MoveableObject extends DrawableObject {
     // energy = 100;
     // lastHit = 0;
 
+    radDispl = 0;
 
     constructor(x, y) {
         super(x, y, 128);    // anpassen!!!

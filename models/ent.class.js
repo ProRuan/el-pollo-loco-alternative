@@ -17,6 +17,8 @@ class Ent extends MoveableObject {
     startTime = new Date().getTime();
     lastHit = 0;
 
+    radDispl = 104;
+    // 10.25, 1.625
 
     constructor() {
         super(10.25, 1.625);    // Please verfiy!!!

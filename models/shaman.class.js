@@ -10,6 +10,7 @@ class Shaman extends MoveableObject {
     dying = false;
     dead = false;
 
+    radDispl = 16;
 
     constructor() {
         super(11, 2.09375);    // to edit

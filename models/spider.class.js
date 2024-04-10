@@ -17,6 +17,8 @@ class Spider extends MoveableObject {
     startTime = new Date().getTime();
     lastHit = 0;
 
+    radDispl = 64;
+    // 12.25, 0.1875
 
     constructor() {
         super(12.25, 0.1875);    // Please verfiy!!!

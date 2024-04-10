@@ -17,6 +17,8 @@ class Dino extends MoveableObject {
     startTime = new Date().getTime();
     lastHit = 0;
 
+    radDispl = 40;
+    // 7.75, 0.25
 
     constructor() {
         super(7.75, 0.25);    // Please verfiy!!!

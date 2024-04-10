@@ -129,9 +129,9 @@ class World {
         // this.addGroupToMap(this.STONES);
         // this.addToMap(this.character);
 
-        // this.addToMap(this.dino);
-        this.addToMap(this.ent);
-        this.addToMap(this.spider);
+        this.addToMap(this.dino);
+        // this.addToMap(this.ent);
+        // this.addToMap(this.spider);
         // this.addToMap(this.endboss);
         this.addToMap(this.hero);
 
@@ -202,9 +202,9 @@ class World {
     }
 
 
-    flipImage(mo) {
+    flipImage(mo) {    // set mo.object!!!
         this.ctx.save();
-        this.ctx.translate(mo.width / 2 + 24, 0);
+        this.ctx.translate(mo.width / 2 + mo.radDispl, 0);    // k + 24, d + 40
         this.ctx.scale(-1, 1);
         mo.x *= -1;
     }

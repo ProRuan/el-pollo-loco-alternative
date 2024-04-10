@@ -17,6 +17,8 @@ class Knight extends MoveableObject {
     yStairwayMin = 272 + 100;
     climbing = false;
 
+    radDispl = 24;
+    // 4.4375, 0.625
 
     constructor() {
         super(4.4375, 0.625);
@@ -158,12 +160,14 @@ class Knight extends MoveableObject {
                 this.world.dino.otherDirection = true;
                 this.world.ent.otherDirection = true;
                 this.world.spider.otherDirection = true;
+                this.world.endboss.otherDirection = true;
             }
             if (this.isKey('keydown', 'keyE')) {
                 this.setOtherDirection(false);
                 this.world.dino.otherDirection = false;
                 this.world.ent.otherDirection = false;
                 this.world.spider.otherDirection = false;
+                this.world.endboss.otherDirection = false;
             }
             if (this.isKey('keydown', 'keyF') && this.world.bomb === undefined) {
                 this.world.bomb = new Bomb((world.hero.x - 40) / 64, (540 - world.hero.y + 17) / 64);
