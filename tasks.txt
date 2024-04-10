@@ -124,7 +124,9 @@ Tipp
 
   Current Task
   ------------
-    - knight, dino, ent, spider, shaman frames ... (4/5)
+    - xCenter local + global + mirror???
+    - knight body getter ... (4/5)
+    - knight, dino, ent, spider, shaman attack getter ... (1/5)
     - knight, dino, ent, spider, shaman animations ...
 
     - dino patrolling xPoints

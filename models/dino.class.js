@@ -32,6 +32,7 @@ class Dino extends MoveableObject {
     // 500 - 548 - 576
 
     get xLeft() {
+        // return (this.otherDirection) ? this.xCenter - 48 : this.xCenter + 48;
         return (this.otherDirection) ? this.x + 4 : this.x + 4 + 104;
     }
 
@@ -42,6 +43,7 @@ class Dino extends MoveableObject {
 
 
     get xRight() {
+        // return (this.otherDirection) ? this.xCenter + 28 : this.xCenter - 28;
         return (this.otherDirection) ? this.x + 80 : this.x + 80 + 104;
     }
 
@@ -62,13 +64,13 @@ class Dino extends MoveableObject {
 
 
     get xLeftAttack() {
-        return (this.otherDirection) ? this.xCenter - 44 - 16 : this.xCenter + 44;
+        return (this.otherDirection) ? this.xCenter - 44 : this.xCenter + 44;
         // return this.x + 96;
     }
 
 
     get xRightAttack() {
-        return (this.otherDirection) ? this.xCenter - 72 - 16 : this.xCenter + 72;
+        return (this.otherDirection) ? this.xCenter - 72 : this.xCenter + 72;
         // return this.x + 124;
     }
 
