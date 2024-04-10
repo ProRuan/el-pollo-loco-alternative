@@ -11,7 +11,7 @@ const HERO_SOURCES = [
 
 const OBJECTS_DIRECTORY = 'objects_animated/';
 const OBJECTS_SOURCES = [
-    'bird8', 'bomb11', 'coin10', 'crystal10', 'heart10', 'hit_point10', 'star10', 'stone8'
+    'bird8', 'bomb11', 'coin10', 'crystal10', 'heart10', 'hit_point10', 'star10', 'stone8', 'web5'
 ];
 
 
@@ -29,7 +29,7 @@ const ENT_SOURCES = [
 
 const SPIDER_DIRECTORY = 'enemies/spider/';
 const SPIDER_SOURCES = [
-    'attack3', 'death4', 'hurt3', 'idle4', 'walk6', 'web5'
+    'attack3', 'death4', 'hurt3', 'idle4', 'walk6'
 ];
 
 

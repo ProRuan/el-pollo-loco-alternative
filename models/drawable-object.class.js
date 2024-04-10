@@ -161,6 +161,16 @@ class DrawableObject extends CoordinateSystem {
         }
 
 
+        if (this instanceof Web) {
+            // body + center line
+            ctx.beginPath();
+            ctx.lineWidth = '1';
+            ctx.strokeStyle = 'red';
+            ctx.rect(this.x + 4, this.y + 4, this.width - 8, this.height - 8);
+            ctx.stroke();
+        }
+
+
         if (this instanceof GrassCenter) {
             // body + center line
             ctx.beginPath();

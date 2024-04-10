@@ -14,6 +14,10 @@ class Spider extends MoveableObject {
     yStairwayMin = 272 + 100;
     climbing = false;
 
+    webHit = false;
+    waiting = false;
+    shot = false;
+
     startTime = new Date().getTime();
     lastHit = 0;
 
@@ -84,6 +88,9 @@ class Spider extends MoveableObject {
     }
 
 
+    // webAttack
+
+
     attack() {
         // console.log('attack');
         let enemy = world.hero;
@@ -91,16 +98,31 @@ class Spider extends MoveableObject {
         let hitLeft;
         let hitRight;
         if (this.otherDirection) {
-            hitLeft = enemy.xRight > this.xLeftAttack && this.xLeftAttack > enemy.xLeft;
-            hitRight = enemy.xRight > this.xRightAttack && this.xRightAttack > enemy.xLeft;
+            hitLeft = enemy.xRight + 512 > this.xLeftAttack && this.xLeftAttack > enemy.xLeft + 32;
+            hitRight = enemy.xRight + 512 > this.xRightAttack && this.xRightAttack > enemy.xLeft + 32;
         } else {
-            hitLeft = enemy.xLeft < this.xLeftAttack && this.xLeftAttack < enemy.xRight;
-            hitRight = enemy.xLeft < this.xRightAttack && this.xRightAttack < enemy.xRight;
+            hitLeft = enemy.xLeft - 512 < this.xLeftAttack && this.xLeftAttack < enemy.xRight - 32;
+            hitRight = enemy.xLeft - 512 < this.xRightAttack && this.xRightAttack < enemy.xRight - 32;
         }
         let hitTop = enemy.yTop < this.yTopAttack && this.yTopAttack < enemy.yBottom;
         let hitBottom = enemy.yTop < this.yBottomAttack && this.yBottomAttack < enemy.yBottom;
-        console.log(hitLeft, hitRight, hitTop, hitBottom);
+        // console.log(hitLeft, hitRight, hitTop, hitBottom);
         return (hitLeft || hitRight) && (hitTop || hitBottom);
+    }
+
+
+    throwWeb() {
+        let web = new Web(this.x / 64 + 0.5, (540 - this.y) / 64 - 1.315);
+        world.webs.push(web);
+        this.shot = true;
+        // world.web = web;
+        setTimeout(() => {
+            if (!web.webHit) {
+                world.webs.splice(0, 1);
+                this.waiting = false;
+            }
+            // delete world.web;
+        }, 3000);
     }
 
 
@@ -147,6 +169,12 @@ class Spider extends MoveableObject {
             // }
 
 
+            if (!this.waiting && this.attack()) {
+                this.throwWeb();
+                this.waiting = true;
+            }
+
+
             if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
                 let currentTime = new Date().getTime();
                 if (currentTime - this.lastHit > 500) {
@@ -181,8 +209,9 @@ class Spider extends MoveableObject {
                 if (this.energy <= 0) {
                     this.dying = true;
                 }
-            } else if (this.attack()) {
-                this.playAnimation(FLIP_BOOK_SPIDER.ATTACK);
+            } else if (this.shot) {    // improve shot by interval
+                this.shot = false;
+                this.playAnimationOnce(FLIP_BOOK_SPIDER.ATTACK);
             } else if (this.walking) {
                 this.playAnimation(FLIP_BOOK_SPIDER.WALK);
             } else {

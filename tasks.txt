@@ -124,6 +124,11 @@ Tipp
 
   Current Task
   ------------
+    - enemy array
+    - enemy status bars
+    - review class status bar
+    - build world
+
     - knight + sword body getter (0/2)
     - knight + shaman attack getter (0/2)
     - knight + shaman animations (0/2)

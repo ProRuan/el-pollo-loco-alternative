@@ -21,6 +21,7 @@ class World {
 
 
     // temp
+    webs = [];
     blade = new Blade(10.75, -0.5);
     blades = [new Blade(10.57, -0.5)];
     fire = new Fire(8, -0.5);
@@ -132,6 +133,7 @@ class World {
         // this.addToMap(this.dino);
         // this.addToMap(this.ent);
         this.addToMap(this.spider);
+        this.addGroupToMap(this.webs);
         // this.addToMap(this.endboss);
         this.addToMap(this.hero);
 
