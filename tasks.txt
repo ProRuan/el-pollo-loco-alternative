@@ -125,8 +125,8 @@ Tipp
   Current Task
   ------------
     - knight + sword body getter (0/2)
-    - knight, dino, ent, spider, shaman attack getter ... (1/5)
-    - knight, dino, ent, spider, shaman animations ...
+    - knight + shaman attack getter (0/2)
+    - knight + shaman animations (0/2)
 
     - dino patrolling xPoints
     - array Enemy

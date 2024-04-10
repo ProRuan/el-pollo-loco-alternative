@@ -130,8 +130,8 @@ class World {
         // this.addToMap(this.character);
 
         // this.addToMap(this.dino);
-        this.addToMap(this.ent);
-        // this.addToMap(this.spider);
+        // this.addToMap(this.ent);
+        this.addToMap(this.spider);
         // this.addToMap(this.endboss);
         this.addToMap(this.hero);
 

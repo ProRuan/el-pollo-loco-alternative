@@ -156,7 +156,7 @@ class DrawableObject extends CoordinateSystem {
             ctx.beginPath();
             ctx.lineWidth = '1';
             ctx.strokeStyle = 'red';
-            // ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.rect(this.x + 88, this.y + 60, 12, 20);
             ctx.stroke();
         }
 

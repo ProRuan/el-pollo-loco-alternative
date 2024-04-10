@@ -62,13 +62,45 @@ class Spider extends MoveableObject {
     }
 
 
+    get xLeftAttack() {
+        return (this.otherDirection) ? this.xCenter - 24 : this.xCenter + 24;
+        // return this.x + 96;
+    }
+
+
+    get xRightAttack() {
+        return (this.otherDirection) ? this.xCenter - 36 : this.xCenter + 36;
+        // return this.x + 124;
+    }
+
+
+    get yTopAttack() {
+        return this.y + 60;
+    }
+
+
+    get yBottomAttack() {
+        return this.y + 80;
+    }
+
+
     attack() {
-        if (this.isSubtending(world.hero)) {
-            // console.log('bite');
-            this.walking = false;
-            this.x = this.x;
-            return true;
+        // console.log('attack');
+        let enemy = world.hero;
+        // console.log(enemy.xLeft, enemy.xRight, this.xLeftAttack, this.xRightAttack);
+        let hitLeft;
+        let hitRight;
+        if (this.otherDirection) {
+            hitLeft = enemy.xRight > this.xLeftAttack && this.xLeftAttack > enemy.xLeft;
+            hitRight = enemy.xRight > this.xRightAttack && this.xRightAttack > enemy.xLeft;
+        } else {
+            hitLeft = enemy.xLeft < this.xLeftAttack && this.xLeftAttack < enemy.xRight;
+            hitRight = enemy.xLeft < this.xRightAttack && this.xRightAttack < enemy.xRight;
         }
+        let hitTop = enemy.yTop < this.yTopAttack && this.yTopAttack < enemy.yBottom;
+        let hitBottom = enemy.yTop < this.yBottomAttack && this.yBottomAttack < enemy.yBottom;
+        console.log(hitLeft, hitRight, hitTop, hitBottom);
+        return (hitLeft || hitRight) && (hitTop || hitBottom);
     }
 
 

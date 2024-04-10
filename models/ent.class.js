@@ -86,29 +86,21 @@ class Ent extends MoveableObject {
 
 
     attack() {
-        console.log('attack');
-
+        // console.log('attack');
         let enemy = world.hero;
-        console.log(enemy.xLeft, enemy.xRight, this.xLeftAttack, this.xRightAttack);
-        let hitLeft = this.xLeftAttack > enemy.xLeft && enemy.xLeft > this.xRightAttack;
-        let hitRight = this.xLeftAttack > enemy.xRight && enemy.xRight > this.xRightAttack;
+        // console.log(enemy.xLeft, enemy.xRight, this.xLeftAttack, this.xRightAttack);
+        let hitLeft;
+        let hitRight;
+        if (this.otherDirection) {
+            hitLeft = this.xLeftAttack > enemy.xLeft && enemy.xLeft > this.xRightAttack;
+            hitRight = this.xLeftAttack > enemy.xRight && enemy.xRight > this.xRightAttack;
+        } else {
+            hitLeft = this.xLeftAttack < enemy.xLeft && enemy.xLeft < this.xRightAttack;
+            hitRight = this.xLeftAttack < enemy.xRight && enemy.xRight < this.xRightAttack;
+        }
         let hitTop = this.yTopAttack < enemy.yTop && enemy.yTop < this.yBottomAttack;
         let hitBottom = this.yTopAttack < enemy.yBottom && enemy.yBottom < this.yBottomAttack;
-        console.log(hitLeft, hitRight, hitTop, hitBottom);
-        return (hitLeft || hitRight) && (hitTop || hitBottom);
-    }
-
-
-    attackTest() {
-        console.log('attack');
-
-        let enemy = world.hero;
-        console.log(enemy.xLeft, enemy.xRight, this.xLeftAttack, this.xRightAttack);
-        let hitLeft = this.xLeftAttack < enemy.xLeft && enemy.xLeft < this.xRightAttack;
-        let hitRight = this.xLeftAttack < enemy.xRight && enemy.xRight < this.xRightAttack;
-        let hitTop = this.yTopAttack < enemy.yTop && enemy.yTop < this.yBottomAttack;
-        let hitBottom = this.yTopAttack < enemy.yBottom && enemy.yBottom < this.yBottomAttack;
-        console.log(hitLeft, hitRight, hitTop, hitBottom);
+        // console.log(hitLeft, hitRight, hitTop, hitBottom);
         return (hitLeft || hitRight) && (hitTop || hitBottom);
     }
 
