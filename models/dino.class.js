@@ -257,6 +257,7 @@ class Dino extends MoveableObject {
         let hitRight = enemy.xLeft < this.xRightAttack && this.xRightAttack < enemy.xRight;
         let hitTop = enemy.yTop < this.yTopAttack && this.yTopAttack < enemy.yBottom;
         let hitBottom = enemy.yTop < this.yBottomAttack && this.yBottomAttack < enemy.yBottom;
+        // console.log('dino: ', hitLeft, hitRight, hitTop, hitBottom);
         return (hitLeft || hitRight) && (hitTop || hitBottom);
     }
 

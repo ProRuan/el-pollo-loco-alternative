@@ -124,7 +124,6 @@ Tipp
 
   Current Task
   ------------
-    - xCenter local + global + mirror???
     - knight + sword body getter (0/2)
     - knight, dino, ent, spider, shaman attack getter ... (1/5)
     - knight, dino, ent, spider, shaman animations ...

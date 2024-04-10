@@ -46,13 +46,13 @@ class Ent extends MoveableObject {
     }
 
 
-    get yCenter() {
-        return this.y + 132;
+    get yTop() {
+        return this.y + 88;
     }
 
 
-    get yTop() {
-        return this.y + 88;
+    get yCenter() {
+        return this.y + 132;
     }
 
 
@@ -61,13 +61,55 @@ class Ent extends MoveableObject {
     }
 
 
+    get xLeftAttack() {
+        // return (this.otherDirection) ? this.x + 156 : this.x + 156;
+        return (this.otherDirection) ? this.xCenter - 40 : this.xCenter + 40;
+        // return this.x + 156;
+    }
+
+
+    get xRightAttack() {
+        // return (this.otherDirection) ? this.x + 228 : this.x + 228;
+        return (this.otherDirection) ? this.xCenter - 112 : this.xCenter + 112;
+        // return this.x + 228;
+    }
+
+
+    get yTopAttack() {
+        return this.y + 112;
+    }
+
+
+    get yBottomAttack() {
+        return this.y + 176;
+    }
+
+
     attack() {
-        if (this.isSubtending(world.hero)) {
-            // console.log('bite');
-            this.walking = false;
-            this.x = this.x;
-            return true;
-        }
+        console.log('attack');
+
+        let enemy = world.hero;
+        console.log(enemy.xLeft, enemy.xRight, this.xLeftAttack, this.xRightAttack);
+        let hitLeft = this.xLeftAttack > enemy.xLeft && enemy.xLeft > this.xRightAttack;
+        let hitRight = this.xLeftAttack > enemy.xRight && enemy.xRight > this.xRightAttack;
+        let hitTop = this.yTopAttack < enemy.yTop && enemy.yTop < this.yBottomAttack;
+        let hitBottom = this.yTopAttack < enemy.yBottom && enemy.yBottom < this.yBottomAttack;
+        console.log(hitLeft, hitRight, hitTop, hitBottom);
+        return (hitLeft || hitRight) && (hitTop || hitBottom);
+    }
+
+
+    attackTest() {
+        console.log('attack');
+
+        let enemy = world.hero;
+        console.log(enemy.xLeft, enemy.xRight, this.xLeftAttack, this.xRightAttack);
+        let hitLeft = this.xLeftAttack < enemy.xLeft && enemy.xLeft < this.xRightAttack;
+        let hitRight = this.xLeftAttack < enemy.xRight && enemy.xRight < this.xRightAttack;
+        let hitTop = this.yTopAttack < enemy.yTop && enemy.yTop < this.yBottomAttack;
+        let hitBottom = this.yTopAttack < enemy.yBottom && enemy.yBottom < this.yBottomAttack;
+        console.log(hitLeft, hitRight, hitTop, hitBottom);
+        return (hitLeft || hitRight) && (hitTop || hitBottom);
     }
 
 
@@ -114,6 +156,9 @@ class Ent extends MoveableObject {
             // }
 
 
+            // this.isSubtending(world.hero);
+
+
             if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
                 let currentTime = new Date().getTime();
                 if (currentTime - this.lastHit > 500) {
@@ -148,7 +193,7 @@ class Ent extends MoveableObject {
                 if (this.energy <= 0) {
                     this.dying = true;
                 }
-            } else if (this.attack()) {
+            } else if (this.attack(world.hero)) {
                 this.playAnimation(FLIP_BOOK_ENT.ATTACK);
             } else if (this.walking) {
                 this.playAnimation(FLIP_BOOK_ENT.WALK);
@@ -233,6 +278,7 @@ class Ent extends MoveableObject {
         let hitRight = enemy.xLeft < this.xRightAttack && this.xRightAttack < enemy.xRight;
         let hitTop = enemy.yTop < this.yTopAttack && this.yTopAttack < enemy.yBottom;
         let hitBottom = enemy.yTop < this.yBottomAttack && this.yBottomAttack < enemy.yBottom;
+        // console.log(this.xLeftAttack, world.hero.xCenter, this.xRightAttack);
         return (hitLeft || hitRight) && (hitTop || hitBottom);
     }
 
