@@ -103,8 +103,8 @@ class DrawableObject extends CoordinateSystem {
             ctx.lineWidth = '1';
             ctx.strokeStyle = 'blue';
             // ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.rect(this.x + 52, this.y + 44, 0, 44);
-            // ctx.rect(this.x + 4, this.y + 44, 96, 44);    // border: x + 28, y + 54, 32, 56
+            // ctx.rect(this.x + 52, this.y + 44, 0, 44);
+            // ctx.rect(this.x + 16, this.y + 44, 84, 44);    // border: x + 28, y + 54, 32, 56
             ctx.stroke();
         }
 
@@ -124,8 +124,8 @@ class DrawableObject extends CoordinateSystem {
             ctx.beginPath();
             ctx.lineWidth = '1';
             ctx.strokeStyle = 'blue';
-            ctx.rect(this.x + 116, this.y, 0, this.height);
-            // ctx.rect(this.x + 76, this.y + 88, 80, 88);
+            // ctx.rect(this.x + 116, this.y + 88, 0, 88);
+            ctx.rect(this.x + 76, this.y + 88, 80, 88);
             ctx.stroke();
         }
 
@@ -145,8 +145,8 @@ class DrawableObject extends CoordinateSystem {
             ctx.beginPath();
             ctx.lineWidth = '1';
             ctx.strokeStyle = 'blue';
-            ctx.rect(this.x + 64, this.y, 0, this.height);
-            // ctx.rect(this.x + 40, this.y + 44, 48, + 40);
+            // ctx.rect(this.x + 64, this.y + 44, 0, 40);
+            ctx.rect(this.x + 40, this.y + 44, 48, 40);
             ctx.stroke();
         }
 

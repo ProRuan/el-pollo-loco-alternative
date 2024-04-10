@@ -30,18 +30,20 @@ class Spider extends MoveableObject {
     }
 
 
+    get xLeft() {
+        return (this.otherDirection) ? this.x + 40 : this.x + 40 + 88;
+        // return this.x + 40;
+    }
+
+
     get xCenter() {
         return this.x + 64;
     }
 
 
-    get xLeft() {
-        return this.x + 40;
-    }
-
-
     get xRight() {
-        return this.x + 88;
+        return (this.otherDirection) ? this.x + 88 : this.x + 88 + 88;
+        // return this.x + 88;
     }
 
 
@@ -112,7 +114,7 @@ class Spider extends MoveableObject {
             //     this.patrol();
             // }
 
-            
+
             if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
                 let currentTime = new Date().getTime();
                 if (currentTime - this.lastHit > 500) {
@@ -135,7 +137,7 @@ class Spider extends MoveableObject {
                     this.dead = true;
                     // splice!!!
                 }
-            } else if (world.keyboard.keyA.keydown && world.characterInfo.staminaPoints.length > 0 && world.hero.attack(this)) {
+            } else if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
                 if (!this.paralysed) {
                     this.currentImage = 0;
                     this.paralysed = true;

@@ -29,19 +29,20 @@ class Dino extends MoveableObject {
         this.applyGravity();
     }
 
+    // 500 - 548 - 576
 
     get xLeft() {
-        return this.x + 4 - 16;
+        return (this.otherDirection) ? this.x + 4 : this.x + 4 + 104;
     }
 
 
     get xCenter() {
-        return this.x + 52;    // Edit flipImage() or this!!!
+        return this.x + 52;
     }
 
 
     get xRight() {
-        return this.x + 100 - 32;
+        return (this.otherDirection) ? this.x + 80 : this.x + 80 + 104;
     }
 
 
@@ -157,7 +158,7 @@ class Dino extends MoveableObject {
                     this.dead = true;
                     // splice!!!
                 }
-            } else if (world.keyboard.keyA.keydown && world.characterInfo.staminaPoints.length > 0 && world.hero.attack(this)) {
+            } else if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
                 if (!this.paralysed) {
                     this.currentImage = 0;
                     this.paralysed = true;

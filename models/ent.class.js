@@ -31,18 +31,18 @@ class Ent extends MoveableObject {
     }
 
 
-    get xCenter() {
-        return this.x + 116;    // Edit flip image or this!!!
+    get xLeft() {
+        return (this.otherDirection) ? this.x + 76 : this.x + 76 + 84;
     }
 
 
-    get xLeft() {
-        return this.x + 76;
+    get xCenter() {
+        return this.x + 116;
     }
 
 
     get xRight() {
-        return this.x + 156;
+        return (this.otherDirection) ? this.x + 156 : this.x + 156 + 84;
     }
 
 
@@ -136,7 +136,7 @@ class Ent extends MoveableObject {
                     this.dead = true;
                     // splice!!!
                 }
-            } else if (world.keyboard.keyA.keydown && world.characterInfo.staminaPoints.length > 0 && world.hero.attack(this)) {
+            } else if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
                 if (!this.paralysed) {
                     this.currentImage = 0;
                     this.paralysed = true;

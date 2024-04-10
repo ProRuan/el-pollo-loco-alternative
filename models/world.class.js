@@ -129,10 +129,10 @@ class World {
         // this.addGroupToMap(this.STONES);
         // this.addToMap(this.character);
 
-        this.addToMap(this.dino);
+        // this.addToMap(this.dino);
         // this.addToMap(this.ent);
         // this.addToMap(this.spider);
-        // this.addToMap(this.endboss);
+        this.addToMap(this.endboss);
         this.addToMap(this.hero);
 
         this.addGroupToMap(this.characterInfo.images);
