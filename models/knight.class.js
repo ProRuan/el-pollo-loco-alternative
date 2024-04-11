@@ -7,6 +7,7 @@ class Knight extends MoveableObject {
     energy = 120;
 
     coins = 0;
+    leaves = 0;
 
 
     groundLevel = 484;
@@ -213,7 +214,9 @@ class Knight extends MoveableObject {
 
 
             this.isOnTile();
-            this.collectCoinNew();
+            this.collect('LEAVES', 'leaves');
+            this.collect('COINS', 'coins');
+            // this.collectCoinNew();
             // this.collectCoin();
             this.pushStone();
             this.hit();
@@ -331,45 +334,45 @@ class Knight extends MoveableObject {
                 //     }
                 // } else
 
-                    if (this.isKey('keydown', 'arrowUp', 'arrowDown') && this.climbing) {
-                        this.playAnimation(FLIP_BOOK_HERO.CLIMB);    // still to edit
-                    } else if (this.isKey('keydown', 'keyD')) {
-                        this.playAnimation(FLIP_BOOK_HERO.EXTRA_ATTACK);
-                        this.idleDelay = new Date().getTime();
-                    } else if (this.isJumpStart && this.speedY > 0) {
-                        this.playAnimationJumpStart(FLIP_BOOK_HERO.JUMP);
-                        this.isJumpStart = false;
-                    } else if (this.isJumping && this.speedY > 0) {
-                        this.loadImage(FLIP_BOOK_HERO.JUMP[2]);
-                    } else if (this.isFallStart && this.speedY <= 0) {
-                        this.playAnimationFallStart(FLIP_BOOK_HERO.JUMP);
-                        this.isJumping = false;
-                        this.isFallStart = false;
-                    } else if (this.isFalling && this.speedY < 0) {
-                        this.loadImage(FLIP_BOOK_HERO.JUMP[5]);
-                    } else if (this.isFalling && this.speedY == 0) {
-                        this.loadImage(FLIP_BOOK_HERO.JUMP[6]);
-                        this.isFalling = false;
-                    } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
-                        this.playAnimation(FLIP_BOOK_HERO.RUN_ATTACK);
-                        this.idleDelay = new Date().getTime();
-                    } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight')) {
-                        this.playAnimation(FLIP_BOOK_HERO.RUN);
-                        this.idleDelay = new Date().getTime();
-                    } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
-                        this.playAnimation(FLIP_BOOK_HERO.WALK_ATTACK);
-                        this.idleDelay = new Date().getTime();
-                    } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isPushing()) {
-                        this.playAnimation(FLIP_BOOK_HERO.PUSH);
-                        this.idleDelay = new Date().getTime();
-                    } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight')) {
-                        this.playAnimation(FLIP_BOOK_HERO.WALK);
-                        this.idleDelay = new Date().getTime();
-                    } else if (this.isKey('keydown', 'keyA')) {
-                        this.playAnimation(FLIP_BOOK_HERO.ATTACK);
-                    } else if (!keyboard.keydown) {
-                        this.loadImage(FLIP_BOOK_HERO.cover);
-                    }
+                if (this.isKey('keydown', 'arrowUp', 'arrowDown') && this.climbing) {
+                    this.playAnimation(FLIP_BOOK_HERO.CLIMB);    // still to edit
+                } else if (this.isKey('keydown', 'keyD')) {
+                    this.playAnimation(FLIP_BOOK_HERO.EXTRA_ATTACK);
+                    this.idleDelay = new Date().getTime();
+                } else if (this.isJumpStart && this.speedY > 0) {
+                    this.playAnimationJumpStart(FLIP_BOOK_HERO.JUMP);
+                    this.isJumpStart = false;
+                } else if (this.isJumping && this.speedY > 0) {
+                    this.loadImage(FLIP_BOOK_HERO.JUMP[2]);
+                } else if (this.isFallStart && this.speedY <= 0) {
+                    this.playAnimationFallStart(FLIP_BOOK_HERO.JUMP);
+                    this.isJumping = false;
+                    this.isFallStart = false;
+                } else if (this.isFalling && this.speedY < 0) {
+                    this.loadImage(FLIP_BOOK_HERO.JUMP[5]);
+                } else if (this.isFalling && this.speedY == 0) {
+                    this.loadImage(FLIP_BOOK_HERO.JUMP[6]);
+                    this.isFalling = false;
+                } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
+                    this.playAnimation(FLIP_BOOK_HERO.RUN_ATTACK);
+                    this.idleDelay = new Date().getTime();
+                } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight')) {
+                    this.playAnimation(FLIP_BOOK_HERO.RUN);
+                    this.idleDelay = new Date().getTime();
+                } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
+                    this.playAnimation(FLIP_BOOK_HERO.WALK_ATTACK);
+                    this.idleDelay = new Date().getTime();
+                } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isPushing()) {
+                    this.playAnimation(FLIP_BOOK_HERO.PUSH);
+                    this.idleDelay = new Date().getTime();
+                } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight')) {
+                    this.playAnimation(FLIP_BOOK_HERO.WALK);
+                    this.idleDelay = new Date().getTime();
+                } else if (this.isKey('keydown', 'keyA')) {
+                    this.playAnimation(FLIP_BOOK_HERO.ATTACK);
+                } else if (!keyboard.keydown) {
+                    this.loadImage(FLIP_BOOK_HERO.cover);
+                }
         }, 100);
     }
 
@@ -541,6 +544,40 @@ class Knight extends MoveableObject {
             // this.playAnimation(FLIP_BOOK_HERO.HURT);
             return true;
         };
+    }
+
+
+    collect(key, counterId) {
+        let object = world[key].find(o => this.isCollecting(o));
+        if (object) {
+            this.removeObject(key, object);
+            this.increaseCounter(counterId);
+        }
+    }
+
+
+    isCollecting(o) {
+        let touchingLeft = this.xLeft < o.xLeft && o.xLeft < this.xRight;
+        let touchingRight = this.xLeft < o.xRight && o.xRight < this.xRight;
+        let touchingTop = this.yTop < o.yTop && o.yTop < this.yBottom;
+        let touchingBottom = this.yTop < o.yBottom && o.yBottom < this.yBottom;
+        return (touchingLeft || touchingRight) && (touchingTop || touchingBottom);
+    }
+
+
+    removeObject(key, object) {
+        let objectId = world[key].findIndex(o => this.getId(o, object));
+        world[key].splice(objectId, 1);
+    }
+
+
+    getId(o, object) {
+        return o.xCenter == object.xCenter && o.yCenter == object.yCenter;
+    }
+
+
+    increaseCounter(counterId) {
+        this[counterId]++;
     }
 
 
