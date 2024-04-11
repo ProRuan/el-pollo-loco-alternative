@@ -124,6 +124,7 @@ Tipp
 
   Current Task
   ------------
+    - dino hurt + death (enemies)
     - enemy array
     - enemy status bars
     - review class status bar

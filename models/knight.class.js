@@ -94,7 +94,7 @@ class Knight extends MoveableObject {
 
 
     attack() {    // add parameter enemy!!!
-        return new Sword(this).attack(world.spider);
+        return new Sword(this).attack();    // Improve this + subsequent methods!!!
     }
 
 
