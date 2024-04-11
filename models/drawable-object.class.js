@@ -237,6 +237,14 @@ class DrawableObject extends CoordinateSystem {
             ctx.stroke();
         }
 
+        if (this instanceof Coin) {
+            ctx.beginPath();
+            ctx.lineWidth = '1';
+            ctx.strokeStyle = 'green';
+            ctx.rect(this.x + 4, this.y + 4, 24, 24);
+            ctx.stroke();
+        }
+
 
 
 

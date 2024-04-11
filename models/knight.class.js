@@ -213,7 +213,8 @@ class Knight extends MoveableObject {
 
 
             this.isOnTile();
-            this.collectCoin();
+            this.collectCoinNew();
+            // this.collectCoin();
             this.pushStone();
             this.hit();
         }, 1000 / 60);
@@ -540,5 +541,24 @@ class Knight extends MoveableObject {
             // this.playAnimation(FLIP_BOOK_HERO.HURT);
             return true;
         };
+    }
+
+
+    collectCoinNew() {
+        let coin = this.world.COINS.find(c => this.isIncludingCoin(c));
+        if (coin) {
+            let coinId = this.world.COINS.findIndex(c => c.xCenter == coin.xCenter && c.yCenter == coin.yCenter);
+            this.world.COINS.splice(coinId, 1);
+            this.coins++;
+        }
+    }
+
+
+    isIncludingCoin(coin) {
+        let touchXLeft = this.xLeft < coin.xLeft && coin.xLeft < this.xRight;
+        let touchXRight = this.xLeft < coin.xRight && coin.xRight < this.xRight;
+        let touchYTop = this.yTop < coin.yTop && coin.yTop < this.yBottom;
+        let touchYBottom = this.yTop < coin.yBottom && coin.yBottom < this.yBottom;
+        return (touchXLeft || touchXRight) && (touchYTop || touchYBottom);
     }
 }

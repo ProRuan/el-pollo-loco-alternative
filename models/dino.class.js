@@ -86,12 +86,12 @@ class Dino extends MoveableObject {
 
 
     attack() {
-        if (this.isSubtending(world.hero)) {
-            // console.log('bite');
-            this.walking = false;
-            this.x = this.x;
-            return true;
-        }
+        // if (this.isSubtending(world.hero)) {
+        //     // console.log('bite');
+        //     this.walking = false;
+        //     this.x = this.x;
+        //     return true;
+        // }
     }
 
 
@@ -160,17 +160,17 @@ class Dino extends MoveableObject {
             // }
 
 
-            if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
-                let currentTime = new Date().getTime();
-                if (currentTime - this.lastHit > 500) {
-                    this.energy -= 10;
-                    console.log(this.energy);
-                    this.lastHit = currentTime;
-                }
-            }
+            // if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
+            //     let currentTime = new Date().getTime();
+            //     if (currentTime - this.lastHit > 500) {
+            //         this.energy -= 10;
+            //         console.log(this.energy);
+            //         this.lastHit = currentTime;
+            //     }
+            // }
 
 
-            this.isOnTile();
+            // this.isOnTile();
         }, 1000 / 60);
 
 
@@ -182,19 +182,21 @@ class Dino extends MoveableObject {
                     this.dead = true;
                     // splice!!!
                 }
-            } else if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
-                if (!this.paralysed) {
-                    this.currentImage = 0;
-                    this.paralysed = true;
-                    setTimeout(() => {
-                        this.paralysed = false;
-                    }, 400);
-                }
-                this.playAnimation(FLIP_BOOK_DINO.HURT);
-                if (this.energy <= 0) {
-                    this.dying = true;
-                }
-            } else if (this.attack()) {
+            } else
+            // if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
+            //     if (!this.paralysed) {
+            //         this.currentImage = 0;
+            //         this.paralysed = true;
+            //         setTimeout(() => {
+            //             this.paralysed = false;
+            //         }, 400);
+            //     }
+            //     this.playAnimation(FLIP_BOOK_DINO.HURT);
+            //     if (this.energy <= 0) {
+            //         this.dying = true;
+            //     }
+            // } else
+            if (this.attack()) {
                 this.playAnimation(FLIP_BOOK_DINO.ATTACK);
             } else if (this.walking) {
                 this.playAnimation(FLIP_BOOK_DINO.WALK);
