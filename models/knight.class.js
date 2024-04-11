@@ -214,8 +214,8 @@ class Knight extends MoveableObject {
 
 
             this.isOnTile();
-            this.collect('LEAVES', 'leaves');
-            this.collect('COINS', 'coins');
+            this.collect('leaves');
+            this.collect('coins');
             // this.collectCoinNew();
             // this.collectCoin();
             this.pushStone();
@@ -547,12 +547,23 @@ class Knight extends MoveableObject {
     }
 
 
-    collect(key, counterId) {
-        let object = world[key].find(o => this.isCollecting(o));
+    collect(item) {
+        let key = this.getKey(item);
+        let object = this.getObject(key);
         if (object) {
             this.removeObject(key, object);
-            this.increaseCounter(counterId);
+            this.increaseCounter(item);
         }
+    }
+
+
+    getKey(item) {
+        return item.toUpperCase();
+    }
+
+
+    getObject(key) {
+        return world[key].find(o => this.isCollecting(o));
     }
 
 
@@ -576,8 +587,8 @@ class Knight extends MoveableObject {
     }
 
 
-    increaseCounter(counterId) {
-        this[counterId]++;
+    increaseCounter(item) {
+        this[item]++;
     }
 
 
