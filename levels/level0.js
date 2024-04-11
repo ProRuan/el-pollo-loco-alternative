@@ -22,7 +22,10 @@ function initLevel1() {
 
 function initSection(id) {
     level1.loadBirds(id);    // Please review
+    level1.loadTreesNew(TREES1[id], id);
+    level1.loadLeavesNew(LEAVES1[id], id);
     level1.loadGrassFlyingNew(GRASS_FLYING1[id], id);
     level1.loadGrassNew(GRASS1[id], id);
     level1.loadCoinsNew(COINS1[id], id);
+    level1.loadEnemies(ENEMIES1[id], id);
 }

@@ -80,7 +80,7 @@ class MoveableObject extends DrawableObject {
         for (let i = 0; i < flipBook.length; i++) {
             setTimeout(() => {
                 this.playAnimation(flipBook);
-                console.log(this.img, new Date().getTime());
+                // console.log(this.img, new Date().getTime());
             }, i * 100);
         }
     }

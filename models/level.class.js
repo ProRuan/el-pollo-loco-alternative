@@ -12,6 +12,7 @@ class Level {
     CRYSTALS = [];
     HIT_POINTS = [];
     STONES = [];
+    ENEMIES = [];
     levelEndPreviousOtherDirection = false;
     levelEndPrevious = false;
 
@@ -81,6 +82,28 @@ class Level {
             let y = 7.415 - Math.round(Math.random() * 4);
             let bird = new Bird(x, y);
             this.BIRDS.push(bird);
+        }
+    }
+
+
+    loadTreesNew(trees, n) {
+        if (trees) {
+            for (let i = 0; i < trees.length; i++) {
+                let tree = trees[i];
+                tree.x += n * this.translation;
+                this.TREES.push(tree);
+            }
+        }
+    }
+
+
+    loadLeavesNew(leaves, n) {
+        if (leaves) {
+            for (let i = 0; i < leaves.length; i++) {
+                let leaf = leaves[i];
+                leaf.x += n * this.translation;
+                this.LEAVES.push(leaf);
+            }
         }
     }
 
@@ -193,5 +216,16 @@ class Level {
             this.STONES.push(stone);
         }
         this.cache = [];
+    }
+
+
+    loadEnemies(enemies, n) {
+        if (enemies) {
+            for (let i = 0; i < enemies.length; i++) {
+                let enemy = enemies[i];
+                enemy.x += n * this.translation;
+                this.ENEMIES.push(enemy);
+            }
+        }
     }
 }

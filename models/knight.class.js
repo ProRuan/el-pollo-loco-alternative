@@ -312,23 +312,23 @@ class Knight extends MoveableObject {
                 //     }
                 // } else
 
-                if (this.world.webs.length > 0 && this.isIncluding(this.world.webs[0].xCenter, this.world.webs[0].yCenter)) {
-                    if (!this.isHit) {
-                        console.log('hit');
-                        this.currentImage = 0;
-                        this.isHit = true;
-                        this.energy -= 20;
-                        this.world.characterInfo.hpCounter -= 20;
-                        this.hpPoints.splice(this.hpPoints.length - 20, 20);
-                        this.playAnimationOnce(FLIP_BOOK_HERO.HURT);
-                        this.world.spider.webHit = true;
-                        this.world.webs.splice(0, 1);
-                        // this.world.spider.waiting = false;
-                        setTimeout(() => {
-                            this.isHit = false;
-                        }, 500);
-                    }
-                } else
+                // if (this.world.webs.length > 0 && this.isIncluding(this.world.webs[0].xCenter, this.world.webs[0].yCenter)) {
+                //     if (!this.isHit) {
+                //         console.log('hit');
+                //         this.currentImage = 0;
+                //         this.isHit = true;
+                //         this.energy -= 20;
+                //         this.world.characterInfo.hpCounter -= 20;
+                //         this.hpPoints.splice(this.hpPoints.length - 20, 20);
+                //         this.playAnimationOnce(FLIP_BOOK_HERO.HURT);
+                //         this.world.spider.webHit = true;
+                //         this.world.webs.splice(0, 1);
+                //         // this.world.spider.waiting = false;
+                //         setTimeout(() => {
+                //             this.isHit = false;
+                //         }, 500);
+                //     }
+                // } else
 
                     if (this.isKey('keydown', 'arrowUp', 'arrowDown') && this.climbing) {
                         this.playAnimation(FLIP_BOOK_HERO.CLIMB);    // still to edit

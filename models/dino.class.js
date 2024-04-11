@@ -20,8 +20,8 @@ class Dino extends MoveableObject {
     radDispl = 40;
     // 7.75, 0.25
 
-    constructor() {
-        super(7.75, 0.25);    // Please verfiy!!!
+    constructor(x, y) {
+        super(x, y);    // Please verfiy!!!
         this.setCover('dino');
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
