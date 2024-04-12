@@ -1,30 +1,30 @@
 // Testing
 const TREES1_1 = [
-    new Tree(5.5, 2)
+    
 ];
 
 const LEAVES1_1 = [
-    new Leaf(6.625, 4, 1), new Leaf(7.25, 4.5, 1), new Leaf(7.75, 4, 1)
+    
 ];
 
 const GRASS_FLYING1_1 = [
-    new GrassFlyingStart(6, 2), new GrassFlyingCenter(7, 2), new GrassFlyingEnd(8, 2)
+    
 ];
 
 const GRASS1_1 = [
-    new GrassCenter(0, 0), new GrassCenter(1, 0), new GrassCenter(2, 0), new GrassCenter(3, 0),
-    new GrassCenter(4, 0), new GrassCenter(5, 0), new GrassCenter(6, 0), new GrassCenter(7, 0),
+    new GrassCenter(0, 0), new GrassCenter(1, 0), new GrassEnd(2, 0),
+    new GrassStart(5, 0), new GrassCenter(6, 0), new GrassCenter(7, 0),
     new GrassCenter(8, 0), new GrassCenter(9, 0), new GrassCenter(10, 0), new GrassCenter(11, 0),
     new GrassCenter(12, 0), new GrassCenter(13, 0), new GrassCenter(14, 0)
 ];
 
 const COINS1_1 = [
-    new Coin(3.25, 1.125), new Coin(4.25, 1.125), new Coin(6.25, 3.125)
+    new Coin(2, 1.125), new Coin(3.75, 3.125), new Coin(5.5, 1.125)
 ];
 
 
 const ENEMIES1_1 = [
-    new Dino(11.8125, 0.25)
+    new Ent(10.859375, 1.625)
 ];
 
 
@@ -44,6 +44,18 @@ const ENEMIES1_1 = [
 
 
 // Section2
+const TREES1_2 = [
+    new Tree(5.5, 2)
+];
+
+const LEAVES1_2 = [
+    new Leaf(6.625, 4, 1), new Leaf(7.25, 4.5, 1), new Leaf(7.75, 4, 1)
+];
+
+const GRASS_FLYING1_2 = [
+    new GrassFlyingStart(6, 2), new GrassFlyingCenter(7, 2), new GrassFlyingEnd(8, 2)
+];
+
 const GRASS1_2 = [
     new GrassCenter(0, 0), new GrassCenter(1, 0), new GrassCenter(2, 0), new GrassCenter(3, 0),
     new GrassCenter(4, 0), new GrassCenter(5, 0), new GrassCenter(6, 0), new GrassCenter(7, 0),
@@ -52,7 +64,11 @@ const GRASS1_2 = [
 ];
 
 const COINS1_2 = [
-    new Coin(3.25, 1.25), new Coin(4.25, 1.25), new Coin(5.25, 1.25)
+    new Coin(3.25, 1.125), new Coin(4.25, 1.125), new Coin(6.25, 3.125)
+];
+
+const ENEMIES1_2 = [
+    new Dino(11.8125, 0.25)
 ];
 
 
@@ -125,15 +141,15 @@ const GRASS1_8 = [
 
 // Level1
 const TREES1 = [
-    TREES1_1
+    null, TREES1_2
 ];
 
 const LEAVES1 = [
-    LEAVES1_1
+    null, LEAVES1_2
 ];
 
 const GRASS_FLYING1 = [
-    GRASS_FLYING1_1, null, null, GRASS_FLYING1_4, null, GRASS_FLYING1_6, GRASS_FLYING1_7, null
+    null, GRASS_FLYING1_2, null, GRASS_FLYING1_4, null, GRASS_FLYING1_6, GRASS_FLYING1_7, null
 ];
 
 const GRASS1 = [
@@ -146,5 +162,5 @@ const COINS1 = [
 ];
 
 const ENEMIES1 = [
-    ENEMIES1_1, null, null, null, null, null, null, null
+    ENEMIES1_1, ENEMIES1_2, null, null, null, null, null, null
 ];

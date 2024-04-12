@@ -20,8 +20,10 @@ class Ent extends MoveableObject {
     radDispl = 104;
     // 10.25, 1.625
 
-    constructor() {
-        super(10.25, 1.625);    // Please verfiy!!!
+    constructor(x, y) {
+        super(x, y);    // Please verfiy!!!
+        this.xStart = this.x;
+        this.xWest = this.xStart - 5.5 * 64;
         this.setSize(256);
         this.setCover('ent');
         this.loadImage(this.cover);
@@ -151,46 +153,65 @@ class Ent extends MoveableObject {
             // this.isSubtending(world.hero);
 
 
-            if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
-                let currentTime = new Date().getTime();
-                if (currentTime - this.lastHit > 500) {
-                    this.energy -= 10;
-                    console.log(this.energy);
-                    this.lastHit = currentTime;
+            if (world) {
+
+                if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
+                    let currentTime = new Date().getTime();
+                    if (currentTime - this.lastHit > 500) {
+                        this.energy -= 20;
+                        console.log(this.energy);
+                        this.lastHit = currentTime;
+                    }
                 }
+
+
+                if (!this.dead && !this.attack(world.hero)) {
+                    // Call it patrol!!!
+                    this.walking = true;
+                    if (this.otherDirection && this.x > this.xWest) {
+                        this.x -= this.speed;
+                    } else if (this.x < this.xStart) {
+                        this.otherDirection = false;
+                        this.x += this.speed
+                    } else {
+                        this.otherDirection = true;
+                    }
+                }
+
+
+                this.isOnTile();
             }
-
-
-            this.isOnTile();
         }, 1000 / 60);
 
 
         setInterval(() => {
-            if (this.dying) {
-                if (!this.dead) {
-                    this.currentImage = 0;
-                    this.playAnimationOnce(FLIP_BOOK_ENT.DEATH);
-                    this.dead = true;
-                    // splice!!!
+            if (world) {
+                if (this.dying) {
+                    if (!this.dead) {
+                        this.currentImage = 0;
+                        this.playAnimationOnce(FLIP_BOOK_ENT.DEATH);
+                        this.dead = true;
+                        // splice!!!
+                    }
+                } else if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
+                    if (!this.paralysed) {
+                        this.currentImage = 0;
+                        this.paralysed = true;
+                        setTimeout(() => {
+                            this.paralysed = false;
+                        }, 400);
+                    }
+                    this.playAnimation(FLIP_BOOK_ENT.HURT);
+                    if (this.energy <= 0) {
+                        this.dying = true;
+                    }
+                } else if (this.attack(world.hero)) {
+                    this.playAnimation(FLIP_BOOK_ENT.ATTACK);
+                } else if (this.walking) {
+                    this.playAnimation(FLIP_BOOK_ENT.WALK);
+                } else {
+                    this.playAnimation(FLIP_BOOK_ENT.IDLE);
                 }
-            } else if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
-                if (!this.paralysed) {
-                    this.currentImage = 0;
-                    this.paralysed = true;
-                    setTimeout(() => {
-                        this.paralysed = false;
-                    }, 400);
-                }
-                this.playAnimation(FLIP_BOOK_ENT.HURT);
-                if (this.energy <= 0) {
-                    this.dying = true;
-                }
-            } else if (this.attack(world.hero)) {
-                this.playAnimation(FLIP_BOOK_ENT.ATTACK);
-            } else if (this.walking) {
-                this.playAnimation(FLIP_BOOK_ENT.WALK);
-            } else {
-                this.playAnimation(FLIP_BOOK_ENT.IDLE);
             }
         }, 100);
     }
