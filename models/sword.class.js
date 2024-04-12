@@ -10,14 +10,12 @@ class Sword {
 
 
     get xLeftAttack() {
-        return (this.otherDirection) ? this.x - 68 + this.radDispl : this.x + 68;
-        // return this.x + 68;
+        return this.x + 68;
     }
 
 
     get xRightAttack() {
-        return (this.otherDirection) ? this.xLeftAttack - 36 + this.radDispl : this.xLeftAttack + 36;
-        // return this.xLeftAttack + 36;
+        return this.xLeftAttack + 36;
     }
 
 

@@ -155,7 +155,7 @@ class Dino extends MoveableObject {
             if (!this.dead && world.keyboard.keyA.keydown && world.hero.attack()) {
                 let currentTime = new Date().getTime();
                 if (currentTime - this.lastHit > 500) {
-                    this.energy -= 10;
+                    this.energy -= 20;
                     console.log(this.energy);
                     this.lastHit = currentTime;
                 }
@@ -194,6 +194,7 @@ class Dino extends MoveableObject {
                     this.searchingDelay = false;
                     this.walking = false;
                 } else {
+                    this.walking = true;
                     (this.otherDirection) ? this.x -= this.speed : this.x += this.speed;
                 }
             }
