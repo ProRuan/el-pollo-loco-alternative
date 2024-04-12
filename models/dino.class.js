@@ -189,7 +189,7 @@ class Dino extends MoveableObject {
                 this.searchingDelay = true;
             } else if (!this.dead && this.searching) {
                 let currentTime = new Date().getTime();
-                if (currentTime - this.pursuitStop > 5000) {
+                if (currentTime - this.pursuitStop > 3000) {
                     this.searching = false;
                     this.searchingDelay = false;
                     this.walking = false;
