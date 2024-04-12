@@ -23,7 +23,7 @@ class Ent extends MoveableObject {
     constructor(x, y) {
         super(x, y);    // Please verfiy!!!
         this.xStart = this.x;
-        this.xWest = this.xStart - 5.5 * 64;
+        this.xWest = this.xStart - 5.25 * 64;
         this.setSize(256);
         this.setCover('ent');
         this.loadImage(this.cover);
@@ -166,17 +166,50 @@ class Ent extends MoveableObject {
 
 
                 if (!this.dead && !this.attack(world.hero)) {
-                    // Call it patrol!!!
-                    this.walking = true;
-                    if (this.otherDirection && this.x > this.xWest) {
-                        this.x -= this.speed;
-                    } else if (this.x < this.xStart) {
-                        this.otherDirection = false;
-                        this.x += this.speed
+                    if (this.x < this.xWest && this.otherDirection || this.x > this.xStart && !this.otherDirection) {
+                        if (!this.walkingStop) {
+                            this.walkingStop = true;
+                            this.walking = false;
+                            setTimeout(() => {
+                                this.walkingStop = false;
+                                if (!this.attack(world.hero)) {
+                                    this.otherDirection = (this.otherDirection) ? false : true;
+                                }
+                            }, 3000);
+                        }
+                        console.log('caseA');
+                    } else if (this.otherDirection && this.x > this.xWest || !this.otherDirection && this.x < this.xStart) {
+                        this.walking = true;
+                        (this.otherDirection) ? this.x -= this.speed : this.x += this.speed;
+                        console.log('caseB');
                     } else {
-                        this.otherDirection = true;
+                        if (!this.walkingStop) {
+                            this.walkingStop = true;
+                            this.walking = false;
+                            setTimeout(() => {
+                                this.walkingStop = false;
+                                if (!this.attack(world.hero)) {
+                                    this.otherDirection = (this.otherDirection) ? false : true;
+                                }
+                            }, 3000);
+                        }
+                        console.log('caseC');
                     }
                 }
+
+
+                // if (!this.dead && !this.attack(world.hero)) {
+                //     // Call it patrol!!!
+                //     this.walking = true;
+                //     if (this.otherDirection && this.x > this.xWest) {
+                //         this.x -= this.speed;
+                //     } else if (this.x < this.xStart) {
+                //         this.otherDirection = false;
+                //         this.x += this.speed
+                //     } else {
+                //         this.otherDirection = true;
+                //     }
+                // }
 
 
                 this.isOnTile();

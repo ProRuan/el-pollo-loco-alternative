@@ -1,14 +1,14 @@
 // Testing
 const TREES1_1 = [
-    
+    new Tree(8, 0.0625)
 ];
 
 const LEAVES1_1 = [
-    
+
 ];
 
 const GRASS_FLYING1_1 = [
-    
+
 ];
 
 const GRASS1_1 = [
@@ -46,7 +46,7 @@ const ENEMIES1_1 = [
 // Section2
 const TREES1_2 = [
     new Tree(5.5, 2)
-];
+];    // check tree y!!!! (0.0625???)
 
 const LEAVES1_2 = [
     new Leaf(6.625, 4, 1), new Leaf(7.25, 4.5, 1), new Leaf(7.75, 4, 1)
@@ -141,7 +141,7 @@ const GRASS1_8 = [
 
 // Level1
 const TREES1 = [
-    null, TREES1_2
+    TREES1_1, TREES1_2
 ];
 
 const LEAVES1 = [
