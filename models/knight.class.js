@@ -411,21 +411,21 @@ class Knight extends MoveableObject {
 
     isOnTile() {
         if (this.isOnGrassFlying()) {
-            if (this.isOnGrassFlyingStart()) {
-                this.groundLevel = this.isOnGrassFlyingStart().yTop;
-            } else if (this.isOnGrassFlyingCenter()) {
-                this.groundLevel = this.isOnGrassFlyingCenter().yTop;
-            } else if (this.isOnGrassFlyingEnd()) {
-                this.groundLevel = this.isOnGrassFlyingEnd().yTop;
+            if (this.isOnObjectStart('GRASS_FLYING')) {
+                this.groundLevel = this.isOnObjectStart('GRASS_FLYING').yTop;
+            } else if (this.isOnObjectCenter('GRASS_FLYING')) {
+                this.groundLevel = this.isOnObjectCenter('GRASS_FLYING').yTop;
+            } else if (this.isOnObjectEnd('GRASS_FLYING')) {
+                this.groundLevel = this.isOnObjectEnd('GRASS_FLYING').yTop;
             }
             this.grounded = true;
-        } else if (this.isOnGrassStart() || this.isOnGrassCenter() || this.isOnGrassEnd()) {
-            if (this.isOnGrassStart()) {
-                this.groundLevel = this.isOnGrassStart().yTop;
-            } else if (this.isOnGrassCenter()) {
-                this.groundLevel = this.isOnGrassCenter().yTop;
-            } else if (this.isOnGrassEnd()) {
-                this.groundLevel = this.isOnGrassEnd().yTop;
+        } else if (this.isOnObjectStart('GRASS') || this.isOnObjectCenter('GRASS') || this.isOnObjectEnd('GRASS')) {
+            if (this.isOnObjectStart('GRASS')) {
+                this.groundLevel = this.isOnObjectStart('GRASS').yTop;
+            } else if (this.isOnObjectCenter('GRASS')) {
+                this.groundLevel = this.isOnObjectCenter('GRASS').yTop;
+            } else if (this.isOnObjectEnd('GRASS')) {
+                this.groundLevel = this.isOnObjectEnd('GRASS').yTop;
             }
             this.grounded = true;
         } else {
@@ -456,39 +456,18 @@ class Knight extends MoveableObject {
     }
 
 
-    isOnGrassFlyingStart() {
-        return this.world.GRASS_FLYING.find(g => this.xCenter < g.xLeft && g.xLeft < this.xRight);
+    isOnObjectStart(key) {
+        return this.world[key].find(o => this.xCenter < o.xLeft && o.xLeft < this.xRight);
     }
 
 
-    isOnGrassFlyingCenter() {
-        return this.world.GRASS_FLYING.find(g => g.xLeft < this.xCenter && this.xCenter < g.xRight);
+    isOnObjectCenter(key) {
+        return this.world[key].find(o => o.xLeft < this.xCenter && this.xCenter < o.xRight);
     }
 
 
-    isOnGrassFlyingEnd() {
-        return this.world.GRASS_FLYING.find(g => this.xLeft < g.xRight && g.xRight < this.xCenter);
-    }
-
-
-    isOnGrassFlyingTop() {
-        console.log('yes');
-        return this.world.GRASS_FLYING.find(g => this.yBottom > g.yTop);
-    }
-
-
-    isOnGrassStart() {
-        return this.world.GRASS.find(g => this.xCenter < g.xLeft && g.xLeft < this.xRight);
-    }
-
-
-    isOnGrassCenter() {
-        return this.world.GRASS.find(g => g.xLeft < this.xCenter && this.xCenter < g.xRight);
-    }
-
-
-    isOnGrassEnd() {
-        return this.world.GRASS.find(g => this.xLeft < g.xRight && g.xRight < this.xCenter);
+    isOnObjectEnd(key) {
+        return this.world[key].find(o => this.xLeft < o.xRight && o.xRight < this.xCenter);
     }
 
 
