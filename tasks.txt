@@ -124,11 +124,14 @@ Tipp
 
   Current Task
   ------------
+    - sword (otherDirection)
     - dino hurt + death (enemies)
     - enemy array
     - enemy status bars
     - review class status bar
     - build world
+
+    - hero.yBottom + grassFlying.yTop
 
     - knight + sword body getter (0/2)
     - knight + shaman attack getter (0/2)

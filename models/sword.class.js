@@ -49,7 +49,8 @@ class Sword {
 
     attack() {    // Improve this + subsequent methods!!!
         let enemy = world.ENEMIES.find(e => this.isSubtending(e, this.xLeftAttack, this.xRightAttack, this.yTopAttack, this.yBottomAttack));
-        console.log(enemy);
+        return enemy;
+        // console.log(enemy);
         // return this.isSubtending(enemy, this.xLeftAttack, this.xRightAttack, this.yTopAttack, this.yBottomAttack);
     }
 

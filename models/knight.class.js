@@ -28,6 +28,7 @@ class Knight extends MoveableObject {
         this.loadFlipBookImages(this.flipBook);
         this.animate();
         this.applyGravity();
+        this.removeDeadEnemies();
     }
 
 

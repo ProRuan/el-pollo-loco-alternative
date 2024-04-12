@@ -151,4 +151,18 @@ class MoveableObject extends DrawableObject {
             this.img = this.imageCache[path];
         }, 100);
     }
+
+
+    removeDeadEnemies() {
+        setInterval(() => {
+            let enemy = world.ENEMIES.find(e => e.dead && !e.removing);
+            if (enemy) {
+                enemy.removing = true;
+                setTimeout(() => {
+                    let id = world.ENEMIES.indexOf(enemy);
+                    world.ENEMIES.splice(id, 1);
+                }, 3000);
+            }
+        }, 1000 / 60);
+    }
 }
