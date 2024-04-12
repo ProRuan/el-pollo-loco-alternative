@@ -124,6 +124,8 @@ Tipp
 
   Current Task
   ------------
+    - character yBottom vs. grass yTop
+    - hero body + hero sword body
     - sword (otherDirection)
     - dino hurt + death (enemies)
     - enemy array

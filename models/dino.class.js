@@ -70,7 +70,7 @@ class Dino extends MoveableObject {
 
 
     get xRightAttack() {
-        return (this.otherDirection) ? this.xCenter - 72 : this.xCenter + 72;
+        return (this.otherDirection) ? this.xCenter - 68 : this.xCenter + 68;
         // return this.x + 124;
     }
 
@@ -152,84 +152,88 @@ class Dino extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            if (!this.dead && world.keyboard.keyA.keydown && world.hero.attack()) {
-                let currentTime = new Date().getTime();
-                if (currentTime - this.lastHit > 500) {
-                    this.energy -= 20;
-                    console.log(this.energy);
-                    this.lastHit = currentTime;
+            if (world) {
+                if (!this.dead && world.keyboard.keyA.keydown && world.hero.attack()) {
+                    let currentTime = new Date().getTime();
+                    if (currentTime - this.lastHit > 500) {
+                        this.energy -= 20;
+                        console.log(this.energy);
+                        this.lastHit = currentTime;
+                    }
                 }
-            }
 
 
-            // Call it pursue!!!
-            if (!this.dead && world.hero.xCenter + 80 < this.xCenter) {
-                this.pursuing = this.xCenter - world.hero.xCenter < 5 * 64 && this.yTop < world.hero.yCenter && world.hero.yCenter < this.yBottom;
-                if (this.pursuing) {
-                    this.otherDirection = true;
+                // Call it pursue!!!
+                if (!this.dead && world.hero.xCenter + 80 < this.xCenter) {
+                    this.pursuing = this.xCenter - world.hero.xCenter < 5 * 64 && this.yTop < world.hero.yCenter && world.hero.yCenter < this.yBottom;
+                    if (this.pursuing) {
+                        this.otherDirection = true;
+                    }
+                } else if (!this.dead && this.xCenter < world.hero.xCenter - 80) {
+                    this.pursuing = world.hero.xCenter - this.xCenter < 5 * 64 && this.yTop < world.hero.yCenter && world.hero.yCenter < this.yBottom;
+                    if (this.pursuing) {
+                        this.otherDirection = false;
+                    }
                 }
-            } else if (!this.dead && this.xCenter < world.hero.xCenter - 80) {
-                this.pursuing = world.hero.xCenter - this.xCenter < 5 * 64 && this.yTop < world.hero.yCenter && world.hero.yCenter < this.yBottom;
-                if (this.pursuing) {
-                    this.otherDirection = false;
-                }
-            }
 
-            if (!this.dead && this.pursuing) {
-                this.searching = true;
-                this.searchingDelay = false;
-                if (this.attack() || keyboard.keyA.keydown && world.hero.attack()) {
-                    this.walking = false;
-                } else {
-                    this.walking = true;
-                    (this.otherDirection) ? this.x -= this.speed : this.x += this.speed;
-                }
-            } else if (!this.dead && this.searching && !this.searchingDelay) {
-                this.pursuitStop = new Date().getTime();
-                this.searchingDelay = true;
-            } else if (!this.dead && this.searching) {
-                let currentTime = new Date().getTime();
-                if (currentTime - this.pursuitStop > 3000) {
-                    this.searching = false;
+                if (!this.dead && this.pursuing) {
+                    this.searching = true;
                     this.searchingDelay = false;
-                    this.walking = false;
-                } else {
-                    this.walking = true;
-                    (this.otherDirection) ? this.x -= this.speed : this.x += this.speed;
+                    if (this.attack() || keyboard.keyA.keydown && world.hero.attack()) {
+                        this.walking = false;
+                    } else {
+                        this.walking = true;
+                        (this.otherDirection) ? this.x -= this.speed : this.x += this.speed;
+                    }
+                } else if (!this.dead && this.searching && !this.searchingDelay) {
+                    this.pursuitStop = new Date().getTime();
+                    this.searchingDelay = true;
+                } else if (!this.dead && this.searching) {
+                    let currentTime = new Date().getTime();
+                    if (currentTime - this.pursuitStop > 3000) {
+                        this.searching = false;
+                        this.searchingDelay = false;
+                        this.walking = false;
+                    } else {
+                        this.walking = true;
+                        (this.otherDirection) ? this.x -= this.speed : this.x += this.speed;
+                    }
                 }
+
+
+                this.isOnTile();
             }
-
-
-            // this.isOnTile();
         }, 1000 / 60);
 
 
         setInterval(() => {
-            if (this.dying) {
-                if (!this.dead) {
-                    this.currentImage = 0;
-                    this.playAnimationOnce(FLIP_BOOK_DINO.DEATH);
-                    this.dead = true;
-                    // splice!!!
+            if (world) {
+                if (this.dying) {
+                    if (!this.dead) {
+                        this.currentImage = 0;
+                        this.playAnimationOnce(FLIP_BOOK_DINO.DEATH);
+                        this.dead = true;
+                        // splice!!!
+                    }
+                } else if (world.keyboard.keyA.keydown && world.hero.attack()) {
+                    if (!this.paralysed) {
+                        this.currentImage = 0;
+                        this.paralysed = true;
+                        setTimeout(() => {
+                            this.paralysed = false;
+                        }, 400);
+                    }
+                    this.playAnimation(FLIP_BOOK_DINO.HURT);
+                    if (this.energy <= 0) {
+                        this.dying = true;
+                    }
+                } else if (this.attack()) {
+                    this.playAnimation(FLIP_BOOK_DINO.ATTACK);
+                } else if (this.walking) {
+                    this.playAnimation(FLIP_BOOK_DINO.WALK);
+                } else {
+                    this.playAnimation(FLIP_BOOK_DINO.IDLE);
                 }
-            } else if (world.keyboard.keyA.keydown && world.hero.attack()) {
-                if (!this.paralysed) {
-                    this.currentImage = 0;
-                    this.paralysed = true;
-                    setTimeout(() => {
-                        this.paralysed = false;
-                    }, 400);
-                }
-                this.playAnimation(FLIP_BOOK_DINO.HURT);
-                if (this.energy <= 0) {
-                    this.dying = true;
-                }
-            } else if (this.attack()) {
-                this.playAnimation(FLIP_BOOK_DINO.ATTACK);
-            } else if (this.walking) {
-                this.playAnimation(FLIP_BOOK_DINO.WALK);
-            } else {
-                this.playAnimation(FLIP_BOOK_DINO.IDLE);
             }
         }, 100);
     }
