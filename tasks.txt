@@ -125,7 +125,7 @@ Tipp
   Current Task
   ------------
     - width / 2 + radDispl!!!
-    - leaves + section3 + ent patrol method + attack ent from back side + tree position
+    - ent patrol method + attack ent from back side + knight vs. grass
 
     - improve section1
     - character yBottom vs. grass yTop

@@ -1,10 +1,10 @@
 // Testing
 const TREES1_1 = [
-    new Tree(8, 0.0625)
+    new Tree(8, 0)
 ];
 
 const LEAVES1_1 = [
-
+    new Leaf(9.125, 2, 1), new Leaf(9.75, 2.5, 1), new Leaf(10.25, 2, 1)
 ];
 
 const GRASS_FLYING1_1 = [
@@ -46,7 +46,7 @@ const ENEMIES1_1 = [
 // Section2
 const TREES1_2 = [
     new Tree(5.5, 2)
-];    // check tree y!!!! (0.0625???)
+];
 
 const LEAVES1_2 = [
     new Leaf(6.625, 4, 1), new Leaf(7.25, 4.5, 1), new Leaf(7.75, 4, 1)
@@ -73,11 +73,27 @@ const ENEMIES1_2 = [
 
 
 // Section3
+const TREES1_3 = [
+    new Tree(8, 0)
+];
+
+const LEAVES1_3 = [
+    new Leaf(9.125, 2, 1), new Leaf(9.75, 2.5, 1), new Leaf(10.25, 2, 1)
+];
+
 const GRASS1_3 = [
-    new GrassCenter(0, 0), new GrassCenter(1, 0), new GrassCenter(2, 0), new GrassCenter(3, 0),
-    new GrassCenter(4, 0), new GrassCenter(5, 0), new GrassCenter(6, 0), new GrassCenter(7, 0),
-    new GrassCenter(8, 0), new GrassEnd(9, 0), new GrassStart(11, 0), new GrassCenter(12, 0),
-    new GrassCenter(13, 0), new GrassCenter(14, 0)
+    new GrassCenter(0, 0), new GrassCenter(1, 0), new GrassEnd(2, 0),
+    new GrassStart(5, 0), new GrassCenter(6, 0), new GrassCenter(7, 0),
+    new GrassCenter(8, 0), new GrassCenter(9, 0), new GrassCenter(10, 0), new GrassCenter(11, 0),
+    new GrassCenter(12, 0), new GrassCenter(13, 0), new GrassCenter(14, 0)
+];
+
+const COINS1_3 = [
+    new Coin(2, 1.125), new Coin(3.75, 3.125), new Coin(5.5, 1.125)
+];
+
+const ENEMIES1_3 = [
+    new Ent(10.859375, 1.625)
 ];
 
 
@@ -141,11 +157,11 @@ const GRASS1_8 = [
 
 // Level1
 const TREES1 = [
-    TREES1_1, TREES1_2
+    TREES1_1, TREES1_2, TREES1_3
 ];
 
 const LEAVES1 = [
-    null, LEAVES1_2
+    LEAVES1_1, LEAVES1_2, LEAVES1_3
 ];
 
 const GRASS_FLYING1 = [
@@ -156,11 +172,10 @@ const GRASS1 = [
     GRASS1_1, GRASS1_2, GRASS1_3, GRASS1_4, GRASS1_5, GRASS1_6, GRASS1_7, GRASS1_8
 ];
 
-
 const COINS1 = [
-    COINS1_1, COINS1_2, null, null, null, null, null, null
+    COINS1_1, COINS1_2, COINS1_3, null, null, null, null, null
 ];
 
 const ENEMIES1 = [
-    ENEMIES1_1, ENEMIES1_2, null, null, null, null, null, null
+    ENEMIES1_1, ENEMIES1_2, ENEMIES1_3, null, null, null, null, null
 ];
