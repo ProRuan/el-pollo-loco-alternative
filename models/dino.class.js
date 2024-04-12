@@ -163,12 +163,12 @@ class Dino extends MoveableObject {
 
 
             // Call it pursue!!!
-            if (!this.dead && world.hero.xCenter < this.xCenter) {
+            if (!this.dead && world.hero.xCenter + 80 < this.xCenter) {
                 this.pursuing = this.xCenter - world.hero.xCenter < 5 * 64 && this.yTop < world.hero.yCenter && world.hero.yCenter < this.yBottom;
                 if (this.pursuing) {
                     this.otherDirection = true;
                 }
-            } else if (!this.dead && this.xCenter < world.hero.xCenter) {
+            } else if (!this.dead && this.xCenter < world.hero.xCenter - 80) {
                 this.pursuing = world.hero.xCenter - this.xCenter < 5 * 64 && this.yTop < world.hero.yCenter && world.hero.yCenter < this.yBottom;
                 if (this.pursuing) {
                     this.otherDirection = false;
