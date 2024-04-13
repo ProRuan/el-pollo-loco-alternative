@@ -133,12 +133,12 @@ class Knight extends MoveableObject {
             // }
             this.climbing = false;
             if (this.isKey('keydown', 'arrowUp') && this.world.STAIRWAYS.find(s => this.isIncluding(s.xCenter, s.yTop))) {
-                console.log('climbing up', this.y);
+                // console.log('climbing up', this.y);
                 this.climbing = true;
                 this.climb(true);
             }
             if (this.isKey('keydown', 'arrowDown') && this.world.STAIRWAYS.find(s => this.isIncluding(s.xCenter, s.yCenter - 1))) {
-                console.log('climbing down', this.y);
+                // console.log('climbing down', this.y);
                 this.climbing = true;
                 this.climb(false);
             }

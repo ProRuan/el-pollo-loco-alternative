@@ -144,7 +144,7 @@ class World {
         // this.addToMap(this.dino);
         // this.addToMap(this.ent);
         // this.addToMap(this.spider);
-        // this.addGroupToMap(this.webs);
+        this.addGroupToMap(this.webs);
         // this.addToMap(this.endboss);
         this.addGroupToMap(this.ENEMIES);
         this.addToMap(this.hero);

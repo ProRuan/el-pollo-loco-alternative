@@ -1,10 +1,10 @@
 class Web extends AnimatedObject {
     currentImage = 0;
-    otherDirection = true;
 
 
-    constructor(x, y) {
+    constructor(x, y, otherDirection) {
         super(x, y, 'Web');
+        this.otherDirection = otherDirection;
         this.move();
         this.animate();
     }
@@ -42,7 +42,7 @@ class Web extends AnimatedObject {
 
     move() {
         setInterval(() => {
-            this.x -= 192 / 64;
+            (this.otherDirection) ? this.x -= 192 / 64 : this.x += 192 / 64;
         }, 1000 / 60);
     }
 

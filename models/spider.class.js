@@ -35,7 +35,7 @@ class Spider extends MoveableObject {
 
 
     get xLeft() {
-        return (this.otherDirection) ? this.x + 40 : this.x + 40 + 88;
+        return (this.otherDirection) ? this.x + 40 : this.x + 40;
         // return this.x + 40;
     }
 
@@ -46,18 +46,18 @@ class Spider extends MoveableObject {
 
 
     get xRight() {
-        return (this.otherDirection) ? this.x + 88 : this.x + 88 + 88;
+        return (this.otherDirection) ? this.x + 88 : this.x + 88;
         // return this.x + 88;
-    }
-
-
-    get yCenter() {
-        return this.y + 64;
     }
 
 
     get yTop() {
         return this.y + 44;
+    }
+
+
+    get yCenter() {
+        return this.y + 64;
     }
 
 
@@ -112,7 +112,8 @@ class Spider extends MoveableObject {
 
 
     throwWeb() {
-        let web = new Web(this.x / 64 + 0.5, (540 - this.y) / 64 - 1.315);
+        let xThrow = (this.otherDirection) ? this.x / 64 + 0.5 : this.x / 64 + this.radDispl / 64 + 0.5;
+        let web = new Web(xThrow, (540 - this.y) / 64 - 1.315, this.otherDirection);
         world.webs.push(web);
         this.shot = true;
         // world.web = web;
@@ -161,31 +162,38 @@ class Spider extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            // console.log('spider: ', this.yBottom);
-
-            // this.attack();
-            // if (!this.attack()) {
-            //     this.patrol();
-            // }
-
             if (world) {
-                if (!this.waiting && this.attack()) {
-                    this.throwWeb();
-                    this.waiting = true;
+                if (world.hero.x + 16 < this.x) {
+                    this.otherDirection = true;
+                } else if (this.x < world.hero.x - 48) {
+                    this.otherDirection = false;
                 }
+                // console.log('spider: ', this.yBottom);
 
+                // this.attack();
+                // if (!this.attack()) {
+                //     this.patrol();
+                // }
 
-                if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
-                    let currentTime = new Date().getTime();
-                    if (currentTime - this.lastHit > 500) {
-                        this.energy -= 10;
-                        console.log(this.energy);
-                        this.lastHit = currentTime;
+                if (world) {
+                    if (!this.waiting && this.attack()) {
+                        this.throwWeb();
+                        this.waiting = true;
                     }
+
+
+                    if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
+                        let currentTime = new Date().getTime();
+                        if (currentTime - this.lastHit > 500) {
+                            this.energy -= 10;
+                            console.log(this.energy);
+                            this.lastHit = currentTime;
+                        }
+                    }
+
+
+                    this.isOnTile();
                 }
-
-
-                this.isOnTile();
             }
         }, 1000 / 60);
 
@@ -226,36 +234,35 @@ class Spider extends MoveableObject {
 
     isOnTile() {
         if (this.isOnGrassFlying()) {
-            if (this.isOnGrassFlyingStart()) {
-                this.groundLevel = this.isOnGrassFlyingStart().y + 8;
-            } else if (this.isOnGrassFlyingCenter()) {
-                this.groundLevel = this.isOnGrassFlyingCenter().y + 8;
-            } else if (this.isOnGrassFlyingEnd()) {
-                this.groundLevel = this.isOnGrassFlyingEnd().y + 8;
+            if (this.isOnObjectStart('GRASS_FLYING')) {
+                this.groundLevel = this.isOnObjectStart('GRASS_FLYING').yTop;
+            } else if (this.isOnObjectCenter('GRASS_FLYING')) {
+                this.groundLevel = this.isOnObjectCenter('GRASS_FLYING').yTop;
+            } else if (this.isOnObjectEnd('GRASS_FLYING')) {
+                this.groundLevel = this.isOnObjectEnd('GRASS_FLYING').yTop;
             }
             this.grounded = true;
-        } else if (this.isOnGrassStart() || this.isOnGrassCenter() || this.isOnGrassEnd()) {
-            if (this.isOnGrassStart()) {
-                this.groundLevel = this.isOnGrassStart().y + 8;
-            } else if (this.isOnGrassCenter()) {
-                this.groundLevel = this.isOnGrassCenter().y + 8;
-            } else if (this.isOnGrassEnd()) {
-                this.groundLevel = this.isOnGrassEnd().y + 8;
+        } else if (this.isOnObjectStart('GRASS') || this.isOnObjectCenter('GRASS') || this.isOnObjectEnd('GRASS')) {
+            if (this.isOnObjectStart('GRASS')) {
+                this.groundLevel = this.isOnObjectStart('GRASS').yTop;
+            } else if (this.isOnObjectCenter('GRASS')) {
+                this.groundLevel = this.isOnObjectCenter('GRASS').yTop;
+            } else if (this.isOnObjectEnd('GRASS')) {
+                this.groundLevel = this.isOnObjectEnd('GRASS').yTop;
             }
             this.grounded = true;
         } else {
             this.grounded = false;
             this.groundLevel = 650;
-            // if (this.otherDirection && !world.level.previousLevelEndOtherDirection && this.yBottom > 482) {
-            //     world.level.X_LEVEL_START = this.xLeft - 52;
-            //     world.level.previousLevelEndOtherDirection = true;
-            // } else if (!world.level.previousLevelEnd && this.yBottom > 482) {
-            //     world.level.X_LEVEL_END = this.xLeft + 20;
-            //     world.level.previousLevelEnd = true;
-            // }
+            if (this.otherDirection && !world.level.previousLevelEndOtherDirection && this.yBottom > 484) {
+                world.level.X_LEVEL_START = this.xLeft - 52;
+                world.level.previousLevelEndOtherDirection = true;
+            } else if (!world.level.previousLevelEnd && this.yBottom > 484) {
+                world.level.X_LEVEL_END = this.xLeft + 20;
+                world.level.previousLevelEnd = true;
+            }
         }
     }
-
 
     isOnGrassFlying() {
         let tempGrass = [];
@@ -268,28 +275,21 @@ class Spider extends MoveableObject {
             }
         });
         return (tempGrass.length > 0) ? true : false;
-
-        // return this.world.GRASS_FLYING.find(g =>
-        //     this.yBottom > g.y &&
-        //     (this.xCenter < g.xLeft && g.xLeft < this.xRight ||
-        //     g.xLeft < this.xCenter && this.xCenter < g.xRight ||
-        //     this.xLeft < g.xRight && g.xRight < this.xCenter)
-        // );
     }
 
 
-    isOnGrassStart() {
-        return world.GRASS.find(g => this.xCenter < g.xLeft && g.xLeft < this.xRight);
+    isOnObjectStart(key) {
+        return world[key].find(o => this.xCenter < o.xLeft && o.xLeft < this.xRight);
     }
 
 
-    isOnGrassCenter() {
-        return world.GRASS.find(g => g.xLeft < this.xCenter && this.xCenter < g.xRight);
+    isOnObjectCenter(key) {
+        return world[key].find(o => o.xLeft < this.xCenter && this.xCenter < o.xRight);
     }
 
 
-    isOnGrassEnd() {
-        return world.GRASS.find(g => this.xLeft < g.xRight && g.xRight < this.xCenter);
+    isOnObjectEnd(key) {
+        return world[key].find(o => this.xLeft < o.xRight && o.xRight < this.xCenter);
     }
 
 

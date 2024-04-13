@@ -14,9 +14,9 @@ const GRASS_FLYING1_1 = [
 
 const GRASS1_1 = [
     new GrassCenter(0, 0), new GrassCenter(1, 0), new GrassCenter(2, 0), new GrassCenter(3, 0),
-    new GrassCenter(4, 0), new GrassCenter(5, 0), new GrassCenter(6, 0), new GrassCenter(7, 0),
-    new GrassCenter(8, 0), new GrassCenter(9, 0), new GrassCenter(10, 0), new GrassCenter(11, 0),
-    new GrassCenter(12, 0), new GrassCenter(13, 0), new GrassCenter(14, 0)
+    new GrassCenter(4, 0), new GrassCenter(5, 0), new GrassEnd(6, 0), new GrassStart(8, 0),
+    new GrassCenter(9, 0), new GrassCenter(10, 0), new GrassCenter(11, 0), new GrassCenter(12, 0),
+    new GrassCenter(13, 0), new GrassCenter(14, 0)
 ];
 
 const STAIRWAYS1_1 = [
@@ -27,7 +27,7 @@ const STAIRWAYS1_1 = [
 ];
 
 const COINS1_1 = [
-    new Coin(2.25, 4.625)
+    new Coin(2.25, 4.625), new Coin(5.5, 1.125), new Coin(7.25, 3.125), new Coin(9, 1.125), new Coin(12.25, 4.625)
 ];
 
 
@@ -106,14 +106,40 @@ const ENEMIES1_3 = [
 
 
 // Section4
+const TREES1_4 = [
+    new Tree(2.5, 3.5)
+];
+
+const LEAVES1_4 = [
+    new Leaf(3.625, 5.5, 1), new Leaf(4.25, 6, 1), new Leaf(4.75, 5.5, 1)
+];
+
 const GRASS_FLYING1_4 = [
-    new GrassFlyingStart(6, 1), new GrassFlyingCenter(7, 1), new GrassFlyingEnd(8, 1)
+    new GrassFlyingStart(2, 3.5), new GrassFlyingCenter(3, 3.5), new GrassFlyingCenter(4, 3.5), new GrassFlyingEnd(5, 3.5),
+    new GrassFlyingStart(9, 3.5), new GrassFlyingCenter(10, 3.5), new GrassFlyingCenter(11, 3.5), new GrassFlyingEnd(12, 3.5)
 ];
 
 const GRASS1_4 = [
     new GrassCenter(0, 0), new GrassCenter(1, 0), new GrassCenter(2, 0), new GrassCenter(3, 0),
-    new GrassEnd(4, 0), new GrassStart(10, 0),
-    new GrassCenter(11, 0), new GrassCenter(12, 0), new GrassCenter(13, 0), new GrassCenter(14, 0)
+    new GrassCenter(4, 0), new GrassCenter(5, 0), new GrassEnd(6, 0), new GrassStart(8, 0),
+    new GrassCenter(9, 0), new GrassCenter(10, 0), new GrassCenter(11, 0), new GrassCenter(12, 0),
+    new GrassCenter(13, 0), new GrassCenter(14, 0)
+];
+
+const STAIRWAYS1_4 = [
+    new StairwayBottom(3, 0.875), new StairwayCenter(3, 1.375), new StairwayCenter(3, 1.875), new StairwayCenter(3, 2.375),
+    new StairwayCenter(3, 2.875), new StairwayCenter(3, 3.375), new StairwayTop(3, 3.875),
+    new StairwayBottom(11.625, 0.875), new StairwayCenter(11.625, 1.375), new StairwayCenter(11.625, 1.875), new StairwayCenter(11.625, 2.375),
+    new StairwayCenter(11.625, 2.875), new StairwayCenter(11.625, 3.375), new StairwayTop(11.625, 3.875)
+];
+
+const COINS1_4 = [
+    new Coin(2.25, 4.625), new Coin(5.5, 1.125), new Coin(7.25, 3.125), new Coin(9, 1.125), new Coin(12.25, 4.625)
+];
+
+
+const ENEMIES1_4 = [
+    new Spider(9, 3.6875)
 ];
 
 
@@ -165,7 +191,7 @@ const GRASS1_8 = [
 
 // Level1
 const TREES1 = [
-    TREES1_1, TREES1_2, TREES1_3
+    TREES1_1, TREES1_2, TREES1_3,
 ];
 
 const LEAVES1 = [
@@ -173,11 +199,11 @@ const LEAVES1 = [
 ];
 
 const GRASS_FLYING1 = [
-    GRASS_FLYING1_1, GRASS_FLYING1_2, null, GRASS_FLYING1_4, null, GRASS_FLYING1_6, GRASS_FLYING1_7, null
+    GRASS_FLYING1_1, GRASS_FLYING1_2, null, null, null, GRASS_FLYING1_6, GRASS_FLYING1_7, null
 ];
 
 const GRASS1 = [
-    GRASS1_1, GRASS1_2, GRASS1_3, GRASS1_4, GRASS1_5, GRASS1_6, GRASS1_7, GRASS1_8
+    GRASS1_1, GRASS1_2, GRASS1_3, null, GRASS1_5, GRASS1_6, GRASS1_7, GRASS1_8
 ];
 
 const STAIRWAYS1 = [
