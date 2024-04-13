@@ -124,6 +124,7 @@ Tipp
 
   Current Task
   ------------
+    - radDispl (4 cases: xx, ox, xo, oo)
     - width / 2 + radDispl!!!
     - ent patrol method + attack ent from back side + knight vs. grass
 

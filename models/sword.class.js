@@ -81,7 +81,7 @@ class Sword {
         }
         let hitTop = enemy.yTop < yTop && yTop < enemy.yBottom;
         let hitBottom = enemy.yTop < yBottom && yBottom < enemy.yBottom;
-        console.log(hitLeft, hitRight, hitTop, hitBottom);
+        // console.log(hitLeft, hitRight, hitTop, hitBottom);
         return (hitLeft || hitRight) && (hitTop || hitBottom);
     }
 }

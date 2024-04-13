@@ -20,7 +20,7 @@ class MoveableObject extends DrawableObject {
 
     radDispl = 0;
     radDisplAttack = 0;
-    
+
 
     constructor(x, y) {
         super(x, y, 128);    // anpassen!!!
@@ -110,7 +110,7 @@ class MoveableObject extends DrawableObject {
                     this.y -= this.speedY;
                     this.speedY -= this.acceleration;
                     if (this.y > this.groundLevel - (this.yBottom - this.y)) {
-                        console.log(this.y);
+                        // console.log(this.y);
                         this.y = this.groundLevel - (this.yBottom - this.y);
                     }
                 } else {

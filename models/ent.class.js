@@ -160,41 +160,28 @@ class Ent extends MoveableObject {
                     let currentTime = new Date().getTime();
                     if (currentTime - this.lastHit > 500) {
                         this.energy -= 20;
-                        console.log(this.energy);
+                        // console.log(this.energy);
                         this.lastHit = currentTime;
                     }
                 }
 
 
                 if (!this.dead && !this.attack(world.hero)) {
-                    if (this.x < this.xWest && this.otherDirection || this.x > this.xStart && !this.otherDirection) {
-                        if (!this.walkingStop) {
-                            this.walkingStop = true;
+                    if (this.x < this.xWest && this.otherDirection || this.xStart < this.x && !this.otherDirection) {
+                        if (!this.waitingStop) {
+                            this.waitingStop = true;
                             this.walking = false;
                             setTimeout(() => {
-                                this.walkingStop = false;
-                                if (!this.attack(world.hero)) {
-                                    this.otherDirection = (this.otherDirection) ? false : true;
-                                }
+                                this.otherDirection = (!this.otherDirection) ? true : false;
+                                this.waitingStop = false;
+                                this.walking = true;
                             }, 3000);
+                            // console.log('case A');
                         }
-                        console.log('caseA');
-                    } else if (this.otherDirection && this.x > this.xWest || !this.otherDirection && this.x < this.xStart) {
+                    } else {
                         this.walking = true;
                         (this.otherDirection) ? this.x -= this.speed : this.x += this.speed;
-                        console.log('caseB');
-                    } else {
-                        if (!this.walkingStop) {
-                            this.walkingStop = true;
-                            this.walking = false;
-                            setTimeout(() => {
-                                this.walkingStop = false;
-                                if (!this.attack(world.hero)) {
-                                    this.otherDirection = (this.otherDirection) ? false : true;
-                                }
-                            }, 3000);
-                        }
-                        console.log('caseC');
+                        // console.log('case B');
                     }
                 }
 
