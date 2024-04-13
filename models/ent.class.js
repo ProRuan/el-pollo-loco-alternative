@@ -18,6 +18,7 @@ class Ent extends MoveableObject {
     lastHit = 0;
 
     radDispl = 104;
+    radDisplAttack = 24;
     // 10.25, 1.625
 
     constructor(x, y) {

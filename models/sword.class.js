@@ -5,7 +5,9 @@ class Sword {
     constructor(knight) {
         this.x = knight.x;
         this.y = knight.y;
+        this.width = knight.width;
         this.otherDirection = knight.otherDirection;
+        this.radDispl = knight.radDispl;
     }
 
 
@@ -68,10 +70,18 @@ class Sword {
 
 
     isSubtending(enemy, xLeft, xRight, yTop, yBottom) {
-        let hitLeft = enemy.xLeft < xLeft && xLeft < enemy.xRight;
-        let hitRight = enemy.xLeft < xRight && xRight < enemy.xRight;
+        let hitLeft;
+        let hitRight;
+        if (!this.otherDirection) {
+            hitLeft = enemy.xLeft < xLeft && xLeft < enemy.xRight;
+            hitRight = enemy.xLeft < xRight && xRight < enemy.xRight;
+        } else {
+            hitLeft = enemy.xLeft - enemy.radDisplAttack + this.width / 2 + this.radDispl < xLeft && xLeft < enemy.xRight - enemy.radDisplAttack + this.width / 2 + this.radDispl;
+            hitRight = enemy.xLeft - enemy.radDisplAttack + this.width / 2 + this.radDispl < xRight && xRight < enemy.xRight - enemy.radDisplAttack + this.width / 2 + this.radDispl;
+        }
         let hitTop = enemy.yTop < yTop && yTop < enemy.yBottom;
         let hitBottom = enemy.yTop < yBottom && yBottom < enemy.yBottom;
+        console.log(hitLeft, hitRight, hitTop, hitBottom);
         return (hitLeft || hitRight) && (hitTop || hitBottom);
     }
 }
