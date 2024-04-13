@@ -24,13 +24,13 @@ class Spider extends MoveableObject {
     radDispl = 64;
     // 12.25, 0.1875
 
-    constructor() {
-        super(12.25, 0.1875);    // Please verfiy!!!
+    constructor(x, y) {
+        super(x, y);    // Please verfiy!!!
         this.setCover('spider');
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
         this.animate();
-        this.applyGravity();
+        // this.applyGravity();
     }
 
 
@@ -168,54 +168,57 @@ class Spider extends MoveableObject {
             //     this.patrol();
             // }
 
-
-            if (!this.waiting && this.attack()) {
-                this.throwWeb();
-                this.waiting = true;
-            }
-
-
-            if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
-                let currentTime = new Date().getTime();
-                if (currentTime - this.lastHit > 500) {
-                    this.energy -= 10;
-                    console.log(this.energy);
-                    this.lastHit = currentTime;
+            if (world) {
+                if (!this.waiting && this.attack()) {
+                    this.throwWeb();
+                    this.waiting = true;
                 }
+
+
+                if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
+                    let currentTime = new Date().getTime();
+                    if (currentTime - this.lastHit > 500) {
+                        this.energy -= 10;
+                        console.log(this.energy);
+                        this.lastHit = currentTime;
+                    }
+                }
+
+
+                this.isOnTile();
             }
-
-
-            this.isOnTile();
         }, 1000 / 60);
 
 
         setInterval(() => {
-            if (this.dying) {
-                if (!this.dead) {
-                    this.currentImage = 0;
-                    this.playAnimationOnce(FLIP_BOOK_SPIDER.DEATH);
-                    this.dead = true;
-                    // splice!!!
+            if (world) {
+                if (this.dying) {
+                    if (!this.dead) {
+                        this.currentImage = 0;
+                        this.playAnimationOnce(FLIP_BOOK_SPIDER.DEATH);
+                        this.dead = true;
+                        // splice!!!
+                    }
+                } else if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
+                    if (!this.paralysed) {
+                        this.currentImage = 0;
+                        this.paralysed = true;
+                        setTimeout(() => {
+                            this.paralysed = false;
+                        }, 400);
+                    }
+                    this.playAnimation(FLIP_BOOK_SPIDER.HURT);
+                    if (this.energy <= 0) {
+                        this.dying = true;
+                    }
+                } else if (this.shot) {    // improve shot by interval
+                    this.shot = false;
+                    this.playAnimationOnce(FLIP_BOOK_SPIDER.ATTACK);
+                } else if (this.walking) {
+                    this.playAnimation(FLIP_BOOK_SPIDER.WALK);
+                } else {
+                    this.playAnimation(FLIP_BOOK_SPIDER.IDLE);
                 }
-            } else if (world.keyboard.keyA.keydown && world.hero.attack(this)) {
-                if (!this.paralysed) {
-                    this.currentImage = 0;
-                    this.paralysed = true;
-                    setTimeout(() => {
-                        this.paralysed = false;
-                    }, 400);
-                }
-                this.playAnimation(FLIP_BOOK_SPIDER.HURT);
-                if (this.energy <= 0) {
-                    this.dying = true;
-                }
-            } else if (this.shot) {    // improve shot by interval
-                this.shot = false;
-                this.playAnimationOnce(FLIP_BOOK_SPIDER.ATTACK);
-            } else if (this.walking) {
-                this.playAnimation(FLIP_BOOK_SPIDER.WALK);
-            } else {
-                this.playAnimation(FLIP_BOOK_SPIDER.IDLE);
             }
         }, 100);
     }

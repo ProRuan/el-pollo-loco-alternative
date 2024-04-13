@@ -86,6 +86,11 @@ class World {
     }
 
 
+    get STAIRWAYS() {
+        return this.level.STAIRWAYS;
+    }
+
+
     get COINS() {
         return this.level.COINS;
     }
@@ -129,6 +134,7 @@ class World {
 
         // this.addGroupToMap(this.stairway);
 
+        this.addGroupToMap(this.STAIRWAYS);
         this.addGroupToMap(this.COINS);
         this.addGroupToMap(this.CRYSTALS);
         this.addGroupToMap(this.HIT_POINTS);
