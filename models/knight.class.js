@@ -132,19 +132,15 @@ class Knight extends MoveableObject {
             //     }, 500);
             // }
             this.climbing = false;
-            if (this.isKey('keydown', 'arrowUp') && this.world.stairway.length > 0 && this.isIncluding(this.world.stairway[0].xCenter, this.yCenter)) {
+            if (this.isKey('keydown', 'arrowUp') && this.world.STAIRWAYS.find(s => this.isIncluding(s.xCenter, s.yCenter + 1))) {
                 console.log('climbing up', this.y);
-                if (this.y > this.yStairwayMax) {
-                    this.climbing = true;
-                    this.climb(true);
-                }
+                this.climbing = true;
+                this.climb(true);
             }
-            if (this.isKey('keydown', 'arrowDown') && this.world.stairway.length > 0 && this.isIncluding(this.world.stairway[0].xCenter, this.yCenter)) {
+            if (this.isKey('keydown', 'arrowDown') && this.world.STAIRWAYS.find(s => this.isIncluding(s.xCenter, s.yCenter - 1))) {
                 console.log('climbing down', this.y);
-                if (this.y < this.yStairwayMin) {
-                    this.climbing = true;
-                    this.climb(false);
-                }
+                this.climbing = true;
+                this.climb(false);
             }
             if (this.isKey('keydown', 'arrowLeft') && this.x > this.world.level.X_LEVEL_START) {
                 this.move(false);

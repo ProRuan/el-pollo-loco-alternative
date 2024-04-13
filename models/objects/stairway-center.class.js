@@ -13,7 +13,17 @@ class StairwayCenter extends DrawableObject {
     }
 
 
+    get yTop() {
+        return this.y;
+    }
+
+
     get yCenter() {
         return this.y + this.height / 2;
+    }
+
+
+    get yBottom() {
+        return this.y + this.height;
     }
 }

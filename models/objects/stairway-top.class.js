@@ -13,7 +13,17 @@ class StairwayTop extends DrawableObject {
     }
 
 
+    get yTop() {
+        return this.y;
+    }
+
+
     get yCenter() {
-        return this.y + this.height / 2;
+        return this.y + this.height / 2 - 16;
+    }
+
+
+    get yBottom() {
+        return this.y + this.height;
     }
 }
