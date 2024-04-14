@@ -22,7 +22,7 @@ class Knight extends MoveableObject {
     // 4.4375, 0.625
 
     constructor() {
-        super(0.4375, 0.625);    // Please set!!!
+        super(0.4375, 4.625);    // Please set!!!
         this.setCover('knight');
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
