@@ -23,8 +23,6 @@ class Ent extends MoveableObject {
 
     constructor(x, y) {
         super(x, y);    // Please verfiy!!!
-        this.xStart = this.x;
-        this.xWest = this.xStart - 5.25 * 64;
         this.setSize(256);
         this.setCover('ent');
         this.loadImage(this.cover);
@@ -143,6 +141,13 @@ class Ent extends MoveableObject {
 
     animate() {
         setInterval(() => {
+            if (!this.waySet) {
+                this.xStart = this.x;
+                this.xWest = this.xStart - 5.25 * 64;
+                this.waySet = true;
+                // console.log(this.x, this.xStart, this.xWest);
+            }
+
             // console.log('ent: ', this.yBottom);
 
             // this.attack();
@@ -178,11 +183,11 @@ class Ent extends MoveableObject {
                             }, 3000);
                             // console.log('case A');
                         }
-                    } else {
+                    } else if (!(keyboard.keyA.keydown && world.hero.attack())) {
                         this.walking = true;
                         (this.otherDirection) ? this.x -= this.speed : this.x += this.speed;
-                        // console.log('case B');
                     }
+                    // console.log('case B');
                 }
 
 
