@@ -7,6 +7,8 @@ class Knight extends MoveableObject {
     energy = 120;
 
     coins = 0;
+    crystals = 0;
+    hit_points = 0;
     leaves = 0;
 
 
@@ -22,7 +24,7 @@ class Knight extends MoveableObject {
     // 4.4375, 0.625
 
     constructor() {
-        super(0.4375, 4.625);    // Please set!!!
+        super(4.4375, 0.625);    // Please set!!!
         this.setCover('knight');
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
@@ -213,6 +215,8 @@ class Knight extends MoveableObject {
             this.isOnTile();
             this.collect('leaves');
             this.collect('coins');
+            this.collect('crystals');
+            this.collect('hit_points');
             // this.collectCoinNew();
             // this.collectCoin();
             this.pushStone();

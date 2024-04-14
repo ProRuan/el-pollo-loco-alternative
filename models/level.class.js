@@ -191,6 +191,28 @@ class Level {
     }
 
 
+    loadCrystalsNew(crystals, n) {    // double code!!!
+        if (crystals) {
+            for (let i = 0; i < crystals.length; i++) {
+                let crystal = crystals[i];
+                crystal.x += n * this.translation;
+                this.CRYSTALS.push(crystal);
+            }
+        }
+    }
+
+
+    loadHitPointsNew(hitpoints, n) {    // double code!!!
+        if (hitpoints) {
+            for (let i = 0; i < hitpoints.length; i++) {
+                let hitPoint = hitpoints[i];
+                hitPoint.x += n * this.translation;
+                this.HIT_POINTS.push(hitPoint);
+            }
+        }
+    }
+
+
     loadCoins(n) {
         for (let i = 0; i < this.cache.length; i++) {
             let coin = this.cache[i];

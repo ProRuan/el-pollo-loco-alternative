@@ -27,6 +27,8 @@ function initSection(id) {
     level1.loadGrassFlyingNew(GRASS_FLYING1[id], id);
     level1.loadGrassNew(GRASS1[id], id);
     level1.loadCoinsNew(COINS1[id], id);
+    level1.loadCrystalsNew(CRYSTAL1[id], id);
+    level1.loadHitPointsNew(HIT_POINT1[id], id);
     level1.loadEnemies(ENEMIES1[id], id);
     level1.loadStairways(STAIRWAYS1[id], id);
 }
