@@ -21,6 +21,7 @@ class Level {
     constructor() {
         this.setXLevelStart();
         this.setXLevelEnd(LEVEL_SIZE);
+        this.setXCameraEnd(LEVEL_SIZE);
     }
 
 
@@ -30,7 +31,13 @@ class Level {
 
 
     setXLevelEnd(amount) {
-        this.X_LEVEL_END = (amount - 1) * CANVAS_WIDTH - 4 + 28;
+        this.X_LEVEL_END = amount * CANVAS_WIDTH + 68;
+        // this.X_LEVEL_END = (amount - 1) * CANVAS_WIDTH - 4 + 28;
+    }
+
+
+    setXCameraEnd(amount) {
+        this.X_CAMERA_END = (amount - 1) * CANVAS_WIDTH + 284;
     }
 
 
