@@ -34,6 +34,7 @@ class Lightning extends MagicObject {
             if (this.searching) {
                 if (!this.conjured) {
                     this.conjured = true;
+                    // console.log('start: ', new Date().getTime());
                     setTimeout(() => {
                         this.searching = false;
                         setTimeout(() => {
@@ -42,13 +43,14 @@ class Lightning extends MagicObject {
                                 this.conjured = false;
                                 this.searching = true;
                                 this.magicDelay = true;
+                                // console.log('end: ', new Date().getTime());
                             }, 700);
                         }, 500);
                     }, 2500);
                 }
-                this.x = world.hero.xCenter - 28;    // please verify!!!
+                this.x = world.hero.xCenter + 128;    // please verify!!!
                 this.xTargeted = this.x;
-                this.y = world.hero.yCenter - 168 - 128;
+                this.y = world.hero.yCenter - 200 - 128;
                 this.yTargeted = this.y;
             } else if (!this.magicDelay) {
                 this.x = this.xTargeted;    // please verify!!!

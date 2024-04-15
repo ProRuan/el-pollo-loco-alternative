@@ -26,7 +26,7 @@ class World {
     blades = [new Blade(10.57, -0.5)];
     fire = new Fire(13, -0.25);
     fires = [new Fire(8, -0.5)];
-    lightning = new Lightning(4.75, 0.4);
+    lightning = new Lightning(0, +284 / 64);
     lightnings = [new Lightning(4.75, 0.4)];
 
     stairwayBottom = new StairwayBottom(4.25, 0.875);
