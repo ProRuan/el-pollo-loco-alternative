@@ -9,7 +9,7 @@ class World {
     // dino = new Dino();
     // ent = new Ent();
     // spider = new Spider();
-    endboss = new Shaman();
+    // endboss = new Shaman();
     // bird = new Bird(3.75, 7.415);
     // bomb = new Bomb(3.75, 3);
     bomb = undefined;
@@ -116,6 +116,11 @@ class World {
     }
 
 
+    get ENDBOSS() {
+        return this.level.ENDBOSS;
+    }
+
+
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -146,6 +151,7 @@ class World {
         // this.addToMap(this.spider);
         this.addGroupToMap(this.webs);
         // this.addToMap(this.endboss);
+        this.addToMap(this.ENDBOSS);
         this.addGroupToMap(this.ENEMIES);
         this.addToMap(this.hero);
 

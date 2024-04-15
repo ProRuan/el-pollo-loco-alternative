@@ -1,31 +1,30 @@
 // Testing
 const TREES1_1 = [
-    new Tree(-2, 4), new Tree(8, 0)
+
 ];
 
 const LEAVES1_1 = [
-    new Leaf(-0.875, 6, 1), new Leaf(-0.25, 6.5, 1), new Leaf(0.25, 6, 1),
-    new Leaf(9.125, 2, 1), new Leaf(9.75, 2.5, 1), new Leaf(10.25, 2, 1)
+
 ];
 
 const GRASS_FLYING1_1 = [
-    new GrassFlyingCenter(0, 4), new GrassFlyingCenter(1, 4), new GrassFlyingCenter(2, 4), new GrassFlyingEnd(3, 4)
+    new GrassFlyingStart(3, 3.5), new GrassFlyingCenter(4, 3.5), new GrassFlyingCenter(5, 3.5), new GrassFlyingEnd(6, 3.5),
+    new GrassFlyingStart(8, -5), new GrassFlyingCenter(9, -5), new GrassFlyingEnd(10, -5)
 ];
 
 const GRASS1_1 = [
-    new GrassStart(1, 0), new GrassCenter(2, 0), new GrassCenter(3, 0), new GrassCenter(4, 0),
-    new GrassCenter(5, 0), new GrassCenter(6, 0), new GrassCenter(7, 0), new GrassCenter(8, 0),
-    new GrassCenter(9, 0), new GrassCenter(10, 0), new GrassCenter(11, 0), new GrassCenter(12, 0),
-    new GrassCenter(13, 0), new GrassCenter(14, 0)
+    new GrassCenter(0, 0), new GrassCenter(1, 0), new GrassCenter(2, 0), new GrassCenter(3, 0),
+    new GrassCenter(4, 0), new GrassCenter(5, 0), new GrassEnd(6, 0),
+    new GrassStart(12, 0), new GrassCenter(13, 0), new GrassCenter(14, 0)
 ];
 
 const STAIRWAYS1_1 = [
-    new StairwayBottom(2.25, 0.875), new StairwayCenter(2.25, 1.375), new StairwayCenter(2.25, 1.875), new StairwayCenter(2.25, 2.375),
-    new StairwayCenter(2.25, 2.875), new StairwayCenter(2.25, 3.375), new StairwayCenter(2.25, 3.875), new StairwayTop(2.25, 4.375)
+    new StairwayBottom(4.25, 0.875), new StairwayCenter(4.25, 1.375), new StairwayCenter(4.25, 1.875), new StairwayCenter(4.25, 2.375),
+    new StairwayCenter(4.25, 2.875), new StairwayCenter(4.25, 3.375), new StairwayTop(4.25, 3.875)
 ];
 
 const COINS1_1 = [
-    new Coin(3.25, 5.125), new Coin(5.75, 1.125), new Coin(13.75, 1.125)
+
 ];
 
 const CRYSTAL1_1 = [
@@ -33,12 +32,11 @@ const CRYSTAL1_1 = [
 ];
 
 const HIT_POINT1_1 = [
-    new HitPoint(0.75, 5.125)
+
 ];
 
-
 const ENEMIES1_1 = [
-    new Dino(1.5625, 0.25), new Ent(10.859375, 1.625)
+
 ];
 
 
@@ -303,11 +301,44 @@ const ENEMIES1_7 = [
 
 
 // Section8
+const TREES1_8 = [
+
+];
+
+const LEAVES1_8 = [
+
+];
+
+const GRASS_FLYING1_8 = [
+    new GrassFlyingStart(3, 3.5), new GrassFlyingCenter(4, 3.5), new GrassFlyingCenter(5, 3.5), new GrassFlyingEnd(6, 3.5),
+    new GrassFlyingStart(8, -5), new GrassFlyingCenter(9, -5), new GrassFlyingEnd(10, -5)
+];
+
 const GRASS1_8 = [
     new GrassCenter(0, 0), new GrassCenter(1, 0), new GrassCenter(2, 0), new GrassCenter(3, 0),
-    new GrassCenter(4, 0), new GrassCenter(5, 0), new GrassCenter(6, 0), new GrassCenter(7, 0),
-    new GrassCenter(8, 0), new GrassCenter(9, 0), new GrassCenter(10, 0), new GrassCenter(11, 0),
-    new GrassCenter(12, 0), new GrassCenter(13, 0), new GrassCenter(14, 0)
+    new GrassCenter(4, 0), new GrassCenter(5, 0), new GrassEnd(6, 0),
+    new GrassStart(12, 0), new GrassCenter(13, 0), new GrassCenter(14, 0)
+];
+
+const STAIRWAYS1_8 = [
+    new StairwayBottom(4.25, 0.875), new StairwayCenter(4.25, 1.375), new StairwayCenter(4.25, 1.875), new StairwayCenter(4.25, 2.375),
+    new StairwayCenter(4.25, 2.875), new StairwayCenter(4.25, 3.375), new StairwayTop(4.25, 3.875)
+];
+
+const COINS1_8 = [
+
+];
+
+const CRYSTAL1_8 = [
+
+];
+
+const HIT_POINT1_8 = [
+
+];
+
+const ENEMIES1_8 = [
+
 ];
 
 
@@ -348,3 +379,5 @@ const HIT_POINT1 = [
 const ENEMIES1 = [
     ENEMIES1_1, ENEMIES1_2, ENEMIES1_3, ENEMIES1_4, null, ENEMIES1_6, null, null
 ];
+
+const ENDBOSS1 = new Shaman(12, 2.09375);

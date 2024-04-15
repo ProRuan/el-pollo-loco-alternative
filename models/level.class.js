@@ -262,4 +262,10 @@ class Level {
             }
         }
     }
+
+
+    loadEndboss(endboss, n) {
+        endboss.x += n * this.translation;
+        this.ENDBOSS = endboss;
+    }
 }
