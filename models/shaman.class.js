@@ -73,6 +73,16 @@ class Shaman extends MoveableObject {
     }
 
 
+    get xMagicFire() {
+        return this.x / 64 + 1;
+    }
+
+
+    get yMagicFire() {
+        return this.y / 64 - 4.59375;
+    }
+
+
     castBlade() {    // blade as of 500
         setInterval(() => {
             this.playAnimation(FLIP_BOOK_SHAMAN.MAGIC_BLADE);
@@ -126,12 +136,12 @@ class Shaman extends MoveableObject {
                 // this.attack();
 
                 if (world.endbossMagic) {
-                    if (world.endbossMagic instanceof Blade) {
+                    if (world.endbossMagic instanceof Blade || world.endbossMagic instanceof Fire) {
                         if (world.endbossMagic.x < world.endbossMagic.xEnd) {
                             delete world.endbossMagic;
-                            // this.lastMagic = new Date().getTime() + 1500;
+                            this.lastMagic = new Date().getTime() + 1500;
 
-                            // console.log('magic deleted');
+                            console.log('magic deleted');
                         }
                     }
                 }
@@ -148,7 +158,7 @@ class Shaman extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            // this.loadImage(FLIP_BOOK_SHAMAN.MAGIC_BLADE[3]);
+            // this.loadImage(FLIP_BOOK_SHAMAN.MAGIC_FIRE[4]);
 
             let currentTime = new Date().getTime();
             if (currentTime - this.lastMagic > 3000) {
@@ -172,6 +182,9 @@ class Shaman extends MoveableObject {
                     // this.playAnimation(FLIP_BOOK_SHAMAN.MAGIC_FIRE);
                     console.log('FIRE');
                     setTimeout(() => {
+                        world.endbossMagic = new Fire(this.xMagicFire, this.yMagicFire);
+                    }, (this.currentFlipBook.length - 2) * 100);
+                    setTimeout(() => {
                         this.animating = false;
                         this.lastMagic = new Date().getTime() + 1000;
                         this.currentFlipBook = FLIP_BOOK_SHAMAN.IDLE;
@@ -193,6 +206,7 @@ class Shaman extends MoveableObject {
                 }
             }
             this.playAnimation(this.currentFlipBook);
+            // this.loadImage(FLIP_BOOK_SHAMAN.MAGIC_FIRE[3]);
             // console.log(this.img);
 
 

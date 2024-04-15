@@ -29,7 +29,7 @@ class Blade extends MagicObject {
         setInterval(() => {
             if (!this.inTouch) {
                 this.x -= 192 / 60;
-                (world.hero.yCenter < world.ENDBOSS.yCenter) ? this.y -= 1.624 : this.y += 0.125;
+                (world.hero.yCenter < world.ENDBOSS.yCenter) ? this.y -= 1.625 : this.y += 0.125;
             }
             // this.x -= 192 / 60;
             // this.keep();

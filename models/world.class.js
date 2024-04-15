@@ -24,7 +24,7 @@ class World {
     webs = [];
     blade = new Blade(10.75, -0.5);
     blades = [new Blade(10.57, -0.5)];
-    fire = new Fire(8, -0.5);
+    fire = new Fire(13, -0.25);
     fires = [new Fire(8, -0.5)];
     lightning = new Lightning(4.75, 0.4);
     lightnings = [new Lightning(4.75, 0.4)];

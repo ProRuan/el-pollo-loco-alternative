@@ -8,6 +8,8 @@ class Fire extends MagicObject {
 
     constructor(x, y) {
         super(x, y, 'Fire');
+        this.xStart = this.x;
+        this.xEnd = this.xStart - 12 * 64;
         this.move();
         this.animate();
     }
@@ -28,10 +30,10 @@ class Fire extends MagicObject {
             if (!this.inTouch) {
                 this.x -= 128 / 60;
             }
-            if (this.yCenter < world.hero.yCenter) {
+            if (this.yCenter + 24 < world.hero.yCenter) {
                 this.y += 0.25;
-            } else if (this.yCenter > world.hero.yCenter) {
-                this.y -= 0.25;
+            } else if (this.yCenter + 24 > world.hero.yCenter) {
+                this.y -= 1.5;
             }
             // this.keep();
         }, 1000 / 60);
