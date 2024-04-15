@@ -127,6 +127,7 @@ Tipp
     - radDispl (4 cases: xx, ox, xo, oo)
     - width / 2 + radDispl!!!
     - ent patrol method + attack ent from back side + knight vs. grass
+    - section1 + section5/6 + section8
 
     - improve section1
     - character yBottom vs. grass yTop
