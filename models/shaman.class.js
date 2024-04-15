@@ -63,6 +63,16 @@ class Shaman extends MoveableObject {
     }
 
 
+    get xMagicBlade() {
+        return this.x / 64 + 2;
+    }
+
+
+    get yMagicBlade() {
+        return this.y / 64 - 4.39375;
+    }
+
+
     castBlade() {    // blade as of 500
         setInterval(() => {
             this.playAnimation(FLIP_BOOK_SHAMAN.MAGIC_BLADE);
@@ -115,7 +125,18 @@ class Shaman extends MoveableObject {
             if (world) {
                 // this.attack();
 
-                
+                if (world.endbossMagic) {
+                    if (world.endbossMagic instanceof Blade) {
+                        if (world.endbossMagic.x < world.endbossMagic.xEnd) {
+                            delete world.endbossMagic;
+                            // this.lastMagic = new Date().getTime() + 1500;
+
+                            // console.log('magic deleted');
+                        }
+                    }
+                }
+
+
                 if (this.energy > 70) {
                     this.magicFrequencies = [0, 4, 7];
                 } else if (this.energy > 30) {
@@ -127,6 +148,8 @@ class Shaman extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
+            // this.loadImage(FLIP_BOOK_SHAMAN.MAGIC_BLADE[3]);
+
             let currentTime = new Date().getTime();
             if (currentTime - this.lastMagic > 3000) {
                 let magic = Math.round(Math.random() * 10);
@@ -160,6 +183,9 @@ class Shaman extends MoveableObject {
                     // this.playAnimation(FLIP_BOOK_SHAMAN.MAGIC_BLADE);
                     console.log('BLADE');
                     setTimeout(() => {
+                        world.endbossMagic = new Blade(this.xMagicBlade, this.yMagicBlade);
+                    }, (this.currentFlipBook.length - 1) * 100);
+                    setTimeout(() => {
                         this.animating = false;
                         this.lastMagic = new Date().getTime() + 1000;
                         this.currentFlipBook = FLIP_BOOK_SHAMAN.IDLE;
@@ -168,6 +194,8 @@ class Shaman extends MoveableObject {
             }
             this.playAnimation(this.currentFlipBook);
             // console.log(this.img);
+
+
 
 
             //     if (world) {

@@ -8,6 +8,8 @@ class Blade extends MagicObject {
 
     constructor(x, y) {
         super(x, y, 'Blade');
+        this.xStart = this.x;
+        this.xEnd = this.xStart - 12 * 64 - 64;
         this.move();
         this.animate();
     }
@@ -27,6 +29,7 @@ class Blade extends MagicObject {
         setInterval(() => {
             if (!this.inTouch) {
                 this.x -= 192 / 60;
+                (world.hero.yCenter < world.ENDBOSS.yCenter) ? this.y -= 1.624 : this.y += 0.125;
             }
             // this.x -= 192 / 60;
             // this.keep();

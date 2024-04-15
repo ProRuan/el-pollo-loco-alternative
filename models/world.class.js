@@ -121,6 +121,10 @@ class World {
     }
 
 
+    // only for testing
+    endbossMagic = undefined;
+    // magic (x, y) = (???, -0.0625)
+
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -154,6 +158,10 @@ class World {
         this.addToMap(this.ENDBOSS);
         this.addGroupToMap(this.ENEMIES);
         this.addToMap(this.hero);
+
+        if (this.endbossMagic) {
+            this.addToMap(this.endbossMagic);
+        }
 
         this.addGroupToMap(this.characterInfo.images);
         this.addGroupToMap(this.characterInfo.hpPoints);
