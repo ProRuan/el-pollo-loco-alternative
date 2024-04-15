@@ -128,6 +128,8 @@ Tipp
     - width / 2 + radDispl!!!
     - ent patrol method + attack ent from back side + knight vs. grass
     - section1 + endbos battle
+    - set xCameraStart at endboss section1
+    - add more enemies
 
     - improve section1
     - character yBottom vs. grass yTop

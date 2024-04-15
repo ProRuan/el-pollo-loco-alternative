@@ -15,7 +15,7 @@ function initLevel1() {
     initSection(5);
     initSection(6);
     initSection(7);
-    level1.loadEndboss(ENDBOSS1, LEVEL_SIZE - 1);    // Please set final value!!!
+    level1.loadEndboss(ENDBOSS1, 0);    // Please set final value!!!
 
     // load background section by section
 }
