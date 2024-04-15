@@ -27,9 +27,13 @@ class Blade extends MagicObject {
 
     move() {
         setInterval(() => {
+            if (!this.directionSet) {    // at the constructor()???
+                this.speedY = (world.hero.yCenter > world.ENDBOSS.yCenter) ? 0.125 : -1.625;
+                this.directionSet = true;
+            }
             if (!this.inTouch) {
                 this.x -= 192 / 60;
-                (world.hero.yCenter < world.ENDBOSS.yCenter) ? this.y -= 1.625 : this.y += 0.125;
+                this.y += this.speedY;
             }
             // this.x -= 192 / 60;
             // this.keep();

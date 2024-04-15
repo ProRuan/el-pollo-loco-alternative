@@ -30,9 +30,9 @@ class Fire extends MagicObject {
             if (!this.inTouch) {
                 this.x -= 128 / 60;
             }
-            if (this.yCenter + 24 < world.hero.yCenter) {
+            if (this.xCenter > world.hero.xCenter + 160 && this.yCenter + 24 < world.hero.yCenter) {
                 this.y += 0.25;
-            } else if (this.yCenter + 24 > world.hero.yCenter) {
+            } else if (this.xCenter > world.hero.xCenter + 160 && this.yCenter + 24 > world.hero.yCenter) {
                 this.y -= 1.5;
             }
             // this.keep();
