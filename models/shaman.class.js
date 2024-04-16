@@ -154,6 +154,7 @@ class Shaman extends MoveableObject {
                     if (currentTime - this.lastHit > 700 && !world.bomb.inTouch) {
                         world.bomb.inTouch = true;
                         this.currentImage = 0;
+                        // this.energy -= 150;
                         this.energy -= 30;
                         this.lastHit = currentTime;
                         console.log('bomb hit', this.energy);
@@ -205,7 +206,17 @@ class Shaman extends MoveableObject {
         setInterval(() => {
             if (world) {
                 let currentTime = new Date().getTime();
-                if (this.angry) {
+                if (this.dead) {
+                    this.loadImage(FLIP_BOOK_SHAMAN.DEATH[FLIP_BOOK_SHAMAN.DEATH.length - 1]);
+                } else if (this.energy <= 0) {
+                    if (!this.dying) {
+                        this.dying = true;
+                        setTimeout(() => {
+                            this.dead = true;
+                        }, (FLIP_BOOK_SHAMAN.DEATH.length - 1) * 100);
+                    }
+                    this.playAnimation(FLIP_BOOK_SHAMAN.DEATH);
+                } else if (this.angry) {
                     console.log('angry');
                     this.playAnimation(FLIP_BOOK_SHAMAN.ANGER);
                 } else if (currentTime - this.lastHit < 700) {
@@ -214,13 +225,6 @@ class Shaman extends MoveableObject {
                     this.playAnimation(FLIP_BOOK_SHAMAN.IDLE);
                 }
 
-
-                // Anger
-                // if (this.angry) {
-                //     this.playAnimation(FLIP_BOOK_SHAMAN.ANGER);
-                // } else {
-                //     this.playAnimation(FLIP_BOOK_SHAMAN.IDLE);
-                // }
 
                 // Magic Lightning / Fire / Blade
                 // this.currentFlipBook = FLIP_BOOK_SHAMAN.IDLE;
