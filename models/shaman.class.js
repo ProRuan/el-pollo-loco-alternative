@@ -150,9 +150,9 @@ class Shaman extends MoveableObject {
 
 
                 if (this.hitBomb()) {
-                    world.bomb.inTouch = true;
                     let currentTime = new Date().getTime();
-                    if (currentTime - this.lastHit > 700 + 100) {
+                    if (currentTime - this.lastHit > 700 && !world.bomb.inTouch) {
+                        world.bomb.inTouch = true;
                         this.currentImage = 0;
                         this.energy -= 30;
                         this.lastHit = currentTime;
@@ -188,24 +188,27 @@ class Shaman extends MoveableObject {
                 }
 
 
-                if (this.energy > 70) {
+                if (this.energy > 210) {
                     this.magicFrequencies = [0, 4, 7];
-                } else if (this.energy > 30) {
+                } else if (this.energy > 90) {
                     this.magicFrequencies = [0, 3, 6];
                 } else {
                     this.magicFrequencies = [0, 2, 5];
                 }
 
                 this.playAnimationAnger(300, 0);
-                this.playAnimationAnger(60, 1);
-                this.playAnimationAnger(30, 2);
+                this.playAnimationAnger(180, 1);
+                this.playAnimationAnger(90, 2);
             }
         }, 1000 / 60);
 
         setInterval(() => {
             if (world) {
                 let currentTime = new Date().getTime();
-                if (currentTime - this.lastHit < 700) {
+                if (this.angry) {
+                    console.log('angry');
+                    this.playAnimation(FLIP_BOOK_SHAMAN.ANGER);
+                } else if (currentTime - this.lastHit < 700) {
                     this.playAnimationHurt();
                 } else {
                     this.playAnimation(FLIP_BOOK_SHAMAN.IDLE);
@@ -344,7 +347,7 @@ class Shaman extends MoveableObject {
 
 
     playAnimationAnger(hp, value) {
-        if (this.energy <= hp && this.angerCounter == value) {
+        if (this.energy <= hp && this.angerCounter == value && new Date().getTime() - this.lastHit > 700) {
             if (!this.angry) {
                 this.currentImage = 0;
                 this.angry = true;
