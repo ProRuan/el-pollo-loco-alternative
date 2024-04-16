@@ -16,6 +16,7 @@ class Shaman extends MoveableObject {
     magicFrequencies = [0, 4, 7];
     angerCounter = 0;
     angry = false;
+    lastHit = 0;
 
     // (11, 2.09375)
 
@@ -150,18 +151,12 @@ class Shaman extends MoveableObject {
 
                 if (this.hitBomb()) {
                     world.bomb.inTouch = true;
-                    if (!this.invulnerable) {
+                    let currentTime = new Date().getTime();
+                    if (currentTime - this.lastHit > 700 + 100) {
                         this.currentImage = 0;
                         this.energy -= 30;
-                        this.hit = true;
-                        this.invulnerable = true;
+                        this.lastHit = currentTime;
                         console.log('bomb hit', this.energy);
-                        setTimeout(() => {
-                            this.hit = false;
-                        }, 700);
-                        setTimeout(() => {
-                            this.invulnerable = false;
-                        }, 800);
                     }
                 }
 
@@ -209,7 +204,8 @@ class Shaman extends MoveableObject {
 
         setInterval(() => {
             if (world) {
-                if (this.hit) {
+                let currentTime = new Date().getTime();
+                if (currentTime - this.lastHit < 700) {
                     this.playAnimationHurt();
                 } else {
                     this.playAnimation(FLIP_BOOK_SHAMAN.IDLE);
