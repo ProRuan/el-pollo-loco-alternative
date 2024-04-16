@@ -221,7 +221,7 @@ class Shaman extends MoveableObject {
                     this.playAnimation(FLIP_BOOK_SHAMAN.ANGER);
                 } else if (currentTime - this.lastHit < 700) {
                     this.playAnimationHurt();
-                } else if (currentTime - this.lastMagic > 3000) {
+                } else if (currentTime - this.lastMagic > 300) {
                     let magic = Math.round(Math.random() * 10);
                     // console.log(magic);
                     if (magic > this.magicFrequencies[2] && !this.animating) {
