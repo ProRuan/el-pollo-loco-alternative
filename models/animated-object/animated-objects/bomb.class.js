@@ -73,6 +73,9 @@ class Bomb extends AnimatedObject {
         if (!this.exploding) {
             this.currentImage = 0;
             this.exploding = true;
+            setTimeout(() => {
+                world.bomb = undefined;
+            }, 700);
         }
         let i = (this.currentImage % (this.flipBook.length - this.prolog) + this.prolog) % this.flipBook.length;
         let path = this.flipBook[i];

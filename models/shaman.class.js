@@ -147,6 +147,24 @@ class Shaman extends MoveableObject {
             if (world) {
                 // this.attack();
 
+
+                if (this.hitBomb()) {
+                    world.bomb.inTouch = true;
+                    if (!this.invulnerable) {
+                        this.currentImage = 0;
+                        this.energy -= 30;
+                        this.hit = true;
+                        this.invulnerable = true;
+                        console.log('bomb hit', this.energy);
+                        setTimeout(() => {
+                            this.hit = false;
+                        }, 700);
+                        setTimeout(() => {
+                            this.invulnerable = false;
+                        }, 800);
+                    }
+                }
+
                 if (world.endbossMagic) {
                     if (world.endbossMagic !== undefined && (world.endbossMagic instanceof Blade || world.endbossMagic instanceof Fire)) {
                         if (world.endbossMagic.x < world.endbossMagic.xEnd) {
@@ -191,7 +209,11 @@ class Shaman extends MoveableObject {
 
         setInterval(() => {
             if (world) {
-                
+                if (this.hit) {
+                    this.playAnimationHurt();
+                } else {
+                    this.playAnimation(FLIP_BOOK_SHAMAN.IDLE);
+                }
 
 
                 // Anger
@@ -223,7 +245,8 @@ class Shaman extends MoveableObject {
                 // }
                 // this.playAnimation(this.currentFlipBook);
 
-                this.playAnimation(FLIP_BOOK_SHAMAN.IDLE);
+
+                // this.playAnimation(FLIP_BOOK_SHAMAN.IDLE);
             }
 
 
@@ -334,6 +357,24 @@ class Shaman extends MoveableObject {
                     this.angry = false;
                 }, 2 * (FLIP_BOOK_SHAMAN.ANGER.length - 1) * 100);
             }
+        }
+    }
+
+
+    playAnimationHurt() {
+        if (this.currentImage < FLIP_BOOK_SHAMAN.HURT.length) {
+            this.playAnimation(FLIP_BOOK_SHAMAN.HURT);
+        } else {
+            this.loadImage(FLIP_BOOK_SHAMAN.HURT[FLIP_BOOK_SHAMAN.HURT.length - 1]);
+        }
+    }
+
+
+    hitBomb() {
+        if (world.bomb) {
+            let hitX = this.xLeft < world.bomb.xCenter && world.bomb.xCenter < this.xRight;
+            let hitY = this.yTop < world.bomb.yCenter && world.bomb.yCenter < this.yBottom;
+            return hitX && hitY;
         }
     }
 }
