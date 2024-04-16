@@ -14,6 +14,8 @@ class Shaman extends MoveableObject {
 
     lastMagic = 0;
     magicFrequencies = [0, 4, 7];
+    angerCounter = 0;
+    angry = false;
 
     // (11, 2.09375)
 
@@ -180,29 +182,50 @@ class Shaman extends MoveableObject {
                 } else {
                     this.magicFrequencies = [0, 2, 5];
                 }
+
+                this.playAnimationAnger(300, 0);
+                this.playAnimationAnger(60, 1);
+                this.playAnimationAnger(30, 2);
             }
         }, 1000 / 60);
 
         setInterval(() => {
-            let currentTime = new Date().getTime();
-            if (currentTime - this.lastMagic > 3000) {
-                let magic = Math.round(Math.random() * 10);
-                // console.log(magic);
-                if (magic > this.magicFrequencies[2] && !this.animating) {
-                    this.setAnimation('MAGIC_LIGHTNING');
-                    this.setMagicBook(Lightning, this.xMagicLightning, this.yMagicLightning);
-                    this.setFlipBookIdle();
-                } else if (magic > this.magicFrequencies[1] && !this.animating) {
-                    this.setAnimation('MAGIC_FIRE');
-                    this.setMagicBook(Fire, this.xMagicFire, this.yMagicFire);
-                    this.setFlipBookIdle();
-                } else if (magic > this.magicFrequencies[0] && !this.animating) {
-                    this.setAnimation('MAGIC_BLADE');
-                    this.setMagicBook(Blade, this.xMagicBlade, this.yMagicBlade);
-                    this.setFlipBookIdle();
-                }
+            if (world) {
+                
+
+
+                // Anger
+                // if (this.angry) {
+                //     this.playAnimation(FLIP_BOOK_SHAMAN.ANGER);
+                // } else {
+                //     this.playAnimation(FLIP_BOOK_SHAMAN.IDLE);
+                // }
+
+                // Magic Lightning / Fire / Blade
+                // this.currentFlipBook = FLIP_BOOK_SHAMAN.IDLE;
+                // let currentTime = new Date().getTime();
+                // if (currentTime - this.lastMagic > 3000) {
+                //     let magic = Math.round(Math.random() * 10);
+                //     // console.log(magic);
+                //     if (magic > this.magicFrequencies[2] && !this.animating) {
+                //         this.setAnimation('MAGIC_LIGHTNING');
+                //         this.setMagicBook(Lightning, this.xMagicLightning, this.yMagicLightning);
+                //         this.setFlipBookIdle();
+                //     } else if (magic > this.magicFrequencies[1] && !this.animating) {
+                //         this.setAnimation('MAGIC_FIRE');
+                //         this.setMagicBook(Fire, this.xMagicFire, this.yMagicFire);
+                //         this.setFlipBookIdle();
+                //     } else if (magic > this.magicFrequencies[0] && !this.animating) {
+                //         this.setAnimation('MAGIC_BLADE');
+                //         this.setMagicBook(Blade, this.xMagicBlade, this.yMagicBlade);
+                //         this.setFlipBookIdle();
+                //     }
+                // }
+                // this.playAnimation(this.currentFlipBook);
+
+                this.playAnimation(FLIP_BOOK_SHAMAN.IDLE);
             }
-            this.playAnimation(this.currentFlipBook);
+
 
 
 
@@ -298,5 +321,19 @@ class Shaman extends MoveableObject {
         setTimeout(() => {
             this.currentFlipBook = FLIP_BOOK_SHAMAN.IDLE;
         }, (this.currentFlipBook.length - 1) * 100);
+    }
+
+
+    playAnimationAnger(hp, value) {
+        if (this.energy <= hp && this.angerCounter == value) {
+            if (!this.angry) {
+                this.currentImage = 0;
+                this.angry = true;
+                setTimeout(() => {
+                    this.angerCounter++;
+                    this.angry = false;
+                }, 2 * (FLIP_BOOK_SHAMAN.ANGER.length - 1) * 100);
+            }
+        }
     }
 }
