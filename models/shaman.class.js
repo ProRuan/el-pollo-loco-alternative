@@ -221,6 +221,23 @@ class Shaman extends MoveableObject {
                     this.playAnimation(FLIP_BOOK_SHAMAN.ANGER);
                 } else if (currentTime - this.lastHit < 700) {
                     this.playAnimationHurt();
+                } else if (currentTime - this.lastMagic > 3000) {
+                    let magic = Math.round(Math.random() * 10);
+                    // console.log(magic);
+                    if (magic > this.magicFrequencies[2] && !this.animating) {
+                        this.setAnimation('MAGIC_LIGHTNING');
+                        this.setMagicBook(Lightning, this.xMagicLightning, this.yMagicLightning);
+                        this.setFlipBookIdle();
+                    } else if (magic > this.magicFrequencies[1] && !this.animating) {
+                        this.setAnimation('MAGIC_FIRE');
+                        this.setMagicBook(Fire, this.xMagicFire, this.yMagicFire);
+                        this.setFlipBookIdle();
+                    } else if (magic > this.magicFrequencies[0] && !this.animating) {
+                        this.setAnimation('MAGIC_BLADE');
+                        this.setMagicBook(Blade, this.xMagicBlade, this.yMagicBlade);
+                        this.setFlipBookIdle();
+                    }
+                    this.playAnimation(this.currentFlipBook);
                 } else {
                     this.playAnimation(FLIP_BOOK_SHAMAN.IDLE);
                 }
