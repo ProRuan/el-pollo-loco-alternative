@@ -123,7 +123,7 @@ class World {
 
     // only for testing
     // endbossMagic = new Blade(this.ENDBOSS.xMagicBlade, this.ENDBOSS.yMagicBlade);
-    // endbossMagic = new Fire(7, -0.25);
+    // endbossMagic = new Fire(this.ENDBOSS.xMagicFire, this.ENDBOSS.yMagicFire);
     // endbossMagic = new Lightning(0, +284 / 64);
     // magic (x, y) = (???, -0.0625)
 

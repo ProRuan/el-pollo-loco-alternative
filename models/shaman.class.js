@@ -24,7 +24,7 @@ class Shaman extends MoveableObject {
         super(x, y);    // to edit
         this.setSize(256);
         this.setCover('shaman')
-        // this.loadImage(FLIP_BOOK_SHAMAN.MAGIC_BLADE[3]);
+        // this.loadImage(FLIP_BOOK_SHAMAN.MAGIC_FIRE[4]);
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
         // this.loadFlipBookImages(this.magicalBook);
@@ -50,11 +50,6 @@ class Shaman extends MoveableObject {
     }
 
 
-    get xMagicBlade() {
-        return this.xRight / 64 - 4;
-    }
-
-
     get yCenter() {
         return this.y + 154;
     }
@@ -70,18 +65,23 @@ class Shaman extends MoveableObject {
     }
 
 
+    get xMagicBlade() {
+        return this.xRight / 64 - 4;
+    }
+
+
     get yMagicBlade() {
         return this.y / 64 - 4.375;
     }
 
 
     get xMagicFire() {
-        return this.x / 64 + 1;
+        return this.x / 64 - 2.625;
     }
 
 
     get yMagicFire() {
-        return this.y / 64 - 4.59375;
+        return this.y / 64 - 4.625;
     }
 
 
@@ -193,7 +193,7 @@ class Shaman extends MoveableObject {
                                     delete world.endbossMagic;
                                     this.animating = false;
                                     this.lastMagic = new Date().getTime();
-                                }, 400);
+                                }, 700);
                             }
                         }
 
