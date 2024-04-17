@@ -125,6 +125,12 @@ class Knight extends MoveableObject {
 
     animate() {
         setInterval(() => {
+            if (world.endbossMagic && this.isIncludingMagic()) {
+                this.playAnimation(FLIP_BOOK_HERO.HURT);
+                console.log(this.xCenter, world.endbossMagic.xCenter);
+            }
+
+
             if (this.yBottom > this.groundLevel) {
                 console.log('knight: ', this.yBottom, 'ground level: ', this.groundLevel);
             }
@@ -241,6 +247,11 @@ class Knight extends MoveableObject {
                     this.dead = true;
                 }, 900);
             } else
+
+                // if (world.endbossMagic && this.isIncludingMagic()) {
+                //     this.playAnimation(FLIP_BOOK_HERO.HURT);
+                //     console.log(this.xCenter, world.endbossMagic.xCenter);
+                // } else
 
                 // if (world.lightnings.length > 0 && world.lightnings[0] !== undefined && this.isIncluding(world.lightnings[0].xCenter, world.lightnings[0].yCenter)) {
                 //     world.lightnings[0].inTouch = true;
@@ -600,6 +611,16 @@ class Knight extends MoveableObject {
         let touchXRight = this.xLeft < coin.xRight && coin.xRight < this.xRight;
         let touchYTop = this.yTop < coin.yTop && coin.yTop < this.yBottom;
         let touchYBottom = this.yTop < coin.yBottom && coin.yBottom < this.yBottom;
+        return (touchXLeft || touchXRight) && (touchYTop || touchYBottom);
+    }
+
+
+    isIncludingMagic() {
+        let magic = world.endbossMagic;
+        let touchXLeft = this.xLeft < magic.xLeft && magic.xLeft < this.xRight;
+        let touchXRight = this.xLeft < magic.xRight && magic.xRight < this.xRight;
+        let touchYTop = this.yTop < magic.yTop && magic.yTop < this.yBottom;
+        let touchYBottom = this.yTop < magic.yBottom && magic.yBottom < this.yBottom;
         return (touchXLeft || touchXRight) && (touchYTop || touchYBottom);
     }
 }

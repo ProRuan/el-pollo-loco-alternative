@@ -27,7 +27,7 @@ class Shaman extends MoveableObject {
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
         // this.loadFlipBookImages(this.magicalBook);
-        this.animate();
+        // this.animate();
 
 
         // this.idle();

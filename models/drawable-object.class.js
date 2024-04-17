@@ -200,8 +200,29 @@ class DrawableObject extends CoordinateSystem {
             ctx.beginPath();
             ctx.lineWidth = '1';
             ctx.strokeStyle = 'purple';
+            // ctx.rect(this.x, this.y, this.width, this.height);
+            // ctx.rect(this.x, this.y, this.width / 2, this.height / 2);
+            ctx.stroke();
+        }
+
+
+        if (this instanceof Blade) {
+            // body + center line
+            ctx.beginPath();
+            ctx.lineWidth = '1';
+            ctx.strokeStyle = 'lightblue';
             ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.rect(this.x, this.y, this.width / 2, this.height / 2);
+            ctx.rect(this.xLeft, this.yTop, this.xRight - this.xLeft, this.yBottom - this.yTop);
+            ctx.stroke();
+        }
+
+
+        if (this instanceof Fire) {
+            // body + center line
+            ctx.beginPath();
+            ctx.lineWidth = '1';
+            ctx.strokeStyle = 'lightblue';
+            // ctx.rect(this.xCenter + 128 - 20, this.yCenter - 8, 64, 16);
             ctx.stroke();
         }
 
@@ -236,7 +257,7 @@ class DrawableObject extends CoordinateSystem {
             ctx.rect(this.x + 16, this.y + 16, 32, 32);
             ctx.stroke();
         }
-        
+
 
         if (this instanceof Leaf) {
             ctx.beginPath();

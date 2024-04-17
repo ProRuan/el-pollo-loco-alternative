@@ -122,7 +122,7 @@ class World {
 
 
     // only for testing
-    endbossMagic = undefined;
+    endbossMagic = new Blade(10.25, -0.5);
     // magic (x, y) = (???, -0.0625)
 
     draw() {
