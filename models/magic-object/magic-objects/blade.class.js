@@ -1,9 +1,10 @@
 class Blade extends MagicObject {
     currentImage = 0;
     prolog = 3;
-    otherDirection = false;
+    otherDirection = true;
     inTouch = false;
     colliding = false;
+    radDispl = 152;
 
 
     constructor(x, y) {
