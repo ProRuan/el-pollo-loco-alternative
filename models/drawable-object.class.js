@@ -223,11 +223,23 @@ class DrawableObject extends CoordinateSystem {
             // body + center line
             ctx.beginPath();
             ctx.lineWidth = '1';
-            ctx.strokeStyle = 'purple';
+            ctx.strokeStyle = 'lightblue';
+            ctx.rect(this.xCenter, this.y, 0, this.height);
             ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.rect(this.x, this.y, this.width / 2, this.height / 4 * 3);
+            ctx.rect(this.xLeft, this.yTop, this.xRight - this.xLeft, this.yBottom - this.yTop);
             ctx.stroke();
         }
+
+
+        // if (this instanceof Lightning) {
+        //     // body + center line
+        //     ctx.beginPath();
+        //     ctx.lineWidth = '1';
+        //     ctx.strokeStyle = 'purple';
+        //     ctx.rect(this.x, this.y, this.width, this.height);
+        //     ctx.rect(this.x, this.y, this.width / 2, this.height / 4 * 3);
+        //     ctx.stroke();
+        // }
 
 
         if (this instanceof StairwayCenter) {

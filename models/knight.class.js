@@ -619,10 +619,11 @@ class Knight extends MoveableObject {
 
     isIncludingMagic() {
         let magic = world.endbossMagic;
-        let touchXLeft = this.xLeft < magic.xLeft && magic.xLeft < this.xRight;
-        let touchXRight = this.xLeft < magic.xRight && magic.xRight < this.xRight;
-        let touchYTop = this.yTop < magic.yTop && magic.yTop < this.yBottom;
-        let touchYBottom = this.yTop < magic.yBottom && magic.yBottom < this.yBottom;
+        let touchXLeft = this.xLeft <= magic.xLeft && magic.xLeft <= this.xRight;
+        let touchXRight = this.xLeft <= magic.xRight && magic.xRight <= this.xRight;
+        let touchYTop = this.yTop <= magic.yTop && magic.yTop <= this.yBottom;
+        let touchYBottom = this.yTop <= magic.yBottom && magic.yBottom <= this.yBottom;
+        // console.log(touchXLeft, touchXRight, touchYTop, touchYBottom);
         return (touchXLeft || touchXRight) && (touchYTop || touchYBottom);
     }
 }

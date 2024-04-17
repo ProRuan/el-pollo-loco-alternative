@@ -124,6 +124,11 @@ Tipp
 
   Current Task
   ------------
+    - final task I from VIII:
+        - character hurt + death
+        - shaman magic (radDispl)
+        - enemy attack (radDispl)
+
     - radDispl (4 cases: xx, ox, xo, oo)
     - width / 2 + radDispl!!!
     - ent patrol method + attack ent from back side + knight vs. grass
