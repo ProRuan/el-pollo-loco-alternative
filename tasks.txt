@@ -125,9 +125,10 @@ Tipp
   Current Task
   ------------
     - final task I from VIII:
-        - character hurt + death
-        - shaman magic (radDispl): (x, y) + exploding + damage + delete
-        - enemy attack (radDispl)
+        - character hurt + death (0/2)
+        - shaman magic (radDispl): (x, y) + exploding animation + damage + delete (0/4)
+        - enemy body (radDispl): knight, dino, ent, spider, shaman (1/5)
+        - enemy attack (radDispl): knight, dino, ent, spider, shaman (0/5)
 
     - radDispl (4 cases: xx, ox, xo, oo)
     - width / 2 + radDispl!!!

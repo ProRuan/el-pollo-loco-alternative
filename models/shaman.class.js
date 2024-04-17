@@ -24,6 +24,7 @@ class Shaman extends MoveableObject {
         super(x, y);    // to edit
         this.setSize(256);
         this.setCover('shaman')
+        // this.loadImage(FLIP_BOOK_SHAMAN.MAGIC_BLADE[3]);
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
         // this.loadFlipBookImages(this.magicalBook);
@@ -34,45 +35,43 @@ class Shaman extends MoveableObject {
     }
 
 
-    get xLeft() {
-        return (this.otherDirection) ? this.x + 40 : this.x + 40 + 84;
-        // return this.x + 40;
-    }
-
-
     get xCenter() {
         return this.x + 72;
     }
 
 
+    get xLeft() {
+        return this.xCenter - 16;
+    }
+
+
     get xRight() {
-        return (this.otherDirection) ? this.x + 100 : this.x + 100 + 84;
-        // return this.x + 100;
-    }
-
-
-    get yTop() {
-        return this.y + 100;
-    }
-
-
-    get yCenter() {
-        return this.y + 152;
-    }
-
-
-    get yBottom() {
-        return this.y + 204;
+        return this.xCenter + 32;
     }
 
 
     get xMagicBlade() {
-        return this.x / 64 + 2;
+        return this.xRight / 64 - 4;
+    }
+
+
+    get yCenter() {
+        return this.y + 154;
+    }
+
+
+    get yTop() {
+        return this.yCenter - 50;
+    }
+
+
+    get yBottom() {
+        return this.yCenter + 52;
     }
 
 
     get yMagicBlade() {
-        return this.y / 64 - 4.39375;
+        return this.y / 64 - 4.375;
     }
 
 
@@ -161,8 +160,44 @@ class Shaman extends MoveableObject {
                     }
                 }
 
+
                 if (world.endbossMagic) {
-                    if (world.endbossMagic !== undefined && (world.endbossMagic instanceof Blade || world.endbossMagic instanceof Fire)) {
+                    if (world.endbossMagic instanceof Blade) {
+                        if (world.hero.isIncludingMagic()) {
+                            if (!world.endbossMagic.inTouch) {
+                                world.endbossMagic.inTouch = true;
+                                setTimeout(() => {
+                                    delete world.endbossMagic;
+                                    this.animating = false;
+                                    this.lastMagic = new Date().getTime();
+                                }, 400);
+                            }
+                        }
+
+
+                        if (world.endbossMagic.x < world.endbossMagic.xEnd) {
+                            delete world.endbossMagic;
+                            this.animating = false;
+                            this.lastMagic = new Date().getTime();
+
+                            // console.log('magic deleted');
+                        }
+                    }
+
+
+                    if (world.endbossMagic instanceof Fire) {
+                        if (world.hero.isIncludingMagic()) {
+                            if (!world.endbossMagic.inTouch) {
+                                world.endbossMagic.inTouch = true;
+                                setTimeout(() => {
+                                    delete world.endbossMagic;
+                                    this.animating = false;
+                                    this.lastMagic = new Date().getTime();
+                                }, 400);
+                            }
+                        }
+
+
                         if (world.endbossMagic.x < world.endbossMagic.xEnd) {
                             delete world.endbossMagic;
                             this.animating = false;

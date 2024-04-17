@@ -186,11 +186,22 @@ class DrawableObject extends CoordinateSystem {
             // body + center line
             ctx.beginPath();
             ctx.lineWidth = '1';
-            ctx.strokeStyle = 'purple';
-            ctx.rect(this.x + 72, this.y + 100, 0, 104);
-            ctx.rect(this.x + 40, this.y + 100, 60, 104);
-            // ctx.rect(this.x + 156, this.y + 56, 68, 128);
-            // ctx.rect(this.x - 156 + 72, this.y + 56, 68, 128);
+            ctx.strokeStyle = 'blue';
+            ctx.rect(this.xCenter, this.y, 0, this.height);
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.rect(this.xLeft, this.yTop, this.xRight - this.xLeft, this.yBottom - this.yTop);
+            ctx.stroke();
+        }
+
+
+        if (this instanceof Shaman) {
+            // body + center line
+            ctx.beginPath();
+            ctx.lineWidth = '1';
+            ctx.strokeStyle = 'red';
+            ctx.rect(this.xRight + 28, this.yTop + 24, 48, 16);
+            // ctx.rect(this.xRight + 32, this.yTop, 32, 32);
+            // ctx.rect(this.xRight + 32, this.yTop, 32, 32);
             ctx.stroke();
         }
 
@@ -229,17 +240,6 @@ class DrawableObject extends CoordinateSystem {
             ctx.rect(this.xLeft, this.yTop, this.xRight - this.xLeft, this.yBottom - this.yTop);
             ctx.stroke();
         }
-
-
-        // if (this instanceof Lightning) {
-        //     // body + center line
-        //     ctx.beginPath();
-        //     ctx.lineWidth = '1';
-        //     ctx.strokeStyle = 'purple';
-        //     ctx.rect(this.x, this.y, this.width, this.height);
-        //     ctx.rect(this.x, this.y, this.width / 2, this.height / 4 * 3);
-        //     ctx.stroke();
-        // }
 
 
         if (this instanceof StairwayCenter) {
