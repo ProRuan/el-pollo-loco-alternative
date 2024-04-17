@@ -6,7 +6,7 @@ class Knight extends MoveableObject {
     speedRun = 256 / 60;
     energy = 120;
 
-    currentFlipBook = this.flipBook.cover;
+    currentFlipBook = this.flipBook.IDLE;
     lastIdle = new Date().getTime();
 
     coins = 0;
@@ -377,13 +377,12 @@ class Knight extends MoveableObject {
                         this.playAnimation(FLIP_BOOK_HERO.IDLE);
                         if (!this.idleDelaySet) {
                             this.idleDelaySet = true;
-                            let idleTimeout = setTimeout(() => {
+                            setTimeout(() => {
                                 this.lastIdle = currentTime;
                                 this.idleDelaySet = false;
                             }, 1100);
-                            console.log(idleTimeout, new Date().getTime());
                         }
-                        console.log(this.img);
+                        // console.log(this.img);
                     } else {
                         this.loadImage(FLIP_BOOK_HERO.cover);
                     }
