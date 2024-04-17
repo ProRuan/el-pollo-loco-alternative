@@ -125,10 +125,10 @@ class Knight extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            if (world.endbossMagic && this.isIncludingMagic()) {
-                this.playAnimation(FLIP_BOOK_HERO.HURT);
-                console.log(this.xCenter, world.endbossMagic.xCenter);
-            }
+            // if (world.endbossMagic && this.isIncludingMagic()) {
+            //     this.playAnimation(FLIP_BOOK_HERO.HURT);
+            //     console.log(this.xCenter, world.endbossMagic.xCenter);
+            // }
 
 
             if (this.yBottom > this.groundLevel) {
@@ -250,156 +250,165 @@ class Knight extends MoveableObject {
                 }, 900);
             } else
 
-                // if (world.endbossMagic && this.isIncludingMagic()) {
-                //     this.playAnimation(FLIP_BOOK_HERO.HURT);
-                //     console.log(this.xCenter, world.endbossMagic.xCenter);
-                // } else
-
-                // if (world.lightnings.length > 0 && world.lightnings[0] !== undefined && this.isIncluding(world.lightnings[0].xCenter, world.lightnings[0].yCenter)) {
-                //     world.lightnings[0].inTouch = true;
-                //     if (this.isIncluding(this.world.lightnings[0].xCenter, this.world.lightnings[0].yCenter)) {
-                //         console.log('lightning touch');
-                //     }
-                //     if (!this.isHit) {
-                //         this.isHit = true;
-                //         this.energy -= 15;
-                //         // this.energy -= 30;
-                //         console.log(this.energy);
-                //         this.playAnimation(FLIP_BOOK_HERO.HURT);
-                //         setTimeout(() => {
-                //             delete world.lightnings[0];
-                //             // world.bombs.splice(0, 1);
-                //             this.isHit = false;
-                //             setTimeout(() => {
-                //                 world.lightnings.splice(0, 1);
-                //                 world.lightnings.push(new Lightning(4.75, 0.4));
-                //             }, 1000);
-                //         }, 700);
-                //     }
-                // } else 
-
-                // if (world.fires.length > 0 && world.fires[0] !== undefined && this.isIncluding(world.fires[0].xCenter, world.fires[0].yCenter)) {
-                //     world.fires[0].inTouch = true;
-                //     if (!this.isHit) {
-                //         this.isHit = true;
-                //         this.energy -= 15;
-                //         // this.energy -= 30;
-                //         // console.log(this.energy);
-                //         this.playAnimationOnce(FLIP_BOOK_HERO.HURT);
-                //         setTimeout(() => {
-                //             delete world.fires[0];
-                //             // world.bombs.splice(0, 1);
-                //             this.isHit = false;
-                //             setTimeout(() => {
-                //                 world.fires.splice(0, 1);
-                //                 world.fires.push(new Fire(8, -0.5));
-                //             }, 1000);
-                //         }, 700);
-                //     }
-                // } else
-
-                // if (world.blades.length > 0 && world.blades[0] !== undefined && this.isIncluding(world.blades[0].xCenter, world.blades[0].yCenter)) {
-                //     world.blades[0].inTouch = true;
-                //     if (!this.isHit) {
-                //         this.isHit = true;
-                //         this.energy -= 15;
-                //         // this.energy -= 30;
-                //         // console.log(this.energy);
-                //         this.playAnimation(FLIP_BOOK_HERO.HURT);
-                //         setTimeout(() => {
-                //             delete world.blades[0];
-                //             // world.bombs.splice(0, 1);
-                //             this.isHit = false;
-                //             setTimeout(() => {
-                //                 world.blades.splice(0, 1);
-                //                 world.blades.push(new Blade(10.75, -0.5));
-                //             }, 1000);
-                //         }, 400);
-                //     }
-                // } else
-
-                // if (world.dino.attack()) {
-                //     if (!this.isHit) {
-                //         console.log('hit');
-                //         this.currentImage = 0;
-                //         this.isHit = true;
-                //         this.energy -= 20;
-                //         this.world.characterInfo.hpCounter -= 20;
-                //         this.hpPoints.splice(this.hpPoints.length - 20, 20);
-                //         this.playAnimationOnce(FLIP_BOOK_HERO.HURT);
-                //         setTimeout(() => {
-                //             this.isHit = false;
-                //         }, 500);
-                //     }
-                // } else
-
-                // if (this.world.webs.length > 0 && this.isIncluding(this.world.webs[0].xCenter, this.world.webs[0].yCenter)) {
-                //     if (!this.isHit) {
-                //         console.log('hit');
-                //         this.currentImage = 0;
-                //         this.isHit = true;
-                //         this.energy -= 20;
-                //         this.world.characterInfo.hpCounter -= 20;
-                //         this.hpPoints.splice(this.hpPoints.length - 20, 20);
-                //         this.playAnimationOnce(FLIP_BOOK_HERO.HURT);
-                //         this.world.spider.webHit = true;
-                //         this.world.webs.splice(0, 1);
-                //         // this.world.spider.waiting = false;
-                //         setTimeout(() => {
-                //             this.isHit = false;
-                //         }, 500);
-                //     }
-                // } else
-
-                if (this.isKey('keydown', 'arrowUp', 'arrowDown') && this.climbing) {
-                    this.playAnimation(FLIP_BOOK_HERO.CLIMB);    // still to edit
-                } else if (this.isKey('keydown', 'keyD')) {
-                    this.playAnimation(FLIP_BOOK_HERO.EXTRA_ATTACK);
-                } else if (this.isJumpStart && this.speedY > 0) {
-                    this.playAnimationJumpStart(FLIP_BOOK_HERO.JUMP);
-                    this.isJumpStart = false;
-                } else if (this.isJumping && this.speedY > 0) {
-                    this.loadImage(FLIP_BOOK_HERO.JUMP[2]);
-                } else if (this.isFallStart && this.speedY <= 0) {
-                    this.playAnimationFallStart(FLIP_BOOK_HERO.JUMP);
-                    this.isJumping = false;
-                    this.isFallStart = false;
-                } else if (this.isFalling && this.speedY < 0) {
-                    this.loadImage(FLIP_BOOK_HERO.JUMP[5]);
-                } else if (this.isFalling && this.speedY == 0) {
-                    this.loadImage(FLIP_BOOK_HERO.JUMP[6]);
-                    this.isFalling = false;
-                } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
-                    this.playAnimation(FLIP_BOOK_HERO.RUN_ATTACK);
-                } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight')) {
-                    this.playAnimation(FLIP_BOOK_HERO.RUN);
-                } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
-                    this.playAnimation(FLIP_BOOK_HERO.WALK_ATTACK);
-                } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isPushing()) {
-                    this.playAnimation(FLIP_BOOK_HERO.PUSH);
-                } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight')) {
-                    this.playAnimation(FLIP_BOOK_HERO.WALK);
-                } else if (this.isKey('keydown', 'keyA')) {
-                    this.playAnimation(FLIP_BOOK_HERO.ATTACK);
-                } else if (!keyboard.keydown) {
-                    // this.loadImage(FLIP_BOOK_HERO.cover);
-                    // this.currentFlipBook = this.flipBook.IDLE;
-
-                    let currentTime = new Date().getTime();
-                    if (currentTime - this.lastIdle > 6000) {
-                        this.playAnimation(FLIP_BOOK_HERO.IDLE);
-                        if (!this.idleDelaySet) {
-                            this.idleDelaySet = true;
-                            setTimeout(() => {
-                                this.lastIdle = currentTime;
-                                this.idleDelaySet = false;
-                            }, 1100);
-                        }
-                        // console.log(this.img);
-                    } else {
-                        this.loadImage(FLIP_BOOK_HERO.cover);
+                if (world.endbossMagic && this.isIncludingMagic()) {
+                    this.playAnimation(FLIP_BOOK_HERO.HURT);
+                    if (world.endbossMagic instanceof Lightning) {
+                        this.hpPoints.splice(this.hpPoints.length - 1 - 4, 4);
+                        console.log('lightning hit: ', this.hpPoints.length);
+                    } else if (world.endbossMagic instanceof Fire) {
+                        this.hpPoints.splice(this.hpPoints.length - 1 - 4, 4);
+                        console.log('blade hit: ', this.hpPoints.length);
+                    } else if (world.endbossMagic instanceof Blade) {
+                        this.hpPoints.splice(this.hpPoints.length - 1 - 4, 4);
+                        console.log('blade hit: ', this.hpPoints.length);
                     }
-                }
+                } else
+
+                    // if (world.lightnings.length > 0 && world.lightnings[0] !== undefined && this.isIncluding(world.lightnings[0].xCenter, world.lightnings[0].yCenter)) {
+                    //     world.lightnings[0].inTouch = true;
+                    //     if (this.isIncluding(this.world.lightnings[0].xCenter, this.world.lightnings[0].yCenter)) {
+                    //         console.log('lightning touch');
+                    //     }
+                    //     if (!this.isHit) {
+                    //         this.isHit = true;
+                    //         this.energy -= 15;
+                    //         // this.energy -= 30;
+                    //         console.log(this.energy);
+                    //         this.playAnimation(FLIP_BOOK_HERO.HURT);
+                    //         setTimeout(() => {
+                    //             delete world.lightnings[0];
+                    //             // world.bombs.splice(0, 1);
+                    //             this.isHit = false;
+                    //             setTimeout(() => {
+                    //                 world.lightnings.splice(0, 1);
+                    //                 world.lightnings.push(new Lightning(4.75, 0.4));
+                    //             }, 1000);
+                    //         }, 700);
+                    //     }
+                    // } else 
+
+                    // if (world.fires.length > 0 && world.fires[0] !== undefined && this.isIncluding(world.fires[0].xCenter, world.fires[0].yCenter)) {
+                    //     world.fires[0].inTouch = true;
+                    //     if (!this.isHit) {
+                    //         this.isHit = true;
+                    //         this.energy -= 15;
+                    //         // this.energy -= 30;
+                    //         // console.log(this.energy);
+                    //         this.playAnimationOnce(FLIP_BOOK_HERO.HURT);
+                    //         setTimeout(() => {
+                    //             delete world.fires[0];
+                    //             // world.bombs.splice(0, 1);
+                    //             this.isHit = false;
+                    //             setTimeout(() => {
+                    //                 world.fires.splice(0, 1);
+                    //                 world.fires.push(new Fire(8, -0.5));
+                    //             }, 1000);
+                    //         }, 700);
+                    //     }
+                    // } else
+
+                    // if (world.blades.length > 0 && world.blades[0] !== undefined && this.isIncluding(world.blades[0].xCenter, world.blades[0].yCenter)) {
+                    //     world.blades[0].inTouch = true;
+                    //     if (!this.isHit) {
+                    //         this.isHit = true;
+                    //         this.energy -= 15;
+                    //         // this.energy -= 30;
+                    //         // console.log(this.energy);
+                    //         this.playAnimation(FLIP_BOOK_HERO.HURT);
+                    //         setTimeout(() => {
+                    //             delete world.blades[0];
+                    //             // world.bombs.splice(0, 1);
+                    //             this.isHit = false;
+                    //             setTimeout(() => {
+                    //                 world.blades.splice(0, 1);
+                    //                 world.blades.push(new Blade(10.75, -0.5));
+                    //             }, 1000);
+                    //         }, 400);
+                    //     }
+                    // } else
+
+                    // if (world.dino.attack()) {
+                    //     if (!this.isHit) {
+                    //         console.log('hit');
+                    //         this.currentImage = 0;
+                    //         this.isHit = true;
+                    //         this.energy -= 20;
+                    //         this.world.characterInfo.hpCounter -= 20;
+                    //         this.hpPoints.splice(this.hpPoints.length - 20, 20);
+                    //         this.playAnimationOnce(FLIP_BOOK_HERO.HURT);
+                    //         setTimeout(() => {
+                    //             this.isHit = false;
+                    //         }, 500);
+                    //     }
+                    // } else
+
+                    // if (this.world.webs.length > 0 && this.isIncluding(this.world.webs[0].xCenter, this.world.webs[0].yCenter)) {
+                    //     if (!this.isHit) {
+                    //         console.log('hit');
+                    //         this.currentImage = 0;
+                    //         this.isHit = true;
+                    //         this.energy -= 20;
+                    //         this.world.characterInfo.hpCounter -= 20;
+                    //         this.hpPoints.splice(this.hpPoints.length - 20, 20);
+                    //         this.playAnimationOnce(FLIP_BOOK_HERO.HURT);
+                    //         this.world.spider.webHit = true;
+                    //         this.world.webs.splice(0, 1);
+                    //         // this.world.spider.waiting = false;
+                    //         setTimeout(() => {
+                    //             this.isHit = false;
+                    //         }, 500);
+                    //     }
+                    // } else
+
+                    if (this.isKey('keydown', 'arrowUp', 'arrowDown') && this.climbing) {
+                        this.playAnimation(FLIP_BOOK_HERO.CLIMB);    // still to edit
+                    } else if (this.isKey('keydown', 'keyD')) {
+                        this.playAnimation(FLIP_BOOK_HERO.EXTRA_ATTACK);
+                    } else if (this.isJumpStart && this.speedY > 0) {
+                        this.playAnimationJumpStart(FLIP_BOOK_HERO.JUMP);
+                        this.isJumpStart = false;
+                    } else if (this.isJumping && this.speedY > 0) {
+                        this.loadImage(FLIP_BOOK_HERO.JUMP[2]);
+                    } else if (this.isFallStart && this.speedY <= 0) {
+                        this.playAnimationFallStart(FLIP_BOOK_HERO.JUMP);
+                        this.isJumping = false;
+                        this.isFallStart = false;
+                    } else if (this.isFalling && this.speedY < 0) {
+                        this.loadImage(FLIP_BOOK_HERO.JUMP[5]);
+                    } else if (this.isFalling && this.speedY == 0) {
+                        this.loadImage(FLIP_BOOK_HERO.JUMP[6]);
+                        this.isFalling = false;
+                    } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
+                        this.playAnimation(FLIP_BOOK_HERO.RUN_ATTACK);
+                    } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight')) {
+                        this.playAnimation(FLIP_BOOK_HERO.RUN);
+                    } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
+                        this.playAnimation(FLIP_BOOK_HERO.WALK_ATTACK);
+                    } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isPushing()) {
+                        this.playAnimation(FLIP_BOOK_HERO.PUSH);
+                    } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight')) {
+                        this.playAnimation(FLIP_BOOK_HERO.WALK);
+                    } else if (this.isKey('keydown', 'keyA')) {
+                        this.playAnimation(FLIP_BOOK_HERO.ATTACK);
+                    } else if (!keyboard.keydown) {
+                        // this.loadImage(FLIP_BOOK_HERO.cover);
+                        // this.currentFlipBook = this.flipBook.IDLE;
+
+                        let currentTime = new Date().getTime();
+                        if (currentTime - this.lastIdle > 6000) {
+                            this.playAnimation(FLIP_BOOK_HERO.IDLE);
+                            if (!this.idleDelaySet) {
+                                this.idleDelaySet = true;
+                                setTimeout(() => {
+                                    this.lastIdle = currentTime;
+                                    this.idleDelaySet = false;
+                                }, 1100);
+                            }
+                            // console.log(this.img);
+                        } else {
+                            this.loadImage(FLIP_BOOK_HERO.cover);
+                        }
+                    }
         }, 100);
     }
 

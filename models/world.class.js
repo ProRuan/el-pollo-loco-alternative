@@ -122,7 +122,9 @@ class World {
 
 
     // only for testing
-    endbossMagic = new Lightning(0, +284 / 64);
+    // endbossMagic = new Blade(8, -0.5);
+    // endbossMagic = new Fire(7, -0.25);
+    // endbossMagic = new Lightning(0, +284 / 64);
     // magic (x, y) = (???, -0.0625)
 
     draw() {

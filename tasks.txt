@@ -126,7 +126,7 @@ Tipp
   ------------
     - final task I from VIII:
         - character hurt + death
-        - shaman magic (radDispl)
+        - shaman magic (radDispl): (x, y) + exploding + damage + delete
         - enemy attack (radDispl)
 
     - radDispl (4 cases: xx, ox, xo, oo)
