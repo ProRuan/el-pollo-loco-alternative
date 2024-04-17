@@ -6,7 +6,7 @@ class Knight extends MoveableObject {
     speedRun = 256 / 60;
     energy = 120;
 
-    currentFlipBook = this.flipBook.IDLE;
+    currentFlipBook = this.flipBook.cover;
 
     coins = 0;
     crystals = 0;
@@ -341,7 +341,6 @@ class Knight extends MoveableObject {
                     this.playAnimation(FLIP_BOOK_HERO.CLIMB);    // still to edit
                 } else if (this.isKey('keydown', 'keyD')) {
                     this.playAnimation(FLIP_BOOK_HERO.EXTRA_ATTACK);
-                    this.idleDelay = new Date().getTime();
                 } else if (this.isJumpStart && this.speedY > 0) {
                     this.playAnimationJumpStart(FLIP_BOOK_HERO.JUMP);
                     this.isJumpStart = false;
@@ -358,24 +357,29 @@ class Knight extends MoveableObject {
                     this.isFalling = false;
                 } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
                     this.playAnimation(FLIP_BOOK_HERO.RUN_ATTACK);
-                    this.idleDelay = new Date().getTime();
                 } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight')) {
                     this.playAnimation(FLIP_BOOK_HERO.RUN);
-                    this.idleDelay = new Date().getTime();
                 } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
                     this.playAnimation(FLIP_BOOK_HERO.WALK_ATTACK);
-                    this.idleDelay = new Date().getTime();
                 } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isPushing()) {
                     this.playAnimation(FLIP_BOOK_HERO.PUSH);
-                    this.idleDelay = new Date().getTime();
                 } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight')) {
                     this.playAnimation(FLIP_BOOK_HERO.WALK);
-                    this.idleDelay = new Date().getTime();
                 } else if (this.isKey('keydown', 'keyA')) {
                     this.playAnimation(FLIP_BOOK_HERO.ATTACK);
                 } else if (!keyboard.keydown) {
                     this.loadImage(FLIP_BOOK_HERO.cover);
                     this.currentFlipBook = this.flipBook.IDLE;
+                    // let currentTime = new Date().getTime();
+                    // if (currentTime - keyboard.keydownTimeStamp > 4800) {
+                    //     this.playAnimation(FLIP_BOOK_HERO.IDLE);
+                    //     console.log(this.img);
+                    //     setTimeout(() => {
+                    //         keyboard.keydownTimeStamp = currentTime;
+                    //     }, 1100);
+                    // } else {
+                    //     this.loadImage(FLIP_BOOK_HERO.cover);
+                    // }
                 }
         }, 100);
     }
