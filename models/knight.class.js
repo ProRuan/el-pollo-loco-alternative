@@ -7,6 +7,7 @@ class Knight extends MoveableObject {
     energy = 120;
 
     currentFlipBook = this.flipBook.cover;
+    lastIdle = new Date().getTime();
 
     coins = 0;
     crystals = 0;
@@ -368,18 +369,24 @@ class Knight extends MoveableObject {
                 } else if (this.isKey('keydown', 'keyA')) {
                     this.playAnimation(FLIP_BOOK_HERO.ATTACK);
                 } else if (!keyboard.keydown) {
-                    this.loadImage(FLIP_BOOK_HERO.cover);
-                    this.currentFlipBook = this.flipBook.IDLE;
-                    // let currentTime = new Date().getTime();
-                    // if (currentTime - keyboard.keydownTimeStamp > 4800) {
-                    //     this.playAnimation(FLIP_BOOK_HERO.IDLE);
-                    //     console.log(this.img);
-                    //     setTimeout(() => {
-                    //         keyboard.keydownTimeStamp = currentTime;
-                    //     }, 1100);
-                    // } else {
-                    //     this.loadImage(FLIP_BOOK_HERO.cover);
-                    // }
+                    // this.loadImage(FLIP_BOOK_HERO.cover);
+                    // this.currentFlipBook = this.flipBook.IDLE;
+
+                    let currentTime = new Date().getTime();
+                    if (currentTime - this.lastIdle > 6000) {
+                        this.playAnimation(FLIP_BOOK_HERO.IDLE);
+                        if (!this.idleDelaySet) {
+                            this.idleDelaySet = true;
+                            let idleTimeout = setTimeout(() => {
+                                this.lastIdle = currentTime;
+                                this.idleDelaySet = false;
+                            }, 1100);
+                            console.log(idleTimeout, new Date().getTime());
+                        }
+                        console.log(this.img);
+                    } else {
+                        this.loadImage(FLIP_BOOK_HERO.cover);
+                    }
                 }
         }, 100);
     }
