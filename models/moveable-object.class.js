@@ -64,10 +64,20 @@ class MoveableObject extends DrawableObject {
 
 
     playAnimation(flipBook) {
+        if (this instanceof Knight && this.currentFlipBook != flipBook) {
+            if (!this.isSimilarFlipBook(flipBook)) {
+                this.currentImage = 0;
+            }
+            this.currentFlipBook = flipBook;
+            // console.log('changed flip book', this.currentImage);
+        }
         let i = this.currentImage % flipBook.length;
         let path = flipBook[i];
         this.img = this.imageCache[path];
         this.currentImage++;
+        // if (this instanceof Knight) {
+        //     console.log(this.img);
+        // }
 
 
         // let i = this.currentImage % images.length;
@@ -166,5 +176,14 @@ class MoveableObject extends DrawableObject {
                 }, 3000);
             }
         }, 1000 / 60);
+    }
+
+
+    isSimilarFlipBook(flipBook) {
+        let caseRunAttack = this.currentFlipBook == this.flipBook.RUN_ATTACK && flipBook == this.flipBook.RUN;
+        let caseRun = this.currentFlipBook == this.flipBook.RUN && flipBook == this.flipBook.RUN_ATTACK;
+        let caseWalkAttack = this.currentFlipBook == this.flipBook.WALK_ATTACK && flipBook == this.flipBook.WALK;
+        let caseWalk = this.currentFlipBook == this.flipBook.WALK && flipBook == this.flipBook.WALK_ATTACK;
+        return caseRunAttack || caseRun || caseWalkAttack || caseWalk;
     }
 }

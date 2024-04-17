@@ -6,6 +6,8 @@ class Knight extends MoveableObject {
     speedRun = 256 / 60;
     energy = 120;
 
+    currentFlipBook = this.flipBook.IDLE;
+
     coins = 0;
     crystals = 0;
     hit_points = 0;
@@ -373,6 +375,7 @@ class Knight extends MoveableObject {
                     this.playAnimation(FLIP_BOOK_HERO.ATTACK);
                 } else if (!keyboard.keydown) {
                     this.loadImage(FLIP_BOOK_HERO.cover);
+                    this.currentFlipBook = this.flipBook.IDLE;
                 }
         }, 100);
     }

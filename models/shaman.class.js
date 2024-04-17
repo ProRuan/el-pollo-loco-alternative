@@ -157,7 +157,7 @@ class Shaman extends MoveableObject {
                         // this.energy -= 150;
                         this.energy -= 30;
                         this.lastHit = currentTime;
-                        console.log('bomb hit', this.energy);
+                        // console.log('bomb hit', this.energy);
                     }
                 }
 
@@ -168,7 +168,7 @@ class Shaman extends MoveableObject {
                             this.animating = false;
                             this.lastMagic = new Date().getTime();
 
-                            console.log('magic deleted');
+                            // console.log('magic deleted');
                         }
                     }
 
@@ -182,7 +182,7 @@ class Shaman extends MoveableObject {
                                 this.lastMagic = new Date().getTime();
                                 this.noticed = false;
 
-                                console.log('magic deleted');
+                                // console.log('magic deleted');
                             }, 3700);
                         }
                     }
@@ -217,7 +217,7 @@ class Shaman extends MoveableObject {
                     }
                     this.playAnimation(FLIP_BOOK_SHAMAN.DEATH);
                 } else if (this.angry) {
-                    console.log('angry');
+                    // console.log('angry');
                     this.playAnimation(FLIP_BOOK_SHAMAN.ANGER);
                 } else if (currentTime - this.lastHit < 700) {
                     this.playAnimationHurt();
