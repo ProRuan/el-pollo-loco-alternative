@@ -4,7 +4,7 @@ class Fire extends MagicObject {
     otherDirection = true;
     inTouch = false;
     colliding = false;
-
+    radDispl = 128;
 
     constructor(x, y) {
         super(x, y, 'Fire');
@@ -15,13 +15,33 @@ class Fire extends MagicObject {
     }
 
 
-    get xCenter() {    // set value!!!
-        return this.x;
+    get xCenter() {
+        return this.x + this.width / 2;
     }
 
 
-    get yCenter() {    // set value!!!
-        return this.y + this.height / 2 - 17;
+    get xLeft() {
+        return this.xCenter - 32;
+    }
+
+
+    get xRight() {
+        return this.xCenter + 16;
+    }
+
+
+    get yCenter() {
+        return this.y + this.height / 2;
+    }
+
+
+    get yTop() {
+        return this.yCenter - 8;
+    }
+
+
+    get yBottom() {
+        return this.yCenter + 8;
     }
 
 
