@@ -253,13 +253,16 @@ class Knight extends MoveableObject {
                 if (world.endbossMagic && this.isIncludingMagic()) {
                     this.playAnimation(FLIP_BOOK_HERO.HURT);
                     if (world.endbossMagic instanceof Lightning) {
-                        this.hpPoints.splice(this.hpPoints.length - 1 - 4, 4);
+                        this.energy -= 5;
+                        this.hpPoints.splice(this.hpPoints.length - 1 - 5, 5);
                         console.log('lightning hit: ', this.hpPoints.length);
                     } else if (world.endbossMagic instanceof Fire) {
-                        this.hpPoints.splice(this.hpPoints.length - 1 - 4, 4);    // Improve energy hit system!!!
+                        this.energy -= 4;
+                        this.hpPoints.splice(this.hpPoints.length - 1 - 4, 4);
                         console.log('fire hit: ', this.hpPoints.length);
                     } else if (world.endbossMagic instanceof Blade) {
-                        this.hpPoints.splice(this.hpPoints.length - 1 - 4, 4);    // Improve energy hit system!!!
+                        this.energy -= 5;
+                        this.hpPoints.splice(this.hpPoints.length - 1 - 5, 5);
                         console.log('blade hit: ', this.hpPoints.length);
                     }
                 } else
