@@ -202,8 +202,11 @@ class Knight extends MoveableObject {
                 this.world.characterInfo.energyCounter -= 1;
                 this.energyPoints.splice(this.energyPoints.length - 1, 1);
             }
-
-            if (this.x > 284 && this.x < world.level.X_CAMERA_END) {
+            if (!(this.x < world.level.X_CAMERA_END)) {
+                this.reachedFinalSection = true;
+                this.world.level.X_LEVEL_START = (LEVEL_SIZE - 1) * CANVAS_WIDTH + 28;
+            }
+            if (!this.reachedFinalSection && this.x > 284 && this.x < world.level.X_CAMERA_END) {
                 this.world.camera_x = -this.x + 4 * 64 + 28;    // + 4 * 64 + 28
                 this.world.characterInfo.x = this.x - 284;
                 this.world.characterInfo.updateAvatarImageX();

@@ -125,7 +125,7 @@ Tipp
   Current Task
   ------------
     - final task I from VIII:
-        - character hurt + death (0/2)
+        - set endboss battle x
         - enemy body (radDispl): knight, dino, ent, spider (0/4)
         - enemy attack (radDispl): knight, dino, ent, spider (0/4)
 
