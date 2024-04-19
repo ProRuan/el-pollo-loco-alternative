@@ -214,6 +214,11 @@ class Dino extends MoveableObject {
                 }
 
 
+                if (this.dying && !this.dead) {
+                    this.dinoGrowl.play();
+                }
+
+
                 this.isOnTile();
             }
         }, 1000 / 60);

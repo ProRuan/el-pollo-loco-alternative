@@ -21,6 +21,8 @@ class Ent extends MoveableObject {
     radDisplAttack = 24;
     // 10.25, 1.625
 
+    entGrowl = new Audio('./audio/attacks_and_creatures/Fantasy_Game_Creature_Growl_Long_High_E.wav');
+
     constructor(x, y) {
         super(x, y);    // Please verfiy!!!
         this.setSize(256);
@@ -203,6 +205,16 @@ class Ent extends MoveableObject {
                 //         this.otherDirection = true;
                 //     }
                 // }
+
+                
+                if (this.attack()) {
+                    this.entGrowl.play();
+                }
+
+
+                if (this.dying && !this.dead) {
+                    this.entGrowl.play();
+                }
 
 
                 this.isOnTile();

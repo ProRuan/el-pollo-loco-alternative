@@ -124,10 +124,20 @@ Tipp
 
   Current Task
   ------------
+    - final task II from VIII:
+        - ambience sound - check
+        - dino, ent, spider (attack, death special) - check
+        - endboss (magic cast, spell, anger, hurt) ...
+        - knight (sword, bomb throw, bomb explosion, hurt) ...
+        - coin, herb, crystal ...
+        - title screen and others ...
+
     - final task I from VIII:
         - set endboss battle x
         - enemy body (radDispl): knight, dino, ent, spider (0/4)
         - enemy attack (radDispl): knight, dino, ent, spider (0/4)
+
+    -------------------------
 
     - radDispl (4 cases: xx, ox, xo, oo)
     - width / 2 + radDispl!!!

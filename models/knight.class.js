@@ -26,8 +26,11 @@ class Knight extends MoveableObject {
     radDispl = 24;
     // 4.4375, 0.625
 
+
+    AMBIENCE_SOUND = new Audio('./audio/AMBIENCE Nature Forest Daytime.wav');
+
     constructor() {
-        super(2.4375, 0.625);    // Please set!!!
+        super(2.4375 + 45.4375, 0.625);    // Please set!!!
         this.setCover('knight');
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
@@ -125,6 +128,9 @@ class Knight extends MoveableObject {
 
     animate() {
         setInterval(() => {
+            // Please set a condition!!!
+            this.AMBIENCE_SOUND.play();
+
             if (world.sound_pursuing) {
                 world.sound_pursuing.play();
             }

@@ -24,6 +24,10 @@ class Spider extends MoveableObject {
     radDispl = 64;
     // 12.25, 0.1875
 
+
+    spiderWeb = new Audio('./audio/attacks_and_creatures/Fantasy_Game_Skill_Knife_Throw_A.wav');
+    spiderGrowl = new Audio('./audio/attacks_and_creatures/Fantasy_Game_Creature_High_C.wav');
+
     constructor(x, y) {
         super(x, y);    // Please verfiy!!!
         this.setCover('spider');
@@ -116,6 +120,7 @@ class Spider extends MoveableObject {
         let web = new Web(xThrow, (540 - this.y) / 64 - 1.315, this.otherDirection);
         world.webs.push(web);
         this.shot = true;
+        this.spiderWeb.play();
         // world.web = web;
         setTimeout(() => {
             if (!web.webHit) {
@@ -189,6 +194,11 @@ class Spider extends MoveableObject {
                             console.log(this.energy);
                             this.lastHit = currentTime;
                         }
+                    }
+
+
+                    if (this.dying && !this.dead) {
+                        this.spiderGrowl.play();
                     }
 
 
