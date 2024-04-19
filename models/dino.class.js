@@ -20,6 +20,8 @@ class Dino extends MoveableObject {
     radDispl = 40;
     // 7.75, 0.25
 
+    dinoGrowl = new Audio('./audio/attacks_and_creatures/Fantasy_Game_Creature_Growl_Long_High_D.wav');
+
     constructor(x, y) {
         super(x, y);    // Please verfiy!!!
         this.setCover('dino');
@@ -180,8 +182,8 @@ class Dino extends MoveableObject {
                     if (!world.sound_pursuing) {
                         world.sound_pursuing = new Audio('./audio/epic_fantasy/04 - Dancing In Human Flesh - Loop Version - Epic Fantasy - Lufus.wav');
                     }
-                    if (world.sound_pursuing.volume < 1) {
-                        world.sound_pursuing.volume = 1;
+                    if (world.sound_pursuing.volume != 0.4) {
+                        world.sound_pursuing.volume = 0.4;
                     }
                     this.searching = true;
                     this.searchingDelay = false;
@@ -204,6 +206,11 @@ class Dino extends MoveableObject {
                         this.walking = true;
                         (this.otherDirection) ? this.x -= this.speed : this.x += this.speed;
                     }
+                }
+
+
+                if (this.attack()) {
+                    this.dinoGrowl.play();
                 }
 
 
