@@ -125,6 +125,20 @@ class Knight extends MoveableObject {
 
     animate() {
         setInterval(() => {
+            if (world.sound_pursuing) {
+                world.sound_pursuing.play();
+            }
+
+            world.pursuing = world.ENEMIES.find(e => e.pursuing == true);
+            if (world.sound_pursuing && !world.pursuing && world.sound_pursuing.volume > 0.003) {
+                world.sound_pursuing.volume = Math.round(world.sound_pursuing.volume * 1000) / 1000 - 0.003;
+                // console.log(Math.round(world.sound_pursuing.volume * 1000) / 1000);
+            } else if (world.sound_pursuing && !world.pursuing) {
+                // console.log(world.sound_pursuing.volume);
+                delete world.sound_pursuing;
+            }
+
+
             // if (world.endbossMagic && this.isIncludingMagic()) {
             //     this.playAnimation(FLIP_BOOK_HERO.HURT);
             //     console.log(this.xCenter, world.endbossMagic.xCenter);

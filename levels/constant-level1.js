@@ -82,7 +82,7 @@ const HIT_POINT1_1 = [
 
 
 const ENEMIES1_1 = [
-
+    // new Dino(13, 0.25)
 ];
 
 
