@@ -73,7 +73,7 @@ class MoveableObject extends DrawableObject {
         }
         if (this instanceof Knight && flipBook != FLIP_BOOK_HERO.IDLE) {
             world.hero.lastIdle = new Date().getTime();
-            console.log('updated idle delay');
+            // console.log('updated idle delay');
         }
         let i = this.currentImage % flipBook.length;
         let path = flipBook[i];

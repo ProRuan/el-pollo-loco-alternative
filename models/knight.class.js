@@ -422,7 +422,7 @@ class Knight extends MoveableObject {
                                 setTimeout(() => {
                                     this.lastIdle = currentTime;
                                     this.idleDelaySet = false;
-                                    console.log('set idle delay');
+                                    // console.log('set idle delay');
                                 }, 1100);
                             }
                             // console.log(this.img);
