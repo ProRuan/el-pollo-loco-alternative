@@ -177,6 +177,14 @@ class Dino extends MoveableObject {
                 }
 
                 if (!this.dead && this.pursuing) {
+                    if (!this.sound_pursuing) {
+                        this.sound_pursuing = new Audio('./audio/epic_fantasy/04 - Dancing In Human Flesh - Loop Version - Epic Fantasy - Lufus.wav');
+                        console.log('volume start: ', this.sound_pursuing.volume);
+                    }
+                    if (this.sound_pursuing.volume < 1) {
+                        this.sound_pursuing.volume = 1;
+                    }
+                    this.sound_pursuing.play();
                     this.searching = true;
                     this.searchingDelay = false;
                     if (this.attack() || keyboard.keyA.keydown && world.hero.attack()) {
@@ -190,7 +198,7 @@ class Dino extends MoveableObject {
                     this.searchingDelay = true;
                 } else if (!this.dead && this.searching) {
                     let currentTime = new Date().getTime();
-                    if (currentTime - this.pursuitStop > 3000) {
+                    if (currentTime - this.pursuitStop > 5000) {
                         this.searching = false;
                         this.searchingDelay = false;
                         this.walking = false;
@@ -198,6 +206,14 @@ class Dino extends MoveableObject {
                         this.walking = true;
                         (this.otherDirection) ? this.x -= this.speed : this.x += this.speed;
                     }
+                }
+
+                if (this.sound_pursuing && !this.pursuing && this.sound_pursuing.volume > 0.003) {
+                    this.sound_pursuing.volume = Math.round(this.sound_pursuing.volume * 1000) / 1000 - 0.003;
+                    console.log(Math.round(this.sound_pursuing.volume * 1000) / 1000);
+                } else if (this.sound_pursuing && !this.pursuing) {
+                    console.log(this.sound_pursuing.volume);
+                    delete this.sound_pursuing;
                 }
 
 
