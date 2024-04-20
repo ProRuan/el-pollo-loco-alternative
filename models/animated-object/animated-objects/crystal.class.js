@@ -1,6 +1,7 @@
 class Crystal extends AnimatedObject {
     currentImage = 0;    // double code!!!
-
+    sound = './audio/crafting/Fantasy_Game_Crafting_Select_Gem.wav';
+    
 
     constructor(x, y) {
         super(x, y, 'Crystal');

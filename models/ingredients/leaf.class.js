@@ -1,5 +1,6 @@
 class Leaf extends DrawableObject {
-
+    sound = './audio/crafting/Fantasy_Game_Item_Collect_Herbs.wav';
+    
 
     constructor(x, y, i) {
         super(x, y, 32);

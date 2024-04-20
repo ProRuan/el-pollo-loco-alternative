@@ -595,6 +595,7 @@ class Knight extends MoveableObject {
         if (object) {
             this.removeObject(key, object);
             this.increaseCounter(item);
+            this.playSound(object);
         }
     }
 
@@ -631,6 +632,11 @@ class Knight extends MoveableObject {
 
     increaseCounter(item) {
         this[item]++;
+    }
+
+
+    playSound(object) {
+        new Audio(object.sound).play();
     }
 
 

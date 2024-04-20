@@ -1,5 +1,6 @@
 class Coin extends AnimatedObject {
     currentImage = 0;
+    sound = './audio/items/Fantasy_Game_Organic_Coin_Collect_B.wav';
 
 
     constructor(x, y) {
