@@ -270,6 +270,9 @@ class Shaman extends MoveableObject {
                         this.setMagicBook(Lightning, this.xMagicLightning, this.yMagicLightning);
                         this.setFlipBookIdle();
                         this.playSound(this.CAST_MAGIC_LIGHTNING);
+                        setTimeout(() => {
+                            this.playSound(this.CAST_MAGIC_LIGHTNING);
+                        }, 3150);
                     } else if (magic > this.magicFrequencies[1] && !this.animating) {
                         this.setAnimation('MAGIC_FIRE');
                         this.setMagicBook(Fire, this.xMagicFire, this.yMagicFire);
