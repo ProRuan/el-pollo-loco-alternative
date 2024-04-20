@@ -21,6 +21,8 @@ class Dino extends MoveableObject {
     // 7.75, 0.25
 
     dinoGrowl = new Audio('./audio/attacks_and_creatures/Fantasy_Game_Creature_Growl_Long_High_D.wav');
+    swordHit = './audio/attacks_and_creatures/Fantasy_Game_Weapon_Impact.wav';
+
 
     constructor(x, y) {
         super(x, y);    // Please verfiy!!!
@@ -237,6 +239,7 @@ class Dino extends MoveableObject {
                     if (!this.paralysed) {
                         this.currentImage = 0;
                         this.paralysed = true;
+                        this.playSound(this.swordHit);
                         setTimeout(() => {
                             this.paralysed = false;
                         }, 400);

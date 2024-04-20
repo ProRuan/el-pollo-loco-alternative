@@ -22,6 +22,8 @@ class Ent extends MoveableObject {
     // 10.25, 1.625
 
     entGrowl = new Audio('./audio/attacks_and_creatures/Fantasy_Game_Creature_Growl_Long_High_E.wav');
+    swordHit = './audio/attacks_and_creatures/Fantasy_Game_Weapon_Impact.wav';
+
 
     constructor(x, y) {
         super(x, y);    // Please verfiy!!!
@@ -207,7 +209,7 @@ class Ent extends MoveableObject {
                 // }
 
                 
-                if (this.attack()) {
+                if (!this.dead && this.attack()) {
                     this.entGrowl.play();
                 }
 
@@ -235,6 +237,7 @@ class Ent extends MoveableObject {
                     if (!this.paralysed) {
                         this.currentImage = 0;
                         this.paralysed = true;
+                        this.playSound(this.swordHit);
                         setTimeout(() => {
                             this.paralysed = false;
                         }, 400);

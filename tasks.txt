@@ -126,10 +126,10 @@ Tipp
   ------------
     - final task II from VIII:
         - ambience sound - check
-        - dino, ent, spider (attack, death special) - check
-        - endboss (magic cast, spell, anger, hurt) ...
-        - knight (sword, bomb throw, bomb explosion, hurt) ...
-        - hurt sound ...
+        - dino, ent, spider (attack, death, special) - check
+        - endboss (magic cast, spell, anger, hurt) - check
+        - knight (sword, bomb throw, bomb explosion, hurt) ... (2/4)
+        - hurt (knight, dino, ent, spider) sound ... (3/4)
         - coin, crystal, hitpoint, leaf - check
         - title screen and others ...
 

@@ -32,7 +32,7 @@ class Knight extends MoveableObject {
 
 
     constructor() {
-        super(2.4375 + 7 * 15, 0.625);    // Please set!!!
+        super(2.4375 + 1 * 15, 0.625);    // Please set!!!
         this.setCover('knight');
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
@@ -204,6 +204,7 @@ class Knight extends MoveableObject {
             }
             if (this.isKey('keydown', 'keyF') && this.world.bomb === undefined) {
                 this.world.bomb = new Bomb((world.hero.x - 40) / 64, (540 - world.hero.y + 17) / 64);
+                this.playSound(this.world.bomb.soundThrow);
 
                 // world.bombs.splice(0, 1);
                 // world.bombs.push(new Bomb((world.hero.x - 40) / 64, (540 - world.hero.y + 17) / 64));

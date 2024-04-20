@@ -5,7 +5,8 @@ class Bomb extends AnimatedObject {
     prolog = 4;
     inTouch = false;
     exploding = false;
-    sound = './audio/elemental_magic/Fantasy_Game_Magic_Meteor_Spell_Hit_B.wav';
+    soundThrow = './audio/elemental_magic/Fantasy_Game_Magic_Fire_Instant_Cast_Spell_D.wav';
+    soundExplosion = './audio/elemental_magic/Fantasy_Game_Magic_Meteor_Spell_Hit_B.wav';
     currentTime = 2.625;
 
 
@@ -75,7 +76,7 @@ class Bomb extends AnimatedObject {
         if (!this.exploding) {
             this.currentImage = 0;
             this.exploding = true;
-            let tempSound = new Audio(this.sound);
+            let tempSound = new Audio(this.soundExplosion);
             tempSound.currentTime = this.currentTime;
             tempSound.play();
             console.log('temp sound');

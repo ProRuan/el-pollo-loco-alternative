@@ -27,6 +27,8 @@ class Spider extends MoveableObject {
 
     spiderWeb = new Audio('./audio/attacks_and_creatures/Fantasy_Game_Skill_Knife_Throw_A.wav');
     spiderGrowl = new Audio('./audio/attacks_and_creatures/Fantasy_Game_Creature_High_C.wav');
+    swordHit = './audio/attacks_and_creatures/Fantasy_Game_Weapon_Impact.wav';
+
 
     constructor(x, y) {
         super(x, y);    // Please verfiy!!!
@@ -221,6 +223,7 @@ class Spider extends MoveableObject {
                     if (!this.paralysed) {
                         this.currentImage = 0;
                         this.paralysed = true;
+                        this.playSound(this.swordHit);
                         setTimeout(() => {
                             this.paralysed = false;
                         }, 400);
