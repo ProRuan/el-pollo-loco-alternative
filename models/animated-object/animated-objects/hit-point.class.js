@@ -1,5 +1,6 @@
 class HitPoint extends AnimatedObject {
     currentImage = 0;    // double code!!!
+    sound = './audio/items/Fantasy_Game_Item_Collect_Magic_A.wav';
 
 
     constructor(x, y) {
