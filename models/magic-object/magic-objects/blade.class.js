@@ -5,6 +5,7 @@ class Blade extends MagicObject {
     inTouch = false;
     colliding = false;
     radDispl = 152;
+    sound = './audio/elemental_magic/Fantasy_Game_Magic_Ice_Instant_Cast_Spell_C.wav';
 
 
     constructor(x, y) {
@@ -81,6 +82,7 @@ class Blade extends MagicObject {
         if (!this.colliding) {
             this.currentImage = 0;
             this.colliding = true;
+            new Audio(this.sound).play();
         }
         let i = (this.currentImage % (this.flipBook.length - this.prolog) + this.prolog) % this.flipBook.length;
         let path = this.flipBook[i];

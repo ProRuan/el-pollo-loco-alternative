@@ -28,9 +28,11 @@ class Knight extends MoveableObject {
 
 
     AMBIENCE_SOUND = new Audio('./audio/AMBIENCE Nature Forest Daytime.wav');
+    BOSS_BATTLE = new Audio('./audio/epic_fantasy/05 - Facing Monsters - Loop Version - Epic Fantasy - Lufus.wav');
+
 
     constructor() {
-        super(2.4375 + 45.4375, 0.625);    // Please set!!!
+        super(2.4375 + 7 * 15, 0.625);    // Please set!!!
         this.setCover('knight');
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
@@ -225,6 +227,10 @@ class Knight extends MoveableObject {
             if (!(this.x < world.level.X_CAMERA_END)) {
                 this.reachedFinalSection = true;
                 this.world.level.X_LEVEL_START = (LEVEL_SIZE - 1) * CANVAS_WIDTH + 28;
+                this.AMBIENCE_SOUND.muted = true;
+                this.BOSS_BATTLE.volume = 0.1;
+                this.BOSS_BATTLE.play();
+
             }
             if (!this.reachedFinalSection && this.x > 284 && this.x < world.level.X_CAMERA_END) {
                 this.world.camera_x = -this.x + 4 * 64 + 28;    // + 4 * 64 + 28
@@ -595,7 +601,7 @@ class Knight extends MoveableObject {
         if (object) {
             this.removeObject(key, object);
             this.increaseCounter(item);
-            this.playSound(object);
+            this.playSound(object.sound);
         }
     }
 
@@ -632,11 +638,6 @@ class Knight extends MoveableObject {
 
     increaseCounter(item) {
         this[item]++;
-    }
-
-
-    playSound(object) {
-        new Audio(object.sound).play();
     }
 
 

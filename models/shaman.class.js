@@ -20,6 +20,12 @@ class Shaman extends MoveableObject {
 
     // (11, 2.09375)
 
+
+    CAST_MAGIC_BLADE = './audio/elemental_magic/Fantasy_Game_Magic_Ice_Instant_Cast_Spell_A.wav';
+    CAST_MAGIC_FIRE = './audio/elemental_magic/Fantasy_Game_Magic_Fire_Instant_Cast_Spell_A.wav';
+    CAST_MAGIC_LIGHTNING = './audio/elemental_magic/Fantasy_Game_Magic_Lightning_Instant_Cast_Spell_A.wav';
+
+
     constructor(x, y) {
         super(x, y);    // to edit
         this.setSize(256);
@@ -263,14 +269,17 @@ class Shaman extends MoveableObject {
                         this.setAnimation('MAGIC_LIGHTNING');
                         this.setMagicBook(Lightning, this.xMagicLightning, this.yMagicLightning);
                         this.setFlipBookIdle();
+                        this.playSound(this.CAST_MAGIC_LIGHTNING);
                     } else if (magic > this.magicFrequencies[1] && !this.animating) {
                         this.setAnimation('MAGIC_FIRE');
                         this.setMagicBook(Fire, this.xMagicFire, this.yMagicFire);
                         this.setFlipBookIdle();
+                        this.playSound(this.CAST_MAGIC_FIRE);
                     } else if (magic > this.magicFrequencies[0] && !this.animating) {
                         this.setAnimation('MAGIC_BLADE');
                         this.setMagicBook(Blade, this.xMagicBlade, this.yMagicBlade);
                         this.setFlipBookIdle();
+                        this.playSound(this.CAST_MAGIC_BLADE);
                     }
                     this.playAnimation(this.currentFlipBook);
                 } else {

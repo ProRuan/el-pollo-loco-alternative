@@ -5,6 +5,8 @@ class Fire extends MagicObject {
     inTouch = false;
     colliding = false;
     radDispl = 128;
+    sound = './audio/elemental_magic/Fantasy_Game_Magic_Fire_Instant_Cast_Spell_C.wav';
+
 
     constructor(x, y) {
         super(x, y, 'Fire');
@@ -79,6 +81,7 @@ class Fire extends MagicObject {
         if (!this.colliding) {
             this.currentImage = 0;
             this.colliding = true;
+            new Audio(this.sound).play();
         }
         let i = (this.currentImage % (this.flipBook.length - this.prolog) + this.prolog) % this.flipBook.length;
         let path = this.flipBook[i];
