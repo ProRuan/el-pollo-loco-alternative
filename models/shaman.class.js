@@ -155,6 +155,13 @@ class Shaman extends MoveableObject {
                 // this.attack();
 
 
+                if (this.dead && world.GRASS_FLYING[world.GRASS_FLYING.length - 1].y > 472) {
+                    world.GRASS_FLYING[world.GRASS_FLYING.length - 3].y -= 64 / 60;
+                    world.GRASS_FLYING[world.GRASS_FLYING.length - 2].y -= 64 / 60;
+                    world.GRASS_FLYING[world.GRASS_FLYING.length - 1].y -= 64 / 60;
+                }
+
+
                 if (this.hitBomb()) {
                     let currentTime = new Date().getTime();
                     if (currentTime - this.lastHit > 700 && !world.bomb.inTouch) {

@@ -224,12 +224,19 @@ class Knight extends MoveableObject {
                 this.world.characterInfo.energyCounter -= 1;
                 this.energyPoints.splice(this.energyPoints.length - 1, 1);
             }
-            if (!(this.x < world.level.X_CAMERA_END)) {
+            if (!world.ENDBOSS.dead && !(this.x < world.level.X_CAMERA_END)) {
                 this.reachedFinalSection = true;
                 this.world.level.X_LEVEL_START = (LEVEL_SIZE - 1) * CANVAS_WIDTH + 28;
                 this.AMBIENCE_SOUND.muted = true;
-                this.BOSS_BATTLE.volume = 0.1;
+                this.BOSS_BATTLE.volume = 0.4;
                 this.BOSS_BATTLE.play();
+            }
+            if (this.BOSS_BATTLE.volume <= 0.1) {
+                this.AMBIENCE_SOUND.muted = false;
+                this.BOSS_BATTLE.pause();
+            }
+            if (this.AMBIENCE_SOUND.muted && world.ENDBOSS.energy <= 0) {
+                this.BOSS_BATTLE.volume -= 0.001;
             }
             if (!this.reachedFinalSection && this.x > 284 && this.x < world.level.X_CAMERA_END) {
                 this.world.camera_x = -this.x + 4 * 64 + 28;    // + 4 * 64 + 28
