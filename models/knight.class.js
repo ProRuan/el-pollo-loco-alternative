@@ -230,7 +230,6 @@ class Knight extends MoveableObject {
                 this.AMBIENCE_SOUND.muted = true;
                 this.BOSS_BATTLE.volume = 0.1;
                 this.BOSS_BATTLE.play();
-
             }
             if (!this.reachedFinalSection && this.x > 284 && this.x < world.level.X_CAMERA_END) {
                 this.world.camera_x = -this.x + 4 * 64 + 28;    // + 4 * 64 + 28

@@ -24,6 +24,7 @@ class Shaman extends MoveableObject {
     CAST_MAGIC_BLADE = './audio/elemental_magic/Fantasy_Game_Magic_Ice_Instant_Cast_Spell_A.wav';
     CAST_MAGIC_FIRE = './audio/elemental_magic/Fantasy_Game_Magic_Fire_Instant_Cast_Spell_A.wav';
     CAST_MAGIC_LIGHTNING = './audio/elemental_magic/Fantasy_Game_Magic_Lightning_Instant_Cast_Spell_A.wav';
+    SOUND_ANGER = './audio/attacks_and_creatures/Fantasy_Game_Creature_Growl_Short_High.wav';
 
 
     constructor(x, y) {
@@ -150,7 +151,7 @@ class Shaman extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            if (world) {
+            if (world && world.hero.reachedFinalSection) {
                 // this.attack();
 
 
@@ -245,7 +246,7 @@ class Shaman extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            if (world) {
+            if (world && world.hero.reachedFinalSection) {
                 let currentTime = new Date().getTime();
                 if (this.dead) {
                     this.loadImage(FLIP_BOOK_SHAMAN.DEATH[FLIP_BOOK_SHAMAN.DEATH.length - 1]);
@@ -254,6 +255,13 @@ class Shaman extends MoveableObject {
                         this.dying = true;
                         setTimeout(() => {
                             this.dead = true;
+                            this.playSound(this.SOUND_ANGER);
+                            setTimeout(() => {
+                                this.playSound(this.SOUND_ANGER);
+                                setTimeout(() => {
+                                    this.playSound(this.SOUND_ANGER);
+                                }, 50);
+                            }, 50);
                         }, (FLIP_BOOK_SHAMAN.DEATH.length - 1) * 100);
                     }
                     this.playAnimation(FLIP_BOOK_SHAMAN.DEATH);
@@ -419,6 +427,7 @@ class Shaman extends MoveableObject {
             if (!this.angry) {
                 this.currentImage = 0;
                 this.angry = true;
+                this.playSound(this.SOUND_ANGER);
                 setTimeout(() => {
                     this.angerCounter++;
                     this.angry = false;

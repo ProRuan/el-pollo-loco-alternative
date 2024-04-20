@@ -5,6 +5,7 @@ class Bomb extends AnimatedObject {
     prolog = 4;
     inTouch = false;
     exploding = false;
+    sound = './audio/elemental_magic/Fantasy_Game_Magic_Fire_Instant_Cast_Spell_D.wav';
 
 
     constructor(x, y) {
@@ -73,6 +74,7 @@ class Bomb extends AnimatedObject {
         if (!this.exploding) {
             this.currentImage = 0;
             this.exploding = true;
+            new Audio(this.sound).play();
             setTimeout(() => {
                 world.bomb = undefined;
             }, 700);
