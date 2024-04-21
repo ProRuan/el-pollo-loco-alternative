@@ -421,6 +421,17 @@ class Knight extends MoveableObject {
                         this.isFalling = false;
                     } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
                         this.playAnimation(FLIP_BOOK_HERO.RUN_ATTACK);
+                        if (this.img.src.includes(FLIP_BOOK_HERO.RUN_ATTACK[2])) {
+                            this.playSound(this.FOOTSTEP);
+                            console.log(this.img, new Date().getTime());
+                        }
+                        if (this.img.src.includes(FLIP_BOOK_HERO.RUN_ATTACK[6])) {
+                            this.playSound(this.FOOTSTEP);
+                            console.log(this.img, new Date().getTime());
+                        }
+                        if (this.img.src.includes(FLIP_BOOK_HERO.RUN_ATTACK[3])) {
+                            this.playSound(this.SWORD_DRAW);
+                        }
                     } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight')) {
                         this.playAnimation(FLIP_BOOK_HERO.RUN);
                         if (this.img.src.includes(FLIP_BOOK_HERO.RUN[2])) {
@@ -433,6 +444,17 @@ class Knight extends MoveableObject {
                         }
                     } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
                         this.playAnimation(FLIP_BOOK_HERO.WALK_ATTACK);
+                        if (this.img.src.includes(FLIP_BOOK_HERO.WALK_ATTACK[2])) {
+                            this.playSound(this.FOOTSTEP);
+                            console.log(this.img, new Date().getTime());
+                        }
+                        if (this.img.src.includes(FLIP_BOOK_HERO.WALK_ATTACK[5])) {
+                            this.playSound(this.FOOTSTEP);
+                            console.log(this.img, new Date().getTime());
+                        }
+                        if (this.img.src.includes(FLIP_BOOK_HERO.WALK_ATTACK[3])) {
+                            this.playSound(this.SWORD_DRAW);
+                        }
                     } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isPushing()) {
                         this.playAnimation(FLIP_BOOK_HERO.PUSH);
                     } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight')) {
@@ -447,7 +469,7 @@ class Knight extends MoveableObject {
                         }
                     } else if (this.isKey('keydown', 'keyA')) {
                         this.playAnimation(FLIP_BOOK_HERO.ATTACK);
-                        if (this.img.src.includes(FLIP_BOOK_HERO.ATTACK[0])) {
+                        if (this.img.src.includes(FLIP_BOOK_HERO.ATTACK[1])) {
                             this.playSound(this.SWORD_DRAW);
                         }
                     } else if (!keyboard.keydown) {

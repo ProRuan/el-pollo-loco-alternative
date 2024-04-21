@@ -125,12 +125,7 @@ Tipp
   Current Task
   ------------
     - final task II from VIII:
-        - ambience sound - check
-        - dino, ent, spider (attack, death, special) - check
-        - endboss (magic cast, spell, anger, hurt) - check
-        - knight (sword, bomb throw, bomb explosion, hurt) ... (2/4)
-        - hurt (knight, dino, ent, spider) sound ... (3/4)
-        - coin, crystal, hitpoint, leaf - check
+        - armor hit, weapon hit, upgrade ... (0/3)
         - title screen and others ...
 
     - final task I from VIII:
