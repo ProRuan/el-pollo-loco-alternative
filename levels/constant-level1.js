@@ -107,11 +107,15 @@ const GRASS1_2 = [
 ];
 
 const COINS1_2 = [
-    new Coin(3.25, 1.125), new Coin(4.25, 1.125), new Coin(6.25, 3.125)
+    new Coin(3.25, 1.125), new Coin(4.25, 1.125), new Coin(6.25, 3.125), new Coin(10.25, 1.125)
+];
+
+const HIT_POINT1_2 = [
+    new HitPoint(8.25, 3.125)
 ];
 
 const ENEMIES1_2 = [
-    new Dino(11.8125, 0.25)
+    new Dino(0.875, 0.25), new Dino(11.8125, 0.25)
 ];
 
 
@@ -169,12 +173,17 @@ const STAIRWAYS1_4 = [
 ];
 
 const COINS1_4 = [
-    new Coin(2.25, 4.625), new Coin(5.5, 1.125), new Coin(7.25, 3.125), new Coin(9, 1.125), new Coin(12.25, 4.625)
+    new Coin(2.25, 4.625), new Coin(5.5, 1.125), new Coin(9, 1.125), new Coin(12.25, 4.625)
+];
+
+
+const HIT_POINT1_4 = [
+    new HitPoint(7.25, 6.625), new HitPoint(7.25, 3.125)
 ];
 
 
 const ENEMIES1_4 = [
-    new Spider(9, 3.6875)
+    new Spider(0.5, 0.1875), new Spider(9, 3.6875), new Spider(14.125, 0.1875)
 ];
 
 
@@ -236,8 +245,8 @@ const GRASS1_6 = [
 ];
 
 const STAIRWAYS1_6 = [
-    new StairwayBottom(2.25, 0.875), new StairwayCenter(2.25, 1.375), new StairwayCenter(2.25, 1.875), new StairwayCenter(2.25, 2.375),
-    new StairwayCenter(2.25, 2.875), new StairwayCenter(2.25, 3.375), new StairwayCenter(2.25, 3.875), new StairwayTop(2.25, 4.375)
+    new StairwayBottom(2.5, 0.875), new StairwayCenter(2.5, 1.375), new StairwayCenter(2.5, 1.875), new StairwayCenter(2.5, 2.375),
+    new StairwayCenter(2.5, 2.875), new StairwayCenter(2.5, 3.375), new StairwayCenter(2.5, 3.875), new StairwayTop(2.5, 4.375)
 ];
 
 const COINS1_6 = [
@@ -251,7 +260,7 @@ const HIT_POINT1_6 = [
 
 
 const ENEMIES1_6 = [
-    new Dino(1.5625, 0.25), new Ent(10.859375, 1.625)
+    new Dino(0.75, 0.25), new Ent(10.859375, 1.625)
 ];
 
 
@@ -296,7 +305,7 @@ const HIT_POINT1_7 = [
 
 
 const ENEMIES1_7 = [
-
+    new Spider(1.25, 0.1875)
 ];
 
 
@@ -361,7 +370,7 @@ const GRASS1 = [
 ];
 
 const STAIRWAYS1 = [
-    STAIRWAYS1_1, null, null, STAIRWAYS1_4, null, null, null, STAIRWAYS1_8
+    STAIRWAYS1_1, null, null, STAIRWAYS1_4, null, STAIRWAYS1_6, null, STAIRWAYS1_8
 ];
 
 const COINS1 = [
@@ -373,11 +382,11 @@ const CRYSTAL1 = [
 ];
 
 const HIT_POINT1 = [
-    HIT_POINT1_1, null, null, null, HIT_POINT1_5, HIT_POINT1_6, HIT_POINT1_7, null
+    HIT_POINT1_1, HIT_POINT1_2, null, HIT_POINT1_4, HIT_POINT1_5, HIT_POINT1_6, HIT_POINT1_7, null
 ];
 
 const ENEMIES1 = [
-    ENEMIES1_1, ENEMIES1_2, ENEMIES1_3, ENEMIES1_4, null, ENEMIES1_6, null, null
+    ENEMIES1_1, ENEMIES1_2, ENEMIES1_3, ENEMIES1_4, ENEMIES1_5, ENEMIES1_6, ENEMIES1_7, null
 ];
 
 const ENDBOSS1 = new Shaman(12, 2.09375);

@@ -35,7 +35,7 @@ class Knight extends MoveableObject {
 
 
     constructor() {
-        super(2.4375 + 1 * 15, 0.625);    // Please set!!!
+        super(3.75 + 0 * 15, 0.625);    // Please set!!!
         this.setCover('knight');
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
@@ -457,11 +457,9 @@ class Knight extends MoveableObject {
                         this.playAnimation(FLIP_BOOK_HERO.WALK);
                         if (this.img.src.includes(FLIP_BOOK_HERO.WALK[2])) {
                             this.playSound(this.FOOTSTEP);
-                            console.log(this.img, new Date().getTime());
                         }
                         if (this.img.src.includes(FLIP_BOOK_HERO.WALK[5])) {
                             this.playSound(this.FOOTSTEP);
-                            console.log(this.img, new Date().getTime());
                         }
                     } else if (this.isKey('keydown', 'keyA')) {
                         this.playAnimation(FLIP_BOOK_HERO.ATTACK);
