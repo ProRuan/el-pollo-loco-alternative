@@ -125,12 +125,13 @@ Tipp
   Current Task
   ------------
     - final task III from VIII:
-        - level design
+        - level design - check
         - level story
         
     - final task II from VIII:
         - fix armor hit, weapon impact, upgrade ...
         - title screen and others ...
+        - game font family (dragon) ...
 
     - final task I from VIII:
         - set endboss battle x

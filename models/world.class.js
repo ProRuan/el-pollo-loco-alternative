@@ -175,7 +175,9 @@ class World {
         // this.addToMap(this.characterInfo.itemBorder);
         if (this.hero.bombSkillUnlocked) {
             this.addToMap(this.characterInfo.itemBg);
-            this.addToMap(this.characterInfo.itemBomb);
+            if (this.characterInfo.energyPoints.length == 100) {
+                this.addToMap(this.characterInfo.itemBomb);
+            }
             this.addToMap(this.characterInfo.itemBorder);
         }
 

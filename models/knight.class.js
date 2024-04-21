@@ -35,7 +35,7 @@ class Knight extends MoveableObject {
 
 
     constructor() {
-        super(3.75 + 0 * 15, 0.625);    // Please set!!!
+        super(3.75 + 7 * 15, 0.625);    // Please set!!!
         this.setCover('knight');
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
@@ -205,7 +205,8 @@ class Knight extends MoveableObject {
                 this.world.endboss.otherDirection = false;
                 // this.world.endbossMagic.otherDirection = false;
             }
-            if (this.bombSkillUnlocked && this.isKey('keydown', 'keyF') && this.world.bomb === undefined) {
+            if (this.bombSkillUnlocked && world.characterInfo.energyPoints.length == 100 && this.isKey('keydown', 'keyF') && this.world.bomb === undefined) {
+                world.characterInfo.energyPoints = [];
                 this.world.bomb = new Bomb((world.hero.x - 40) / 64, (540 - world.hero.y + 17) / 64);
                 this.playSound(this.world.bomb.soundThrow);
 
@@ -260,6 +261,9 @@ class Knight extends MoveableObject {
                 this.world.characterInfo.updateEnergyPointX();
                 this.world.characterInfo.updateStaminaPointX();
             }
+
+            this.world.characterInfo.updateEnergyPointX();
+            this.world.characterInfo.updateStaminaPointX();
 
 
             this.isOnTile();

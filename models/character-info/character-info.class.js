@@ -147,6 +147,7 @@ class CharacterInfo extends DrawableObject {
                 let x = (93 + this.energyPoints.length * 1) / 64;
                 let energyPoint = new EnergyPoint(x, 7.59375);
                 this.energyPoints.push(energyPoint);
+                // this.energyCounter = this.energyPoints.length;
             }
         }, 50);
     }
