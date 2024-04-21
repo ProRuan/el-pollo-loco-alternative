@@ -124,8 +124,12 @@ Tipp
 
   Current Task
   ------------
+    - final task III from VIII:
+        - level design
+        - level story
+        
     - final task II from VIII:
-        - armor hit, weapon hit, upgrade ... (0/3)
+        - fix armor hit, weapon impact, upgrade ...
         - title screen and others ...
 
     - final task I from VIII:

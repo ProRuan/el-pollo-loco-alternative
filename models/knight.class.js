@@ -30,6 +30,7 @@ class Knight extends MoveableObject {
     AMBIENCE_SOUND = new Audio('./audio/AMBIENCE Nature Forest Daytime.wav');
     BOSS_BATTLE = new Audio('./audio/epic_fantasy/05 - Facing Monsters - Loop Version - Epic Fantasy - Lufus.wav');
     SWORD_DRAW = './audio/attacks_and_creatures/Fantasy_Game_Blade_Draw_1.wav';
+    ARMOR_HIT = './audio/attacks_and_creatures/Fantasy_Game_Cloth_Armor_Hit_A.wav';
     FOOTSTEP = './audio/footsteps/Fantasy_Game_Footstep_Grass_Medium_Av.wav';
 
 
@@ -204,7 +205,7 @@ class Knight extends MoveableObject {
                 this.world.endboss.otherDirection = false;
                 // this.world.endbossMagic.otherDirection = false;
             }
-            if (this.isKey('keydown', 'keyF') && this.world.bomb === undefined) {
+            if (this.bombSkillUnlocked && this.isKey('keydown', 'keyF') && this.world.bomb === undefined) {
                 this.world.bomb = new Bomb((world.hero.x - 40) / 64, (540 - world.hero.y + 17) / 64);
                 this.playSound(this.world.bomb.soundThrow);
 
@@ -303,6 +304,7 @@ class Knight extends MoveableObject {
                         this.hpPoints.splice(this.hpPoints.length - 1 - 5, 5);
                         console.log('blade hit: ', this.hpPoints.length);
                     }
+                    this.playSound(this.ARMOR_HIT);
                 } else
 
                     // if (world.lightnings.length > 0 && world.lightnings[0] !== undefined && this.isIncluding(world.lightnings[0].xCenter, world.lightnings[0].yCenter)) {
@@ -423,11 +425,9 @@ class Knight extends MoveableObject {
                         this.playAnimation(FLIP_BOOK_HERO.RUN_ATTACK);
                         if (this.img.src.includes(FLIP_BOOK_HERO.RUN_ATTACK[2])) {
                             this.playSound(this.FOOTSTEP);
-                            console.log(this.img, new Date().getTime());
                         }
                         if (this.img.src.includes(FLIP_BOOK_HERO.RUN_ATTACK[6])) {
                             this.playSound(this.FOOTSTEP);
-                            console.log(this.img, new Date().getTime());
                         }
                         if (this.img.src.includes(FLIP_BOOK_HERO.RUN_ATTACK[3])) {
                             this.playSound(this.SWORD_DRAW);
@@ -436,21 +436,17 @@ class Knight extends MoveableObject {
                         this.playAnimation(FLIP_BOOK_HERO.RUN);
                         if (this.img.src.includes(FLIP_BOOK_HERO.RUN[2])) {
                             this.playSound(this.FOOTSTEP);
-                            console.log(this.img, new Date().getTime());
                         }
                         if (this.img.src.includes(FLIP_BOOK_HERO.RUN[6])) {
                             this.playSound(this.FOOTSTEP);
-                            console.log(this.img, new Date().getTime());
                         }
                     } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
                         this.playAnimation(FLIP_BOOK_HERO.WALK_ATTACK);
                         if (this.img.src.includes(FLIP_BOOK_HERO.WALK_ATTACK[2])) {
                             this.playSound(this.FOOTSTEP);
-                            console.log(this.img, new Date().getTime());
                         }
                         if (this.img.src.includes(FLIP_BOOK_HERO.WALK_ATTACK[5])) {
                             this.playSound(this.FOOTSTEP);
-                            console.log(this.img, new Date().getTime());
                         }
                         if (this.img.src.includes(FLIP_BOOK_HERO.WALK_ATTACK[3])) {
                             this.playSound(this.SWORD_DRAW);
@@ -650,6 +646,10 @@ class Knight extends MoveableObject {
             this.removeObject(key, object);
             this.increaseCounter(item);
             this.playSound(object.sound);
+            if (object instanceof Crystal) {
+                this.bombSkillUnlocked = true;
+                this.playSound(object.upgrade);
+            }
         }
     }
 

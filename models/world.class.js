@@ -169,8 +169,15 @@ class World {
         this.addGroupToMap(this.characterInfo.hpPoints);
         this.addGroupToMap(this.characterInfo.energyPoints);
         this.addGroupToMap(this.characterInfo.staminaPoints);
-        this.addToMap(this.characterInfo.itemBomb);
         this.addGroupToMap(this.characterInfo.borders);
+        // this.addToMap(this.characterInfo.itemBg);
+        // this.addToMap(this.characterInfo.itemBomb);
+        // this.addToMap(this.characterInfo.itemBorder);
+        if (this.hero.bombSkillUnlocked) {
+            this.addToMap(this.characterInfo.itemBg);
+            this.addToMap(this.characterInfo.itemBomb);
+            this.addToMap(this.characterInfo.itemBorder);
+        }
 
         // this.addToMap(this.stone);
 

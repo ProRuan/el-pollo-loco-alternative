@@ -46,16 +46,14 @@ class CharacterInfo extends DrawableObject {
 
     get images() {
         return [
-            this.avatarImage, this.hpBarBg, this.energyBarBg, this.staminaBarBg,
-            this.itemBg
+            this.avatarImage, this.hpBarBg, this.energyBarBg, this.staminaBarBg
         ];
     }
 
 
     get borders() {
         return [
-            this.avatarFrame, this.hpBarBorder, this.energyBarBorder, this.staminaBarBorder,
-            this.itemBorder
+            this.avatarFrame, this.hpBarBorder, this.energyBarBorder, this.staminaBarBorder
         ];
     }
 
@@ -150,7 +148,7 @@ class CharacterInfo extends DrawableObject {
                 let energyPoint = new EnergyPoint(x, 7.59375);
                 this.energyPoints.push(energyPoint);
             }
-        }, 160);
+        }, 50);
     }
 
 
