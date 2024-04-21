@@ -126,7 +126,8 @@ Tipp
   ------------
     - final task III from VIII:
         - level design - check
-        - level story
+        - level story - check
+        - fix speedX and speedY of shaman magic ...
         
     - final task II from VIII:
         - fix armor hit, weapon impact, upgrade ...
@@ -134,7 +135,6 @@ Tipp
         - game font family (dragon) ...
 
     - final task I from VIII:
-        - set endboss battle x
         - enemy body (radDispl): knight, dino, ent, spider (0/4)
         - enemy attack (radDispl): knight, dino, ent, spider (0/4)
 

@@ -136,7 +136,11 @@ const GRASS1_3 = [
 ];
 
 const COINS1_3 = [
-    new Coin(2, 1.125), new Coin(3.75, 3.125), new Coin(5.5, 1.125)
+    new Coin(2, 1.125), new Coin(5.5, 1.125)
+];
+
+const HIT_POINT1_3 = [
+    new HitPoint(3.75, 3.125)
 ];
 
 const ENEMIES1_3 = [
@@ -382,7 +386,7 @@ const CRYSTAL1 = [
 ];
 
 const HIT_POINT1 = [
-    HIT_POINT1_1, HIT_POINT1_2, null, HIT_POINT1_4, HIT_POINT1_5, HIT_POINT1_6, HIT_POINT1_7, null
+    HIT_POINT1_1, HIT_POINT1_2, HIT_POINT1_3, HIT_POINT1_4, HIT_POINT1_5, HIT_POINT1_6, HIT_POINT1_7, null
 ];
 
 const ENEMIES1 = [

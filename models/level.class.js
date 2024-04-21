@@ -20,7 +20,8 @@ class Level {
 
     constructor() {
         this.setXLevelStart();
-        this.setXLevelEnd(LEVEL_SIZE);
+        this.setXLevelEndCrystal(LEVEL_SIZE);
+        // this.setXLevelEnd(LEVEL_SIZE);
         this.setXCameraEnd(LEVEL_SIZE);
     }
 
@@ -30,8 +31,19 @@ class Level {
     }
 
 
+    setXLevelStartCrystal(amount) {
+        this.X_LEVEL_START = (amount - 2) * CANVAS_WIDTH + 2.25 * 64 + 28;
+    }
+
+
+    setXLevelEndCrystal(amount) {
+        this.X_LEVEL_END = (amount - 2) * CANVAS_WIDTH + CANVAS_WIDTH / 2 - 44;
+        // console.log(this.X_LEVEL_END);
+    }
+
+
     setXLevelEnd(amount) {
-        this.X_LEVEL_END = amount * CANVAS_WIDTH + 68;
+        this.X_LEVEL_END = (amount) * CANVAS_WIDTH - 84;
         // this.X_LEVEL_END = (amount - 1) * CANVAS_WIDTH - 4 + 28;
     }
 
