@@ -35,7 +35,7 @@ class Knight extends MoveableObject {
 
 
     constructor() {
-        super(3.75 + 7 * 15, 0.625);    // Please set!!!
+        super(3.75 + 0 * 15, 0.625);    // Please set!!!
         this.setCover('knight');
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);
@@ -233,8 +233,10 @@ class Knight extends MoveableObject {
                 this.reachedFinalSection = true;
                 this.world.level.X_LEVEL_START = (LEVEL_SIZE - 1) * CANVAS_WIDTH + 28;
                 this.AMBIENCE_SOUND.muted = true;
-                this.BOSS_BATTLE.volume = 0.4;
-                this.BOSS_BATTLE.play();
+                setTimeout(() => {
+                    this.BOSS_BATTLE.volume = 0.4;
+                    this.BOSS_BATTLE.play();
+                }, 800);
             }
             if (this.BOSS_BATTLE.volume <= 0.1) {
                 this.AMBIENCE_SOUND.muted = false;
