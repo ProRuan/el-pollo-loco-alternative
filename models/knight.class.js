@@ -29,6 +29,8 @@ class Knight extends MoveableObject {
 
     AMBIENCE_SOUND = new Audio('./audio/AMBIENCE Nature Forest Daytime.wav');
     BOSS_BATTLE = new Audio('./audio/epic_fantasy/05 - Facing Monsters - Loop Version - Epic Fantasy - Lufus.wav');
+    SWORD_DRAW = './audio/attacks_and_creatures/Fantasy_Game_Blade_Draw_1.wav';
+    FOOTSTEP = './audio/footsteps/Fantasy_Game_Footstep_Grass_Medium_Av.wav';
 
 
     constructor() {
@@ -421,18 +423,34 @@ class Knight extends MoveableObject {
                         this.playAnimation(FLIP_BOOK_HERO.RUN_ATTACK);
                     } else if (this.isKey('doubleClick', 'arrowLeft', 'arrowRight')) {
                         this.playAnimation(FLIP_BOOK_HERO.RUN);
+                        if (this.img.src.includes(FLIP_BOOK_HERO.RUN[2])) {
+                            this.playSound(this.FOOTSTEP);
+                            console.log(this.img, new Date().getTime());
+                        }
+                        if (this.img.src.includes(FLIP_BOOK_HERO.RUN[6])) {
+                            this.playSound(this.FOOTSTEP);
+                            console.log(this.img, new Date().getTime());
+                        }
                     } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isKey('keydown', 'keyA')) {
                         this.playAnimation(FLIP_BOOK_HERO.WALK_ATTACK);
                     } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight') && this.isPushing()) {
                         this.playAnimation(FLIP_BOOK_HERO.PUSH);
                     } else if (this.isKey('keydown', 'arrowLeft', 'arrowRight')) {
                         this.playAnimation(FLIP_BOOK_HERO.WALK);
+                        if (this.img.src.includes(FLIP_BOOK_HERO.WALK[2])) {
+                            this.playSound(this.FOOTSTEP);
+                            console.log(this.img, new Date().getTime());
+                        }
+                        if (this.img.src.includes(FLIP_BOOK_HERO.WALK[5])) {
+                            this.playSound(this.FOOTSTEP);
+                            console.log(this.img, new Date().getTime());
+                        }
                     } else if (this.isKey('keydown', 'keyA')) {
                         this.playAnimation(FLIP_BOOK_HERO.ATTACK);
+                        if (this.img.src.includes(FLIP_BOOK_HERO.ATTACK[0])) {
+                            this.playSound(this.SWORD_DRAW);
+                        }
                     } else if (!keyboard.keydown) {
-                        // this.loadImage(FLIP_BOOK_HERO.cover);
-                        // this.currentFlipBook = this.flipBook.IDLE;
-
                         let currentTime = new Date().getTime();
                         if (currentTime - this.lastIdle > 6000) {
                             this.playAnimation(FLIP_BOOK_HERO.IDLE);
@@ -447,6 +465,7 @@ class Knight extends MoveableObject {
                             // console.log(this.img);
                         } else {
                             this.loadImage(FLIP_BOOK_HERO.cover);
+                            this.currentFlipBook = this.flipBook.IDLE;
                         }
                     }
         }, 100);
