@@ -41,11 +41,23 @@ class World {
 
     characterInfo = new CharacterInfo();
 
+    startScreenDisplayed = true;
+    levelSelected = false;
+
+    worldTime = new Date().getTime();
+    lastWorldTime = 0;
+    startedGame = true;
+
 
     constructor(canvas, keyboard) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.keyboard = keyboard;
+        this.setStartScreenBg();
+        this.setCupButton();
+        this.setHomeButton();
+        this.setSettingsButton();
+        this.setBirdArrow();
         this.draw();
         this.setWorld();
     }
@@ -127,9 +139,161 @@ class World {
     // endbossMagic = new Lightning(0, +284 / 64);
     // magic (x, y) = (???, -0.0625)
 
+    setStartScreenBg() {
+        this.startScreenBg = new DrawableObject(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+        this.startScreenBg.loadImage('./img/start_screen/background.png');
+    }
+
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
+        if (this.startScreenDisplayed) {
+            this.drawStartScreen();
+        }
+
+        // Please activate!!!
+        // if (this.levelSelected) {
+        //     this.drawLevelComponents();
+        // }
+
+        requestAnimationFrame(() => {
+            this.draw();
+        });
+    }
+
+
+    setWorld() {
+        this.hero.world = this;
+    }
+
+
+    addGroupToMap(moGroup) {
+        moGroup.forEach(o => {
+            this.addToMap(o);
+        });
+    }
+
+
+    addToMap(mo) {
+        if (mo.otherDirection) {
+            this.flipImage(mo);
+        }
+
+        mo.draw(this.ctx);
+        mo.drawFrame(this.ctx);
+
+        if (mo.otherDirection) {
+            this.flipImageBack(mo);
+        }
+    }
+
+
+    flipImage(mo) {    // set mo.object!!!
+        this.ctx.save();
+        this.ctx.translate(mo.width / 2 + mo.radDispl, 0);    // k + 24, d + 40
+        this.ctx.scale(-1, 1);
+        mo.x *= -1;
+    }
+
+
+    flipImageBack(mo) {
+        mo.x *= -1;
+        this.ctx.restore();
+    }
+
+
+    drawStartScreen() {
+        this.addToMap(this.startScreenBg);
+
+        this.drawGameTitle();
+        this.drawStartText();
+        if (this.startedGame) {
+            this.addToMap(this.homeButton);
+            this.addToMap(this.cupButton);
+            this.addToMap(this.settingsButton);
+            this.drawTextNewGame();
+            this.drawTextCredits();
+            this.addToMap(this.birdArrow);
+        }
+    }
+
+
+    drawGameTitle() {
+        this.ctx.font = "80px Arial";
+        let txt = "Raising Fantasy";
+        let txtWidth = this.ctx.measureText(txt).width;
+        // console.log(txtWidth);
+        this.ctx.fillText(txt, 480 - txtWidth / 2, 270);
+    }
+
+
+    drawStartText() {
+        if (!this.startedGame) {
+            let currentTime = new Date().getTime();
+            if (currentTime - this.lastWorldTime > 1000) {
+                this.lastWorldTime = currentTime;
+            } else if (currentTime - this.lastWorldTime > 500) {
+
+            } else if (currentTime - this.lastWorldTime > 0) {
+                this.ctx.font = "24px Arial";
+                let txt = "Press any button";
+                let txtWidth = this.ctx.measureText(txt).width;
+                console.log(txtWidth);
+                this.ctx.fillText(txt, 480 - txtWidth / 2, 400);
+            }
+        }
+    }
+
+
+    drawTextNewGame() {
+        if (this.startedGame) {
+            this.ctx.font = "24px Arial";
+            let txt = "New game";
+            let txtWidth = this.ctx.measureText(txt).width;
+            console.log(txtWidth);
+            this.ctx.fillText(txt, 480 - txtWidth / 2, 400 - 36);
+        }
+    }
+
+
+    drawTextCredits() {
+        if (this.startedGame) {
+            this.ctx.font = "24px Arial";
+            let txt = "Credits";
+            let txtWidth = this.ctx.measureText(txt).width;
+            console.log(txtWidth);
+            this.ctx.fillText(txt, 480 - txtWidth / 2, 400 + 36);
+        }
+    }
+
+
+    setCupButton() {
+        this.cupButton = new DrawableObject(0.5, 0.5, 66, 66);
+        this.cupButton.loadImage('./img/start_screen/cup_button.png');
+    }
+
+
+    setHomeButton() {
+        this.homeButton = new DrawableObject(0.5, 540 / 64 - 66 / 64 - 0.5, 66, 66);
+        this.homeButton.loadImage('./img/start_screen/home_button.png');
+    }
+
+
+    setSettingsButton() {
+        this.settingsButton = new DrawableObject(14 - 66 / 2 / 64, 0.5, 66, 66);
+        this.settingsButton.loadImage('./img/start_screen/settings_button.png');
+    }
+
+
+    setBirdArrow() {
+        this.birdArrow = new Bird(8.5, 2.925);    // set x value
+        // this.birdArrow = new Bird(8.25, 1.8);    // set x value
+        this.otherDirection = false;
+        this.birdArrow.speed = 0;
+    }
+
+
+    drawLevelComponents() {
         this.ctx.translate(this.camera_x, 0);
 
         // if (this.enemy[0] !== undefined) {
@@ -207,50 +371,5 @@ class World {
 
 
         this.ctx.translate(-this.camera_x, 0);
-
-
-        requestAnimationFrame(() => {
-            this.draw();
-        });
-    }
-
-
-    setWorld() {
-        this.hero.world = this;
-    }
-
-
-    addGroupToMap(moGroup) {
-        moGroup.forEach(o => {
-            this.addToMap(o);
-        });
-    }
-
-
-    addToMap(mo) {
-        if (mo.otherDirection) {
-            this.flipImage(mo);
-        }
-
-        mo.draw(this.ctx);
-        mo.drawFrame(this.ctx);
-
-        if (mo.otherDirection) {
-            this.flipImageBack(mo);
-        }
-    }
-
-
-    flipImage(mo) {    // set mo.object!!!
-        this.ctx.save();
-        this.ctx.translate(mo.width / 2 + mo.radDispl, 0);    // k + 24, d + 40
-        this.ctx.scale(-1, 1);
-        mo.x *= -1;
-    }
-
-
-    flipImageBack(mo) {
-        mo.x *= -1;
-        this.ctx.restore();
     }
 }

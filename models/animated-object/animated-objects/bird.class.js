@@ -1,5 +1,6 @@
 class Bird extends AnimatedObject {
     currentImage = 0;
+    speed = 32 / 60;
 
 
     constructor(x, y) {
@@ -12,7 +13,7 @@ class Bird extends AnimatedObject {
 
     move() {
         setInterval(() => {
-            this.x -= 32 / 60;
+            this.x -= this.speed;
             this.keep();
         }, 1000 / 60);
     }
