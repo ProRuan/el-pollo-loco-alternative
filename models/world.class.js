@@ -49,6 +49,7 @@ class World {
     startedGame = false;
     birdArrow = new Bird(8.50625, 2.925);
     activeButton = 'new game';
+    leaderBoardOpened = true;
 
 
     constructor(canvas, keyboard) {
@@ -60,6 +61,7 @@ class World {
         this.setHomeButton();
         this.setSettingsButton();
         this.setBirdArrow();
+        this.setLeaderBoard();
         this.draw();
         this.setWorld();
     }
@@ -231,6 +233,11 @@ class World {
             this.drawTextCredits();
             this.addToMap(this.birdArrow);
 
+            if (this.leaderBoardOpened) {
+                this.addToMap(this.leaderBoard);
+                this.drawHighScore();
+            }
+
             AUDIO_START_SCREEN.play();
         }
     }
@@ -291,6 +298,12 @@ class World {
     }
 
 
+    setLeaderBoard() {
+        this.leaderBoard = new DrawableObject(0 + 15 / 2 - 382 / 64 / 2, 540 / 64 / 2 - 441 / 64 / 2, 382, 441);
+        this.leaderBoard.loadImage('./img/start_screen/leaderboard.png');
+    }
+
+
     setHomeButton() {
         this.homeButton = new DrawableObject(0.5, 540 / 64 - 66 / 64 - 0.5, 66, 66);
         this.homeButton.loadImage('./img/start_screen/home_button.png');
@@ -299,10 +312,56 @@ class World {
 
     setSettingsButton() {
         this.settingsButton = new DrawableObject(14 - 66 / 2 / 64, 0.5, 66, 66);
-        // this.settingsButton.loadImage('./img/start_screen/settings_button.png');
-        this.settingsButton.img = settingsButton;
-        this.settingsButton.img.id = 'settings-button';
-        // this.settingsButton.img
+        this.settingsButton.loadImage('./img/start_screen/settings_button.png');
+    }
+
+
+    drawHighScore() {
+        this.ctx.font = "24px Arial";
+        this.ctx.fillStyle = 'gold';
+        let textBestResult = 'Best result';
+        // let textCoins = "Coins: 0 / 20";
+        let textCoins = 'Coins:';
+        let textCoinsValue = '19 / 20';
+        // let textLeaves = "Leaves: 0 / 18";
+        let textLeaves = 'Leaves:';
+        let textLeavesValue = '15 / 18';
+        // let textLevelTime = 'Time required: ??:??:??';
+        let textTimeRequired = 'Time required:';
+        let textTimeRequiredValue = '7 min 32 s';
+
+        let textBestResultWidth = this.ctx.measureText(textBestResult).width;
+        this.ctx.fillText(textBestResult, 480 - textBestResultWidth / 2, 144 + 8);
+
+        this.ctx.font = "20px Arial";
+        this.ctx.fillText(textCoins, 352, 184 + 8);
+        this.ctx.fillText(textCoinsValue, 960 / 2 + 32, 184 + 8);
+        this.ctx.fillText(textLeaves, 352, 220 + 8);
+        this.ctx.fillText(textLeavesValue, 960 / 2 + 32, 220 + 8);
+        this.ctx.fillText(textTimeRequired, 352, 256 + 8);
+        this.ctx.fillText(textTimeRequiredValue, 960 / 2 + 32, 256 + 8);
+
+
+        this.ctx.font = "24px Arial";
+        this.ctx.fillStyle = 'white';
+        textBestResult = 'Last result';
+        this.ctx.fillText(textBestResult, 480 - textBestResultWidth / 2, 320 + 8);
+
+        this.ctx.font = '20px Arial';
+        textCoinsValue = '17 / 20';
+        textLeavesValue = '14 / 18';
+        textTimeRequiredValue = '9 min 16 s';
+
+        this.ctx.fillText(textCoins, 352, 360 + 8);
+        this.ctx.fillText(textCoinsValue, 960 / 2 + 32, 360 + 8);
+        this.ctx.fillText(textLeaves, 352, 396 + 8);
+        this.ctx.fillText(textLeavesValue, 960 / 2 + 32, 396 + 8);
+        this.ctx.fillText(textTimeRequired, 352, 432 + 8);
+        this.ctx.fillText(textTimeRequiredValue, 960 / 2 + 32, 432 + 8);
+
+
+
+        this.ctx.fillStyle = 'black';    // Please update methods!!!
     }
 
 

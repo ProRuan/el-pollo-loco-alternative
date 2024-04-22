@@ -14,11 +14,6 @@ const FLIP_BOOK_SHAMAN = new FlipBook(SHAMAN_DIRECTORY, SHAMAN_SOURCES);
 const FLIP_BOOK_MAGIC = new FlipBook(MAGIC_DIRECTORY, MAGIC_SOURCES);
 
 
-let settingsButton = new Image();
-settingsButton.src = './img/start_screen/settings_button.png';
-settingsButton.style.opacity = 0.1;
-
-
 function init() {
     canvas = new Canvas(CANVAS_WIDTH, CANVAS_HEIGHT);
     keyboard = new Keyboard();
@@ -36,7 +31,7 @@ document.addEventListener('mousedown', (event) => {
         'y': event.clientY
     }
 
-    
+
     if (
         world.cupButton.x < keyboard.mouseClick.x - 8 &&
         keyboard.mouseClick.x - 8 < world.cupButton.x + world.cupButton.width &&
