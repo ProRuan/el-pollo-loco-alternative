@@ -49,7 +49,7 @@ class World {
     startedGame = false;
     birdArrow = new Bird(8.50625, 2.925);
     activeButton = 'new game';
-    leaderBoardOpened = true;
+    leaderboardOpened = true;
 
 
     constructor(canvas, keyboard) {
@@ -61,7 +61,7 @@ class World {
         this.setHomeButton();
         this.setSettingsButton();
         this.setBirdArrow();
-        this.setLeaderBoard();
+        this.setleaderboard();
         this.draw();
         this.setWorld();
     }
@@ -233,8 +233,8 @@ class World {
             this.drawTextCredits();
             this.addToMap(this.birdArrow);
 
-            if (this.leaderBoardOpened) {
-                this.addToMap(this.leaderBoard);
+            if (this.leaderboardOpened) {
+                this.addToMap(this.leaderboard);
                 this.drawHighScore();
             }
 
@@ -298,9 +298,9 @@ class World {
     }
 
 
-    setLeaderBoard() {
-        this.leaderBoard = new DrawableObject(0 + 15 / 2 - 382 / 64 / 2, 540 / 64 / 2 - 441 / 64 / 2, 382, 441);
-        this.leaderBoard.loadImage('./img/start_screen/leaderboard.png');
+    setleaderboard() {
+        this.leaderboard = new DrawableObject(0 + 15 / 2 - 382 / 64 / 2, 540 / 64 / 2 - 441 / 64 / 2, 382, 441);
+        this.leaderboard.loadImage('./img/start_screen/leaderboard.png');
     }
 
 
@@ -393,6 +393,12 @@ class World {
                 this.startScreenRevealed = undefined;
                 this.hero.AMBIENCE_SOUND.pause();
                 this.hero.AMBIENCE_SOUND.currentTime = 0;
+            }
+
+
+            // Please check the values!!!
+            if (this.leaderboardOpened == true && (this.keyboard.mouseClick.x - 16 < this.leaderboard.x || this.leaderboard.x + this.leaderboard.width < this.keyboard.mouseClick.x - 8)) {
+                this.leaderboardOpened = false;
             }
         }, 1000 / 60);
         this.otherDirection = false;    // neccessary???
