@@ -14,6 +14,11 @@ const FLIP_BOOK_SHAMAN = new FlipBook(SHAMAN_DIRECTORY, SHAMAN_SOURCES);
 const FLIP_BOOK_MAGIC = new FlipBook(MAGIC_DIRECTORY, MAGIC_SOURCES);
 
 
+let settingsButton = new Image();
+settingsButton.src = './img/start_screen/settings_button.png';
+settingsButton.style.opacity = 0.1;
+
+
 function init() {
     canvas = new Canvas(CANVAS_WIDTH, CANVAS_HEIGHT);
     keyboard = new Keyboard();
@@ -22,8 +27,37 @@ function init() {
 
 
 document.addEventListener('mousedown', (event) => {
+    console.log(event);
     if (!world.startedGame) {
         world.startedGame = true;
+    }
+    keyboard['mouseClick'] = {
+        'x': event.clientX,
+        'y': event.clientY
+    }
+
+    
+    if (
+        world.cupButton.x < keyboard.mouseClick.x - 8 &&
+        keyboard.mouseClick.x - 8 < world.cupButton.x + world.cupButton.width &&
+        world.cupButton.y < keyboard.mouseClick.y - 12 - world.cupButton.height &&
+        keyboard.mouseClick.y - 12 - world.cupButton.height < world.cupButton.y + world.cupButton.height
+    ) {
+        console.log('click button');
+        console.log(world.cupButton.x, keyboard.mouseClick.x - 8, world.cupButton.x + world.cupButton.width);
+        console.log(world.cupButton.y, keyboard.mouseClick.y - 12 - world.cupButton.height, world.cupButton.y + world.cupButton.height);
+    }
+
+
+    if (
+        world.settingsButton.x < keyboard.mouseClick.x - 8 &&
+        keyboard.mouseClick.x - 8 < world.settingsButton.x + world.settingsButton.width &&
+        world.settingsButton.y < keyboard.mouseClick.y - 12 - world.settingsButton.height &&
+        keyboard.mouseClick.y - 12 - world.settingsButton.height < world.settingsButton.y + world.settingsButton.height
+    ) {
+        console.log('click button');
+        console.log(world.settingsButton.x, keyboard.mouseClick.x - 8, world.settingsButton.x + world.settingsButton.width);
+        console.log(world.settingsButton.y, keyboard.mouseClick.y - 12 - world.settingsButton.height, world.settingsButton.y + world.settingsButton.height);
     }
 });
 

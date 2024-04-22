@@ -221,6 +221,11 @@ class World {
         if (this.startedGame == true) {
             this.addToMap(this.homeButton);
             this.addToMap(this.cupButton);
+
+            // this.ctx.globalAlpha = 0.3;
+            // this.addToMap(this.settingsButton);
+            // this.ctx.globalAlpha = 1.0;
+
             this.addToMap(this.settingsButton);
             this.drawTextNewGame();
             this.drawTextCredits();
@@ -294,7 +299,10 @@ class World {
 
     setSettingsButton() {
         this.settingsButton = new DrawableObject(14 - 66 / 2 / 64, 0.5, 66, 66);
-        this.settingsButton.loadImage('./img/start_screen/settings_button.png');
+        // this.settingsButton.loadImage('./img/start_screen/settings_button.png');
+        this.settingsButton.img = settingsButton;
+        this.settingsButton.img.id = 'settings-button';
+        // this.settingsButton.img
     }
 
 

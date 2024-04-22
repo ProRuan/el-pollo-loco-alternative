@@ -271,6 +271,15 @@ class DrawableObject extends CoordinateSystem {
         }
 
 
+        if (this instanceof DrawableObject) {
+            ctx.beginPath();
+            ctx.lineWidth = '1';
+            ctx.strokeStyle = 'yellow';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
+
+
 
 
         if (this instanceof Character) {
