@@ -28,31 +28,21 @@ document.addEventListener('mousedown', (event) => {
     }
     keyboard['mouseClick'] = {
         'x': event.clientX,
-        'y': event.clientY
+        'y': event.clientY,
+        'xOffset': event.offsetX,
+        'yOffset': event.offsetY
     }
 
 
     if (
-        world.cupButton.x < keyboard.mouseClick.x - 8 &&
-        keyboard.mouseClick.x - 8 < world.cupButton.x + world.cupButton.width &&
-        world.cupButton.y < keyboard.mouseClick.y - 12 - world.cupButton.height &&
-        keyboard.mouseClick.y - 12 - world.cupButton.height < world.cupButton.y + world.cupButton.height
+        world.settingsButton.x < keyboard.mouseClick.xOffset &&
+        keyboard.mouseClick.xOffset < world.settingsButton.x + world.settingsButton.width &&
+        world.settingsButton.y < keyboard.mouseClick.yOffset &&
+        keyboard.mouseClick.yOffset < world.settingsButton.y + world.settingsButton.height
     ) {
         console.log('click button');
-        console.log(world.cupButton.x, keyboard.mouseClick.x - 8, world.cupButton.x + world.cupButton.width);
-        console.log(world.cupButton.y, keyboard.mouseClick.y - 12 - world.cupButton.height, world.cupButton.y + world.cupButton.height);
-    }
-
-
-    if (
-        world.settingsButton.x < keyboard.mouseClick.x - 8 &&
-        keyboard.mouseClick.x - 8 < world.settingsButton.x + world.settingsButton.width &&
-        world.settingsButton.y < keyboard.mouseClick.y - 12 - world.settingsButton.height &&
-        keyboard.mouseClick.y - 12 - world.settingsButton.height < world.settingsButton.y + world.settingsButton.height
-    ) {
-        console.log('click button');
-        console.log(world.settingsButton.x, keyboard.mouseClick.x - 8, world.settingsButton.x + world.settingsButton.width);
-        console.log(world.settingsButton.y, keyboard.mouseClick.y - 12 - world.settingsButton.height, world.settingsButton.y + world.settingsButton.height);
+        console.log(world.settingsButton.x, keyboard.mouseClick.xOffset, world.settingsButton.x + world.settingsButton.width);
+        console.log(world.settingsButton.y, keyboard.mouseClick.yOffset, world.settingsButton.y + world.settingsButton.height);
     }
 });
 

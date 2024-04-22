@@ -49,7 +49,7 @@ class World {
     startedGame = false;
     birdArrow = new Bird(8.50625, 2.925);
     activeButton = 'new game';
-    leaderboardOpened = true;
+    leaderboardOpened = false;
 
 
     constructor(canvas, keyboard) {
@@ -233,7 +233,7 @@ class World {
             this.drawTextCredits();
             this.addToMap(this.birdArrow);
 
-            if (this.leaderboardOpened) {
+            if (this.leaderboardOpened == true) {
                 this.addToMap(this.leaderboard);
                 this.drawHighScore();
             }
@@ -360,6 +360,12 @@ class World {
         this.ctx.fillText(textTimeRequiredValue, 960 / 2 + 32, 432 + 8);
 
 
+        this.ctx.beginPath();
+        this.ctx.lineWidth = '1';
+        this.ctx.strokeStyle = 'yellow';
+        this.ctx.rect(650.5 - 14, 99.5 - 14, 28, 28);
+        this.ctx.stroke();
+
 
         this.ctx.fillStyle = 'black';    // Please update methods!!!
     }
@@ -378,13 +384,15 @@ class World {
                 this.birdArrow.speed = 0;
                 this.activeButton = 'credits';
             }
-            if (!this.keyboard.escape.keydown && this.keyboard.enter.keydown && this.activeButton == 'new game') {
+            if (!this.keyboard.escape.keydown && this.keyboard.enter.keydown && this.activeButton == 'new game' && this.startScreenDisplayed == true && this.selectedLevelDisplayed == false) {
                 this.startScreenDisplayed = false;
                 this.selectedLevelDisplayed = true;
 
                 AUDIO_START_SCREEN.pause();
                 AUDIO_START_SCREEN.currentTime = 0;
                 console.log('level starts ...');
+                this.levelWatch = new Date().getTime();
+                console.log(this.levelWatch);
             }
             if (this.keyboard.escape.keydown) {
                 this.selectedLevelDisplayed = false;
@@ -396,12 +404,38 @@ class World {
             }
 
 
-            // Please check the values!!!
-            if (this.leaderboardOpened == true && (this.keyboard.mouseClick.x - 16 < this.leaderboard.x || this.leaderboard.x + this.leaderboard.width < this.keyboard.mouseClick.x - 8)) {
+            if (this.leaderboardOpened == true && (
+                650.5 - 14 < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < 650.5 + 14 &&
+                99.5 - 14 < this.keyboard.mouseClick.yOffset && this.keyboard.mouseClick.yOffset < 99.5 + 14
+            )) {
                 this.leaderboardOpened = false;
             }
+
+
+            if (this.leaderboardOpened == true &&
+                (this.keyboard.mouseClick.xOffset < this.leaderboard.x || this.leaderboard.x + this.leaderboard.width < this.keyboard.mouseClick.xOffset) ||
+                (this.keyboard.mouseClick.yOffset < this.leaderboard.y || this.leaderboard.y + this.leaderboard.height < this.keyboard.mouseClick.yOffset)
+            ) {
+                this.leaderboardOpened = false;
+            }
+
+
+            if (
+                this.cupButton.x < keyboard.mouseClick.xOffset &&
+                keyboard.mouseClick.xOffset < this.cupButton.x + this.cupButton.width &&
+                this.cupButton.y < keyboard.mouseClick.yOffset &&
+                keyboard.mouseClick.yOffset < this.cupButton.y + this.cupButton.height
+            ) {
+                this.cupButtonClicked = true;
+                this.leaderboardOpened = true;
+                // this.leaderboardOpened = (!this.leaderboardOpened) ? true : false;
+            }
+
+
+            if (this.leaderboardOpened == true && this.cupButtonClicked == true) {
+                this.cupButtonClicked = false;
+            }
         }, 1000 / 60);
-        this.otherDirection = false;    // neccessary???
         this.birdArrow.speed = 0;    // neccessary???
     }
 

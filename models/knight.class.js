@@ -133,6 +133,8 @@ class Knight extends MoveableObject {
 
     animate() {
         setInterval(() => {
+            // console.log(new Date().getTime() - world.levelWatch);    // Set Knight's Watch!!!
+
             // Please set a condition!!!
             if (this.world.selectedLevelDisplayed == true) {
                 this.AMBIENCE_SOUND.play();
