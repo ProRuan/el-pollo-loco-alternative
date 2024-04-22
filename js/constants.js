@@ -47,3 +47,7 @@ const MAGIC_SOURCES = [
 
 
 const LEVEL_SIZE = 8;
+
+
+const MUSIC_START_SCREEN = './audio/epic_fantasy/02 - A Whole New World - Full Version - Epic Fantasy - Lufus.wav';
+const AUDIO_START_SCREEN = new Audio(MUSIC_START_SCREEN);

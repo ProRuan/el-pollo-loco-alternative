@@ -42,11 +42,13 @@ class World {
     characterInfo = new CharacterInfo();
 
     startScreenDisplayed = true;
-    levelSelected = false;
+    selectedLevelDisplayed = false;
 
     worldTime = new Date().getTime();
     lastWorldTime = 0;
-    startedGame = true;
+    startedGame = false;
+    birdArrow = new Bird(8.50625, 2.925);
+    activeButton = 'new game';
 
 
     constructor(canvas, keyboard) {
@@ -147,14 +149,14 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        if (this.startScreenDisplayed) {
+        if (this.startScreenDisplayed == true) {
             this.drawStartScreen();
         }
 
         // Please activate!!!
-        // if (this.levelSelected) {
-        //     this.drawLevelComponents();
-        // }
+        if (this.selectedLevelDisplayed == true) {
+            this.drawLevelComponents();
+        }
 
         requestAnimationFrame(() => {
             this.draw();
@@ -203,17 +205,28 @@ class World {
 
 
     drawStartScreen() {
+        if (this.startScreenRevealed === undefined) {
+            this.ctx.globalAlpha = 0;
+            this.startScreenRevealed = false;
+        }
+        if (this.startScreenRevealed == false && this.ctx.globalAlpha < 1) {
+            this.ctx.globalAlpha += 0.01;
+        } else {
+            this.startScreenRevealed = true;
+        }
         this.addToMap(this.startScreenBg);
 
         this.drawGameTitle();
         this.drawStartText();
-        if (this.startedGame) {
+        if (this.startedGame == true) {
             this.addToMap(this.homeButton);
             this.addToMap(this.cupButton);
             this.addToMap(this.settingsButton);
             this.drawTextNewGame();
             this.drawTextCredits();
             this.addToMap(this.birdArrow);
+
+            AUDIO_START_SCREEN.play();
         }
     }
 
@@ -238,7 +251,7 @@ class World {
                 this.ctx.font = "24px Arial";
                 let txt = "Press any button";
                 let txtWidth = this.ctx.measureText(txt).width;
-                console.log(txtWidth);
+                // console.log(txtWidth);
                 this.ctx.fillText(txt, 480 - txtWidth / 2, 400);
             }
         }
@@ -250,7 +263,7 @@ class World {
             this.ctx.font = "24px Arial";
             let txt = "New game";
             let txtWidth = this.ctx.measureText(txt).width;
-            console.log(txtWidth);
+            // console.log(480 - txtWidth / 2, txtWidth, 480 - txtWidth / 2 + txtWidth);
             this.ctx.fillText(txt, 480 - txtWidth / 2, 400 - 36);
         }
     }
@@ -261,7 +274,7 @@ class World {
             this.ctx.font = "24px Arial";
             let txt = "Credits";
             let txtWidth = this.ctx.measureText(txt).width;
-            console.log(txtWidth);
+            // console.log(480 - txtWidth / 2, txtWidth, 480 - txtWidth / 2 + txtWidth);
             this.ctx.fillText(txt, 480 - txtWidth / 2, 400 + 36);
         }
     }
@@ -286,10 +299,37 @@ class World {
 
 
     setBirdArrow() {
-        this.birdArrow = new Bird(8.5, 2.925);    // set x value
-        // this.birdArrow = new Bird(8.25, 1.8);    // set x value
-        this.otherDirection = false;
-        this.birdArrow.speed = 0;
+        setInterval(() => {
+            if (this.keyboard.arrowUp.keydown) {
+                // this.birdArrow = new Bird(8.50625, 2.925);
+                this.birdArrow.setPosition(8.50625, 2.925 - 0.5);
+                this.birdArrow.speed = 0;
+                this.activeButton = 'new game';
+            } else if (this.keyboard.arrowDown.keydown) {
+                // this.birdArrow = new Bird(8.19375, 1.8);
+                this.birdArrow.setPosition(8.19375, 1.8 - 0.5);
+                this.birdArrow.speed = 0;
+                this.activeButton = 'credits';
+            }
+            if (!this.keyboard.escape.keydown && this.keyboard.enter.keydown && this.activeButton == 'new game') {
+                this.startScreenDisplayed = false;
+                this.selectedLevelDisplayed = true;
+
+                AUDIO_START_SCREEN.pause();
+                AUDIO_START_SCREEN.currentTime = 0;
+                console.log('level starts ...');
+            }
+            if (this.keyboard.escape.keydown) {
+                this.selectedLevelDisplayed = false;
+                this.startScreenDisplayed = true;
+                this.startedGame = undefined;
+                this.startScreenRevealed = undefined;
+                this.hero.AMBIENCE_SOUND.pause();
+                this.hero.AMBIENCE_SOUND.currentTime = 0;
+            }
+        }, 1000 / 60);
+        this.otherDirection = false;    // neccessary???
+        this.birdArrow.speed = 0;    // neccessary???
     }
 
 

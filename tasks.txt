@@ -124,6 +124,13 @@ Tipp
 
   Current Task
   ------------
+    - final task IV from VIII:
+        - start screen - check
+        - menu - check
+        - settings ...
+        - quests ...
+        - pause ...
+
     - final task III from VIII:
         - level design - check
         - level story - check

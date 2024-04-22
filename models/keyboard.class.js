@@ -2,6 +2,8 @@ class Keyboard {
     keydown = false;
     keydownTimeStamp = 0;
     space = new Key('space');
+    enter = new Key('Enter');
+    escape = new Key('Escape');
     arrowLeft = new Key('arrowLeft');
     arrowUp = new Key('arrowUp');
     arrowRight = new Key('arrowRight');

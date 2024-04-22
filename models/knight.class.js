@@ -134,7 +134,9 @@ class Knight extends MoveableObject {
     animate() {
         setInterval(() => {
             // Please set a condition!!!
-            // this.AMBIENCE_SOUND.play();
+            if (this.world.selectedLevelDisplayed == true) {
+                this.AMBIENCE_SOUND.play();
+            }
 
             if (world.sound_pursuing) {
                 world.sound_pursuing.play();

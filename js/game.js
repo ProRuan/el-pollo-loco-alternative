@@ -21,7 +21,18 @@ function init() {
 }
 
 
+document.addEventListener('mousedown', (event) => {
+    if (!world.startedGame) {
+        world.startedGame = true;
+    }
+});
+
+
 document.addEventListener('keydown', (event) => {
+    // console.log(event);
+    if (!world.startedGame) {
+        world.startedGame = true;
+    }
     let keyCode = setInitialToLowerCase(event.code);
     if (isDefinedKey(keyCode, true)) {
         setKey(keyCode, 'keydown', true);
