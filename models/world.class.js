@@ -51,6 +51,7 @@ class World {
     activeButton = 'new game';
     leaderboardOpened = false;
     leaderboardContent = 'settings';
+    selectedButton = undefined;
 
 
     constructor(canvas, keyboard) {
@@ -225,13 +226,22 @@ class World {
         this.drawStartText();
         if (this.startedGame == true) {
             this.addToMap(this.homeButton);
-            this.addToMap(this.cupButton);
+            
 
-            // this.ctx.globalAlpha = 0.3;
-            // this.addToMap(this.settingsButton);
-            // this.ctx.globalAlpha = 1.0;
+            if (this.selectedButton == this.cupButton) {
+                this.drawCupButtonWidthBlur();
+            } else {
+                this.addToMap(this.cupButton);
+            }
 
-            this.addToMap(this.settingsButton);
+
+            if (this.selectedButton == this.settingsButton) {
+                this.drawSettingsButtonWidthBlur();
+            } else {
+                this.addToMap(this.settingsButton);
+            }
+
+
             this.drawTextNewGame();
             this.drawTextCredits();
             this.addToMap(this.birdArrow);
@@ -471,6 +481,7 @@ class World {
                 (this.keyboard.mouseClick.yOffset < this.leaderboard.y || this.leaderboard.y + this.leaderboard.height < this.keyboard.mouseClick.yOffset)
             ) {
                 this.leaderboardOpened = false;
+                this.selectedButton = undefined;
             }
 
 
@@ -483,6 +494,7 @@ class World {
                 this.leaderboardContent = 'high score';
                 this.cupButtonClicked = true;
                 this.leaderboardOpened = true;
+                this.selectedButton = this.cupButton;
                 // this.leaderboardOpened = (!this.leaderboardOpened) ? true : false;
             }
 
@@ -496,6 +508,7 @@ class World {
                 this.leaderboardContent = 'settings';
                 this.settingsButtonClicked = true;
                 this.leaderboardOpened = true;
+                this.selectedButton = this.settingsButton;
                 // this.leaderboardOpened = (!this.leaderboardOpened) ? true : false;
             }
 
@@ -505,6 +518,32 @@ class World {
             }
         }, 1000 / 60);
         this.birdArrow.speed = 0;    // neccessary???
+    }
+
+
+    drawCupButtonWidthBlur() {
+        this.ctx.shadowColor = 'yellow';
+        this.ctx.shadowBlur = 16;
+        this.ctx.lineWidth = '1';
+        this.ctx.strokeStyle = 'yellow';
+        this.ctx.rect(896 - 44, 476 - 44, 88, 88);
+        this.ctx.stroke();
+        this.addToMap(this.cupButton);
+        this.ctx.shadowColor = 'rgba(0, 0, 0, 0)';
+        this.ctx.shadowBlur = 0;
+    }
+
+
+    drawSettingsButtonWidthBlur() {
+        this.ctx.shadowColor = 'yellow';
+        this.ctx.shadowBlur = 16;
+        this.ctx.lineWidth = '1';
+        this.ctx.strokeStyle = 'yellow';
+        this.ctx.rect(896 - 44, 476 - 44, 88, 88);
+        this.ctx.stroke();
+        this.addToMap(this.settingsButton);
+        this.ctx.shadowColor = 'rgba(0, 0, 0, 0)';
+        this.ctx.shadowBlur = 0;
     }
 
 
