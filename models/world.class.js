@@ -248,7 +248,7 @@ class World {
             this.drawTextCredits();
             this.addToMap(this.birdArrow);
 
-            if (this.creditsOpened) {
+            if (this.creditsOpened == true) {
                 this.addToMap(this.credits);
                 this.ctx.font = "24px Arial";
                 let txt = "Thanks";
@@ -358,6 +358,14 @@ class World {
                 this.ctx.fillText(txt, 480 - txtWidth / 2, 400 + 36);
             }
             // this.ctx.fillText(txt, 480 - txtWidth / 2, 400 + 36);
+
+            this.ctx.beginPath();
+            this.ctx.lineWidth = '1';
+            this.ctx.strokeStyle = 'yellow';
+            this.ctx.rect(480 - txtWidth / 2 - 4, 400 + 36 - 36 / 2 - 4, txtWidth + 8, 24 + 8);
+            this.ctx.stroke();
+
+            this.creditsFrame = new DrawableObject((480 - txtWidth / 2 - 4) / 64, (400 - 36 - 36 / 2 - 4) / 64, txtWidth + 8, 24 + 8);    // Please move!!!
         }
     }
 
@@ -498,12 +506,24 @@ class World {
                     this.birdArrow.setPosition(8.50625, 2.925 - 0.5);
                     this.birdArrow.speed = 0;
                     this.activeButton = 'new game';
-                } else if (this.keyboard.arrowDown.keydown) {
+                } else if (this.keyboard.arrowDown.keydown || this.creditsFrame.x < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < this.creditsFrame.x + this.creditsFrame.width &&
+                    this.creditsFrame.y < 540 - this.keyboard.mouseClick.yOffset + 72 && 540 - this.keyboard.mouseClick.yOffset + 72 < this.creditsFrame.y + this.creditsFrame.height) {
                     // this.birdArrow = new Bird(8.19375, 1.8);
                     this.birdArrow.setPosition(8.19375, 1.8 - 0.5);
                     this.birdArrow.speed = 0;
                     this.activeButton = 'credits';
                 }
+            }
+            if (this.keyboard.arrowUp.keydown && this.activeButton == 'credits') {    // Only if leaderboard or credits not open!!!
+                // this.birdArrow = new Bird(8.50625, 2.925);
+                this.birdArrow.setPosition(8.50625, 2.925 - 0.5);
+                this.birdArrow.speed = 0;
+                this.activeButton = 'new game';
+            } else if (this.keyboard.arrowDown.keydown && this.activeButton == 'new game') {
+                // this.birdArrow = new Bird(8.19375, 1.8);
+                this.birdArrow.setPosition(8.19375, 1.8 - 0.5);
+                this.birdArrow.speed = 0;
+                this.activeButton = 'credits';
             }
             if (this.keyboard.mouseClick !== undefined) {
                 if (!this.keyboard.escape.keydown &&
@@ -512,17 +532,19 @@ class World {
                     this.startScreenDisplayed == true && this.selectedLevelDisplayed == false) {
                     // this.startScreenDisplayed = false;
                     // this.selectedLevelDisplayed = true;
-
+                    this.birdArrow.speed = 120 / 60;
                     this.activeButton = 'new game';
                     console.log(this.newGameFrame.y, 540 - this.keyboard.mouseClick.yOffset, this.newGameFrame.y + this.newGameFrame.height);
 
                     setTimeout(() => {
                         this.startScreenDisplayed = false;
                         this.selectedLevelDisplayed = true;
+                        this.birdArrow.setPosition(8.50625, 2.925 - 0.5);
+                        this.birdArrow.speed = 0;
                     }, 1500);
 
-                    AUDIO_START_SCREEN.pause();
-                    AUDIO_START_SCREEN.currentTime = 0;
+                    // AUDIO_START_SCREEN.pause();
+                    // AUDIO_START_SCREEN.currentTime = 0;
                     AUDIO_NEW_GAME.play();
                     console.log('level starts ...');
                     this.levelWatch = new Date().getTime();
@@ -533,14 +555,17 @@ class World {
             if (!this.keyboard.escape.keydown && this.keyboard.enter.keydown && this.activeButton == 'new game' && this.startScreenDisplayed == true && this.selectedLevelDisplayed == false) {
                 // this.startScreenDisplayed = false;
                 // this.selectedLevelDisplayed = true;
+                this.birdArrow.speed = 120 / 60;
 
                 setTimeout(() => {
                     this.startScreenDisplayed = false;
                     this.selectedLevelDisplayed = true;
+                    this.birdArrow.setPosition(8.50625, 2.925 - 0.5);
+                    this.birdArrow.speed = 0;
                 }, 1500);
 
-                AUDIO_START_SCREEN.pause();
-                AUDIO_START_SCREEN.currentTime = 0;
+                // AUDIO_START_SCREEN.pause();
+                // AUDIO_START_SCREEN.currentTime = 0;
                 AUDIO_NEW_GAME.play();
                 console.log('level starts ...');
                 this.levelWatch = new Date().getTime();
@@ -611,11 +636,24 @@ class World {
                 this.cupButtonClicked = false;
             }
 
+            if (this.keyboard.mouseClick !== undefined) {
+                if (
+                    this.creditsFrame.x < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < this.creditsFrame.x + this.creditsFrame.width &&
+                    this.creditsFrame.y < 540 - this.keyboard.mouseClick.yOffset + 72 && 540 - this.keyboard.mouseClick.yOffset + 72 < this.creditsFrame.y + this.creditsFrame.height
+                ) {
+                    this.creditsOpened = true;
+                    this.activeButton = 'credits';
+                    delete this.keyboard.mouseClick;
+                }
+            }
+
             if (this.activeButton == 'credits' && this.keyboard.enter.keydown) {
                 this.creditsOpened = true;
             }
 
-            if (this.creditsOpened == true && this.keyboard.mouseClick && (this.keyboard.mouseClick.xOffset < this.credits.x || this.credits.x + this.credits.width < this.keyboard.mouseClick.xOffset)) {
+            if (this.creditsOpened == true && this.keyboard.mouseClick &&
+                (this.keyboard.mouseClick.xOffset < this.credits.x || this.credits.x + this.credits.width < this.keyboard.mouseClick.xOffset ||
+                    540 - this.keyboard.mouseClick.yOffset + 72 < this.creditsFrame.y || this.creditsFrame.y + this.creditsFrame.width < 540 - this.keyboard.mouseClick.yOffset + 72)) {
                 this.creditsOpened = false;
                 delete this.keyboard.mouseClick;
             }

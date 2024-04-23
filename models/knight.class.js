@@ -137,6 +137,13 @@ class Knight extends MoveableObject {
 
             // Please set a condition!!!
             if (this.world.selectedLevelDisplayed == true) {
+                if (AUDIO_START_SCREEN.volume > 0.1) {
+                    AUDIO_START_SCREEN.volume -= 0.02;
+                } else {
+                    AUDIO_START_SCREEN.pause();
+                    AUDIO_START_SCREEN.currentTime = 0;
+                    AUDIO_START_SCREEN.volume = 0.4;
+                }
                 this.AMBIENCE_SOUND.play();
             }
 
