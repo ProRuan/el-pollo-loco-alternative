@@ -484,7 +484,7 @@ class World {
 
         let textVolumeWidth = this.ctx.measureText(textVolume).width;
         this.ctx.fillText(textVolume, 480 - textVolumeWidth / 2, 144 + 8);
-        console.log(textVolumeWidth);
+        // console.log(textVolumeWidth);
 
         this.ctx.font = "20px Arial";
         this.ctx.fillText(textMusic, 352, 184 + 8);
@@ -615,6 +615,31 @@ class World {
                 }
             }
 
+
+            if (this.keyboard.mouseover !== undefined) {    // Rename to mousemove!!!
+                if (
+                    this.settingsButton.x < keyboard.mouseover.xOffset &&
+                    keyboard.mouseover.xOffset < this.settingsButton.x + this.settingsButton.width &&
+                    this.settingsButton.y < keyboard.mouseover.yOffset &&
+                    keyboard.mouseover.yOffset < this.settingsButton.y + this.settingsButton.height
+                ) {
+                    // this.leaderboardContent = 'settings';
+                    // this.settingsButtonClicked = true;
+                    // this.leaderboardOpened = true;
+                    this.selectedButton = this.settingsButton;
+                    console.log('hover settings button');
+
+                    // this.leaderboardOpened = (!this.leaderboardOpened) ? true : false;
+                } else if (this.leaderboardOpened != true) {
+                    this.selectedButton = undefined;
+                }
+                delete this.keyboard.mouseover;
+            }
+
+            // if (this.keyboard.mouseover !== undefined) {
+            //     console.log(this.keyboard.mouseover);
+            //     delete this.keyboard.mouseover;
+            // }
 
             if (this.keyboard.mouseClick !== undefined) {
                 if (

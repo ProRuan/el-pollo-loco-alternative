@@ -21,20 +21,20 @@ function init() {
 }
 
 
-// document.addEventListener('mouseover', (event) => {
-//     console.log('mouseover');
-//     keyboard['mouseover'] = {
-//         'x': event.clientX,
-//         'y': event.clientY,
-//         'xOffset': event.offsetX,
-//         'yOffset': event.offsetY
-//     }
-//     console.log(keyboard.mouseover);
-// });
+document.addEventListener('mousemove', (event) => {
+    // console.log('mouseover');
+    keyboard['mouseover'] = {
+        'x': event.clientX,
+        'y': event.clientY,
+        'xOffset': event.offsetX,
+        'yOffset': event.offsetY
+    }
+    // console.log(keyboard.mouseover);
+});
 
 
 document.addEventListener('mousedown', (event) => {
-    console.log(event);
+    // console.log(event);
     if (!world.startedGame) {
         world.startedGame = true;
     }
