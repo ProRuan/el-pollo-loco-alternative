@@ -329,7 +329,15 @@ class World {
                 this.ctx.shadowBlur = 0;
             } else {
                 this.ctx.fillText(txt, 480 - txtWidth / 2, 400 - 36);
+
             }
+            this.ctx.beginPath();
+            this.ctx.lineWidth = '1';
+            this.ctx.strokeStyle = 'yellow';
+            this.ctx.rect(480 - txtWidth / 2 - 4, 400 - 36 - 36 / 2 - 4, txtWidth + 8, 24 + 8);
+            this.ctx.stroke();
+
+            this.newGameFrame = new DrawableObject((480 - txtWidth / 2 - 4) / 64, (400 - 36 - 36 / 2 - 4) / 64, txtWidth + 8, 24 + 8);    // Please move!!!
         }
     }
 
@@ -483,23 +491,57 @@ class World {
 
     setBirdArrow() {
         setInterval(() => {
-            if (this.keyboard.arrowUp.keydown) {
-                // this.birdArrow = new Bird(8.50625, 2.925);
-                this.birdArrow.setPosition(8.50625, 2.925 - 0.5);
-                this.birdArrow.speed = 0;
-                this.activeButton = 'new game';
-            } else if (this.keyboard.arrowDown.keydown) {
-                // this.birdArrow = new Bird(8.19375, 1.8);
-                this.birdArrow.setPosition(8.19375, 1.8 - 0.5);
-                this.birdArrow.speed = 0;
-                this.activeButton = 'credits';
+            if (this.keyboard.mouseClick !== undefined) {
+                if (this.keyboard.arrowUp.keydown || this.newGameFrame.x < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < this.newGameFrame.x + this.newGameFrame.width &&
+                    this.newGameFrame.y < 540 - this.keyboard.mouseClick.yOffset && 540 - this.keyboard.mouseClick.yOffset < this.newGameFrame.y + this.newGameFrame.height) {    // Please also chane on mouseclick!!!
+                    // this.birdArrow = new Bird(8.50625, 2.925);
+                    this.birdArrow.setPosition(8.50625, 2.925 - 0.5);
+                    this.birdArrow.speed = 0;
+                    this.activeButton = 'new game';
+                } else if (this.keyboard.arrowDown.keydown) {
+                    // this.birdArrow = new Bird(8.19375, 1.8);
+                    this.birdArrow.setPosition(8.19375, 1.8 - 0.5);
+                    this.birdArrow.speed = 0;
+                    this.activeButton = 'credits';
+                }
+            }
+            if (this.keyboard.mouseClick !== undefined) {
+                if (!this.keyboard.escape.keydown &&
+                    this.newGameFrame.x < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < this.newGameFrame.x + this.newGameFrame.width &&
+                    this.newGameFrame.y < 540 - this.keyboard.mouseClick.yOffset && 540 - this.keyboard.mouseClick.yOffset < this.newGameFrame.y + this.newGameFrame.height &&
+                    this.startScreenDisplayed == true && this.selectedLevelDisplayed == false) {
+                    // this.startScreenDisplayed = false;
+                    // this.selectedLevelDisplayed = true;
+
+                    this.activeButton = 'new game';
+                    console.log(this.newGameFrame.y, 540 - this.keyboard.mouseClick.yOffset, this.newGameFrame.y + this.newGameFrame.height);
+
+                    setTimeout(() => {
+                        this.startScreenDisplayed = false;
+                        this.selectedLevelDisplayed = true;
+                    }, 1500);
+
+                    AUDIO_START_SCREEN.pause();
+                    AUDIO_START_SCREEN.currentTime = 0;
+                    AUDIO_NEW_GAME.play();
+                    console.log('level starts ...');
+                    this.levelWatch = new Date().getTime();
+                    console.log(this.levelWatch);
+                    delete this.keyboard.mouseClick;
+                }
             }
             if (!this.keyboard.escape.keydown && this.keyboard.enter.keydown && this.activeButton == 'new game' && this.startScreenDisplayed == true && this.selectedLevelDisplayed == false) {
-                this.startScreenDisplayed = false;
-                this.selectedLevelDisplayed = true;
+                // this.startScreenDisplayed = false;
+                // this.selectedLevelDisplayed = true;
+
+                setTimeout(() => {
+                    this.startScreenDisplayed = false;
+                    this.selectedLevelDisplayed = true;
+                }, 1500);
 
                 AUDIO_START_SCREEN.pause();
                 AUDIO_START_SCREEN.currentTime = 0;
+                AUDIO_NEW_GAME.play();
                 console.log('level starts ...');
                 this.levelWatch = new Date().getTime();
                 console.log(this.levelWatch);

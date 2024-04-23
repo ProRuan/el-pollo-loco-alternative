@@ -51,3 +51,7 @@ const LEVEL_SIZE = 8;
 
 const MUSIC_START_SCREEN = './audio/epic_fantasy/02 - A Whole New World - Full Version - Epic Fantasy - Lufus.wav';
 const AUDIO_START_SCREEN = new Audio(MUSIC_START_SCREEN);
+
+
+const SOUND_NEW_GAME = './audio/ui/Fantasy_Game_Organic_Magic_Accept_Quest_Drum_Impact_1.wav';
+const AUDIO_NEW_GAME = new Audio(SOUND_NEW_GAME);
