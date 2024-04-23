@@ -49,6 +49,7 @@ class World {
     startedGame = false;
     birdArrow = new Bird(8.50625, 2.925);
     activeButton = 'new game';
+    creditsOpened = false;
     leaderboardOpened = false;
     leaderboardContent = 'settings';
     selectedButton = undefined;
@@ -59,6 +60,7 @@ class World {
         this.ctx = canvas.getContext('2d');
         this.keyboard = keyboard;
         this.setStartScreenBg();
+        this.setCredits();
         this.setCupButton();
         this.setHomeButton();
         this.setSettingsButton();
@@ -226,7 +228,7 @@ class World {
         this.drawStartText();
         if (this.startedGame == true) {
             this.addToMap(this.homeButton);
-            
+
 
             if (this.selectedButton == this.cupButton) {
                 this.drawCupButtonWidthBlur();
@@ -245,6 +247,27 @@ class World {
             this.drawTextNewGame();
             this.drawTextCredits();
             this.addToMap(this.birdArrow);
+
+            if (this.creditsOpened) {
+                this.addToMap(this.credits);
+                this.ctx.font = "24px Arial";
+                let txt = "Thanks";
+                let txtWidth = this.ctx.measureText(txt).width;
+                this.ctx.fillText(txt, 480 - txtWidth / 2, 160);
+                this.ctx.font = "20px Arial";
+                this.ctx.fillText('Developer Akademie', 480 - txtWidth / 2 - 56, 160 + 36);
+                this.ctx.fillText('CRAFTPIX.NET', 480 - txtWidth / 2 - 56, 196 + 36);
+                this.ctx.fillText('gamedevmarket.net', 480 - txtWidth / 2 - 56, 232 + 36);
+                this.ctx.fillText('asoundeffect.com', 480 - txtWidth / 2 - 56, 268 + 36);
+
+                this.ctx.font = "24px Arial";
+                txt = "Special Thanks";
+                let txtWidthSpecial = this.ctx.measureText(txt).width;
+                this.ctx.fillText(txt, 480 - txtWidthSpecial / 2, 304 + 56);
+                this.ctx.font = "20px Arial";
+                txtWidthSpecial = this.ctx.measureText('My Family').width;
+                this.ctx.fillText('My Family', 480 - txtWidthSpecial / 2, 360 + 36);
+            }
 
             if (this.leaderboardOpened == true) {
                 this.addToMap(this.leaderboard);
@@ -298,7 +321,15 @@ class World {
             let txt = "New game";
             let txtWidth = this.ctx.measureText(txt).width;
             // console.log(480 - txtWidth / 2, txtWidth, 480 - txtWidth / 2 + txtWidth);
-            this.ctx.fillText(txt, 480 - txtWidth / 2, 400 - 36);
+            if (this.activeButton == 'new game') {
+                this.ctx.shadowColor = 'green';
+                this.ctx.shadowBlur = 16;
+                this.ctx.fillText(txt, 480 - txtWidth / 2, 400 - 36);
+                this.ctx.shadowColor = 'rgba(0, 0, 0, 0)';
+                this.ctx.shadowBlur = 0;
+            } else {
+                this.ctx.fillText(txt, 480 - txtWidth / 2, 400 - 36);
+            }
         }
     }
 
@@ -309,7 +340,16 @@ class World {
             let txt = "Credits";
             let txtWidth = this.ctx.measureText(txt).width;
             // console.log(480 - txtWidth / 2, txtWidth, 480 - txtWidth / 2 + txtWidth);
-            this.ctx.fillText(txt, 480 - txtWidth / 2, 400 + 36);
+            if (this.activeButton == 'credits') {
+                this.ctx.shadowColor = 'green';
+                this.ctx.shadowBlur = 16;
+                this.ctx.fillText(txt, 480 - txtWidth / 2, 400 + 36);
+                this.ctx.shadowColor = 'rgba(0, 0, 0, 0)';
+                this.ctx.shadowBlur = 0;
+            } else {
+                this.ctx.fillText(txt, 480 - txtWidth / 2, 400 + 36);
+            }
+            // this.ctx.fillText(txt, 480 - txtWidth / 2, 400 + 36);
         }
     }
 
@@ -323,6 +363,12 @@ class World {
     setleaderboard() {
         this.leaderboard = new DrawableObject(0 + 15 / 2 - 382 / 64 / 2, 540 / 64 / 2 - 441 / 64 / 2, 382, 441);
         this.leaderboard.loadImage('./img/start_screen/leaderboard.png');
+    }
+
+
+    setCredits() {
+        this.credits = new DrawableObject(15 / 2 - 276 / 64 / 2, 540 / 64 / 2 - 333 / 64 / 2, 276, 333);
+        this.credits.loadImage('./img/start_screen/credits_bg.png');
     }
 
 
@@ -476,46 +522,70 @@ class World {
             }
 
 
-            if (this.leaderboardOpened == true &&
-                (this.keyboard.mouseClick.xOffset < this.leaderboard.x || this.leaderboard.x + this.leaderboard.width < this.keyboard.mouseClick.xOffset) ||
-                (this.keyboard.mouseClick.yOffset < this.leaderboard.y || this.leaderboard.y + this.leaderboard.height < this.keyboard.mouseClick.yOffset)
-            ) {
-                this.leaderboardOpened = false;
-                this.selectedButton = undefined;
+            if (this.keyboard.mouseClick !== undefined) {
+                if (this.leaderboardOpened == true &&
+                    (this.keyboard.mouseClick.xOffset < this.leaderboard.x || this.leaderboard.x + this.leaderboard.width < this.keyboard.mouseClick.xOffset) ||
+                    (this.keyboard.mouseClick.yOffset < this.leaderboard.y || this.leaderboard.y + this.leaderboard.height < this.keyboard.mouseClick.yOffset)
+                ) {
+                    this.leaderboardOpened = false;
+                    this.selectedButton = undefined;
+                }
             }
 
 
-            if (
-                this.cupButton.x < keyboard.mouseClick.xOffset &&
-                keyboard.mouseClick.xOffset < this.cupButton.x + this.cupButton.width &&
-                this.cupButton.y < keyboard.mouseClick.yOffset &&
-                keyboard.mouseClick.yOffset < this.cupButton.y + this.cupButton.height
-            ) {
-                this.leaderboardContent = 'high score';
-                this.cupButtonClicked = true;
-                this.leaderboardOpened = true;
-                this.selectedButton = this.cupButton;
-                // this.leaderboardOpened = (!this.leaderboardOpened) ? true : false;
+            if (this.keyboard.mouseClick !== undefined) {
+                if (
+                    this.cupButton.x < keyboard.mouseClick.xOffset &&
+                    keyboard.mouseClick.xOffset < this.cupButton.x + this.cupButton.width &&
+                    this.cupButton.y < keyboard.mouseClick.yOffset &&
+                    keyboard.mouseClick.yOffset < this.cupButton.y + this.cupButton.height
+                ) {
+                    this.leaderboardContent = 'high score';
+                    this.cupButtonClicked = true;
+                    this.leaderboardOpened = true;
+                    this.selectedButton = this.cupButton;
+                    // this.leaderboardOpened = (!this.leaderboardOpened) ? true : false;
+                }
             }
 
 
-            if (
-                this.settingsButton.x < keyboard.mouseClick.xOffset &&
-                keyboard.mouseClick.xOffset < this.settingsButton.x + this.settingsButton.width &&
-                this.settingsButton.y < keyboard.mouseClick.yOffset &&
-                keyboard.mouseClick.yOffset < this.settingsButton.y + this.settingsButton.height
-            ) {
-                this.leaderboardContent = 'settings';
-                this.settingsButtonClicked = true;
-                this.leaderboardOpened = true;
-                this.selectedButton = this.settingsButton;
-                // this.leaderboardOpened = (!this.leaderboardOpened) ? true : false;
+            if (this.keyboard.mouseClick !== undefined) {
+                if (
+                    this.settingsButton.x < keyboard.mouseClick.xOffset &&
+                    keyboard.mouseClick.xOffset < this.settingsButton.x + this.settingsButton.width &&
+                    this.settingsButton.y < keyboard.mouseClick.yOffset &&
+                    keyboard.mouseClick.yOffset < this.settingsButton.y + this.settingsButton.height
+                ) {
+                    this.leaderboardContent = 'settings';
+                    this.settingsButtonClicked = true;
+                    this.leaderboardOpened = true;
+                    this.selectedButton = this.settingsButton;
+                    // this.leaderboardOpened = (!this.leaderboardOpened) ? true : false;
+                }
             }
 
 
             if (this.leaderboardOpened == true && this.cupButtonClicked == true) {
                 this.cupButtonClicked = false;
             }
+
+            if (this.activeButton == 'credits' && this.keyboard.enter.keydown) {
+                this.creditsOpened = true;
+            }
+
+            if (this.creditsOpened == true && this.keyboard.mouseClick && (this.keyboard.mouseClick.xOffset < this.credits.x || this.credits.x + this.credits.width < this.keyboard.mouseClick.xOffset)) {
+                this.creditsOpened = false;
+                delete this.keyboard.mouseClick;
+            }
+
+            if (this.creditsOpened == true && this.keyboard.keyA.keydown) {
+                this.creditsOpened = false;
+            }
+
+
+
+
+
         }, 1000 / 60);
         this.birdArrow.speed = 0;    // neccessary???
     }
