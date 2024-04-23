@@ -50,6 +50,7 @@ class World {
     birdArrow = new Bird(8.50625, 2.925);
     activeButton = 'new game';
     leaderboardOpened = false;
+    leaderboardContent = 'settings';
 
 
     constructor(canvas, keyboard) {
@@ -60,6 +61,8 @@ class World {
         this.setCupButton();
         this.setHomeButton();
         this.setSettingsButton();
+        this.setArrowLeftButton();
+        this.setArrowRightButton();
         this.setBirdArrow();
         this.setleaderboard();
         this.draw();
@@ -235,7 +238,16 @@ class World {
 
             if (this.leaderboardOpened == true) {
                 this.addToMap(this.leaderboard);
-                this.drawHighScore();
+                if (this.leaderboardContent == 'high score') {
+                    this.drawHighScore();
+                }
+                if (this.leaderboardContent == 'settings') {
+                    this.drawSettings();
+                    this.addToMap(this.arrowLeftMusicButton);
+                    this.addToMap(this.arrowLeftSoundButton);
+                    this.addToMap(this.arrowRightMusicButton);
+                    this.addToMap(this.arrowRightSoundButton);
+                }
             }
 
             AUDIO_START_SCREEN.play();
@@ -301,6 +313,22 @@ class World {
     setleaderboard() {
         this.leaderboard = new DrawableObject(0 + 15 / 2 - 382 / 64 / 2, 540 / 64 / 2 - 441 / 64 / 2, 382, 441);
         this.leaderboard.loadImage('./img/start_screen/leaderboard.png');
+    }
+
+
+    setArrowLeftButton() {
+        this.arrowLeftMusicButton = new DrawableObject(960 / 2 / 64 + 0.109375, 540 / 64 - 3, 10, 17);
+        this.arrowLeftMusicButton.loadImage('./img/start_screen/arrow_left.png');
+        this.arrowLeftSoundButton = new DrawableObject(960 / 2 / 64 + 0.109375, 540 / 64 - 3.5625, 10, 17);
+        this.arrowLeftSoundButton.loadImage('./img/start_screen/arrow_left.png');
+    }
+
+
+    setArrowRightButton() {
+        this.arrowRightMusicButton = new DrawableObject(960 / 2 / 64 + 2 - 0.109375, 540 / 64 - 3, 10, 17);
+        this.arrowRightMusicButton.loadImage('./img/start_screen/arrow_right.png');
+        this.arrowRightSoundButton = new DrawableObject(960 / 2 / 64 + 2 - 0.109375, 540 / 64 - 3.5625, 10, 17);
+        this.arrowRightSoundButton.loadImage('./img/start_screen/arrow_right.png');
     }
 
 
@@ -371,6 +399,32 @@ class World {
     }
 
 
+    drawSettings() {
+        this.ctx.font = "24px Arial";
+        this.ctx.fillStyle = 'white';
+        let textVolume = 'Volume';
+        // let textCoins = "Coins: 0 / 20";
+        let textMusic = 'Music:';
+        let textMusicValue = '4';
+        // let textLeaves = "Leaves: 0 / 18";
+        let textSound = 'Sound:';
+        let textSoundValue = '7';
+
+        let textVolumeWidth = this.ctx.measureText(textVolume).width;
+        this.ctx.fillText(textVolume, 480 - textVolumeWidth / 2, 144 + 8);
+        console.log(textVolumeWidth);
+
+        this.ctx.font = "20px Arial";
+        this.ctx.fillText(textMusic, 352, 184 + 8);
+        this.ctx.fillText(textMusicValue, 960 / 2 + 64, 184 + 8);
+        this.ctx.fillText(textSound, 352, 220 + 8);
+        this.ctx.fillText(textSoundValue, 960 / 2 + 64, 220 + 8);
+
+
+        this.ctx.fillStyle = 'black';    // Please update methods!!!
+    }
+
+
     setBirdArrow() {
         setInterval(() => {
             if (this.keyboard.arrowUp.keydown) {
@@ -426,7 +480,21 @@ class World {
                 this.cupButton.y < keyboard.mouseClick.yOffset &&
                 keyboard.mouseClick.yOffset < this.cupButton.y + this.cupButton.height
             ) {
+                this.leaderboardContent = 'high score';
                 this.cupButtonClicked = true;
+                this.leaderboardOpened = true;
+                // this.leaderboardOpened = (!this.leaderboardOpened) ? true : false;
+            }
+
+
+            if (
+                this.settingsButton.x < keyboard.mouseClick.xOffset &&
+                keyboard.mouseClick.xOffset < this.settingsButton.x + this.settingsButton.width &&
+                this.settingsButton.y < keyboard.mouseClick.yOffset &&
+                keyboard.mouseClick.yOffset < this.settingsButton.y + this.settingsButton.height
+            ) {
+                this.leaderboardContent = 'settings';
+                this.settingsButtonClicked = true;
                 this.leaderboardOpened = true;
                 // this.leaderboardOpened = (!this.leaderboardOpened) ? true : false;
             }
