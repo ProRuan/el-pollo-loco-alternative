@@ -329,3 +329,16 @@ Checkliste (active ...) (completed: 0 / ...)
     - Knight Body, Knight attack range ...
     - Dino body, Dino attack range ...
     - gravity knight and dino ...
+
+
+
+
+  
+  Clean coding (0/?)
+  ------------
+    - index.html
+
+
+  Final Tasks (0/8 + 0/1)
+  -----------
+    - ...
