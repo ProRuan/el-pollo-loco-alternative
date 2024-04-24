@@ -150,7 +150,7 @@ class World {
     // magic (x, y) = (???, -0.0625)
 
     setStartScreenBg() {
-        this.startScreenBg = new DrawableObject(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+        this.startScreenBg = new DrawableObject(0, 0, ORIGINAL_CANVAS_WIDTH, ORIGINAL_CANVAS_HEIGHT);
         this.startScreenBg.loadImage('./img/start_screen/background.png');
     }
 

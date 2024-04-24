@@ -1,5 +1,5 @@
 class Level {
-    translation = CANVAS_WIDTH;
+    translation = ORIGINAL_CANVAS_WIDTH;
     cache = [];
     BACKGROUND = [];
     CLOUDS = [];
@@ -32,24 +32,24 @@ class Level {
 
 
     setXLevelStartCrystal(amount) {
-        this.X_LEVEL_START = (amount - 2) * CANVAS_WIDTH + 2.25 * 64 + 28;
+        this.X_LEVEL_START = (amount - 2) * ORIGINAL_CANVAS_WIDTH + 2.25 * 64 + 28;
     }
 
 
     setXLevelEndCrystal(amount) {
-        this.X_LEVEL_END = (amount - 2) * CANVAS_WIDTH + CANVAS_WIDTH / 2 - 44;
+        this.X_LEVEL_END = (amount - 2) * ORIGINAL_CANVAS_WIDTH + ORIGINAL_CANVAS_WIDTH / 2 - 44;
         // console.log(this.X_LEVEL_END);
     }
 
 
     setXLevelEnd(amount) {
-        this.X_LEVEL_END = (amount) * CANVAS_WIDTH - 84;
-        // this.X_LEVEL_END = (amount - 1) * CANVAS_WIDTH - 4 + 28;
+        this.X_LEVEL_END = (amount) * ORIGINAL_CANVAS_WIDTH - 84;
+        // this.X_LEVEL_END = (amount - 1) * ORIGINAL_CANVAS_WIDTH - 4 + 28;
     }
 
 
     setXCameraEnd(amount) {
-        this.X_CAMERA_END = (amount - 1) * CANVAS_WIDTH + 284;
+        this.X_CAMERA_END = (amount - 1) * ORIGINAL_CANVAS_WIDTH + 284;
     }
 
 

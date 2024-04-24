@@ -334,9 +334,14 @@ Checkliste (active ...) (completed: 0 / ...)
 
 
   
-  Clean coding (0/?)
+  Clean Coding (0/?) + Jsdoc (0/?)
   ------------
-    - index.html
+    - index.html ...
+
+    - constant.js ...
+
+    - Exchange folder audio!!!
+    - Exchange folder img!!!
 
 
   Final Tasks (0/8 + 0/1)

@@ -1,6 +1,11 @@
-const CANVAS_WIDTH = 960;
-const CANVAS_HEIGHT = 540;
+const ORIGINAL_CANVAS_WIDTH = 960;
+const ORIGINAL_CANVAS_HEIGHT =  540;
 
+
+
+
+
+// ---  PLEASE DELETE --- PLEASE DELETE --- PLEASE DELETE ---
 
 const HERO_DIRECTORY = 'characters/knight/';
 const HERO_SOURCES = [

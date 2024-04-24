@@ -21,7 +21,7 @@ class Bird extends AnimatedObject {
 
     keep() {
         if (this.x < -this.width) {
-            this.x = LEVEL_SIZE * CANVAS_WIDTH;
+            this.x = LEVEL_SIZE * ORIGINAL_CANVAS_WIDTH;
         }
     }
 

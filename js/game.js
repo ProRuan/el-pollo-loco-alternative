@@ -15,7 +15,7 @@ const FLIP_BOOK_MAGIC = new FlipBook(MAGIC_DIRECTORY, MAGIC_SOURCES);
 
 
 function init() {
-    canvas = new Canvas(CANVAS_WIDTH, CANVAS_HEIGHT);
+    canvas = new Canvas(ORIGINAL_CANVAS_WIDTH, ORIGINAL_CANVAS_HEIGHT);
     keyboard = new Keyboard();
     world = new World(canvas, keyboard);
 }
