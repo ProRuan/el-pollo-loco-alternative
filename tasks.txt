@@ -124,6 +124,38 @@ Tipp
 
   Current Task
   ------------
+    - final task VII from VIII:
+        --> clean coding ...
+        
+    - final task VI from VIII:
+        - help button + help dialog for explanation of game ...
+        - background image
+        - font family
+        - key-binding
+        - option: story window
+        - option: fullscreen
+
+        - pause button (game, animation, audio)
+        - endscreen + back to menu (restart)
+        - idle animation???
+        - coins, hit points, leaves --> update status bar
+       
+        - endboss hurt sound
+
+        - Mobile Version
+        - Mobile buttons
+        - Mobile Rotation Hint
+
+        - imprint
+        - privacy policy + cookies
+
+
+    - final task V from VIII:
+        - responsiveness (width and height relates to canvas) ...
+        - mobile keys ...
+        - Think about the hero's animation + menu (keyA, keyX, ...) ...
+        - optional fullscreen ...
+
     - final task IV from VIII:
         - start screen - check
         - menu - check
@@ -136,8 +168,8 @@ Tipp
             - credits on mouse click ...
             - update high score + settings ...
             
-            - cup button close method ...
-            - settings button volume buttons ...
+            - leaderboard closeable by click on cup button or settings button ...
+            - settings button volume buttons ... (6 components: hover + mouseclick + key)
             - hover start screen buttons ... (1/4)
             - key selection ... (2 / 4)
 
