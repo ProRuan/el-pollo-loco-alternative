@@ -40,6 +40,6 @@ class Leaf extends DrawableObject {
 
 
     setPath(i) {
-        this.path = `img/ingredients/leaf${i}.png`;
+        this.path = `./img/leaves/leaf${i}.png`;
     }
 }

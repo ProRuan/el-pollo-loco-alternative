@@ -1,5 +1,5 @@
 class ItemBomb extends DrawableObject {
-    path = 'img/inner_interface/item_bomb.png';
+    path = 'img/inner_interface/bomb.png';
 
 
     constructor(x, y) {

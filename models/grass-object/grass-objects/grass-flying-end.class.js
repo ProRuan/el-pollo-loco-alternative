@@ -2,7 +2,7 @@ class GrassFlyingEnd extends GrassObject {
 
 
     constructor(x, y) {
-        super(x, y, 'flying-end');
+        super(x, y, 'grass_flying3');
     }
 
 

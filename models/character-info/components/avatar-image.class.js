@@ -1,5 +1,5 @@
 class AvatarImage extends DrawableObject {
-    path = 'img/inner_interface/hero.png';
+    path = 'img/inner_interface/avatar.png';
 
 
     constructor(x, y) {

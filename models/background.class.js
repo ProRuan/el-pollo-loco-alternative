@@ -5,9 +5,9 @@ class Background extends DrawableObject {
 
     constructor(x) {
         super(x, 0, ORIGINAL_CANVAS_WIDTH, ORIGINAL_CANVAS_HEIGHT);
-        this.setCover('background');
+        // this.setCover('background');
         this.setLayers();
-        this.loadImage(this.cover);
+        // this.loadImage(this.cover);
         this.loadImages(this.layers);
     }
 

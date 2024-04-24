@@ -2,7 +2,7 @@ class GrassCenter extends GrassObject {
 
 
     constructor(x, y) {
-        super(x, y, 'center');
+        super(x, y, 'grass2');
     }
 
 

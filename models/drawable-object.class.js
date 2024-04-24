@@ -47,7 +47,7 @@ class DrawableObject extends CoordinateSystem {
 
 
     setPath(name) {    // anpassen!!!
-        this.path = this.directory + `grass-${name}.png`;
+        this.path = this.directory + name + `.png`;
     }
 
 

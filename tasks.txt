@@ -333,6 +333,15 @@ Checkliste (active ...) (completed: 0 / ...)
 
 
 
+
+
+
+
+  Super Tasks
+  -----------
+    - Simplify leaf class.
+    - Simplify grass class.
+
   
   Clean Coding (0/?) + Jsdoc (0/?)
   ------------
@@ -340,8 +349,10 @@ Checkliste (active ...) (completed: 0 / ...)
 
     - constant.js ...
 
-    - Exchange folder audio!!!
-    - Exchange folder img!!!
+    - class FlipBook ...
+
+    - Exchange folder audio ...
+    - Exchange folder img ...
 
 
   Final Tasks (0/8 + 0/1)

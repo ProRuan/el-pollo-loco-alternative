@@ -1,5 +1,5 @@
 class StairwayBottom extends DrawableObject {
-    path = 'img/objects/stairway_bottom.png';
+    path = './img/objects/ladder1.png';
 
 
     constructor(x, y) {
