@@ -20,8 +20,8 @@ class Dino extends MoveableObject {
     radDispl = 40;
     // 7.75, 0.25
 
-    dinoGrowl = new Audio('./audio/attacks_and_creatures/Fantasy_Game_Creature_Growl_Long_High_D.wav');
-    swordHit = './audio/attacks_and_creatures/Fantasy_Game_Weapon_Impact.wav';
+    dinoGrowl = new Audio('./audio/attacks_and_creatures/dino_growl.wav');
+    swordHit = './audio/attacks_and_creatures/weapon_impact.wav';
 
 
     constructor(x, y) {

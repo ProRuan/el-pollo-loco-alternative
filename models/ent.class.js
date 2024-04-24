@@ -21,8 +21,8 @@ class Ent extends MoveableObject {
     radDisplAttack = 24;
     // 10.25, 1.625
 
-    entGrowl = new Audio('./audio/attacks_and_creatures/Fantasy_Game_Creature_Growl_Long_High_E.wav');
-    swordHit = './audio/attacks_and_creatures/Fantasy_Game_Weapon_Impact.wav';
+    entGrowl = new Audio('./audio/attacks_and_creatures/ent_growl.wav');
+    swordHit = './audio/attacks_and_creatures/weapon_impact.wav';
 
 
     constructor(x, y) {

@@ -5,7 +5,7 @@ class Fire extends MagicObject {
     inTouch = false;
     colliding = false;
     radDispl = 128;
-    sound = './audio/elemental_magic/Fantasy_Game_Magic_Fire_Instant_Cast_Spell_C.wav';
+    sound = './audio/elemental_magic/magic_fire_hit.wav';
 
 
     constructor(x, y) {

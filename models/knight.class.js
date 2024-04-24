@@ -27,11 +27,11 @@ class Knight extends MoveableObject {
     // 4.4375, 0.625
 
 
-    AMBIENCE_SOUND = new Audio('./audio/AMBIENCE Nature Forest Daytime.wav');
-    BOSS_BATTLE = new Audio('./audio/epic_fantasy/05 - Facing Monsters - Loop Version - Epic Fantasy - Lufus.wav');
-    SWORD_DRAW = './audio/attacks_and_creatures/Fantasy_Game_Blade_Draw_1.wav';
-    ARMOR_HIT = './audio/attacks_and_creatures/Fantasy_Game_Cloth_Armor_Hit_A.wav';
-    FOOTSTEP = './audio/footsteps/Fantasy_Game_Footstep_Grass_Medium_Av.wav';
+    AMBIENCE_SOUND = new Audio('./audio/ambience/nature_forest_daytime.wav');
+    BOSS_BATTLE = new Audio('./audio/epic_fantasy/boss_battle_lufus.wav');
+    SWORD_DRAW = './audio/attacks_and_creatures/blade_draw.wav';
+    ARMOR_HIT = '.audio/attacks_and_creatures/cloth_armor_hit.wav';
+    FOOTSTEP = './audio/footsteps/grass.wav';
 
 
     constructor() {

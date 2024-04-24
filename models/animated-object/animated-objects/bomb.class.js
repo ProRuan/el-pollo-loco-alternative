@@ -5,8 +5,8 @@ class Bomb extends AnimatedObject {
     prolog = 4;
     inTouch = false;
     exploding = false;
-    soundThrow = './audio/elemental_magic/Fantasy_Game_Magic_Fire_Instant_Cast_Spell_D.wav';
-    soundExplosion = './audio/elemental_magic/Fantasy_Game_Magic_Meteor_Spell_Hit_B.wav';
+    soundThrow = './audio/elemental_magic/bomb_throw.wav';
+    soundExplosion = './audio/elemental_magic/bomb_burst.wav';
     currentTime = 2.625;
 
 

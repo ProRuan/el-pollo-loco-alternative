@@ -25,9 +25,9 @@ class Spider extends MoveableObject {
     // 12.25, 0.1875
 
 
-    spiderWeb = new Audio('./audio/attacks_and_creatures/Fantasy_Game_Skill_Knife_Throw_A.wav');
-    spiderGrowl = new Audio('./audio/attacks_and_creatures/Fantasy_Game_Creature_High_C.wav');
-    swordHit = './audio/attacks_and_creatures/Fantasy_Game_Weapon_Impact.wav';
+    spiderWeb = new Audio('./audio/attacks_and_creatures/web_throw.wav');
+    spiderGrowl = new Audio('./audio/attacks_and_creatures/spider_growl.wav');
+    swordHit = './audio/attacks_and_creatures/weapon_impact.wav';
 
 
     constructor(x, y) {

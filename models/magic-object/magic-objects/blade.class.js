@@ -5,7 +5,7 @@ class Blade extends MagicObject {
     inTouch = false;
     colliding = false;
     radDispl = 152;
-    sound = './audio/elemental_magic/Fantasy_Game_Magic_Ice_Instant_Cast_Spell_C.wav';
+    sound = './audio/elemental_magic/magic_blade_hit.wav';
 
 
     constructor(x, y) {

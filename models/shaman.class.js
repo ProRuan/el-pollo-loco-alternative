@@ -21,10 +21,10 @@ class Shaman extends MoveableObject {
     // (11, 2.09375)
 
 
-    CAST_MAGIC_BLADE = './audio/elemental_magic/Fantasy_Game_Magic_Ice_Instant_Cast_Spell_A.wav';
-    CAST_MAGIC_FIRE = './audio/elemental_magic/Fantasy_Game_Magic_Fire_Instant_Cast_Spell_A.wav';
-    CAST_MAGIC_LIGHTNING = './audio/elemental_magic/Fantasy_Game_Magic_Lightning_Instant_Cast_Spell_A.wav';
-    SOUND_ANGER = './audio/attacks_and_creatures/Fantasy_Game_Creature_Growl_Short_High.wav';
+    CAST_MAGIC_BLADE = './audio/elemental_magic/magic_blade_cast.wav';
+    CAST_MAGIC_FIRE = './audio/elemental_magic/magic_fire_cast.wav';
+    CAST_MAGIC_LIGHTNING = './audio/elemental_magic/magic_lightning_cast.wav';
+    SOUND_ANGER = './audio/attacks_and_creatures/shaman_growl.wav';
 
 
     constructor(x, y) {

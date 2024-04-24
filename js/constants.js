@@ -51,12 +51,12 @@ const MAGIC_FILENAMES = [
 
 
 
-// ---  PLEASE DELETE --- PLEASE DELETE --- PLEASE DELETE ---
+// ---  PLEASE ADD --- PLEASE ADD --- PLEASE ADD ---
 
 
-const MUSIC_START_SCREEN = './audio/epic_fantasy/02 - A Whole New World - Full Version - Epic Fantasy - Lufus.wav';
+const MUSIC_START_SCREEN = './audio/epic_fantasy/a_whole_new_world_luvus.wav';
 const AUDIO_START_SCREEN = new Audio(MUSIC_START_SCREEN);
 
 
-const SOUND_NEW_GAME = './audio/ui/Fantasy_Game_Organic_Magic_Accept_Quest_Drum_Impact_1.wav';
+const SOUND_NEW_GAME = './audio/start_screen/new_game.wav';
 const AUDIO_NEW_GAME = new Audio(SOUND_NEW_GAME);

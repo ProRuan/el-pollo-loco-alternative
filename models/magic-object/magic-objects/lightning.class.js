@@ -12,7 +12,7 @@ class Lightning extends MagicObject {
     magicDelay = true;
 
     radDispl = 128;
-    sound = './audio/elemental_magic/Fantasy_Game_Magic_Lightning_Instant_Cast_Spell_C.wav';
+    sound = './audio/elemental_magic/magic_lightning_hit.wav';
 
 
     constructor(x, y) {
