@@ -2,7 +2,7 @@ class Bird extends AnimatedObject {
 
 
     constructor(x, y) {
-        super(x, y, 'Bird');
+        super(x, y, 'bird');
         this.setSize(64);    // passt noch nicht!!!
         this.setSpeed(32);
         this.move(() => this.flyPermanently());

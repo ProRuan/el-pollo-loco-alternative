@@ -10,7 +10,7 @@ class Bomb extends AnimatedObject {
 
 
     constructor(x, y) {
-        super(x, y, 'Bomb');
+        super(x, y, 'bomb');
         this.setSize(256);    // Passt noch nicht!!!
         this.setOtherDirection();    // only false!!!
         this.move();

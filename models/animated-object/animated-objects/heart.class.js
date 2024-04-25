@@ -2,6 +2,6 @@ class Heart extends AnimatedObject {
 
 
     constructor(x, y) {
-        super(x, y, 'Heart');
+        super(x, y, 'heart');
     }
 }
