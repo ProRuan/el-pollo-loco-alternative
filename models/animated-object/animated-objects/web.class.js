@@ -1,10 +1,11 @@
 class Web extends AnimatedObject {
+    speed = 192 / 64;
 
 
     constructor(x, y, otherDir) {
         super(x, y, 'Web');
         this.setOtherDirection(otherDir);
-        this.move();
+        this.move(() => this.throw());
         this.animate();
     }
 
@@ -14,9 +15,7 @@ class Web extends AnimatedObject {
     }
 
 
-    move() {
-        setInterval(() => {
-            (this.otherDirection) ? this.x -= 192 / 64 : this.x += 192 / 64;
-        }, 1000 / 60);
+    throw() {
+        (this.otherDirection) ? this.x -= this.speed : this.x += this.speed;
     }
 }
