@@ -339,16 +339,13 @@ Checkliste (active ...) (completed: 0 / ...)
 
   Super Tasks
   -----------
-    --> Check class Bird img!!!
-    --> Check class Bomb img!!!
-    
+    --> Simplify character info methods ...
+          - push images to array (bg, items, border) ...
+
     - Simplify leaf class.
     - Simplify grass class.
     - Simplify audio.
     - Simplify img.
-
-
-    - DrawableObjectNew ...
 
   
   Clean Coding (0/?) + Jsdoc (0/?)

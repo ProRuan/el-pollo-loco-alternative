@@ -1,20 +1,31 @@
-class StateBar extends DrawableObject {
+class StaminaBar extends DrawableObject {
     counter = 100;    // variable!!!
     points = [];
-
-    bg = new StateBarBg(1.4765625, 7.28125);    // variable!!!
-    border = new StateBarBorder(1.4375, 7.25);    // variable!!!
 
 
     constructor() {    // declare start values!!!
         super(0, 0, 203, 79);
-        this.fillStamina();
-        this.regenerateStamina();
+        this.createBg();
+        this.createBorder();
+        this.fillStateBar();
+        this.regenerateStateBar();
     }
 
 
     get points() {
         return this.points;
+    }
+
+
+    createBg() {
+        this.bg = new StateBarBg(1.4765625, 7.28125);
+        this.imageCache.push(this.bg.img);
+    }
+
+
+    createBorder() {
+        this.border = new StateBarBorder(1.4375, 7.25);
+        this.imageCache.push(this.border.img);
     }
 
 
@@ -27,7 +38,7 @@ class StateBar extends DrawableObject {
     }
 
 
-    regenerateStamina(PointObject, max) {    // stoppable interval!!!
+    regenerateStateBar(PointObject, max) {    // stoppable interval!!!
         setInterval(() => {
             if (this.points.length < max && !world.hero.isKey('keydown', 'keyA')) {
                 // this.staminaCounter++;
