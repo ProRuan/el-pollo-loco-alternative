@@ -25,7 +25,7 @@ class Spider extends MoveableObject {
     // 12.25, 0.1875
 
 
-    spiderWeb = new Audio('./audio/attacks_and_creatures/web_throw.wav');
+    // spiderWeb = new Audio('./audio/attacks_and_creatures/web_throw.wav');
     spiderGrowl = new Audio('./audio/attacks_and_creatures/spider_growl.wav');
     swordHit = './audio/attacks_and_creatures/weapon_impact.wav';
 
@@ -122,7 +122,7 @@ class Spider extends MoveableObject {
         let web = new Web(xThrow, (540 - this.y) / 64 - 1.315, this.otherDirection);
         world.webs.push(web);
         this.shot = true;
-        this.spiderWeb.play();
+        // this.spiderWeb.play();
         // world.web = web;
         setTimeout(() => {
             if (!web.webHit) {

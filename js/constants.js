@@ -49,13 +49,14 @@ const MAGIC_FILENAMES = [
 ];
 
 
-// sound paths
+// SOUND PATHS
 const SOUND_BOMB_THROW = './audio/elemental_magic/bomb_throw.wav';
 const SOUND_BOMB_BURST = './audio/elemental_magic/bomb_burst.wav';
 const SOUND_COIN_COLLECTED = './audio/collect/coin.wav';
 const SOUND_CRYSTAL_COLLECTED = './audio/collect/crystal.wav';
-const SOUND_CRYSTAL_UPGRADE = './audio/attacks_and_creatures/skill_upgrade.wav';
 const SOUND_HIT_POINT_COLLECTED = './audio/collect/hit_point.wav';
+const SOUND_UPGRADE = './audio/attacks_and_creatures/skill_upgrade.wav';
+const SOUND_WEB_THROWN = './audio/attacks_and_creatures/web_throw.wav';
 
 
 // ---  PLEASE ADD --- PLEASE ADD --- PLEASE ADD ---

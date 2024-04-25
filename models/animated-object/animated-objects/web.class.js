@@ -6,7 +6,8 @@ class Web extends AnimatedObject {
         super(x, y, 'Web');
         this.setOtherDirection(otherDir);
         this.move(() => this.throw());
-        this.animate();
+        this.setSound(SOUND_WEB_THROWN);
+        this.playSound();
     }
 
 

@@ -33,6 +33,8 @@ class Knight extends MoveableObject {
     ARMOR_HIT = '.audio/attacks_and_creatures/cloth_armor_hit.wav';
     FOOTSTEP = './audio/footsteps/grass.wav';
 
+    soundUpgrade = SOUND_UPGRADE;;
+
 
     constructor() {
         super(3.75 + 0 * 15, 0.625);    // Please set!!!
@@ -663,7 +665,7 @@ class Knight extends MoveableObject {
             this.playSound(object.sound);
             if (object instanceof Crystal) {
                 this.bombSkillUnlocked = true;
-                this.playSound(object.upgrade);
+                this.playSound(this.soundUpgrade);
                 this.world.level.setXLevelEnd(LEVEL_SIZE);
                 this.world.level.setXLevelStartCrystal(LEVEL_SIZE);
             }

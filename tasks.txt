@@ -364,12 +364,12 @@ Checkliste (active ...) (completed: 0 / ...)
     - class AnimatedObject ... - ... (3/8)
         - class Bird ... - ...
         - class Bomb ... - ...
-        - class Coin - doubleCheck
-        - class Crystal - doubleCheck
+        - class Coin - simpleCheck
+        - class Crystal - simpleCheck
         - class Heart ... - ... (optional)
-        - class HitPoint - doubleCheck
+        - class HitPoint - simpleCheck
         - class Star ... - ... (optional)
-        - class Web - check - ...
+        - class Web - check - simpleCheck
     - class Counter - doubleCheck
     - class FlipBook ...
 

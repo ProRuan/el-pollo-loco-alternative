@@ -12,6 +12,7 @@ class AnimatedObject extends DrawableObject {
         this.setFlipBookChapter(name);
         this.loadImage(this.cover);
         this.loadImages(this.flipBook);
+        this.animate();
     }
 
 
@@ -61,5 +62,15 @@ class AnimatedObject extends DrawableObject {
         let path = this.flipBook[i];
         this.img = this.imageCache[path];
         this.currentImage++;
+    }
+
+
+    setSound(path) {
+        this.sound = path;
+    }
+
+
+    playSound() {
+        new Audio(this.sound).play();
     }
 }
