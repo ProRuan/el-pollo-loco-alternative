@@ -68,3 +68,9 @@ const AUDIO_START_SCREEN = new Audio(MUSIC_START_SCREEN);
 
 const SOUND_NEW_GAME = './audio/start_screen/new_game.wav';
 const AUDIO_NEW_GAME = new Audio(SOUND_NEW_GAME);
+
+
+
+
+// testing
+const IMG_KNIGHT = './img/characters/knight/knight.png';
