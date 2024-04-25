@@ -4,6 +4,7 @@ let world;
 
 let LEVELS = [];
 let intervalIds = [];
+let counter = new Counter();
 
 
 const FLIP_BOOK_HERO = new FlipBook(KNIGHT_DIRECTORY, KNIGHT_FILENAMES);

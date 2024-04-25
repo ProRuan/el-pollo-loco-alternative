@@ -34,6 +34,13 @@ class DrawableObject extends CoordinateSystem {
     }
 
 
+    setId(name) {
+        name = name.toLowerCase();
+        this.id = counter[name];
+        counter[name]++;
+    }
+
+
     setCover(folder) {
         let file = folder.toLowerCase() + '.png';
         this.cover = this.directory + file;

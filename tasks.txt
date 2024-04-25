@@ -370,6 +370,7 @@ Checkliste (active ...) (completed: 0 / ...)
         - class HitPoint - doubleCheck
         - class Star ... - ... (optional)
         - class Web ... - ...
+    - class Counter - doubleCheck
     - class FlipBook ...
 
 

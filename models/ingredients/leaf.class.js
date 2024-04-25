@@ -1,9 +1,10 @@
 class Leaf extends DrawableObject {
     sound = './audio/collect/leaf.wav';
-    
+
 
     constructor(x, y, i) {
         super(x, y, 32);
+        this.setId('leaf');
         this.setPath(i);
         this.loadImage(this.path);
     }
