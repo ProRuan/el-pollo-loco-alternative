@@ -339,6 +339,9 @@ Checkliste (active ...) (completed: 0 / ...)
 
   Super Tasks
   -----------
+    --> Check class Bird img!!!
+    --> Check class Bomb img!!!
+    
     - Simplify leaf class.
     - Simplify grass class.
     - Simplify audio.

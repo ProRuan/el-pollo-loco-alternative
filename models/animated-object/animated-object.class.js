@@ -46,6 +46,11 @@ class AnimatedObject extends DrawableObject {
     }
 
 
+    setSpeed(s) {
+        this.speed = s / 60;
+    }
+
+
     move(subfunction) {
         this.setStoppableInterval(subfunction, 1000 / 60);
     }
