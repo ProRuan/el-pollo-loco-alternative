@@ -321,4 +321,9 @@ class DrawableObject extends CoordinateSystem {
         let id = setInterval(subfunction, interval);
         intervalIds.push(id);
     }
+
+
+    updateImageX(img) {
+        this[img].x = this.x + this[img].translation;
+    }
 }

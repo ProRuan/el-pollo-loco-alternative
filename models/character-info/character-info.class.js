@@ -5,8 +5,9 @@ class CharacterInfo extends DrawableObject {
     hpPoints = [];
     energyPoints = [];
     staminaPoints = [];
-    avatarImage = new AvatarImage();
-    avatarFrame = new AvatarFrame();
+    avatar = new Avatar();
+
+    
     hpBarBg = new HpBarBg(1.484375, 7.859375);
     hpBarBorder = new HpBarBorder(1.4375, 7.8125);
     energyBarBg = new StateBarBg(1.4765625, 7.5625);
@@ -20,12 +21,21 @@ class CharacterInfo extends DrawableObject {
 
     constructor() {
         super(0, 0, 203, 79);
-        this.updateAvatarImageX();
         this.fillHp();
         this.fillEnergy();
         this.fillStamina();
         this.regenerateEnergy();
         this.regenerateStamina();
+    }
+
+
+    get avatarImage() {
+        return this.avatar.avatarImage;
+    }
+
+
+    get avatarFrame() {
+        return this.avatar.avatarFrame;
     }
 
 
@@ -55,16 +65,6 @@ class CharacterInfo extends DrawableObject {
         return [
             this.avatarFrame, this.hpBarBorder, this.energyBarBorder, this.staminaBarBorder
         ];
-    }
-
-
-    updateAvatarImageX() {
-        this.avatarImage.x = this.x + 24;
-    }
-
-
-    updateAvatarFrameX() {
-        this.avatarFrame.x = this.x + 16;
     }
 
 
