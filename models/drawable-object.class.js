@@ -311,8 +311,7 @@ class DrawableObject extends CoordinateSystem {
 
 
     setStoppableInterval(subfunction, interval) {
-        setInterval(() => {
-            subfunction();
-        }, interval);
+        let id = setInterval(subfunction, interval);
+        intervalIds.push(id);
     }
 }

@@ -3,6 +3,7 @@ let keyboard;
 let world;
 
 let LEVELS = [];
+let intervalIds = [];
 
 
 const FLIP_BOOK_HERO = new FlipBook(KNIGHT_DIRECTORY, KNIGHT_FILENAMES);
