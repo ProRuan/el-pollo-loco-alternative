@@ -42,4 +42,19 @@ class AnimatedObject extends DrawableObject {
     get yBottom() {
         return this.y + (this.height - this.indent);
     }
+
+
+    animate() {
+        setInterval(() => {
+            this.playAnimation();
+        }, 100);
+    }
+
+
+    playAnimation() {
+        let i = this.currentImage % this.flipBook.length;
+        let path = this.flipBook[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+    }
 }

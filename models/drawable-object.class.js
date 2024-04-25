@@ -308,4 +308,11 @@ class DrawableObject extends CoordinateSystem {
         //     ctx.stroke();
         // }
     }
+
+
+    setStoppableInterval(subfunction, interval) {
+        setInterval(() => {
+            subfunction();
+        }, interval);
+    }
 }
