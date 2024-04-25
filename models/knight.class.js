@@ -242,7 +242,7 @@ class Knight extends MoveableObject {
             }
             if (!world.ENDBOSS.dead && !(this.x < world.level.X_CAMERA_END)) {
                 this.reachedFinalSection = true;
-                this.world.level.X_LEVEL_START = (LEVEL_SIZE - 1) * CANVAS_WIDTH + 28;
+                this.world.level.X_LEVEL_START = (LEVEL_SIZE - 1) * ORIGINAL_CANVAS_WIDTH + 28;
                 this.AMBIENCE_SOUND.muted = true;
                 setTimeout(() => {
                     this.BOSS_BATTLE.volume = 0.4;

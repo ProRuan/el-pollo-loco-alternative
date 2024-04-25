@@ -252,16 +252,6 @@ class DrawableObject extends CoordinateSystem {
         }
 
 
-        if (this instanceof Stone) {
-            // body + center line
-            ctx.beginPath();
-            ctx.lineWidth = '1';
-            ctx.strokeStyle = 'purple';
-            ctx.rect(this.x + 16, this.y + 16, 32, 32);
-            ctx.stroke();
-        }
-
-
         if (this instanceof Leaf) {
             ctx.beginPath();
             ctx.lineWidth = '1';

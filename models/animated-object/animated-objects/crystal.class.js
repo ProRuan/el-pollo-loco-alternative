@@ -1,7 +1,6 @@
 class Crystal extends AnimatedObject {
-    currentImage = 0;    // double code!!!
-    sound = './audio/collect/crystal.wav';
-    upgrade = './audio/attacks_and_creatures/skill_upgrade.wav';
+    sound = SOUND_CRYSTAL_COLLECTED;
+    soundUpgrade = SOUND_CRYSTAL_UPGRADE;
     
 
     constructor(x, y) {
@@ -10,38 +9,8 @@ class Crystal extends AnimatedObject {
     }
 
 
-    get xLeft() {
-        return this.x + 4;
-    }
-
-
-    get xCenter() {
-        return this.x + this.width / 2;
-    }
-
-
-    get xRight() {
-        return this.x + 28;
-    }
-
-
-    get yTop() {
-        return this.y + 4;
-    }
-
-
-    get yCenter() {
-        return this.y + this.height / 2;
-    }
-
-
-    get yBottom() {
-        return this.y + 28;
-    }
-
-
     animate() {
-        setInterval(() => {
+        setInterval(() => {    // double code!!!
             let i = this.currentImage % this.flipBook.length;
             let path = this.flipBook[i];
             this.img = this.imageCache[path];

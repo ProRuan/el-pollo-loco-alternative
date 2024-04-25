@@ -1,31 +1,20 @@
 class Bomb extends AnimatedObject {
-    currentImage = 0;
     speedY = 12.5;
     acceleration = 0.5;
     prolog = 4;
     inTouch = false;
     exploding = false;
-    soundThrow = './audio/elemental_magic/bomb_throw.wav';
-    soundExplosion = './audio/elemental_magic/bomb_burst.wav';
+    soundThrow = SOUND_BOMB_THROW;
+    soundBurst = SOUND_BOMB_BURST;
     currentTime = 2.625;
 
 
     constructor(x, y) {
         super(x, y, 'Bomb');
-        this.setSize(256);
-        this.setOtherDirection();
+        this.setSize(256);    // Passt noch nicht!!!
+        this.setOtherDirection();    // only false!!!
         this.move();
         this.animate();
-    }
-
-
-    get xCenter() {
-        return this.x + this.width / 2;
-    }
-
-
-    get yCenter() {
-        return this.y + this.height / 2;
     }
 
 
@@ -41,12 +30,6 @@ class Bomb extends AnimatedObject {
 
     move() {
         setInterval(() => {
-            // if (this.y > 540) {
-            //     this.x = 3.75 * 64;
-            //     this.y = 540 - 3.5 * 64;
-            //     this.speedY = 12.5;
-            // }
-
             if (!this.inTouch && this.y < 540) {    // set final y value!!!
                 let heightFactor = Math.round((480 - world.hero.yCenter) / 120);
                 (this.otherDirection) ? this.x -= 8.5 : this.x += 8.5 - heightFactor;

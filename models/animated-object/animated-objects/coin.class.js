@@ -1,6 +1,5 @@
 class Coin extends AnimatedObject {
-    currentImage = 0;
-    sound = './audio/collect/coin.wav';
+    sound = SOUND_COIN_COLLECTED;
 
 
     constructor(x, y) {
@@ -9,37 +8,7 @@ class Coin extends AnimatedObject {
     }
 
 
-    get xLeft() {
-        return this.x + 4;
-    }
-
-
-    get xCenter() {
-        return this.x + this.width / 2;
-    }
-
-
-    get xRight() {
-        return this.x + 28;
-    }
-
-
-    get yTop() {
-        return this.y + 4;
-    }
-
-
-    get yCenter() {
-        return this.y + this.height / 2;
-    }
-
-
-    get yBottom() {
-        return this.y + 28;
-    }
-
-
-    animate() {
+    animate() {    // double code!!!
         setInterval(() => {
             let i = this.currentImage % this.flipBook.length;
             let path = this.flipBook[i];

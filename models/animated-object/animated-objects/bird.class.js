@@ -1,11 +1,10 @@
 class Bird extends AnimatedObject {
-    currentImage = 0;
     speed = 32 / 60;
 
 
     constructor(x, y) {
         super(x, y, 'Bird');
-        this.setSize(64);
+        this.setSize(64);    // passt noch nicht!!!
         this.move();
         this.animate();
     }
@@ -13,9 +12,14 @@ class Bird extends AnimatedObject {
 
     move() {
         setInterval(() => {
-            this.x -= this.speed;
+            this.fly();
             this.keep();
         }, 1000 / 60);
+    }
+
+
+    fly() {
+        this.x -= this.speed;
     }
 
 
@@ -33,7 +37,7 @@ class Bird extends AnimatedObject {
     }
 
 
-    playAnimation() {
+    playAnimation() {    // double code!!!
         let i = this.currentImage % this.flipBook.length;
         let path = this.flipBook[i];
         this.img = this.imageCache[path];
