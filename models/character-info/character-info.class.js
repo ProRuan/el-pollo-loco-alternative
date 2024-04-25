@@ -82,7 +82,7 @@ class CharacterInfo extends DrawableObject {
     fillStamina() {
         for (let i = 100 - this.staminaCounter; i < this.staminaCounter; i++) {
             let x = (93 + i * 1) / 64;
-            let staminaPoint = new StaminaPoint(x, 7.3125);
+            let staminaPoint = new StaminaPoint(x);
             this.staminaPoints.push(staminaPoint);
         }
     }
@@ -106,7 +106,7 @@ class CharacterInfo extends DrawableObject {
             if (this.staminaPoints.length < 100 && !world.hero.isKey('keydown', 'keyA')) {
                 // this.staminaCounter++;
                 let x = (93 + this.staminaPoints.length * 1) / 64;
-                let staminaPoint = new StaminaPoint(x, 7.3125);
+                let staminaPoint = new StaminaPoint(x);
                 this.staminaPoints.push(staminaPoint);
                 this.staminaCounter = this.staminaPoints.length;
             }
