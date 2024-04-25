@@ -5,8 +5,8 @@ class CharacterInfo extends DrawableObject {
     hpPoints = [];
     energyPoints = [];
     staminaPoints = [];
-    avatarImage = new AvatarImage(0.375, 7.073125);
-    avatarFrame = new AvatarFrame(0.25, 6.953125);
+    avatarImage = new AvatarImage();
+    avatarFrame = new AvatarFrame();
     hpBarBg = new HpBarBg(1.484375, 7.859375);
     hpBarBorder = new HpBarBorder(1.4375, 7.8125);
     energyBarBg = new StateBarBg(1.4765625, 7.5625);

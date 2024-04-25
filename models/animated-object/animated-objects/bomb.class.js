@@ -2,6 +2,8 @@ class Bomb extends AnimatedObject {
     speedY = 12.5;
     acceleration = 0.5;
     prolog = 4;
+
+    
     inTouch = false;
     exploding = false;
     soundThrow = SOUND_BOMB_THROW;

@@ -2,8 +2,8 @@ class AvatarFrame extends DrawableObject {
     path = 'img/inner_interface/avatar_frame.png';
 
 
-    constructor(x, y) {
-        super(x, y, 76, 79);
+    constructor() {
+        super(0.25, 6.953125, 76, 79);
         this.loadImage(this.path);
     }
 }
