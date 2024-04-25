@@ -1,22 +1,25 @@
 class CharacterInfo extends DrawableObject {
-    hpCounter = 120;
+    hpCounter = 120;    // Please check!!!
     energyCounter = 100;
     staminaCounter = 100;
     hpPoints = [];
     energyPoints = [];
     staminaPoints = [];
-    avatar = new Avatar();
 
-    
-    hpBarBg = new HpBarBg(1.484375, 7.859375);
-    hpBarBorder = new HpBarBorder(1.4375, 7.8125);
+    // Already checked!!!
+    avatarImage = new AvatarImage();
+    avatarFrame = new AvatarFrame();
+    hpBarBg = new HpBarBg();
+    hpBarBorder = new HpBarBorder();
+
     energyBarBg = new StateBarBg(1.4765625, 7.5625);
     energyBarBorder = new StateBarBorder(1.4375, 7.53125);
     staminaBarBg = new StateBarBg(1.4765625, 7.28125);
     staminaBarBorder = new StateBarBorder(1.4375, 7.25);
-    itemBg = new ItemBg(0.359375, 6.4295875);
-    itemBomb = new ItemBomb(0.3515625, 6.4296875);
-    itemBorder = new ItemBorder(0.3125, 6.390625);
+
+    itemBg = new ItemBg();
+    itemBomb = new ItemBomb();
+    itemBorder = new ItemBorder();
 
 
     constructor() {
@@ -26,16 +29,6 @@ class CharacterInfo extends DrawableObject {
         this.fillStamina();
         this.regenerateEnergy();
         this.regenerateStamina();
-    }
-
-
-    get avatarImage() {
-        return this.avatar.avatarImage;
-    }
-
-
-    get avatarFrame() {
-        return this.avatar.avatarFrame;
     }
 
 
@@ -65,51 +58,6 @@ class CharacterInfo extends DrawableObject {
         return [
             this.avatarFrame, this.hpBarBorder, this.energyBarBorder, this.staminaBarBorder
         ];
-    }
-
-
-    updateHpBarBgX() {
-        this.hpBarBg.x = this.x + 95;
-    }
-
-
-    updateHpBarBorderX() {
-        this.hpBarBorder.x = this.x + 92;
-    }
-
-
-    updateEnergyBarBgX() {
-        this.energyBarBg.x = this.x + 94.5;
-    }
-
-
-    updateEnergyBarBorderX() {
-        this.energyBarBorder.x = this.x + 92;
-    }
-
-
-    updateStaminaBarBgX() {
-        this.staminaBarBg.x = this.x + 94.5;
-    }
-
-
-    updateStaminaBarBorderX() {
-        this.staminaBarBorder.x = this.x + 92;
-    }
-
-
-    updateItemBgX() {
-        this.itemBg.x = this.x + 23;
-    }
-
-
-    updateItemBombX() {
-        this.itemBomb.x = this.x + 22.5;
-    }
-
-
-    updateItemBorderX() {
-        this.itemBorder.x = this.x + 20;
     }
 
 

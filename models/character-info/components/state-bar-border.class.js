@@ -1,5 +1,6 @@
 class StateBarBorder extends DrawableObject {
     path = 'img/inner_interface/state_bar_border.png';
+    translation = 92;
 
 
     constructor(x, y) {
