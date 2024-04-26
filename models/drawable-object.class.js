@@ -279,7 +279,7 @@ class DrawableObject extends CoordinateSystem {
         }
 
 
-        if (this instanceof StairwayCenter) {
+        if (this instanceof LadderCenter) {
             // body + center line
             ctx.beginPath();
             ctx.lineWidth = '1';

@@ -1,4 +1,4 @@
-class StairwayTop extends DrawableObject {
+class LadderTop extends DrawableObject {
     path = './img/objects/ladder3.png';
 
 

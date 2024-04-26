@@ -18,9 +18,9 @@
 //     new GrassStart(12, 0), new GrassCenter(13, 0), new GrassCenter(14, 0)
 // ];
 
-// const STAIRWAYS1_1 = [
-//     new StairwayBottom(4.25, 0.875), new StairwayCenter(4.25, 1.375), new StairwayCenter(4.25, 1.875), new StairwayCenter(4.25, 2.375),
-//     new StairwayCenter(4.25, 2.875), new StairwayCenter(4.25, 3.375), new StairwayTop(4.25, 3.875)
+// const LADDERS1_1 = [
+//     new LadderBottom(4.25, 0.875), new LadderCenter(4.25, 1.375), new LadderCenter(4.25, 1.875), new LadderCenter(4.25, 2.375),
+//     new LadderCenter(4.25, 2.875), new LadderCenter(4.25, 3.375), new LadderTop(4.25, 3.875)
 // ];
 
 // const COINS1_1 = [
@@ -62,7 +62,7 @@ const GRASS1_1 = [
     new GrassCenter(12, 0), new GrassCenter(13, 0), new GrassCenter(14, 0)
 ];
 
-const STAIRWAYS1_1 = [
+const LADDERS1_1 = [
 
 ];
 
@@ -169,11 +169,11 @@ const GRASS1_4 = [
     new GrassCenter(13, 0), new GrassCenter(14, 0)
 ];
 
-const STAIRWAYS1_4 = [
-    new StairwayBottom(3, 0.875), new StairwayCenter(3, 1.375), new StairwayCenter(3, 1.875), new StairwayCenter(3, 2.375),
-    new StairwayCenter(3, 2.875), new StairwayCenter(3, 3.375), new StairwayTop(3, 3.875),
-    new StairwayBottom(11.625, 0.875), new StairwayCenter(11.625, 1.375), new StairwayCenter(11.625, 1.875), new StairwayCenter(11.625, 2.375),
-    new StairwayCenter(11.625, 2.875), new StairwayCenter(11.625, 3.375), new StairwayTop(11.625, 3.875)
+const LADDERS1_4 = [
+    new LadderBottom(3, 0.875), new LadderCenter(3, 1.375), new LadderCenter(3, 1.875), new LadderCenter(3, 2.375),
+    new LadderCenter(3, 2.875), new LadderCenter(3, 3.375), new LadderTop(3, 3.875),
+    new LadderBottom(11.625, 0.875), new LadderCenter(11.625, 1.375), new LadderCenter(11.625, 1.875), new LadderCenter(11.625, 2.375),
+    new LadderCenter(11.625, 2.875), new LadderCenter(11.625, 3.375), new LadderTop(11.625, 3.875)
 ];
 
 const COINS1_4 = [
@@ -210,7 +210,7 @@ const GRASS1_5 = [
     new GrassCenter(0, 0), new GrassCenter(1, 0), new GrassCenter(2, 0), new GrassEnd(3, 0)
 ];
 
-const STAIRWAYS1_5 = [
+const LADDERS1_5 = [
 
 ];
 
@@ -248,9 +248,9 @@ const GRASS1_6 = [
     new GrassCenter(13, 0), new GrassCenter(14, 0)
 ];
 
-const STAIRWAYS1_6 = [
-    new StairwayBottom(2.5, 0.875), new StairwayCenter(2.5, 1.375), new StairwayCenter(2.5, 1.875), new StairwayCenter(2.5, 2.375),
-    new StairwayCenter(2.5, 2.875), new StairwayCenter(2.5, 3.375), new StairwayCenter(2.5, 3.875), new StairwayTop(2.5, 4.375)
+const LADDERS1_6 = [
+    new LadderBottom(2.5, 0.875), new LadderCenter(2.5, 1.375), new LadderCenter(2.5, 1.875), new LadderCenter(2.5, 2.375),
+    new LadderCenter(2.5, 2.875), new LadderCenter(2.5, 3.375), new LadderCenter(2.5, 3.875), new LadderTop(2.5, 4.375)
 ];
 
 const COINS1_6 = [
@@ -288,7 +288,7 @@ const GRASS1_7 = [
     new GrassCenter(13, 0), new GrassCenter(14, 0)
 ];
 
-const STAIRWAYS1_7 = [
+const LADDERS1_7 = [
 
 ];
 
@@ -333,9 +333,9 @@ const GRASS1_8 = [
     new GrassStart(12, 0), new GrassCenter(13, 0), new GrassCenter(14, 0)
 ];
 
-const STAIRWAYS1_8 = [
-    new StairwayBottom(4.25, 0.875), new StairwayCenter(4.25, 1.375), new StairwayCenter(4.25, 1.875), new StairwayCenter(4.25, 2.375),
-    new StairwayCenter(4.25, 2.875), new StairwayCenter(4.25, 3.375), new StairwayTop(4.25, 3.875)
+const LADDERS1_8 = [
+    new LadderBottom(4.25, 0.875), new LadderCenter(4.25, 1.375), new LadderCenter(4.25, 1.875), new LadderCenter(4.25, 2.375),
+    new LadderCenter(4.25, 2.875), new LadderCenter(4.25, 3.375), new LadderTop(4.25, 3.875)
 ];
 
 const COINS1_8 = [
@@ -373,8 +373,8 @@ const GRASS1 = [
     GRASS1_1, GRASS1_2, GRASS1_3, GRASS1_4, GRASS1_5, GRASS1_6, GRASS1_7, GRASS1_8
 ];
 
-const STAIRWAYS1 = [
-    STAIRWAYS1_1, null, null, STAIRWAYS1_4, null, STAIRWAYS1_6, null, STAIRWAYS1_8
+const LADDERS1 = [
+    LADDERS1_1, null, null, LADDERS1_4, null, LADDERS1_6, null, LADDERS1_8
 ];
 
 const COINS1 = [

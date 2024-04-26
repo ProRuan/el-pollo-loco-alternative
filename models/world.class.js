@@ -29,14 +29,14 @@ class World {
     lightning = new Lightning(0, +284 / 64);
     lightnings = [new Lightning(4.75, 0.4)];
 
-    stairwayBottom = new StairwayBottom(4.25, 0.875);
-    stairwayCenter = new StairwayCenter(4.25, 3.875);
-    stairwayTop = new StairwayTop(4.25, 4.375);
-    stairway = [
-        new StairwayBottom(4.25, 0.875),
-        new StairwayCenter(4.25, 1.375), new StairwayCenter(4.25, 1.875), new StairwayCenter(4.25, 2.375), new StairwayCenter(4.25, 2.875),
-        new StairwayCenter(4.25, 3.375), new StairwayCenter(4.25, 3.875),
-        new StairwayTop(4.25, 4.375)
+    ladderBottom = new LadderBottom(4.25, 0.875);
+    ladderCenter = new LadderCenter(4.25, 3.875);
+    ladderTop = new LadderTop(4.25, 4.375);
+    ladder = [
+        new LadderBottom(4.25, 0.875),
+        new LadderCenter(4.25, 1.375), new LadderCenter(4.25, 1.875), new LadderCenter(4.25, 2.375), new LadderCenter(4.25, 2.875),
+        new LadderCenter(4.25, 3.375), new LadderCenter(4.25, 3.875),
+        new LadderTop(4.25, 4.375)
     ];
 
     startScreenDisplayed = true;
@@ -115,8 +115,8 @@ class World {
     }
 
 
-    get STAIRWAYS() {
-        return this.level.STAIRWAYS;
+    get LADDERS() {
+        return this.level.LADDERS;
     }
 
 
@@ -744,9 +744,9 @@ class World {
         this.addGroupToMap(this.GRASS_FLYING);
         this.addGroupToMap(this.GRASS);
 
-        // this.addGroupToMap(this.stairway);
+        // this.addGroupToMap(this.ladder);
 
-        this.addGroupToMap(this.STAIRWAYS);
+        this.addGroupToMap(this.LADDERS);
         this.addGroupToMap(this.COINS);
         this.addGroupToMap(this.CRYSTALS);
         this.addGroupToMap(this.HIT_POINTS);

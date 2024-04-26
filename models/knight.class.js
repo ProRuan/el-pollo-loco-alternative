@@ -19,8 +19,8 @@ class Knight extends MoveableObject {
 
     dying = false;
     dead = false;
-    yStairwayMax = 228 - 108;
-    yStairwayMin = 272 + 100;
+    yLadderMax = 228 - 108;    // not in use, right?
+    yLadderMin = 272 + 100;    // not in use, right?
     climbing = false;
 
     radDispl = 24;
@@ -186,12 +186,12 @@ class Knight extends MoveableObject {
             //     }, 500);
             // }
             this.climbing = false;
-            if (this.isKey('keydown', 'arrowUp') && this.world.STAIRWAYS.find(s => this.isIncluding(s.xCenter, s.yTop))) {
+            if (this.isKey('keydown', 'arrowUp') && this.world.LADDERS.find(s => this.isIncluding(s.xCenter, s.yTop))) {
                 // console.log('climbing up', this.y);
                 this.climbing = true;
                 this.climb(true);
             }
-            if (this.isKey('keydown', 'arrowDown') && this.world.STAIRWAYS.find(s => this.isIncluding(s.xCenter, s.yCenter - 1))) {
+            if (this.isKey('keydown', 'arrowDown') && this.world.LADDERS.find(s => this.isIncluding(s.xCenter, s.yCenter - 1))) {
                 // console.log('climbing down', this.y);
                 this.climbing = true;
                 this.climb(false);

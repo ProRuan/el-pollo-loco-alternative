@@ -8,7 +8,7 @@ class Level {
     LEAVES = [];
     GRASS_FLYING = [];
     GRASS = [];
-    STAIRWAYS = [];
+    LADDERS = [];
     COINS = [];
     CRYSTALS = [];
     HIT_POINTS = [];
@@ -188,12 +188,12 @@ class Level {
     }
 
 
-    loadStairways(stairways, n) {
-        if (stairways) {
-            for (let i = 0; i < stairways.length; i++) {
-                let stairway = stairways[i];
+    loadLadders(ladders, n) {
+        if (ladders) {
+            for (let i = 0; i < ladders.length; i++) {
+                let stairway = ladders[i];
                 stairway.x += n * this.translation;
-                this.STAIRWAYS.push(stairway);
+                this.LADDERS.push(stairway);
             }
         }
     }
