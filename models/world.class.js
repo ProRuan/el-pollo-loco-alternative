@@ -55,7 +55,7 @@ class World {
     selectedButton = undefined;
 
 
-    staminaBar = new StateBarObject(StaminaBarBg, StaminaBarBorder, 100);
+    staminaBar = new StaminaBar();
 
 
     constructor(canvas, keyboard) {
