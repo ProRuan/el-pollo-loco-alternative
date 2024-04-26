@@ -375,6 +375,8 @@ Checkliste (active ...) (completed: 0 / ...)
         - class Star ... - ... (optional)
         - class Web - check - simpleCheck
 
+    - classes AvatarInfo simpleCheck - ... (18/18 + .../18)
+
     - class Counter - doubleCheck
     - class FlipBook ...
 

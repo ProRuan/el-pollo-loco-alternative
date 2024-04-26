@@ -102,6 +102,11 @@ class Knight extends MoveableObject {
     }
 
 
+    get xCamera() {
+        return this.x - 284;
+    }
+
+
     // idle() {
     //     setInterval(() => {
     //         this.playAnimation(FLIP_BOOK_HERO.IDLE);

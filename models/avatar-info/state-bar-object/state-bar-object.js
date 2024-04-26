@@ -12,6 +12,11 @@ class StateBarObject extends DrawableObject {
     }
 
 
+    get translation() {
+        return this.bg.translation;
+    }
+
+
     fill() {
         for (let i = 0; i < this.max; i++) {
             this.addNewPoint();
@@ -21,17 +26,17 @@ class StateBarObject extends DrawableObject {
 
     addNewPoint() {
         let x = this.calculateX();
-        let point = this.getPoint(x);
+        let point = this.getPointType(x);
         this.points.push(point);
     }
 
 
     calculateX() {
-        return (this.bg.translation + this.points.length * 1) / 64;
+        return (this.translation + this.points.length * 1) / 64;
     }
 
 
-    getPoint(x) {
+    getPointType(x) {
         if (this.name == 'hp') {
             return new HpPoint(x);
         } else if (this.name == 'energy') {
@@ -61,7 +66,7 @@ class StateBarObject extends DrawableObject {
 
     updatePointX() {
         for (let i = 0; i < this.points.length; i++) {
-            this.points[i].x = world.hero.x - 284 + this.bg.translation + i;
+            this.points[i].x = world.hero.xCamera + this.translation + i;
         }
     }
 }
