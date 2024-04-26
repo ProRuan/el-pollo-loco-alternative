@@ -1,11 +1,21 @@
 class Counter {
-    bird = 0;
-    bomb = 0;
-    coin = 0;
-    crystal = 0;
-    heart = 0;
-    hit_point = 0;
-    leaf = 0;
-    star = 0;
-    web = 0;
+    keys = OBJECTS_TO_COUNT;
+
+
+    constructor() {
+        this.setObjectsToCount();
+    }
+
+
+    setObjectsToCount() {
+        for (let i = 0; i < this.keys.length; i++) {
+            this.setObjectValue(i);
+        }
+    }
+
+
+    setObjectValue(i) {
+        let key = this.keys[i];
+        this[key] = 0;
+    }
 }

@@ -1,9 +1,16 @@
 const CANVAS_WIDTH = 960;
 const CANVAS_HEIGHT = 540;
 
+const OBJECTS_TO_COUNT = [
+    'bird', 'bomb', 'coin', 'crystal', 'heart', 'hit_point', 'leaf', 'star', 'web'
+]
+
+
 // Please delete!!!
 const ORIGINAL_CANVAS_WIDTH = 960;
 const ORIGINAL_CANVAS_HEIGHT = 540;
+// Please delete!!!
+
 
 const LEVEL_SIZE = 8;
 

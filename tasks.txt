@@ -363,7 +363,7 @@ Checkliste (active ...) (completed: 0 / ...)
     - level1.js ... + ...
 
 
-  Classes ... - ... (42/64)
+  Classes ... - ... (43/64)
   -------
     - class AnimatedObject ... - ... (7/9 + ...)
         - class Bird - simpleCheck
@@ -390,7 +390,7 @@ Checkliste (active ...) (completed: 0 / ...)
     - class Canvas - simpleCheck
     - class Cloud - simpleCheck
     - class CoordinateSystem - simpleCheck
-    - class Counter - ... review!!!
+    - class Counter - simpleCheck
 
     - class FlipBook ...
 
