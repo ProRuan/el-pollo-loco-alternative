@@ -1,5 +1,10 @@
+const CANVAS_WIDTH = 960;
+const CANVAS_HEIGHT = 540;
+
+// Please delete!!!
 const ORIGINAL_CANVAS_WIDTH = 960;
 const ORIGINAL_CANVAS_HEIGHT = 540;
+
 const LEVEL_SIZE = 8;
 
 
