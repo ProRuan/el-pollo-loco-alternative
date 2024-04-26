@@ -340,7 +340,8 @@ Checkliste (active ...) (completed: 0 / ...)
   Super Tasks
   -----------
     --> Simplify character info methods ...
-          - push images to array (bg, items, border) ...
+          --> use new classes and methods - check
+          --> think about folder structure ...
 
     - Simplify leaf class.
     - Simplify grass class.

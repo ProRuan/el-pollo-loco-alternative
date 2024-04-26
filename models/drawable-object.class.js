@@ -323,7 +323,7 @@ class DrawableObject extends CoordinateSystem {
     }
 
 
-    updateImageX(img) {
-        this[img].x = this.x + this[img].translation;
+    updateAvatarInfoX(key, subkey) {
+        this.world[key][subkey].x = this.x - 284 + this.world[key][subkey].translation;
     }
 }

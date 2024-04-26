@@ -1,6 +1,6 @@
 class HpBarBg extends DrawableObject {
     path = 'img/inner_interface/hp_bar_bg.png';
-    translation = 95;
+    translation = 95.5;
 
 
     constructor() {

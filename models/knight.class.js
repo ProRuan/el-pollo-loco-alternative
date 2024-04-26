@@ -88,17 +88,17 @@ class Knight extends MoveableObject {
 
 
     get hpPoints() {
-        return this.world.characterInfo.hpPoints;
+        return this.world.hpbar.points;
     }
 
 
     get energyPoints() {
-        return this.world.characterInfo.energyPoints;
+        return this.world.energyBar.points;
     }
 
 
     get staminaPoints() {
-        return this.world.characterInfo.staminaPoints;
+        return this.world.staminaBar.points;
     }
 
 
@@ -218,8 +218,8 @@ class Knight extends MoveableObject {
                 this.world.endboss.otherDirection = false;
                 // this.world.endbossMagic.otherDirection = false;
             }
-            if (this.bombSkillUnlocked && world.characterInfo.energyPoints.length == 100 && this.isKey('keydown', 'keyF') && this.world.bomb === undefined) {
-                world.characterInfo.energyPoints = [];
+            if (this.bombSkillUnlocked && world.energyBar.points.length == 100 && this.isKey('keydown', 'keyF') && this.world.bomb === undefined) {
+                world.energyBar.points = [];
                 this.world.bomb = new Bomb((world.hero.x - 40) / 64, (540 - world.hero.y + 17) / 64);
                 this.playSound(this.world.bomb.soundThrow);
 
@@ -234,13 +234,11 @@ class Knight extends MoveableObject {
             //     this.hpPoints.splice(this.hpPoints.length - 1, 4);
             // }
             if (this.isKey('keydown', 'keyA')) {
-                this.world.characterInfo.staminaCounter -= 1;
-                this.staminaPoints.splice(this.staminaPoints.length - 1, 1);
+                this.staminaBar.points.splice(this.staminaBar.points.length - 1, 1);
                 this.attack();
             }
             if (this.isKey('keydown', 'keyD')) {
-                this.world.characterInfo.energyCounter -= 1;
-                this.energyPoints.splice(this.energyPoints.length - 1, 1);
+                this.energyBar.points.splice(this.energyBar.points.length - 1, 1);
             }
             if (!world.ENDBOSS.dead && !(this.x < world.level.X_CAMERA_END)) {
                 this.reachedFinalSection = true;
@@ -260,25 +258,28 @@ class Knight extends MoveableObject {
             }
             if (!this.reachedFinalSection && this.x > 284 && this.x < world.level.X_CAMERA_END) {
                 this.world.camera_x = -this.x + 4 * 64 + 28;    // + 4 * 64 + 28
-                this.world.characterInfo.x = this.x - 284;
-                this.world.characterInfo.updateImageX('avatarImage');
-                this.world.characterInfo.updateImageX('avatarFrame');
-                this.world.characterInfo.updateImageX('hpBarBg');
-                this.world.characterInfo.updateImageX('hpBarBorder');
-                this.world.characterInfo.updateImageX('energyBarBg');
-                this.world.characterInfo.updateImageX('energyBarBorder');
-                this.world.characterInfo.updateImageX('staminaBarBg');
-                this.world.characterInfo.updateImageX('staminaBarBorder');
-                this.world.characterInfo.updateImageX('itemBg');
-                this.world.characterInfo.updateImageX('itemBomb');
-                this.world.characterInfo.updateImageX('itemBorder');
-                this.world.characterInfo.updateHpPointX();
-                this.world.characterInfo.updateEnergyPointX();
-                this.world.characterInfo.updateStaminaPointX();
+
+                // this.world.characterInfo.x = this.x - 284;
+                this.world.avatarImage.x = this.x - 284 + this.world.avatarImage.translation;
+                this.world.avatarFrame.x = this.x - 284 + this.world.avatarFrame.translation;
+                this.updateAvatarInfoX('hpBar', 'bg');
+                this.updateAvatarInfoX('hpBar', 'border');
+                this.updateAvatarInfoX('energyBar', 'bg');
+                this.updateAvatarInfoX('energyBar', 'border');
+                this.updateAvatarInfoX('staminaBar', 'bg');
+                this.updateAvatarInfoX('staminaBar', 'border');
+                this.world.hpBar.updatePointX();
+                this.world.energyBar.updatePointX();
+                this.world.staminaBar.updatePointX();
+                this.world.itemBg.x = this.x - 284 + this.world.itemBg.translation;
+                this.world.itemBomb.x = this.x - 284 + this.world.itemBomb.translation;
+                this.world.itemBorder.x = this.x - 284 + this.world.itemBorder.translation;
+
             }
 
-            this.world.characterInfo.updateEnergyPointX();
-            this.world.characterInfo.updateStaminaPointX();
+
+            // this.world.energyBar.updatePointX();
+            // this.world.staminaBar.updatePointX();
 
 
             this.isOnTile();

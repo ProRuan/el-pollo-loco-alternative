@@ -39,8 +39,6 @@ class World {
         new StairwayTop(4.25, 4.375)
     ];
 
-    characterInfo = new CharacterInfo();
-
     startScreenDisplayed = true;
     selectedLevelDisplayed = false;
 
@@ -54,9 +52,14 @@ class World {
     leaderboardContent = 'settings';
     selectedButton = undefined;
 
+    avatarImage = new AvatarImage();
+    avatarFrame = new AvatarFrame();
     hpBar = new HpBar();
     energyBar = new EnergyBar();
     staminaBar = new StaminaBar();
+    itemBg = new ItemBg();
+    itemBomb = new ItemBomb();
+    itemBorder = new ItemBorder();
 
 
     constructor(canvas, keyboard) {
@@ -230,8 +233,6 @@ class World {
 
         this.drawGameTitle();
         this.drawStartText();
-
-        this.addAvatarInfo();
 
         if (this.startedGame == true) {
             this.addToMap(this.homeButton);
@@ -765,21 +766,19 @@ class World {
             this.addToMap(this.endbossMagic);
         }
 
-        this.addGroupToMap(this.characterInfo.images);
-        this.addGroupToMap(this.characterInfo.hpPoints);
-        this.addGroupToMap(this.characterInfo.energyPoints);
-        this.addGroupToMap(this.characterInfo.staminaPoints);
-        this.addGroupToMap(this.characterInfo.borders);
-        // this.addToMap(this.characterInfo.itemBg);
-        // this.addToMap(this.characterInfo.itemBomb);
-        // this.addToMap(this.characterInfo.itemBorder);
+
+        this.addAvatarInfo();
+
+        // Please enable!!!
+        // ----------------
         if (this.hero.bombSkillUnlocked) {
-            this.addToMap(this.characterInfo.itemBg);
-            if (this.characterInfo.energyPoints.length == 100) {
-                this.addToMap(this.characterInfo.itemBomb);
+            this.addToMap(this.itemBg);
+            if (this.energyBar.points.length == 100) {
+                this.addToMap(this.itemBomb);
             }
-            this.addToMap(this.characterInfo.itemBorder);
+            this.addToMap(this.itemBorder);
         }
+        // ----------------
 
         // this.addToMap(this.stone);
 
@@ -811,9 +810,16 @@ class World {
 
 
     addAvatarInfo() {
+        this.addAvatarToMap();
         this.addStateBarToMap('hpBar');
         this.addStateBarToMap('energyBar');
         this.addStateBarToMap('staminaBar');
+    }
+
+
+    addAvatarToMap() {
+        this.addToMap(this.avatarImage);
+        this.addToMap(this.avatarFrame);
     }
 
 
@@ -821,5 +827,12 @@ class World {
         this.addToMap(this[key].bg);
         this.addGroupToMap(this[key].points);
         this.addToMap(this[key].border);
+    }
+
+
+    addAvatarItemToMap() {
+        this.addToMap(this.itemBg);
+        this.addToMap(this.itemBomb);
+        this.addToMap(this.itemBorder);
     }
 }

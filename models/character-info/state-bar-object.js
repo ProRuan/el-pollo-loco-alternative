@@ -61,7 +61,7 @@ class StateBarObject extends DrawableObject {
 
     updatePointX() {
         for (let i = 0; i < this.points.length; i++) {
-            this.points[i].x = this.x + this.bg.translation + i;
+            this.points[i].x = world.hero.x - 284 + this.bg.translation + i;
         }
     }
 }
