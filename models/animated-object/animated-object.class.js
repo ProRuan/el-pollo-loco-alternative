@@ -45,22 +45,6 @@ class AnimatedObject extends DrawableObject {
     }
 
 
-    setSpeed(s) {
-        this.speed = s / 60;
-    }
-
-
-    move(subfunction) {
-        this.setStoppableInterval(subfunction, 1000 / 60);
-    }
-
-
-    animate() {
-        this.setStoppableInterval(() => this.playAnimation(), 100);
-        // console.log(this);
-    }
-
-
     playAnimation() {
         let i = this.currentImage % this.flipBook.length;
         let path = this.flipBook[i];

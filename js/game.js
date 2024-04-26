@@ -2,6 +2,8 @@ let canvas;
 let keyboard;
 let world;
 
+let canvasWidth = CANVAS_WIDTH;
+let canvasHeight = CANVAS_HEIGHT;
 let LEVELS = [];
 let intervalIds = [];
 let counter = new Counter();
@@ -17,7 +19,7 @@ const FLIP_BOOK_MAGIC = new FlipBook(MAGIC_DIRECTORY, MAGIC_FILENAMES);
 
 
 function init() {
-    canvas = new Canvas(ORIGINAL_CANVAS_WIDTH, ORIGINAL_CANVAS_HEIGHT);
+    canvas = new Canvas(canvasWidth, canvasHeight);
     keyboard = new Keyboard();
     world = new World(canvas, keyboard);
 }

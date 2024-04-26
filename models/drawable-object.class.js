@@ -329,6 +329,40 @@ class DrawableObject extends CoordinateSystem {
     }
 
 
+    setSpeed(s) {
+        this.speed = s / 60;
+    }
+
+
+    floatPermanently() {
+        this.float();
+        this.keep();
+    }
+
+
+    float() {
+        this.x -= this.speed;
+    }
+
+
+    keep() {
+        if (this.x < -this.width) {
+            this.x = LEVEL_SIZE * world.canvas.width;
+        }
+    }
+
+
+    move(subfunction) {
+        this.setStoppableInterval(subfunction, 1000 / 60);
+    }
+
+
+    animate() {
+        this.setStoppableInterval(() => this.playAnimation(), 100);
+        // console.log(this);
+    }
+
+
     setStoppableInterval(subfunction, interval) {
         let id = setInterval(subfunction, interval);
         intervalIds.push(id);
