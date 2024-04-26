@@ -125,7 +125,7 @@ const TREES1_3 = [
 ];
 
 const LEAVES1_3 = [
-    new Leaf(9.125, 2, 1), new Leaf(9.75, 2.5, 1), new Leaf(10.25, 2, 1)
+    new Leaf(9.125, 2, 2), new Leaf(9.75, 2.5, 2), new Leaf(10.25, 2, 2)
 ];
 
 const GRASS1_3 = [
@@ -154,7 +154,7 @@ const TREES1_4 = [
 ];
 
 const LEAVES1_4 = [
-    new Leaf(3.625, 5.5, 1), new Leaf(4.25, 6, 1), new Leaf(4.75, 5.5, 1)
+    new Leaf(3.625, 5.5, 3), new Leaf(4.25, 6, 3), new Leaf(4.75, 5.5, 3)
 ];
 
 const GRASS_FLYING1_4 = [
@@ -197,7 +197,7 @@ const TREES1_5 = [
 ];
 
 const LEAVES1_5 = [
-    new Leaf(6.625, 4, 1), new Leaf(7.25, 4.5, 1), new Leaf(7.75, 4, 1)
+    new Leaf(6.625, 4, 4), new Leaf(7.25, 4.5, 4), new Leaf(7.75, 4, 4)
 ];
 
 const GRASS_FLYING1_5 = [
@@ -233,8 +233,8 @@ const TREES1_6 = [
 ];
 
 const LEAVES1_6 = [
-    new Leaf(-0.875, 6, 1), new Leaf(-0.25, 6.5, 1), new Leaf(0.25, 6, 1),
-    new Leaf(9.125, 2, 1), new Leaf(9.75, 2.5, 1), new Leaf(10.25, 2, 1)
+    new Leaf(-0.875, 6, 5), new Leaf(-0.25, 6.5, 5), new Leaf(0.25, 6, 5),
+    new Leaf(9.125, 2, 6), new Leaf(9.75, 2.5, 6), new Leaf(10.25, 2, 6)
 ];
 
 const GRASS_FLYING1_6 = [

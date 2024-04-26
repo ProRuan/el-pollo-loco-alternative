@@ -1,4 +1,5 @@
 class Leaf extends DrawableObject {
+    indent = 4;
     sound = './audio/collect/leaf.wav';
 
 
@@ -11,7 +12,7 @@ class Leaf extends DrawableObject {
 
 
     get xLeft() {
-        return this.x + 4;
+        return this.x + this.indent;
     }
 
 
@@ -21,12 +22,12 @@ class Leaf extends DrawableObject {
 
 
     get xRight() {
-        return this.x + 28;
+        return this.x + (this.width - this.indent);
     }
 
 
     get yTop() {
-        return this.y + 4;
+        return this.y + this.indent;
     }
 
 
@@ -36,7 +37,7 @@ class Leaf extends DrawableObject {
 
 
     get yBottom() {
-        return this.y + 28;
+        return this.y + (this.height - this.indent);
     }
 
 
