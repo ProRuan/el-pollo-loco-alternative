@@ -1,6 +1,7 @@
 class StaminaBar extends StateBarObject {
+    name = 'stamina';
     max = 100;
-    regenerationTime = 16;
+    ms = 16;
     bg = new StaminaBarBg();
     border = new StaminaBarBorder();
 
@@ -8,6 +9,6 @@ class StaminaBar extends StateBarObject {
     constructor() {
         super();
         this.fill();
-        this.setStoppableInterval(() => this.regenerate(), this.regenerationTime);
+        this.setStoppableInterval(() => this.regenerate(), this.ms);
     }
 }

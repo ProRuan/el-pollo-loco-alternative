@@ -21,14 +21,35 @@ class StateBarObject extends DrawableObject {
 
     addNewPoint() {
         let x = (this.bg.translation + this.points.length * 1) / 64;
-        let point = new StaminaPoint(x);    // variable!!!
+        let point = this.getPoint(x);
         this.points.push(point);
     }
 
 
+    getPoint(x) {
+        if (this.name == 'hp') {
+            return new HpPoint(x);
+        } else if (this.name == 'energy') {
+            return new EnergyPoint(x);
+        } else if (this.name == 'stamina') {
+            return new StaminaPoint(x);
+        }
+    }
+
+
     regenerate() {
-        if (this.points.length < this.max && !world.hero.isKey('keydown', 'keyA')) {    // condition!!!
+        let condition = this.getCondition();
+        if (this.points.length < this.max && condition) {    // condition!!!
             this.addNewPoint();
+        }
+    }
+
+
+    getCondition() {
+        if (this.name == 'stamina') {
+            return !world.hero.isKey('keydown', 'keyA');
+        } else {
+            return true;
         }
     }
 
