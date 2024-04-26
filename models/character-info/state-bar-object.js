@@ -20,9 +20,14 @@ class StateBarObject extends DrawableObject {
 
 
     addNewPoint() {
-        let x = (this.bg.translation + this.points.length * 1) / 64;
+        let x = this.calculateX();
         let point = this.getPoint(x);
         this.points.push(point);
+    }
+
+
+    calculateX() {
+        return (this.bg.translation + this.points.length * 1) / 64;
     }
 
 

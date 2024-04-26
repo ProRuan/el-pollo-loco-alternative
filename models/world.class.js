@@ -54,7 +54,8 @@ class World {
     leaderboardContent = 'settings';
     selectedButton = undefined;
 
-
+    hpBar = new HpBar();
+    energyBar = new EnergyBar();
     staminaBar = new StaminaBar();
 
 
@@ -230,10 +231,8 @@ class World {
         this.drawGameTitle();
         this.drawStartText();
 
+        this.addAvatarInfo();
 
-        this.addToMap(this.staminaBar.bg);
-        this.addGroupToMap(this.staminaBar.points);
-        this.addToMap(this.staminaBar.border);
         if (this.startedGame == true) {
             this.addToMap(this.homeButton);
 
@@ -808,5 +807,19 @@ class World {
 
 
         this.ctx.translate(-this.camera_x, 0);
+    }
+
+
+    addAvatarInfo() {
+        this.addStateBarToMap('hpBar');
+        this.addStateBarToMap('energyBar');
+        this.addStateBarToMap('staminaBar');
+    }
+
+
+    addStateBarToMap(key) {
+        this.addToMap(this[key].bg);
+        this.addGroupToMap(this[key].points);
+        this.addToMap(this[key].border);
     }
 }

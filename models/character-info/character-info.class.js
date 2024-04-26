@@ -64,7 +64,7 @@ class CharacterInfo extends DrawableObject {
     fillHp() {
         for (let i = 0; i < this.hpCounter; i++) {
             let x = (95.5 + i * 1) / 64;
-            let hpPoint = new HpPoint(x, 7.90625);
+            let hpPoint = new HpPoint(x);
             this.hpPoints.push(hpPoint);
         }
     }
@@ -73,7 +73,7 @@ class CharacterInfo extends DrawableObject {
     fillEnergy() {
         for (let i = 0; i < this.energyCounter; i++) {
             let x = (93 + i * 1) / 64;
-            let energyPoint = new EnergyPoint(x, 7.59375);
+            let energyPoint = new EnergyPoint(x);
             this.energyPoints.push(energyPoint);
         }
     }
@@ -93,7 +93,7 @@ class CharacterInfo extends DrawableObject {
             if (this.energyPoints.length < 100 && !world.hero.isKey('keydown', 'keyD')) {
                 // this.energyCounter++;
                 let x = (93 + this.energyPoints.length * 1) / 64;
-                let energyPoint = new EnergyPoint(x, 7.59375);
+                let energyPoint = new EnergyPoint(x);
                 this.energyPoints.push(energyPoint);
                 // this.energyCounter = this.energyPoints.length;
             }
