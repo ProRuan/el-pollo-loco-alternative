@@ -1,9 +1,5 @@
 class Fire extends MagicObject {
-    currentImage = 0;
     prolog = 3;
-    otherDirection = true;
-    inTouch = false;
-    colliding = false;
     radDispl = 128;
     sound = './audio/elemental_magic/magic_fire_hit.wav';
 

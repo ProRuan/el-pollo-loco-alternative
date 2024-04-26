@@ -1,7 +1,6 @@
 class AnimatedObject extends DrawableObject {
     directory = 'img/objects_animated/';
     flipBook = FLIP_BOOK_OBJECTS;
-    currentImage = 0;
     indent = 4;
 
 

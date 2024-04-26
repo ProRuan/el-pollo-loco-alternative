@@ -2,6 +2,7 @@ class DrawableObject extends CoordinateSystem {
     width;
     height;
     img;
+    currentImage = 0;
     imageCache = [];
     patternFile = /([a-z]+\_?[a-z]*)(\d+)(.png)/;    // notwendig?
 

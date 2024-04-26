@@ -1,7 +1,9 @@
 class MagicObject extends DrawableObject {
     directory = 'img/bosses/magic/';
-    cover;
     flipBook = FLIP_BOOK_MAGIC;
+    otherDirection = true;
+    inTouch = false;
+    colliding = false;
 
 
     constructor(x, y, name) {

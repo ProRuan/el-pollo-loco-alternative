@@ -1,9 +1,5 @@
 class Lightning extends MagicObject {
-    currentImage = 0;
     prolog = 2;
-    otherDirection = true;
-    inTouch = false;
-    colliding = false;
 
     conjured = false;
     searching = true;
@@ -12,7 +8,7 @@ class Lightning extends MagicObject {
     magicDelay = true;
 
     radDispl = 128;
-    sound = './audio/elemental_magic/magic_lightning_hit.wav';
+    sound = SOUND_MAGIC_LIGHTNING_HIT;
 
 
     constructor(x, y) {

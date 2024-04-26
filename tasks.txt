@@ -339,12 +339,10 @@ Checkliste (active ...) (completed: 0 / ...)
 
   Super Tasks
   -----------
-    --> Simplify character info methods ...
-          --> use new classes and methods - check
-          --> think about folder structure ...
+    - Responsiveness: see note.
+    - Start / pause / stop game: see note.
 
-    - Simplify leaf class.
-    - Simplify grass class.
+    
     - Simplify audio.
     - Simplify img.
 
@@ -365,7 +363,9 @@ Checkliste (active ...) (completed: 0 / ...)
     - level1.js ... + ...
 
 
-    - class AnimatedObject ... - ... (7/8 + ...)
+  Classes ... - ... (34/65)
+  -------
+    - class AnimatedObject ... - ... (7/9 + ...)
         - class Bird - simpleCheck
         - class Bomb ... - ...
         - class Coin - simpleCheck
@@ -375,9 +375,12 @@ Checkliste (active ...) (completed: 0 / ...)
         - class Star ... - ... (optional)
         - class Web - check - simpleCheck
 
-    - classes AvatarInfo simpleCheck - ... (0/18)
-    - class GrassObject simpleCheck - ... (0/7)
-    - class Leaf - simpleCheck
+    - classes AvatarInfo - simpleCheck - ... (0/18)
+    - class GrassObject - simpleCheck - ... (0/7)
+    - class Leaf - simpleCheck - ... (0/1)
+
+    - class MagicObject - simpleCheck - ... (1/4) --> note: cover???
+        - class Blade ...
 
     - class Counter - doubleCheck
     - class FlipBook ...

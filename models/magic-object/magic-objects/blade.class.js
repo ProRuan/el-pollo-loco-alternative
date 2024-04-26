@@ -1,11 +1,8 @@
 class Blade extends MagicObject {
-    currentImage = 0;
+    speed = 192 / 60;
     prolog = 3;
-    otherDirection = true;
-    inTouch = false;
-    colliding = false;
     radDispl = 152;
-    sound = './audio/elemental_magic/magic_blade_hit.wav';
+    sound = SOUND_MAGIC_FIRE_HIT;
 
 
     constructor(x, y) {
@@ -17,8 +14,8 @@ class Blade extends MagicObject {
     }
 
 
-    get xCenter() {    // set value!!!
-        return this.x + 128;
+    get xCenter() {
+        return this.x + this.width / 2;
     }
 
 
@@ -32,7 +29,7 @@ class Blade extends MagicObject {
     }
 
 
-    get yCenter() {    // set value!!!
+    get yCenter() {
         return this.y + this.height / 2;
     }
 
@@ -54,11 +51,9 @@ class Blade extends MagicObject {
                 this.directionSet = true;
             }
             if (!this.inTouch) {
-                this.x -= 192 / 60;
+                this.x -= this.speed;
                 this.y += this.speedY;
             }
-            // this.x -= 192 / 60;
-            // this.keep();
         }, 1000 / 60);
     }
 
