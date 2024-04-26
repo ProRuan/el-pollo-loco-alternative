@@ -7,27 +7,12 @@ class GrassFlyingStart extends GrassObject {
 
 
     get xLeft() {
-        return this.x + 8;
+        return this.x + this.indent;
     }
 
 
     get xCenter() {
-        return this.x + 36;
-    }
-
-
-    get xRight() {
-        return this.x + this.width;
-    }
-
-
-    get yTop() {
-        return this.y + 8;
-    }
-
-
-    get yCenter() {
-        return this.y + 36;
+        return this.x + (this.width - this.indent) / 2 + this.indent;
     }
 
 
