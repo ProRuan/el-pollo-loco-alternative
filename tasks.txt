@@ -347,6 +347,8 @@ Checkliste (active ...) (completed: 0 / ...)
     - Simplify audio.
     - Simplify img.
 
+    - optional: class DrawableObjectNew
+
   
   Clean Coding (0/?) + Jsdoc (0/?)
   ------------

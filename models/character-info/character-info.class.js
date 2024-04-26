@@ -12,10 +12,10 @@ class CharacterInfo extends DrawableObject {
     hpBarBg = new HpBarBg();
     hpBarBorder = new HpBarBorder();
 
-    energyBarBg = new StateBarBg(1.4765625, 7.5625);
-    energyBarBorder = new StateBarBorder(1.4375, 7.53125);
-    staminaBarBg = new StateBarBg(1.4765625, 7.28125);
-    staminaBarBorder = new StateBarBorder(1.4375, 7.25);
+    energyBarBg = new EnergyBarBg();
+    energyBarBorder = new EnergyBarBorder();
+    staminaBarBg = new StaminaBarBg();
+    staminaBarBorder = new StaminaBarBorder();
 
     itemBg = new ItemBg();
     itemBomb = new ItemBomb();

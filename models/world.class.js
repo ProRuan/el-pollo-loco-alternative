@@ -55,6 +55,9 @@ class World {
     selectedButton = undefined;
 
 
+    staminaBar = new StateBarObject(StaminaBarBg, StaminaBarBorder, 100);
+
+
     constructor(canvas, keyboard) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
@@ -226,6 +229,11 @@ class World {
 
         this.drawGameTitle();
         this.drawStartText();
+
+
+        this.addToMap(this.staminaBar.bg);
+        this.addGroupToMap(this.staminaBar.points);
+        this.addToMap(this.staminaBar.border);
         if (this.startedGame == true) {
             this.addToMap(this.homeButton);
 
