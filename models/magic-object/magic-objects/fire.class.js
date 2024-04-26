@@ -1,7 +1,7 @@
 class Fire extends MagicObject {
     prolog = 3;
     radDispl = 128;
-    sound = './audio/elemental_magic/magic_fire_hit.wav';
+    sound = SOUND_MAGIC_FIRE_HIT;
 
 
     constructor(x, y) {

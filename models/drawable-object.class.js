@@ -13,6 +13,36 @@ class DrawableObject extends CoordinateSystem {
     }
 
 
+    get xLeft() {
+        return this.x;
+    }
+
+
+    get xCenter() {
+        return this.x + this.width / 2;
+    }
+
+
+    get xRight() {
+        return this.x + this.width;
+    }
+
+
+    get yTop() {
+        return this.y;
+    }
+
+
+    get yCenter() {
+        return this.y + this.height / 2;
+    }
+
+
+    get yBottom() {
+        return this.y + this.height;
+    }
+
+
     setDimension(x, y, width, height) {
         this.setSize(width, height);
         this.setPosition(x, y);

@@ -11,21 +11,6 @@ class GrassObject extends DrawableObject {
     }
 
 
-    get xLeft() {
-        return this.x;
-    }
-
-
-    get xCenter() {
-        return this.x + this.width / 2;
-    }
-
-
-    get xRight() {
-        return this.x + this.width;
-    }
-
-
     get yTop() {
         return this.y + this.indent;
     }
@@ -33,10 +18,5 @@ class GrassObject extends DrawableObject {
 
     get yCenter() {
         return this.y + (this.height - this.indent) / 2 + this.indent;
-    }
-
-
-    get yBottom() {
-        return this.y + this.height;
     }
 }

@@ -363,7 +363,7 @@ Checkliste (active ...) (completed: 0 / ...)
     - level1.js ... + ...
 
 
-  Classes ... - ... (34/65)
+  Classes ... - ... (38/65)
   -------
     - class AnimatedObject ... - ... (7/9 + ...)
         - class Bird - simpleCheck
@@ -381,6 +381,10 @@ Checkliste (active ...) (completed: 0 / ...)
 
     - class MagicObject - simpleCheck - ... (1/4) --> note: cover???
         - class Blade ...
+        - class Fire ...
+        - class Lightning ...
+
+    - classes of (simple) objects - simpleCheck - ... (0/4)
 
     - class Counter - doubleCheck
     - class FlipBook ...
