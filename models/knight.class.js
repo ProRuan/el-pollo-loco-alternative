@@ -48,22 +48,17 @@ class Knight extends MoveableObject {
 
 
     get xLeft() {
-        return this.x + 28;    // before a wrong value - is all working?!?
+        return this.x + HERO_X_LEFT;    // before a wrong value - is all working?!?
     }
 
 
     get xCenter() {
-        return this.x + 44;
+        return this.x + HERO_X_CENTER;
     }
 
 
     get xRight() {
-        return this.x + 60;
-    }
-
-
-    get xPush() {
-        return this.x + 66;
+        return this.x + HERO_X_RIGHT;
     }
 
 
@@ -294,7 +289,6 @@ class Knight extends MoveableObject {
             this.collect('hit_points');
             // this.collectCoinNew();
             // this.collectCoin();
-            this.pushStone();
             this.hit();
         }, 1000 / 60);
 
@@ -631,23 +625,6 @@ class Knight extends MoveableObject {
     }
 
 
-    pushStone() {    // isPushing() is missing!!!
-        let inTouch = this.world.STONES.find(s => s.xLeft < this.xPush && this.xPush < s.xRight && s.yTop < this.yPush && this.yPush < s.yBottom);
-        if (inTouch) {    // only x --> y is missing!!!
-            this.pushing = true;
-            this.lastStone = inTouch;
-            inTouch.x += this.speed;
-            inTouch.rolling = true;
-            // inTouch.playAnimation(inTouch.flipBook);
-        } else {
-            this.pushing = false;
-            if (this.lastStone !== undefined) {
-                this.lastStone.rolling = false;
-            }
-        }
-    }
-
-
     isPushing() {
         return this.pushing !== undefined && this.pushing;
     }
@@ -672,8 +649,8 @@ class Knight extends MoveableObject {
             if (object instanceof Crystal) {
                 this.bombSkillUnlocked = true;
                 this.playSound(this.soundUpgrade);
-                this.world.level.setXLevelEnd(LEVEL_SIZE);
-                this.world.level.setXLevelStartCrystal(LEVEL_SIZE);
+                this.world.level.setXLevelEnd();
+                this.world.level.setXLevelStartCrystal();
             }
         }
     }

@@ -2,8 +2,6 @@ let canvas;
 let keyboard;
 let world;
 
-let canvasWidth = CANVAS_WIDTH;
-let canvasHeight = CANVAS_HEIGHT;
 let LEVELS = [];
 let intervalIds = [];
 let counter = new Counter();

@@ -339,6 +339,7 @@ Checkliste (active ...) (completed: 0 / ...)
 
   Super Tasks
   -----------
+    - Add hearts ...
     - Responsiveness: see note.
     - Start / pause / stop game: see note.
 
@@ -400,6 +401,7 @@ Checkliste (active ...) (completed: 0 / ...)
     - class Keyboard ...
     - class Knight ...
     - class Layer - simpleCheck
+    - class Level ...
 
 
     

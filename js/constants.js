@@ -1,9 +1,24 @@
-const CANVAS_WIDTH = 960;
-const CANVAS_HEIGHT = 540;
+let canvasWidth = 960;    // no constants!!!
+let canvasHeight = 540;    // no constants!!!
+const CANVAS_WIDTH = canvasWidth;
+const CANVAS_HEIGHT = canvasHeight;
+
+const HERO_X_CENTER = 44;
+const HERO_X_LEFT = HERO_X_CENTER - 16;
+const HERO_X_RIGHT = HERO_X_CENTER + 16;
+const CAMERA_X_OFFSET = 284;
+// let heroWidth = 128;
+
 
 const OBJECTS_TO_COUNT = [
-    'bird', 'bomb', 'coin', 'crystal', 'heart', 'hit_point', 'leaf', 'star', 'web'
-]
+    'bird', 'bomb', 'coin', 'crystal', 'heart',
+    'hit_point', 'leaf', 'star', 'web'
+];
+
+const OBJECTS_TO_LOAD = [
+    'background', 'clouds', 'birds', 'trees', 'grass_flying', 'grass',
+    'leaves', 'ladders', 'coins', 'crystals', 'hit_points', 'enemies'
+];
 
 
 // Please delete!!!

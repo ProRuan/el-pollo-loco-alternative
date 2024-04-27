@@ -1,56 +1,63 @@
 class Level {
-    translation = ORIGINAL_CANVAS_WIDTH;
-    cache = [];
-    BACKGROUND = [];
-    CLOUDS = [];
-    BIRDS = [];
-    TREES = [];
-    LEAVES = [];
-    GRASS_FLYING = [];
-    GRASS = [];
-    LADDERS = [];
-    COINS = [];
-    CRYSTALS = [];
-    HIT_POINTS = [];
-    STONES = [];
-    ENEMIES = [];
+    // Please check!!!
+    heroXLeft = HERO_X_LEFT;
+    heroXCenter = HERO_X_CENTER;
+    heroWidth = 128;    // Please check!!!
+    cameraXOffset = CAMERA_X_OFFSET;
+    worldSize = LEVEL_SIZE;
+    translation = canvasWidth;
+    keys = OBJECTS_TO_LOAD;
     levelEndPreviousOtherDirection = false;
     levelEndPrevious = false;
 
 
     constructor() {
+        this.setObjectsToLoad();
         this.setXLevelStart();
-        this.setXLevelEndCrystal(LEVEL_SIZE);
-        // this.setXLevelEnd(LEVEL_SIZE);
-        this.setXCameraEnd(LEVEL_SIZE);
+        this.setXLevelEndCrystal();
+        this.setXCameraEnd();
+    }
+
+
+    setObjectsToLoad() {
+        for (let i = 0; i < this.keys.length; i++) {
+            this.setObjectValue(i);
+        }
+    }
+
+
+    setObjectValue(i) {
+        let key = this.keys[i].toUpperCase();
+        this[key] = [];
     }
 
 
     setXLevelStart() {
-        this.X_LEVEL_START = 28;
+        this.X_LEVEL_START = this.heroXLeft;
     }
 
 
-    setXLevelStartCrystal(amount) {
-        this.X_LEVEL_START = (amount - 2) * ORIGINAL_CANVAS_WIDTH + 2.25 * 64 + 28;
+    setXLevelStartCrystal() {
+        this.X_LEVEL_START = (this.worldSize - 2) * canvasWidth + 144 + this.heroXLeft;
     }
 
 
-    setXLevelEndCrystal(amount) {
-        this.X_LEVEL_END = (amount - 2) * ORIGINAL_CANVAS_WIDTH + ORIGINAL_CANVAS_WIDTH / 2 - 44;
-        // console.log(this.X_LEVEL_END);
+    setXLevelEndCrystal() {
+        this.X_LEVEL_END = (this.worldSize - 2) * canvasWidth + canvasWidth / 2 - this.heroXCenter;
     }
 
 
-    setXLevelEnd(amount) {
-        this.X_LEVEL_END = (amount) * ORIGINAL_CANVAS_WIDTH - 84;
-        // this.X_LEVEL_END = (amount - 1) * ORIGINAL_CANVAS_WIDTH - 4 + 28;
+    setXLevelEnd() {
+        this.X_LEVEL_END = this.worldSize * canvasWidth - (this.heroWidth - this.heroXCenter);
     }
 
 
-    setXCameraEnd(amount) {
-        this.X_CAMERA_END = (amount - 1) * ORIGINAL_CANVAS_WIDTH + 284;
+    setXCameraEnd() {
+        this.X_CAMERA_END = (this.worldSize - 1) * canvasWidth + this.cameraXOffset;
     }
+
+
+
 
 
     loadBackground() {
