@@ -134,3 +134,8 @@ document.addEventListener('keyup', (event) => {
 function getElement(id) {
     return document.getElementById(id);
 }
+
+
+function getCurrentTime() {
+    return new Date().getTime();
+}

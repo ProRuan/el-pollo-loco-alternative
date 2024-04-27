@@ -24,7 +24,7 @@ class World {
     itemBorder = new ItemBorder();
 
 
-    // temp
+    // temp + to edit
     blade = new Blade(10.75, -0.5);
     blades = [new Blade(10.57, -0.5)];
     fire = new Fire(13, -0.25);
@@ -33,7 +33,7 @@ class World {
     lightnings = [new Lightning(4.75, 0.4)];
 
 
-    // Start Screen
+    // Start Screen + to edit
     startScreenDisplayed = true;
     selectedLevelDisplayed = false;
     worldTime = new Date().getTime();
@@ -68,6 +68,7 @@ class World {
     }
 
 
+    // Please delete getter!!!
     get BACKGROUND() {
         return this.level.BACKGROUND;
     }
@@ -138,18 +139,8 @@ class World {
     }
 
 
-    // only for testing
-    // endbossMagic = new Blade(this.ENDBOSS.xMagicBlade, this.ENDBOSS.yMagicBlade);
-    // endbossMagic = new Fire(this.ENDBOSS.xMagicFire, this.ENDBOSS.yMagicFire);
-    // endbossMagic = new Lightning(0, +284 / 64);
-    // magic (x, y) = (???, -0.0625)
-
-    setStartScreenBg() {
-        this.startScreenBg = new DrawableObject(0, 0, ORIGINAL_CANVAS_WIDTH, ORIGINAL_CANVAS_HEIGHT);
-        this.startScreenBg.loadImage('./img/start_screen/background.png');
-    }
-
-    draw() {
+    // World Methods
+    draw() {    // to edit
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         if (this.startScreenDisplayed == true) {
@@ -172,6 +163,11 @@ class World {
     }
 
 
+    getLevelObject(key) {
+        return this.level[key];
+    }
+
+
     addGroupToMap(moGroup) {
         moGroup.forEach(o => {
             this.addToMap(o);
@@ -179,20 +175,41 @@ class World {
     }
 
 
+    // to edit
     addToMap(mo) {
-        if (mo.otherDirection) {
-            this.flipImage(mo);
-        }
-
+        this.flipImageMaster(mo, () => this.flipImage(mo));
         mo.draw(this.ctx);
-        mo.drawFrame(this.ctx);
+        mo.drawFrame(this.ctx);    // only for testing!!!
+        this.flipImageMaster(mo, () => this.flipImageBack(mo));
+    }
 
+
+    flipImageMaster(mo, subfunction) {
         if (mo.otherDirection) {
-            this.flipImageBack(mo);
+            subfunction(mo);
         }
     }
 
 
+
+
+    // Level Methods
+
+    // only for testing
+    // endbossMagic = new Blade(this.ENDBOSS.xMagicBlade, this.ENDBOSS.yMagicBlade);
+    // endbossMagic = new Fire(this.ENDBOSS.xMagicFire, this.ENDBOSS.yMagicFire);
+    // endbossMagic = new Lightning(0, +284 / 64);
+    // magic (x, y) = (???, -0.0625)
+
+
+    // Start Screen Methods
+    setStartScreenBg() {
+        this.startScreenBg = new DrawableObject(0, 0, canvasWidth, canvasHeight);
+        this.startScreenBg.loadImage('./img/start_screen/background.png');
+    }
+
+
+    // to edit
     flipImage(mo) {    // set mo.object!!!
         this.ctx.save();
         this.ctx.translate(mo.width / 2 + mo.radDispl, 0);    // k + 24, d + 40
@@ -207,6 +224,7 @@ class World {
     }
 
 
+    // to edit
     drawStartScreen() {
         if (this.startScreenRevealed === undefined) {
             this.ctx.globalAlpha = 0;
@@ -284,30 +302,34 @@ class World {
     }
 
 
+    // to edit (optional)
     drawGameTitle() {
-        this.ctx.font = "80px Arial";
-        let txt = "Raising Fantasy";
-        let txtWidth = this.ctx.measureText(txt).width;
-        // console.log(txtWidth);
-        this.ctx.fillText(txt, 480 - txtWidth / 2, 270);
+        this.setCenteredText('80px Arial', 'Raising Fantasy', canvasHeight / 2);
     }
 
 
-    drawStartText() {
-        if (!this.startedGame) {
-            let currentTime = new Date().getTime();
-            if (currentTime - this.lastWorldTime > 1000) {
-                this.lastWorldTime = currentTime;
-            } else if (currentTime - this.lastWorldTime > 500) {
+    setCenteredText(font, text, height) {
+        this.ctx.font = font;
+        let textWidth = this.ctx.measureText(text).width;
+        this.ctx.fillText(text, canvasWidth / 2 - textWidth / 2, height);
+    }
 
-            } else if (currentTime - this.lastWorldTime > 0) {
-                this.ctx.font = "24px Arial";
-                let txt = "Press any button";
-                let txtWidth = this.ctx.measureText(txt).width;
-                // console.log(txtWidth);
-                this.ctx.fillText(txt, 480 - txtWidth / 2, 400);
+
+    // to edit
+    drawStartText() {
+        if (!this.startedGame) {    // to edit
+            let currentTime = getCurrentTime();
+            if (this.isOnTime(currentTime, 1000)) {
+                this.lastWorldTime = currentTime;
+            } else if (this.isOnTime(currentTime, 0) && this.isOnTime(currentTime, 500)) {
+                this.setCenteredText('24px Arial', 'Press any button', 400);
             }
         }
+    }
+
+
+    isOnTime(currentTime, ms) {
+        return ms <= currentTime - this.lastWorldTime;
     }
 
 
