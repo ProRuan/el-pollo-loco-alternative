@@ -1,56 +1,18 @@
 class World {
-    level = level1;
 
-    // character = new Character();
-    // enemy = [new Enemy()];
-    // stone = new Stone(1, 1);
 
-    hero = new Knight();
-    // dino = new Dino();
-    // ent = new Ent();
-    // spider = new Spider();
-    // endboss = new Shaman();
-    // bird = new Bird(3.75, 7.415);
-    // bomb = new Bomb(3.75, 3);
-    bomb = undefined;
-    bombs = [];
+    // Please sort at the end!!!
     canvas;
     ctx;
     keyboard;
+
+
+    // Level
+    level = level1;
+    hero = new Knight();
     camera_x = 0;
-
-
-    // temp
-    webs = [];
-    blade = new Blade(10.75, -0.5);
-    blades = [new Blade(10.57, -0.5)];
-    fire = new Fire(13, -0.25);
-    fires = [new Fire(8, -0.5)];
-    lightning = new Lightning(0, +284 / 64);
-    lightnings = [new Lightning(4.75, 0.4)];
-
-    ladderBottom = new LadderBottom(4.25, 0.875);
-    ladderCenter = new LadderCenter(4.25, 3.875);
-    ladderTop = new LadderTop(4.25, 4.375);
-    ladder = [
-        new LadderBottom(4.25, 0.875),
-        new LadderCenter(4.25, 1.375), new LadderCenter(4.25, 1.875), new LadderCenter(4.25, 2.375), new LadderCenter(4.25, 2.875),
-        new LadderCenter(4.25, 3.375), new LadderCenter(4.25, 3.875),
-        new LadderTop(4.25, 4.375)
-    ];
-
-    startScreenDisplayed = true;
-    selectedLevelDisplayed = false;
-
-    worldTime = new Date().getTime();
-    lastWorldTime = 0;
-    startedGame = false;
-    birdArrow = new Bird(8.50625, 2.925);
-    activeButton = 'new game';
-    creditsOpened = false;
-    leaderboardOpened = false;
-    leaderboardContent = 'settings';
-    selectedButton = undefined;
+    bomb = undefined;
+    webs = [];    // to keep!!!
 
     avatarImage = new AvatarImage();
     avatarFrame = new AvatarFrame();
@@ -62,10 +24,36 @@ class World {
     itemBorder = new ItemBorder();
 
 
+    // temp
+    blade = new Blade(10.75, -0.5);
+    blades = [new Blade(10.57, -0.5)];
+    fire = new Fire(13, -0.25);
+    fires = [new Fire(8, -0.5)];
+    lightning = new Lightning(0, +284 / 64);
+    lightnings = [new Lightning(4.75, 0.4)];
+
+
+    // Start Screen
+    startScreenDisplayed = true;
+    selectedLevelDisplayed = false;
+    worldTime = new Date().getTime();
+    lastWorldTime = 0;
+    startedGame = false;
+    birdArrow = new Bird(8.50625, 2.925);
+    activeButton = 'new game';
+    creditsOpened = false;
+    leaderboardOpened = false;
+    leaderboardContent = 'settings';
+    selectedButton = undefined;
+
+
     constructor(canvas, keyboard) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.keyboard = keyboard;
+
+
+        // to edit
         this.setStartScreenBg();
         this.setCredits();
         this.setCupButton();
@@ -795,9 +783,6 @@ class World {
 
         if (this.bomb !== undefined) {
             this.addToMap(this.bomb);
-        }
-        if (this.bombs.length > 0 && this.bombs[0] !== undefined) {
-            this.addToMap(this.bombs[0]);
         }
         // this.addToMap(this.fire);
         // this.addToMap(this.lightning);
