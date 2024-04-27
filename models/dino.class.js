@@ -1,18 +1,12 @@
 class Dino extends MoveableObject {
     directory = 'img/enemies/dino/';
     flipBook = FLIP_BOOK_DINO;
-    speed = 64 / 60;
-    energy = 100;
-
-
     groundLevel = 484;
+    energy = 100;
 
     otherDirection = true;
     dying = false;
     dead = false;
-    yStairwayMax = 228 - 108;
-    yStairwayMin = 272 + 100;
-    climbing = false;
 
     startTime = new Date().getTime();
     lastHit = 0;
@@ -26,6 +20,7 @@ class Dino extends MoveableObject {
 
     constructor(x, y) {
         super(x, y);    // Please verfiy!!!
+        this.setSpeed(64);
         this.setCover('dino');
         this.loadImage(this.cover);
         this.loadFlipBookImages(this.flipBook);

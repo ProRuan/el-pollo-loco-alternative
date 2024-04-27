@@ -363,7 +363,7 @@ Checkliste (active ...) (completed: 0 / ...)
     - level1.js ... + ...
 
 
-  Classes ... - ... (43/64)
+  Classes ... - ... (45/63)
   -------
     - class AnimatedObject ... - ... (7/9 + ...)
         - class Bird - simpleCheck
@@ -391,8 +391,16 @@ Checkliste (active ...) (completed: 0 / ...)
     - class Cloud - simpleCheck
     - class CoordinateSystem - simpleCheck
     - class Counter - simpleCheck
-
+    - class Dino ...
+    - class DrawableObject ...
+    - (class Enemy --> still to create!!!) ...
+    - class Ent ...
     - class FlipBook ...
+    - class Key - simpleCheck
+    - class Keyboard ...
+    - class Knight ...
+    - class Layer - simpleCheck
+
 
     
 
