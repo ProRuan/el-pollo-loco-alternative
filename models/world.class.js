@@ -258,8 +258,9 @@ class World {
             }
 
 
-            this.drawNewGameButton();
-            this.drawTextCredits();
+            this.drawMainMenuButton('New game', 364, 'newGameButton');
+            this.drawMainMenuButton('Credits', 436, 'creditsButton');
+
             this.addToMap(this.birdArrow);
 
             if (this.creditsOpened == true) {
@@ -338,19 +339,19 @@ class World {
     }
 
 
-    drawNewGameButton() {
+    drawMainMenuButton(text, height, name) {
         if (this.startedGame) {
-            this.drawTextNewGame();
-            this.drawTextFrame('24px Arial', 'New game');
-            this.setMenuButton('newGameFrame');
+            this.drawTextNewGame(text, height);
+            this.drawTextFrame('24px Arial', text, height);
+            this.setMainMenuButton(text, name);
         }
     }
 
 
-    drawTextNewGame() {
-        this.drawTextShadowOnCondition('new game', 'green', 16);
-        this.drawCenteredText('24px Arial', 'New game', 364);
-        this.drawTextShadowOnCondition('new game', 'rgba(0, 0, 0, 0)', 0);
+    drawTextNewGame(text, height) {
+        this.drawTextShadowOnCondition(text, 'green', 16);
+        this.drawCenteredText('24px Arial', text, height);
+        this.drawTextShadowOnCondition(text, 'rgba(0, 0, 0, 0)', 0);
     }
 
 
@@ -369,52 +370,20 @@ class World {
 
 
     // to edit + to delete finally!!!
-    drawTextFrame(font, text) {
+    drawTextFrame(font, text, height) {
         let textWidth = this.getTextWidth(font, text);
         this.ctx.beginPath();
         this.ctx.lineWidth = '1';
         this.ctx.strokeStyle = 'yellow';
-        this.ctx.rect(canvasWidth / 2 - textWidth / 2 - 4, 400 - 36 - 36 / 2 - 4, textWidth + 8, 24 + 8);
+        this.ctx.rect(canvasWidth / 2 - textWidth / 2 - 4, height - 36 / 2 - 4, textWidth + 8, 24 + 8);
         this.ctx.stroke();
     }
 
 
     // to edit
-    setMenuButton(name) {
-        let textWidth = this.getTextWidth('24px Arial', 'New game');
+    setMainMenuButton(text, name) {
+        let textWidth = this.getTextWidth('24px Arial', text);
         this[name] = new DrawableObject((canvasWidth / 2 - textWidth / 2 - 4) / 64, (400 - 36 - 36 / 2 - 4) / 64, textWidth + 8, 24 + 8);    // Please move!!!
-    }
-
-
-    drawTextCredits() {
-        if (this.startedGame) {
-            // this.drawTextNewGame();
-            // this.drawTextFrame('24px Arial', 'New game');
-            // this.setMenuButton('newGameFrame');
-
-            this.ctx.font = "24px Arial";
-            let txt = "Credits";
-            let txtWidth = this.ctx.measureText(txt).width;
-            // console.log(480 - txtWidth / 2, txtWidth, 480 - txtWidth / 2 + txtWidth);
-            if (this.activeButton == 'credits') {
-                this.ctx.shadowColor = 'green';
-                this.ctx.shadowBlur = 16;
-                this.ctx.fillText(txt, 480 - txtWidth / 2, 400 + 36);
-                this.ctx.shadowColor = 'rgba(0, 0, 0, 0)';
-                this.ctx.shadowBlur = 0;
-            } else {
-                this.ctx.fillText(txt, 480 - txtWidth / 2, 400 + 36);
-            }
-            // this.ctx.fillText(txt, 480 - txtWidth / 2, 400 + 36);
-
-            this.ctx.beginPath();
-            this.ctx.lineWidth = '1';
-            this.ctx.strokeStyle = 'yellow';
-            this.ctx.rect(480 - txtWidth / 2 - 4, 400 + 36 - 36 / 2 - 4, txtWidth + 8, 24 + 8);
-            this.ctx.stroke();
-
-            this.creditsFrame = new DrawableObject((480 - txtWidth / 2 - 4) / 64, (400 - 36 - 36 / 2 - 4) / 64, txtWidth + 8, 24 + 8);    // Please move!!!
-        }
     }
 
 
@@ -548,14 +517,14 @@ class World {
     setBirdArrow() {
         setInterval(() => {
             if (this.keyboard.mouseClick !== undefined) {
-                if (this.keyboard.arrowUp.keydown || this.newGameFrame.x < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < this.newGameFrame.x + this.newGameFrame.width &&
-                    this.newGameFrame.y < 540 - this.keyboard.mouseClick.yOffset && 540 - this.keyboard.mouseClick.yOffset < this.newGameFrame.y + this.newGameFrame.height) {    // Please also chane on mouseclick!!!
+                if (this.keyboard.arrowUp.keydown || this.newGameButton.x < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < this.newGameButton.x + this.newGameButton.width &&
+                    this.newGameButton.y < 540 - this.keyboard.mouseClick.yOffset && 540 - this.keyboard.mouseClick.yOffset < this.newGameButton.y + this.newGameButton.height) {    // Please also chane on mouseclick!!!
                     // this.birdArrow = new Bird(8.50625, 2.925);
                     this.birdArrow.setPosition(8.50625, 2.925 - 0.5);
                     this.birdArrow.speed = 0;
                     this.activeButton = 'new game';
-                } else if (this.keyboard.arrowDown.keydown || this.creditsFrame.x < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < this.creditsFrame.x + this.creditsFrame.width &&
-                    this.creditsFrame.y < 540 - this.keyboard.mouseClick.yOffset + 72 && 540 - this.keyboard.mouseClick.yOffset + 72 < this.creditsFrame.y + this.creditsFrame.height) {
+                } else if (this.keyboard.arrowDown.keydown || this.creditsButton.x < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < this.creditsButton.x + this.creditsButton.width &&
+                    this.creditsButton.y < 540 - this.keyboard.mouseClick.yOffset + 72 && 540 - this.keyboard.mouseClick.yOffset + 72 < this.creditsButton.y + this.creditsButton.height) {
                     // this.birdArrow = new Bird(8.19375, 1.8);
                     this.birdArrow.setPosition(8.19375, 1.8 - 0.5);
                     this.birdArrow.speed = 0;
@@ -575,14 +544,14 @@ class World {
             }
             if (this.keyboard.mouseClick !== undefined) {
                 if (!this.keyboard.escape.keydown &&
-                    this.newGameFrame.x < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < this.newGameFrame.x + this.newGameFrame.width &&
-                    this.newGameFrame.y < 540 - this.keyboard.mouseClick.yOffset && 540 - this.keyboard.mouseClick.yOffset < this.newGameFrame.y + this.newGameFrame.height &&
+                    this.newGameButton.x < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < this.newGameButton.x + this.newGameButton.width &&
+                    this.newGameButton.y < 540 - this.keyboard.mouseClick.yOffset && 540 - this.keyboard.mouseClick.yOffset < this.newGameButton.y + this.newGameButton.height &&
                     this.startScreenDisplayed == true && this.selectedLevelDisplayed == false) {
                     // this.startScreenDisplayed = false;
                     // this.selectedLevelDisplayed = true;
                     this.birdArrow.speed = 120 / 60;
                     this.activeButton = 'new game';
-                    console.log(this.newGameFrame.y, 540 - this.keyboard.mouseClick.yOffset, this.newGameFrame.y + this.newGameFrame.height);
+                    console.log(this.newGameButton.y, 540 - this.keyboard.mouseClick.yOffset, this.newGameButton.y + this.newGameButton.height);
 
                     setTimeout(() => {
                         this.startScreenDisplayed = false;
@@ -711,8 +680,8 @@ class World {
 
             if (this.keyboard.mouseClick !== undefined) {
                 if (
-                    this.creditsFrame.x < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < this.creditsFrame.x + this.creditsFrame.width &&
-                    this.creditsFrame.y < 540 - this.keyboard.mouseClick.yOffset + 72 && 540 - this.keyboard.mouseClick.yOffset + 72 < this.creditsFrame.y + this.creditsFrame.height
+                    this.creditsButton.x < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < this.creditsButton.x + this.creditsButton.width &&
+                    this.creditsButton.y < 540 - this.keyboard.mouseClick.yOffset + 72 && 540 - this.keyboard.mouseClick.yOffset + 72 < this.creditsButton.y + this.creditsButton.height
                 ) {
                     this.creditsOpened = true;
                     this.activeButton = 'credits';
@@ -726,7 +695,7 @@ class World {
 
             if (this.creditsOpened == true && this.keyboard.mouseClick &&
                 (this.keyboard.mouseClick.xOffset < this.credits.x || this.credits.x + this.credits.width < this.keyboard.mouseClick.xOffset ||
-                    540 - this.keyboard.mouseClick.yOffset + 72 < this.creditsFrame.y || this.creditsFrame.y + this.creditsFrame.width < 540 - this.keyboard.mouseClick.yOffset + 72)) {
+                    540 - this.keyboard.mouseClick.yOffset + 72 < this.creditsButton.y || this.creditsButton.y + this.creditsButton.width < 540 - this.keyboard.mouseClick.yOffset + 72)) {
                 this.creditsOpened = false;
                 delete this.keyboard.mouseClick;
             }
