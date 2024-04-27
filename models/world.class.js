@@ -258,7 +258,7 @@ class World {
             }
 
 
-            this.drawTextNewGame();
+            this.drawNewGameButton();
             this.drawTextCredits();
             this.addToMap(this.birdArrow);
 
@@ -304,14 +304,19 @@ class World {
 
     // to edit (optional)
     drawGameTitle() {
-        this.setCenteredText('80px Arial', 'Raising Fantasy', canvasHeight / 2);
+        this.drawCenteredText('80px Arial', 'Raising Fantasy', canvasHeight / 2);
     }
 
 
-    setCenteredText(font, text, height) {
-        this.ctx.font = font;
-        let textWidth = this.ctx.measureText(text).width;
+    drawCenteredText(font, text, height) {
+        let textWidth = this.getTextWidth(font, text);
         this.ctx.fillText(text, canvasWidth / 2 - textWidth / 2, height);
+    }
+
+
+    getTextWidth(font, text) {
+        this.ctx.font = font;
+        return this.ctx.measureText(text).width;
     }
 
 
@@ -322,7 +327,7 @@ class World {
             if (this.isOnTime(currentTime, 1000)) {
                 this.lastWorldTime = currentTime;
             } else if (this.isOnTime(currentTime, 0) && this.isOnTime(currentTime, 500)) {
-                this.setCenteredText('24px Arial', 'Press any button', 400);
+                this.drawCenteredText('24px Arial', 'Press any button', 400);
             }
         }
     }
@@ -333,35 +338,60 @@ class World {
     }
 
 
-    drawTextNewGame() {
+    drawNewGameButton() {
         if (this.startedGame) {
-            this.ctx.font = "24px Arial";
-            let txt = "New game";
-            let txtWidth = this.ctx.measureText(txt).width;
-            // console.log(480 - txtWidth / 2, txtWidth, 480 - txtWidth / 2 + txtWidth);
-            if (this.activeButton == 'new game') {
-                this.ctx.shadowColor = 'green';
-                this.ctx.shadowBlur = 16;
-                this.ctx.fillText(txt, 480 - txtWidth / 2, 400 - 36);
-                this.ctx.shadowColor = 'rgba(0, 0, 0, 0)';
-                this.ctx.shadowBlur = 0;
-            } else {
-                this.ctx.fillText(txt, 480 - txtWidth / 2, 400 - 36);
-
-            }
-            this.ctx.beginPath();
-            this.ctx.lineWidth = '1';
-            this.ctx.strokeStyle = 'yellow';
-            this.ctx.rect(480 - txtWidth / 2 - 4, 400 - 36 - 36 / 2 - 4, txtWidth + 8, 24 + 8);
-            this.ctx.stroke();
-
-            this.newGameFrame = new DrawableObject((480 - txtWidth / 2 - 4) / 64, (400 - 36 - 36 / 2 - 4) / 64, txtWidth + 8, 24 + 8);    // Please move!!!
+            this.drawTextNewGame();
+            this.drawTextFrame('24px Arial', 'New game');
+            this.setMenuButton('newGameFrame');
         }
+    }
+
+
+    drawTextNewGame() {
+        this.drawTextShadowOnCondition('new game', 'green', 16);
+        this.drawCenteredText('24px Arial', 'New game', 364);
+        this.drawTextShadowOnCondition('new game', 'rgba(0, 0, 0, 0)', 0);
+    }
+
+
+    drawTextShadowOnCondition(name, color, value) {
+        name = name.toLowerCase();
+        if (this.activeButton == name) {
+            this.drawTextShadow(color, value);
+        }
+    }
+
+
+    drawTextShadow(color, value) {
+        this.ctx.shadowColor = color;
+        this.ctx.shadowBlur = value;
+    }
+
+
+    // to edit + to delete finally!!!
+    drawTextFrame(font, text) {
+        let textWidth = this.getTextWidth(font, text);
+        this.ctx.beginPath();
+        this.ctx.lineWidth = '1';
+        this.ctx.strokeStyle = 'yellow';
+        this.ctx.rect(canvasWidth / 2 - textWidth / 2 - 4, 400 - 36 - 36 / 2 - 4, textWidth + 8, 24 + 8);
+        this.ctx.stroke();
+    }
+
+
+    // to edit
+    setMenuButton(name) {
+        let textWidth = this.getTextWidth('24px Arial', 'New game');
+        this[name] = new DrawableObject((canvasWidth / 2 - textWidth / 2 - 4) / 64, (400 - 36 - 36 / 2 - 4) / 64, textWidth + 8, 24 + 8);    // Please move!!!
     }
 
 
     drawTextCredits() {
         if (this.startedGame) {
+            // this.drawTextNewGame();
+            // this.drawTextFrame('24px Arial', 'New game');
+            // this.setMenuButton('newGameFrame');
+
             this.ctx.font = "24px Arial";
             let txt = "Credits";
             let txtWidth = this.ctx.measureText(txt).width;
