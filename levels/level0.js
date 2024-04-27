@@ -13,9 +13,7 @@ function initLevel1() {
 
 
 function initLevelLandscape() {
-    level1.loadBackground();
-    level1.loadClouds();
-    level1.loadBirds();
+    level1.loadLandscape();
 }
 
 

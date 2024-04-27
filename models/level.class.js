@@ -58,83 +58,91 @@ class Level {
     }
 
 
-    // loadBackground(id) {
-    //     let t = getTranslation(id);
-    //     let background = new Background(t);
-    //     for (let i = 0; i < background.layers.length - 1; i++) {
-    //         this.loadLayer(background, i);
-    //     }
-    // }
-
-
-    // getTranslation(id) {
-    //     return id * this.translation / 64;
-    // }
-
-
-    // loadLayer(bg, i) {
-    //     let layer = new Layer(bg, i);
-    //     this.BACKGROUND.push(layer);
-    // }
-
-
-    // loadCloud(id) {
-    //     let t = getTranslation(id);
-    //     let background = new Background(t);
-    //     let cloud = new Cloud(background);
-    //     this.CLOUDS.push(cloud);
-    // }
-
-
-    // Please edit!!!
-    loadBackground() {
-        for (let i = 0; i < LEVEL_SIZE; i++) {
-            let t = i * this.translation / 64;
-            let background = new Background(t);
-            for (let j = 0; j < background.layers.length - 1; j++) {
-                let layer = new Layer(background, j);
-                this.BACKGROUND.push(layer);
-            }
-            // let cloud = new Cloud(background);
-            // this.CLOUDS.push(cloud);
-            // this.loadLastCloud(i);
-        }
-    }
-
-
-    // Please edit!!!
-    loadClouds() {
-        for (let i = 0; i < LEVEL_SIZE + 1; i++) {
-            let t = i * this.translation / 64;
-            let background = new Background(t);
-            let cloud = new Cloud(background);
-            this.CLOUDS.push(cloud);
-        }
-    }
-
-
-    // Please edit!!!
-    loadBirds() {
+    loadLandscape() {
         for (let i = 0; i < this.worldSize; i++) {
-            let amount = 3 - Math.round(Math.random() * 2);
-            for (let j = 0; j < amount; j++) {
-                let x = 13.75 - Math.round(Math.random() * 12) + i * this.translation / 64;
-                let y = 7.415 - Math.round(Math.random() * 4);
-                let bird = new Bird(x, y);
-                this.BIRDS.push(bird);
-            }
+            this.loadBackground(i);
+            this.loadClouds(i);
+            this.loadBirdSwarm(i);
         }
+    }
+
+
+    loadBackground(i) {
+        let background = this.getBackground(i);
+        for (let j = 0; j < background.layers.length - 1; j++) {
+            this.loadLayer(background, j);
+        }
+    }
+
+
+    getBackground(i) {
+        let t = this.getTranslation(i);
+        return new Background(t);
+    }
+
+
+    getTranslation(i) {
+        return i * this.translation / 64;
+    }
+
+
+    loadLayer(bg, j) {
+        let layer = new Layer(bg, j);
+        this.BACKGROUND.push(layer);
+    }
+
+
+    loadClouds(i) {
+        let background = this.getBackground(i);
+        let cloud = new Cloud(background);
+        this.CLOUDS.push(cloud);
+    }
+
+
+    loadBirdSwarm(i) {
+        let number = this.getBirdNumber();
+        for (let j = 0; j < number; j++) {
+            this.loadBird(i);
+        }
+    }
+
+
+    loadBird(i) {
+        let x = this.getBirdX(i);
+        let y = this.getBirdY();
+        let bird = new Bird(x, y);
+        this.BIRDS.push(bird);
+    }
+
+
+    getBirdNumber() {
+        return 3 - Math.round(Math.random() * 2)
+    }
+
+
+    getBirdX(i) {
+        return 13.75 - Math.round(Math.random() * 12) + i * this.translation / 64;
+    }
+
+
+    getBirdY() {
+        return 7.415 - Math.round(Math.random() * 4);
     }
 
 
     loadSectionObjects(array, id, key) {
         let objects = array[id];
         if (objects) {
-            for (let i = 0; i < objects.length; i++) {
-                let object = objects[i];
-                object.x += id * this.translation;
-                this[key].push(object);
-            }
+            this.loadObjects(objects, id, key);
+        }
+    }
+
+
+    loadObjects(objects, id, key) {
+        for (let i = 0; i < objects.length; i++) {
+            let object = objects[i];
+            object.x += id * this.translation;
+            this[key].push(object);
         }
     }
 
