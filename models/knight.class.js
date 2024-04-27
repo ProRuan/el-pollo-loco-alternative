@@ -72,11 +72,6 @@ class Knight extends MoveableObject {
     }
 
 
-    get yPush() {
-        return this.y + 96;
-    }
-
-
     get yBottom() {
         return this.y + 112;
     }
@@ -98,15 +93,8 @@ class Knight extends MoveableObject {
 
 
     get xCamera() {
-        return this.x - 284;
+        return this.x - CAMERA_X_OFFSET;
     }
-
-
-    // idle() {
-    //     setInterval(() => {
-    //         this.playAnimation(FLIP_BOOK_HERO.IDLE);
-    //     }, 100);
-    // }
 
 
     attack() {    // add parameter enemy!!!
