@@ -27,11 +27,11 @@
 
 // ];
 
-// const CRYSTAL1_1 = [
+// const CRYSTALS1_1 = [
 
 // ];
 
-// const HIT_POINT1_1 = [
+// const HIT_POINTS1_1 = [
 
 // ];
 
@@ -71,12 +71,12 @@ const COINS1_1 = [
 ];
 
 
-const CRYSTAL1_1 = [
+const CRYSTALS1_1 = [
 
 ];
 
 
-const HIT_POINT1_1 = [
+const HIT_POINTS1_1 = [
 
 ];
 
@@ -110,7 +110,7 @@ const COINS1_2 = [
     new Coin(3.25, 1.125), new Coin(4.25, 1.125), new Coin(6.25, 3.125), new Coin(10.25, 1.125)
 ];
 
-const HIT_POINT1_2 = [
+const HIT_POINTS1_2 = [
     new HitPoint(8.25, 3.125)
 ];
 
@@ -139,7 +139,7 @@ const COINS1_3 = [
     new Coin(2, 1.125), new Coin(5.5, 1.125)
 ];
 
-const HIT_POINT1_3 = [
+const HIT_POINTS1_3 = [
     new HitPoint(3.75, 3.125)
 ];
 
@@ -181,7 +181,7 @@ const COINS1_4 = [
 ];
 
 
-const HIT_POINT1_4 = [
+const HIT_POINTS1_4 = [
     new HitPoint(7.25, 6.625), new HitPoint(7.25, 3.125)
 ];
 
@@ -218,7 +218,7 @@ const COINS1_5 = [
     new Coin(3.25, 1.125), new Coin(5.25, 3.125), new Coin(9.25, 3.125), new Coin(11.25, 5.125)
 ];
 
-const HIT_POINT1_5 = [
+const HIT_POINTS1_5 = [
     new HitPoint(6.25, 3.125), new HitPoint(8.25, 3.125), new HitPoint(13.75, 5.125)
 ];
 
@@ -258,7 +258,7 @@ const COINS1_6 = [
 ];
 
 
-const HIT_POINT1_6 = [
+const HIT_POINTS1_6 = [
     new HitPoint(0.75, 5.125)
 ];
 
@@ -297,12 +297,12 @@ const COINS1_7 = [
 ];
 
 
-const CRYSTAL1_7 = [
+const CRYSTALS1_7 = [
     new Crystal(7.25, 3.125)
 ];
 
 
-const HIT_POINT1_7 = [
+const HIT_POINTS1_7 = [
     new HitPoint(3.25, 3.125), new HitPoint(4.25, 3.125), new HitPoint(5.25, 3.125), new HitPoint(9.25, 3.125),
     new HitPoint(10.25, 3.125), new HitPoint(11.25, 3.125)
 ];
@@ -342,11 +342,11 @@ const COINS1_8 = [
 
 ];
 
-const CRYSTAL1_8 = [
+const CRYSTALS1_8 = [
 
 ];
 
-const HIT_POINT1_8 = [
+const HIT_POINTS1_8 = [
 
 ];
 
@@ -381,12 +381,12 @@ const COINS1 = [
     COINS1_1, COINS1_2, COINS1_3, COINS1_4, COINS1_5, COINS1_6, null, null
 ];
 
-const CRYSTAL1 = [
-    CRYSTAL1_1, null, null, null, null, null, CRYSTAL1_7, null
+const CRYSTALS1 = [
+    CRYSTALS1_1, null, null, null, null, null, CRYSTALS1_7, null
 ];
 
-const HIT_POINT1 = [
-    HIT_POINT1_1, HIT_POINT1_2, HIT_POINT1_3, HIT_POINT1_4, HIT_POINT1_5, HIT_POINT1_6, HIT_POINT1_7, null
+const HIT_POINTS1 = [
+    HIT_POINTS1_1, HIT_POINTS1_2, HIT_POINTS1_3, HIT_POINTS1_4, HIT_POINTS1_5, HIT_POINTS1_6, HIT_POINTS1_7, null
 ];
 
 const ENEMIES1 = [

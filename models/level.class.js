@@ -1,12 +1,13 @@
 class Level {
-    // Please check!!!
+    heroWidth = HERO_WIDTH;
     heroXLeft = HERO_X_LEFT;
     heroXCenter = HERO_X_CENTER;
-    heroWidth = 128;    // Please check!!!
     cameraXOffset = CAMERA_X_OFFSET;
     worldSize = LEVEL_SIZE;
-    translation = canvasWidth;
     keys = OBJECTS_TO_LOAD;
+    translation = canvasWidth;
+
+    // Please verify!!!
     levelEndPreviousOtherDirection = false;
     levelEndPrevious = false;
 
@@ -58,8 +59,7 @@ class Level {
 
 
 
-
-
+    // Please edit!!!
     loadBackground() {
         for (let i = 0; i < LEVEL_SIZE; i++) {
             let t = i * this.translation / 64;
@@ -75,16 +75,7 @@ class Level {
     }
 
 
-    // loadLastCloud(i) {
-    //     if (i == LEVEL_SIZE - 1) {
-    //         let t = ++i * this.translation / 64;
-    //         let background = new Background(t);
-    //         let cloud = new Cloud(background);
-    //         this.CLOUDS.push(cloud);
-    //     }
-    // }
-
-
+    // Please edit!!!
     loadClouds() {
         for (let i = 0; i < LEVEL_SIZE + 1; i++) {
             let t = i * this.translation / 64;
@@ -95,6 +86,7 @@ class Level {
     }
 
 
+    // Please edit!!!
     loadCloud(n) {
         let background = new Background(n);
         let cloud = new Cloud(background);
@@ -102,6 +94,7 @@ class Level {
     }
 
 
+    // Please edit!!!
     loadBirds(n) {
         let amount = 3 - Math.round(Math.random() * 2);
         for (let i = 0; i < amount; i++) {
@@ -113,185 +106,20 @@ class Level {
     }
 
 
-    loadTreesNew(trees, n) {
-        if (trees) {
-            for (let i = 0; i < trees.length; i++) {
-                let tree = trees[i];
-                tree.x += n * this.translation;
-                this.TREES.push(tree);
+    loadSectionObjects(array, id, key) {
+        let objects = array[id];
+        if (objects) {
+            for (let i = 0; i < objects.length; i++) {
+                let object = objects[i];
+                object.x += id * this.translation;
+                this[key].push(object);
             }
         }
     }
 
 
-    loadLeavesNew(leaves, n) {
-        if (leaves) {
-            for (let i = 0; i < leaves.length; i++) {
-                let leaf = leaves[i];
-                leaf.x += n * this.translation;
-                this.LEAVES.push(leaf);
-            }
-        }
-    }
-
-
-    loadTrees(n) {
-        for (let i = 0; i < this.cache.length; i++) {
-            let tree = this.cache[i];
-            tree.x += n * this.translation;
-            this.TREES.push(tree);
-        }
-        this.cache = [];
-    }
-
-
-    loadLeaves(n) {
-        for (let i = 0; i < this.cache.length; i++) {
-            let leaf = this.cache[i];
-            leaf.x += n * this.translation;
-            this.LEAVES.push(leaf);
-        }
-        this.cache = [];
-    }
-
-
-    loadGrassNew(grassGroup, n) {
-        for (let i = 0; i < grassGroup.length; i++) {
-            let grass = grassGroup[i];
-            grass.x += n * this.translation;
-            this.GRASS.push(grass);
-        }
-    }
-
-
-    loadGrass(n) {
-        for (let i = 0; i < this.cache.length; i++) {
-            let grass = this.cache[i];
-            grass.x += n * this.translation;
-            this.GRASS.push(grass);
-        }
-        this.cache = [];
-    }
-
-
-    loadGrassFlyingNew(grassFlyingGroup, n) {
-        if (grassFlyingGroup) {
-            for (let i = 0; i < grassFlyingGroup.length; i++) {
-                let grassFlying = grassFlyingGroup[i];
-                grassFlying.x += n * this.translation;
-                this.GRASS_FLYING.push(grassFlying);
-            }
-        }
-    }
-
-
-    loadGrassFlying(n) {
-        for (let i = 0; i < this.cache.length; i++) {
-            let grass = this.cache[i];
-            grass.x += n * this.translation;
-            this.GRASS_FLYING.push(grass);
-        }
-        this.cache = [];
-    }
-
-
-    loadLadders(ladders, n) {
-        if (ladders) {
-            for (let i = 0; i < ladders.length; i++) {
-                let stairway = ladders[i];
-                stairway.x += n * this.translation;
-                this.LADDERS.push(stairway);
-            }
-        }
-    }
-
-
-    loadCoinsNew(coinGroup, n) {
-        if (coinGroup) {
-            for (let i = 0; i < coinGroup.length; i++) {
-                let coin = coinGroup[i];
-                coin.x += n * this.translation;
-                this.COINS.push(coin);
-            }
-        }
-    }
-
-
-    loadCrystalsNew(crystals, n) {    // double code!!!
-        if (crystals) {
-            for (let i = 0; i < crystals.length; i++) {
-                let crystal = crystals[i];
-                crystal.x += n * this.translation;
-                this.CRYSTALS.push(crystal);
-            }
-        }
-    }
-
-
-    loadHitPointsNew(hitpoints, n) {    // double code!!!
-        if (hitpoints) {
-            for (let i = 0; i < hitpoints.length; i++) {
-                let hitPoint = hitpoints[i];
-                hitPoint.x += n * this.translation;
-                this.HIT_POINTS.push(hitPoint);
-            }
-        }
-    }
-
-
-    loadCoins(n) {
-        for (let i = 0; i < this.cache.length; i++) {
-            let coin = this.cache[i];
-            coin.x += n * this.translation;
-            this.COINS.push(coin);
-        }
-        this.cache = [];
-    }
-
-
-    loadCrystals(n) {    // double code!!!
-        for (let i = 0; i < this.cache.length; i++) {
-            let crystal = this.cache[i];
-            crystal.x += n * this.translation;
-            this.CRYSTALS.push(crystal);
-        }
-        this.cache = [];
-    }
-
-
-    loadHitPoints(n) {    // double code!!!
-        for (let i = 0; i < this.cache.length; i++) {
-            let hitPoint = this.cache[i];
-            hitPoint.x += n * this.translation;
-            this.HIT_POINTS.push(hitPoint);
-        }
-        this.cache = [];
-    }
-
-
-    loadStones(n) {
-        for (let i = 0; i < this.cache.length; i++) {
-            let stone = this.cache[i];
-            stone.x += n * this.translation;
-            this.STONES.push(stone);
-        }
-        this.cache = [];
-    }
-
-
-    loadEnemies(enemies, n) {
-        if (enemies) {
-            for (let i = 0; i < enemies.length; i++) {
-                let enemy = enemies[i];
-                enemy.x += n * this.translation;
-                this.ENEMIES.push(enemy);
-            }
-        }
-    }
-
-
-    loadEndboss(endboss, n) {
-        endboss.x += n * this.translation;
+    loadEndboss(endboss) {
+        endboss.x += (this.worldSize - 1) * this.translation;
         this.ENDBOSS = endboss;
     }
 }

@@ -3,6 +3,7 @@ let canvasHeight = 540;    // no constants!!!
 const CANVAS_WIDTH = canvasWidth;
 const CANVAS_HEIGHT = canvasHeight;
 
+const HERO_WIDTH = 128;
 const HERO_X_CENTER = 44;
 const HERO_X_LEFT = HERO_X_CENTER - 16;
 const HERO_X_RIGHT = HERO_X_CENTER + 16;

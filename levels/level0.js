@@ -4,32 +4,35 @@ let level1;
 initLevel1();
 
 function initLevel1() {
-    level1 = new Level(1);
+    level1 = new Level(1);    // Please review!!!
     level1.loadBackground();    // Please review!!!
     level1.loadClouds();    // Please review!!!
-    initSection(0);
-    initSection(1);
-    initSection(2);
-    initSection(3);
-    initSection(4);
-    initSection(5);
-    initSection(6);
-    initSection(7);
-    level1.loadEndboss(ENDBOSS1, LEVEL_SIZE - 1);    // Please set final value!!!
+    initLevelSections();
+    initLevelEndboss();
+}
 
-    // load background section by section
+
+function initLevelSections() {
+    for (let i = 0; i < LEVEL_SIZE; i++) {
+        initSection(i);
+    }
 }
 
 
 function initSection(id) {
     level1.loadBirds(id);    // Please review
-    level1.loadTreesNew(TREES1[id], id);
-    level1.loadLeavesNew(LEAVES1[id], id);
-    level1.loadGrassFlyingNew(GRASS_FLYING1[id], id);
-    level1.loadGrassNew(GRASS1[id], id);
-    level1.loadLadders(LADDERS1[id], id);
-    level1.loadCoinsNew(COINS1[id], id);
-    level1.loadCrystalsNew(CRYSTAL1[id], id);
-    level1.loadHitPointsNew(HIT_POINT1[id], id);
-    level1.loadEnemies(ENEMIES1[id], id);
+    level1.loadSectionObjects(TREES1, id, 'TREES');
+    level1.loadSectionObjects(GRASS_FLYING1, id, 'GRASS_FLYING');
+    level1.loadSectionObjects(GRASS1, id, 'GRASS');
+    level1.loadSectionObjects(LADDERS1, id, 'LADDERS');
+    level1.loadSectionObjects(LEAVES1, id, 'LEAVES');
+    level1.loadSectionObjects(COINS1, id, 'COINS');
+    level1.loadSectionObjects(CRYSTALS1, id, 'CRYSTALS');
+    level1.loadSectionObjects(HIT_POINTS1, id, 'HIT_POINTS');
+    level1.loadSectionObjects(ENEMIES1, id, 'ENEMIES');
+}
+
+
+function initLevelEndboss() {
+    level1.loadEndboss(ENDBOSS1);
 }
