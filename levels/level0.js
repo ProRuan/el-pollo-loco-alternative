@@ -3,12 +3,19 @@ let level1;
 
 initLevel1();
 
+
 function initLevel1() {
     level1 = new Level(1);    // Please review!!!
-    level1.loadBackground();    // Please review!!!
-    level1.loadClouds();    // Please review!!!
+    initLevelLandscape();
     initLevelSections();
     initLevelEndboss();
+}
+
+
+function initLevelLandscape() {
+    level1.loadBackground();
+    level1.loadClouds();
+    level1.loadBirds();
 }
 
 
@@ -20,7 +27,6 @@ function initLevelSections() {
 
 
 function initSection(id) {
-    level1.loadBirds(id);    // Please review
     level1.loadSectionObjects(TREES1, id, 'TREES');
     level1.loadSectionObjects(GRASS_FLYING1, id, 'GRASS_FLYING');
     level1.loadSectionObjects(GRASS1, id, 'GRASS');
