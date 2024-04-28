@@ -17,6 +17,7 @@ class StartScreen {
         this.setStartScreenBg();
         this.setCredits();
         this.setExtraButtons();
+        this.setleaderboard();
         this.setVolumeButtons();
 
         this.updateWorld(this, world);
@@ -61,6 +62,13 @@ class StartScreen {
 
     getButtonName(name, subname) {
         return (!subname) ? name + 'Button' : name + subname + 'Button';
+    }
+
+
+    // to edit
+    setleaderboard() {
+        this.leaderboard = new DrawableObject(0 + 15 / 2 - 382 / 64 / 2, 540 / 64 / 2 - 441 / 64 / 2, 382, 441);
+        this.leaderboard.loadImage('./img/start_screen/leaderboard.png');
     }
 
 

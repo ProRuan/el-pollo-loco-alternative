@@ -37,20 +37,18 @@ class World {
     lightnings = [new Lightning(4.75, 0.4)];
 
 
+    // only for testing
+    // endbossMagic = new Blade(this.ENDBOSS.xMagicBlade, this.ENDBOSS.yMagicBlade);
+    // endbossMagic = new Fire(this.ENDBOSS.xMagicFire, this.ENDBOSS.yMagicFire);
+    // endbossMagic = new Lightning(0, +284 / 64);
+    // magic (x, y) = (???, -0.0625)
+
+
     constructor(canvas, keyboard) {
-        this.canvas = canvas;
-        this.ctx = canvas.getContext('2d');
-        this.keyboard = keyboard;
+        this.init(canvas, keyboard);
         this.setStartScreen();
 
-
-
-
-        // to edit
-        this.setBirdArrow();
-        this.setleaderboard();
-
-
+        this.setBirdArrow();    // to edit (startScreen)
 
         this.draw();
         this.setWorld();
@@ -128,6 +126,13 @@ class World {
     }
 
 
+    init(canvas, keyboard) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.keyboard = keyboard;
+    }
+
+
     setStartScreen() {
         this.startScreen = new StartScreen(this);
     }
@@ -183,19 +188,6 @@ class World {
             subfunction(mo);
         }
     }
-
-
-
-
-    // Level Methods
-
-    // only for testing
-    // endbossMagic = new Blade(this.ENDBOSS.xMagicBlade, this.ENDBOSS.yMagicBlade);
-    // endbossMagic = new Fire(this.ENDBOSS.xMagicFire, this.ENDBOSS.yMagicFire);
-    // endbossMagic = new Lightning(0, +284 / 64);
-    // magic (x, y) = (???, -0.0625)
-
-
 
 
     // to edit
@@ -373,16 +365,6 @@ class World {
     setMainMenuButton(text, name) {    // height as parameter!?!
         let textWidth = this.getTextWidth('24px Arial', text);
         this[name] = new DrawableObject((canvasWidth / 2 - textWidth / 2 - 4) / 64, (400 - 36 - 36 / 2 - 4) / 64, textWidth + 8, 24 + 8);    // Please move!!!
-    }
-
-
-
-
-
-    // to edit
-    setleaderboard() {
-        this.leaderboard = new DrawableObject(0 + 15 / 2 - 382 / 64 / 2, 540 / 64 / 2 - 441 / 64 / 2, 382, 441);
-        this.leaderboard.loadImage('./img/start_screen/leaderboard.png');
     }
 
 
