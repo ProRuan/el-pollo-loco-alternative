@@ -51,20 +51,24 @@ class World {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.keyboard = keyboard;
+        this.startScreen = new StartScreen(this);
+        // this.setValues();
 
 
         // to edit
         this.setStartScreenBg();
         this.setCredits();
-        this.setCupButton();
-        this.setHomeButton();
-        this.setSettingsButton();
+        
         this.setArrowLeftButton();
         this.setArrowRightButton();
         this.setBirdArrow();
         this.setleaderboard();
         this.draw();
         this.setWorld();
+
+
+        // this.startScreen = new StartScreen(this);
+        // this.testBackSuccessfull = this.startScreen.testBack;
     }
 
 
@@ -137,6 +141,13 @@ class World {
     get ENDBOSS() {
         return this.level.ENDBOSS;
     }
+
+
+    // setValues() {
+    //     for (const [key] of Object.entries(this.startScreen)) {
+    //         this[key] = this.startScreen[key];
+    //     }
+    // }
 
 
     // World Methods
@@ -387,10 +398,7 @@ class World {
     }
 
 
-    setCupButton() {
-        this.cupButton = new DrawableObject(0.5, 0.5, 66, 66);
-        this.cupButton.loadImage('./img/start_screen/cup_button.png');
-    }
+    
 
 
     // to edit
@@ -422,20 +430,6 @@ class World {
         this.arrowRightMusicButton.loadImage('./img/start_screen/arrow_right.png');
         this.arrowRightSoundButton = new DrawableObject(960 / 2 / 64 + 2 - 0.109375, 540 / 64 - 3.5625, 10, 17);
         this.arrowRightSoundButton.loadImage('./img/start_screen/arrow_right.png');
-    }
-
-
-    // to edit
-    setHomeButton() {
-        this.homeButton = new DrawableObject(0.5, 540 / 64 - 66 / 64 - 0.5, 66, 66);
-        this.homeButton.loadImage('./img/start_screen/home_button.png');
-    }
-
-
-    // to edit
-    setSettingsButton() {
-        this.settingsButton = new DrawableObject(14 - 66 / 2 / 64, 0.5, 66, 66);
-        this.settingsButton.loadImage('./img/start_screen/settings_button.png');
     }
 
 
