@@ -6,8 +6,8 @@ class StartScreen {
     activeButton = 'new game';
     creditsOpened = false;
     leaderboardOpened = false;
-    leaderboardContent = 'settings';
-    selectedButton = undefined;
+    leaderboardContent = 'settings';    // check!!!
+    selectedButton = undefined;    // neccessary???
 
 
     // to edit (until this is complete)!!!
@@ -17,6 +17,7 @@ class StartScreen {
         this.setStartScreenBg();
         this.setCredits();
         this.setExtraButtons();
+        this.setVolumeButtons();
 
         this.updateWorld(this, world);
     }
@@ -29,6 +30,7 @@ class StartScreen {
     }
 
 
+    // to edit
     setStartScreenBg() {
         this.startScreenBg = new DrawableObject(0, 0, canvasWidth, canvasHeight);
         this.startScreenBg.loadImage('./img/start_screen/background.png');
@@ -51,8 +53,40 @@ class StartScreen {
 
 
     setButton(name, x, y) {
-        let key = name + 'Button';
+        let key = this.getButtonName(name);
         this[key] = new DrawableObject(x, y, 66, 66);
         this[key].loadImage(`./img/start_screen/${name}_button.png`);
+    }
+
+
+    getButtonName(name, subname) {
+        return (!subname) ? name + 'Button' : name + subname + 'Button';
+    }
+
+
+    setVolumeButtons() {
+        this.setArrowLeftButton();
+        this.setArrowRightButton();
+    }
+
+
+    // to edit
+    setArrowLeftButton() {
+        this.setArrowButton('left', 'Music', 960 / 2 / 64 + 0.109375, 540 / 64 - 3);    // variable!!!
+        this.setArrowButton('left', 'Sound', 960 / 2 / 64 + 0.109375, 540 / 64 - 3.5625);    // variable!!!
+    }
+
+
+    setArrowButton(name, subname, x, y) {
+        let key = this.getButtonName(name, subname);
+        this[key] = new DrawableObject(x, y, 10, 17);
+        this[key].loadImage(`./img/start_screen/arrow_${name}.png`);
+    }
+
+
+    // to edit
+    setArrowRightButton() {
+        this.setArrowButton('right', 'Music', 960 / 2 / 64 + 2 - 0.109375, 540 / 64 - 3);    // variable!!!
+        this.setArrowButton('right', 'Sound', 960 / 2 / 64 + 2 - 0.109375, 540 / 64 - 3.5625);    // variable!!!
     }
 }

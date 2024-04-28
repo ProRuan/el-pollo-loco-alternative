@@ -47,8 +47,6 @@ class World {
 
 
         // to edit
-        this.setArrowLeftButton();
-        this.setArrowRightButton();
         this.setBirdArrow();
         this.setleaderboard();
 
@@ -198,7 +196,7 @@ class World {
     // magic (x, y) = (???, -0.0625)
 
 
-   
+
 
     // to edit
     flipImage(mo) {    // set mo.object!!!
@@ -282,10 +280,10 @@ class World {
                 }
                 if (this.leaderboardContent == 'settings') {
                     this.drawSettings();
-                    this.addToMap(this.arrowLeftMusicButton);
-                    this.addToMap(this.arrowLeftSoundButton);
-                    this.addToMap(this.arrowRightMusicButton);
-                    this.addToMap(this.arrowRightSoundButton);
+                    this.addToMap(this.leftMusicButton);
+                    this.addToMap(this.leftSoundButton);
+                    this.addToMap(this.rightMusicButton);
+                    this.addToMap(this.rightSoundButton);
                 }
             }
 
@@ -388,25 +386,10 @@ class World {
     }
 
 
-    
 
 
-    // to edit
-    setArrowLeftButton() {
-        this.arrowLeftMusicButton = new DrawableObject(960 / 2 / 64 + 0.109375, 540 / 64 - 3, 10, 17);
-        this.arrowLeftMusicButton.loadImage('./img/start_screen/arrow_left.png');
-        this.arrowLeftSoundButton = new DrawableObject(960 / 2 / 64 + 0.109375, 540 / 64 - 3.5625, 10, 17);
-        this.arrowLeftSoundButton.loadImage('./img/start_screen/arrow_left.png');
-    }
 
 
-    // to edit
-    setArrowRightButton() {
-        this.arrowRightMusicButton = new DrawableObject(960 / 2 / 64 + 2 - 0.109375, 540 / 64 - 3, 10, 17);
-        this.arrowRightMusicButton.loadImage('./img/start_screen/arrow_right.png');
-        this.arrowRightSoundButton = new DrawableObject(960 / 2 / 64 + 2 - 0.109375, 540 / 64 - 3.5625, 10, 17);
-        this.arrowRightSoundButton.loadImage('./img/start_screen/arrow_right.png');
-    }
 
 
     // to edit
