@@ -381,7 +381,7 @@ class World {
 
 
     // to edit
-    setMainMenuButton(text, name) {
+    setMainMenuButton(text, name) {    // height as parameter!?!
         let textWidth = this.getTextWidth('24px Arial', text);
         this[name] = new DrawableObject((canvasWidth / 2 - textWidth / 2 - 4) / 64, (400 - 36 - 36 / 2 - 4) / 64, textWidth + 8, 24 + 8);    // Please move!!!
     }
@@ -393,18 +393,21 @@ class World {
     }
 
 
+    // to edit
     setleaderboard() {
         this.leaderboard = new DrawableObject(0 + 15 / 2 - 382 / 64 / 2, 540 / 64 / 2 - 441 / 64 / 2, 382, 441);
         this.leaderboard.loadImage('./img/start_screen/leaderboard.png');
     }
 
 
+    // to edit
     setCredits() {
         this.credits = new DrawableObject(15 / 2 - 276 / 64 / 2, 540 / 64 / 2 - 333 / 64 / 2, 276, 333);
         this.credits.loadImage('./img/start_screen/credits_bg.png');
     }
 
 
+    // to edit
     setArrowLeftButton() {
         this.arrowLeftMusicButton = new DrawableObject(960 / 2 / 64 + 0.109375, 540 / 64 - 3, 10, 17);
         this.arrowLeftMusicButton.loadImage('./img/start_screen/arrow_left.png');
@@ -413,6 +416,7 @@ class World {
     }
 
 
+    // to edit
     setArrowRightButton() {
         this.arrowRightMusicButton = new DrawableObject(960 / 2 / 64 + 2 - 0.109375, 540 / 64 - 3, 10, 17);
         this.arrowRightMusicButton.loadImage('./img/start_screen/arrow_right.png');
@@ -421,70 +425,78 @@ class World {
     }
 
 
+    // to edit
     setHomeButton() {
         this.homeButton = new DrawableObject(0.5, 540 / 64 - 66 / 64 - 0.5, 66, 66);
         this.homeButton.loadImage('./img/start_screen/home_button.png');
     }
 
 
+    // to edit
     setSettingsButton() {
         this.settingsButton = new DrawableObject(14 - 66 / 2 / 64, 0.5, 66, 66);
         this.settingsButton.loadImage('./img/start_screen/settings_button.png');
     }
 
 
+    // to edit
     drawHighScore() {
-        this.ctx.font = "24px Arial";
-        this.ctx.fillStyle = 'gold';
-        let textBestResult = 'Best result';
-        // let textCoins = "Coins: 0 / 20";
-        let textCoins = 'Coins:';
-        let textCoinsValue = '19 / 20';
-        // let textLeaves = "Leaves: 0 / 18";
-        let textLeaves = 'Leaves:';
-        let textLeavesValue = '15 / 18';
-        // let textLevelTime = 'Time required: ??:??:??';
-        let textTimeRequired = 'Time required:';
-        let textTimeRequiredValue = '7 min 32 s';
-
-        let textBestResultWidth = this.ctx.measureText(textBestResult).width;
-        this.ctx.fillText(textBestResult, 480 - textBestResultWidth / 2, 144 + 8);
-
-        this.ctx.font = "20px Arial";
-        this.ctx.fillText(textCoins, 352, 184 + 8);
-        this.ctx.fillText(textCoinsValue, 960 / 2 + 32, 184 + 8);
-        this.ctx.fillText(textLeaves, 352, 220 + 8);
-        this.ctx.fillText(textLeavesValue, 960 / 2 + 32, 220 + 8);
-        this.ctx.fillText(textTimeRequired, 352, 256 + 8);
-        this.ctx.fillText(textTimeRequiredValue, 960 / 2 + 32, 256 + 8);
+        this.drawBestResult();
+        this.drawLastResult();
 
 
-        this.ctx.font = "24px Arial";
-        this.ctx.fillStyle = 'white';
-        textBestResult = 'Last result';
-        this.ctx.fillText(textBestResult, 480 - textBestResultWidth / 2, 320 + 8);
-
-        this.ctx.font = '20px Arial';
-        textCoinsValue = '17 / 20';
-        textLeavesValue = '14 / 18';
-        textTimeRequiredValue = '9 min 16 s';
-
-        this.ctx.fillText(textCoins, 352, 360 + 8);
-        this.ctx.fillText(textCoinsValue, 960 / 2 + 32, 360 + 8);
-        this.ctx.fillText(textLeaves, 352, 396 + 8);
-        this.ctx.fillText(textLeavesValue, 960 / 2 + 32, 396 + 8);
-        this.ctx.fillText(textTimeRequired, 352, 432 + 8);
-        this.ctx.fillText(textTimeRequiredValue, 960 / 2 + 32, 432 + 8);
-
-
+        // create a button!!!
         this.ctx.beginPath();
         this.ctx.lineWidth = '1';
         this.ctx.strokeStyle = 'yellow';
         this.ctx.rect(650.5 - 14, 99.5 - 14, 28, 28);
         this.ctx.stroke();
 
+    }
 
-        this.ctx.fillStyle = 'black';    // Please update methods!!!
+
+    // to edit
+    drawBestResult() {    // set variables!!!
+        this.setFillStyle('gold');
+        this.drawCenteredText('24px Arial', 'Best result', 152);
+        this.setFont('20px Arial');
+        this.drawText('Coins:', 352, 192);
+        this.drawText('19 / 20', 960 / 2 + 32, 184 + 8);
+        this.drawText('Leaves:', 352, 228);
+        this.drawText('15 / 18', 960 / 2 + 32, 220 + 8);
+        this.drawText('Time required:', 352, 264);
+        this.drawText('7 min 32 s', 960 / 2 + 32, 256 + 8);
+        this.setFillStyle('black');
+    }
+
+
+    setFillStyle(color) {
+        this.ctx.fillStyle = color;
+    }
+
+
+    setFont(font) {
+        this.ctx.font = font;
+    }
+
+
+    // to edit
+    drawLastResult() {    // set variables!!!
+        this.setFillStyle('white');
+        this.drawCenteredText('24px Arial', 'Last result', 328);
+        this.setFont('20px Arial');
+        this.drawText('Coins:', 352, 368);
+        this.drawText('17 / 20', 960 / 2 + 32, 368);
+        this.drawText('Leaves:', 352, 404);
+        this.drawText('14 / 18', 960 / 2 + 32, 404);
+        this.drawText('Time required:', 352, 440);
+        this.drawText('9 min 16 s', 960 / 2 + 32, 440);
+        this.setFillStyle('black');
+    }
+
+
+    drawText(text, x, y) {
+        this.ctx.fillText(text, x, y);
     }
 
 
