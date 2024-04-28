@@ -18,6 +18,7 @@ class StartScreen {
         this.setCredits();
         this.setExtraButtons();
         this.setleaderboard();
+        this.setCloseButton();
         this.setVolumeButtons();
 
         this.updateWorld(this, world);
@@ -72,6 +73,12 @@ class StartScreen {
     }
 
 
+    // to edit
+    setCloseButton() {
+        this.closeButton = new DrawableObject((650.5 - 14) / 64, (99.5 - 14) / 64, 28, 28);
+    }
+
+
     setVolumeButtons() {
         this.setArrowLeftButton();
         this.setArrowRightButton();
@@ -96,5 +103,53 @@ class StartScreen {
     setArrowRightButton() {
         this.setArrowButton('right', 'Music', 960 / 2 / 64 + 2 - 0.109375, 540 / 64 - 3);    // variable!!!
         this.setArrowButton('right', 'Sound', 960 / 2 / 64 + 2 - 0.109375, 540 / 64 - 3.5625);    // variable!!!
+    }
+
+
+    drawHighScore() {
+        this.drawBestResult();
+        this.drawLastResult();
+    }
+
+
+    // to edit
+    drawBestResult() {    // set variables!!!
+        world.setFillStyle('gold');
+        world.drawCenteredText('24px Arial', 'Best result', 152);
+        world.setFont('20px Arial');
+        world.drawText('Coins:', 352, 192);
+        world.drawText('19 / 20', 960 / 2 + 32, 184 + 8);
+        world.drawText('Leaves:', 352, 228);
+        world.drawText('15 / 18', 960 / 2 + 32, 220 + 8);
+        world.drawText('Time required:', 352, 264);
+        world.drawText('7 min 32 s', 960 / 2 + 32, 256 + 8);
+        world.setFillStyle('black');
+    }
+
+
+    // to edit
+    drawLastResult() {    // set variables!!!
+        world.setFillStyle('white');
+        world.drawCenteredText('24px Arial', 'Last result', 328);
+        world.setFont('20px Arial');
+        world.drawText('Coins:', 352, 368);
+        world.drawText('17 / 20', 960 / 2 + 32, 368);
+        world.drawText('Leaves:', 352, 404);
+        world.drawText('14 / 18', 960 / 2 + 32, 404);
+        world.drawText('Time required:', 352, 440);
+        world.drawText('9 min 16 s', 960 / 2 + 32, 440);
+        world.setFillStyle('black');
+    }
+
+
+    // to edit
+    drawSettings() {    // set variables!!!
+        world.setFillStyle('white');
+        world.drawCenteredText('24px Arial', 'Volume', 152);
+        world.drawText('Music', 352, 192);
+        world.drawText('4', 960 / 2 + 64, 192);
+        world.drawText('Music', 352, 228);
+        world.drawText('7', 960 / 2 + 64, 228);
+        world.setFillStyle('black');
     }
 }

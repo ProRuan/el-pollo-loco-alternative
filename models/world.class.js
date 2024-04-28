@@ -205,17 +205,15 @@ class World {
     }
 
 
+    executeMethod(method) {
+        this.startScreen[method]();
+    }
+
+
     // to edit
     drawStartScreen() {
-        if (this.startScreenRevealed === undefined) {
-            this.ctx.globalAlpha = 0;
-            this.startScreenRevealed = false;
-        }
-        if (this.startScreenRevealed == false && this.ctx.globalAlpha < 1) {
-            this.ctx.globalAlpha += 0.01;
-        } else {
-            this.startScreenRevealed = true;
-        }
+        this.setDarkScreen();
+        this.revealStartScreen();
         this.addToMap(this.startScreenBg);
 
         this.drawGameTitle();
@@ -268,10 +266,10 @@ class World {
             if (this.leaderboardOpened == true) {
                 this.addToMap(this.leaderboard);
                 if (this.leaderboardContent == 'high score') {
-                    this.drawHighScore();
+                    this.executeMethod('drawHighScore');
                 }
                 if (this.leaderboardContent == 'settings') {
-                    this.drawSettings();
+                    this.executeMethod('drawSettings');
                     this.addToMap(this.leftMusicButton);
                     this.addToMap(this.leftSoundButton);
                     this.addToMap(this.rightMusicButton);
@@ -284,7 +282,23 @@ class World {
     }
 
 
-    // to edit (optional)
+    setDarkScreen() {
+        if (this.startScreenRevealed === undefined) {
+            this.ctx.globalAlpha = 0;
+            this.startScreenRevealed = false;
+        }
+    }
+
+
+    revealStartScreen() {
+        if (this.startScreenRevealed == false && this.ctx.globalAlpha < 1) {
+            this.ctx.globalAlpha += 0.01;
+        } else {
+            this.startScreenRevealed = true;
+        }
+    }
+
+
     drawGameTitle() {
         this.drawCenteredText('80px Arial', 'Raising Fantasy', canvasHeight / 2);
     }
@@ -370,41 +384,6 @@ class World {
 
 
 
-
-
-
-
-    // to edit
-    drawHighScore() {
-        this.drawBestResult();
-        this.drawLastResult();
-
-
-        // create a button!!!
-        this.ctx.beginPath();
-        this.ctx.lineWidth = '1';
-        this.ctx.strokeStyle = 'yellow';
-        this.ctx.rect(650.5 - 14, 99.5 - 14, 28, 28);
-        this.ctx.stroke();
-
-    }
-
-
-    // to edit
-    drawBestResult() {    // set variables!!!
-        this.setFillStyle('gold');
-        this.drawCenteredText('24px Arial', 'Best result', 152);
-        this.setFont('20px Arial');
-        this.drawText('Coins:', 352, 192);
-        this.drawText('19 / 20', 960 / 2 + 32, 184 + 8);
-        this.drawText('Leaves:', 352, 228);
-        this.drawText('15 / 18', 960 / 2 + 32, 220 + 8);
-        this.drawText('Time required:', 352, 264);
-        this.drawText('7 min 32 s', 960 / 2 + 32, 256 + 8);
-        this.setFillStyle('black');
-    }
-
-
     setFillStyle(color) {
         this.ctx.fillStyle = color;
     }
@@ -415,49 +394,8 @@ class World {
     }
 
 
-    // to edit
-    drawLastResult() {    // set variables!!!
-        this.setFillStyle('white');
-        this.drawCenteredText('24px Arial', 'Last result', 328);
-        this.setFont('20px Arial');
-        this.drawText('Coins:', 352, 368);
-        this.drawText('17 / 20', 960 / 2 + 32, 368);
-        this.drawText('Leaves:', 352, 404);
-        this.drawText('14 / 18', 960 / 2 + 32, 404);
-        this.drawText('Time required:', 352, 440);
-        this.drawText('9 min 16 s', 960 / 2 + 32, 440);
-        this.setFillStyle('black');
-    }
-
-
     drawText(text, x, y) {
         this.ctx.fillText(text, x, y);
-    }
-
-
-    drawSettings() {
-        this.ctx.font = "24px Arial";
-        this.ctx.fillStyle = 'white';
-        let textVolume = 'Volume';
-        // let textCoins = "Coins: 0 / 20";
-        let textMusic = 'Music:';
-        let textMusicValue = '4';
-        // let textLeaves = "Leaves: 0 / 18";
-        let textSound = 'Sound:';
-        let textSoundValue = '7';
-
-        let textVolumeWidth = this.ctx.measureText(textVolume).width;
-        this.ctx.fillText(textVolume, 480 - textVolumeWidth / 2, 144 + 8);
-        // console.log(textVolumeWidth);
-
-        this.ctx.font = "20px Arial";
-        this.ctx.fillText(textMusic, 352, 184 + 8);
-        this.ctx.fillText(textMusicValue, 960 / 2 + 64, 184 + 8);
-        this.ctx.fillText(textSound, 352, 220 + 8);
-        this.ctx.fillText(textSoundValue, 960 / 2 + 64, 220 + 8);
-
-
-        this.ctx.fillStyle = 'black';    // Please update methods!!!
     }
 
 
