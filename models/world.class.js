@@ -1,10 +1,14 @@
 class World {
-
-
-    // Please sort at the end!!!
     canvas;
     ctx;
     keyboard;
+    startedGame = false;
+    startScreenDisplayed = true;
+    selectedLevelDisplayed = false;
+    worldTime = new Date().getTime();
+    lastWorldTime = 0;
+
+
 
 
     // Level
@@ -33,42 +37,25 @@ class World {
     lightnings = [new Lightning(4.75, 0.4)];
 
 
-    // Start Screen + to edit
-    startScreenDisplayed = true;
-    selectedLevelDisplayed = false;
-    worldTime = new Date().getTime();
-    lastWorldTime = 0;
-    startedGame = false;
-    birdArrow = new Bird(8.50625, 2.925);
-    activeButton = 'new game';
-    creditsOpened = false;
-    leaderboardOpened = false;
-    leaderboardContent = 'settings';
-    selectedButton = undefined;
-
-
     constructor(canvas, keyboard) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.keyboard = keyboard;
-        this.startScreen = new StartScreen(this);
-        // this.setValues();
+        this.setStartScreen();
+
+
 
 
         // to edit
-        this.setStartScreenBg();
-        this.setCredits();
-        
         this.setArrowLeftButton();
         this.setArrowRightButton();
         this.setBirdArrow();
         this.setleaderboard();
+
+
+
         this.draw();
         this.setWorld();
-
-
-        // this.startScreen = new StartScreen(this);
-        // this.testBackSuccessfull = this.startScreen.testBack;
     }
 
 
@@ -143,11 +130,9 @@ class World {
     }
 
 
-    // setValues() {
-    //     for (const [key] of Object.entries(this.startScreen)) {
-    //         this[key] = this.startScreen[key];
-    //     }
-    // }
+    setStartScreen() {
+        this.startScreen = new StartScreen(this);
+    }
 
 
     // World Methods
@@ -159,7 +144,7 @@ class World {
         }
 
         // Please activate!!!
-        if (this.selectedLevelDisplayed == true) {
+        if (this.selectedLevelDisplayed == true) {    // neccessary???
             this.drawLevelComponents();
         }
 
@@ -213,12 +198,7 @@ class World {
     // magic (x, y) = (???, -0.0625)
 
 
-    // Start Screen Methods
-    setStartScreenBg() {
-        this.startScreenBg = new DrawableObject(0, 0, canvasWidth, canvasHeight);
-        this.startScreenBg.loadImage('./img/start_screen/background.png');
-    }
-
+   
 
     // to edit
     flipImage(mo) {    // set mo.object!!!
@@ -398,7 +378,7 @@ class World {
     }
 
 
-    
+
 
 
     // to edit
@@ -408,11 +388,7 @@ class World {
     }
 
 
-    // to edit
-    setCredits() {
-        this.credits = new DrawableObject(15 / 2 - 276 / 64 / 2, 540 / 64 / 2 - 333 / 64 / 2, 276, 333);
-        this.credits.loadImage('./img/start_screen/credits_bg.png');
-    }
+    
 
 
     // to edit
