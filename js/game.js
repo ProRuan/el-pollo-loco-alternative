@@ -139,3 +139,10 @@ function getElement(id) {
 function getCurrentTime() {
     return new Date().getTime();
 }
+
+
+function updateWorld(provider, recipient) {
+    for (const [key] of Object.entries(provider)) {
+        recipient[key] = provider[key];
+    }
+}

@@ -18,15 +18,6 @@ class World {
     bomb = undefined;
     webs = [];    // to keep!!!
 
-    avatarImage = new AvatarImage();
-    avatarFrame = new AvatarFrame();
-    hpBar = new HpBar();
-    energyBar = new EnergyBar();
-    staminaBar = new StaminaBar();
-    itemBg = new ItemBg();
-    itemBomb = new ItemBomb();
-    itemBorder = new ItemBorder();
-
 
     // temp + to edit
     blade = new Blade(10.75, -0.5);
@@ -47,6 +38,7 @@ class World {
     constructor(canvas, keyboard) {
         this.init(canvas, keyboard);
         this.setStartScreen();
+        this.setLevelScreen();
 
         this.setBirdArrow();    // to edit (startScreen)
 
@@ -138,6 +130,11 @@ class World {
     }
 
 
+    setLevelScreen() {
+        this.levelScreen = new LevelScreen(this);
+    }
+
+
     // World Methods
     draw() {    // to edit
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -205,8 +202,8 @@ class World {
     }
 
 
-    executeMethod(method) {
-        this.startScreen[method]();
+    executeMethodByKey(object, method) {
+        this[object][method]();
     }
 
 
@@ -266,10 +263,10 @@ class World {
             if (this.leaderboardOpened == true) {
                 this.addToMap(this.leaderboard);
                 if (this.leaderboardContent == 'high score') {
-                    this.executeMethod('drawHighScore');
+                    this.executeMethodByKey('startScreen', 'drawHighScore');
                 }
                 if (this.leaderboardContent == 'settings') {
-                    this.executeMethod('drawSettings');
+                    this.executeMethodByKey('startScreen', 'drawSettings');
                     this.addToMap(this.leftMusicButton);
                     this.addToMap(this.leftSoundButton);
                     this.addToMap(this.rightMusicButton);
@@ -661,7 +658,7 @@ class World {
         }
 
 
-        this.addAvatarInfo();
+        this.executeMethodByKey('levelScreen', 'addAvatarInfo');
 
         // Please enable!!!
         // ----------------
@@ -697,33 +694,5 @@ class World {
 
 
         this.ctx.translate(-this.camera_x, 0);
-    }
-
-
-    addAvatarInfo() {
-        this.addAvatarToMap();
-        this.addStateBarToMap('hpBar');
-        this.addStateBarToMap('energyBar');
-        this.addStateBarToMap('staminaBar');
-    }
-
-
-    addAvatarToMap() {
-        this.addToMap(this.avatarImage);
-        this.addToMap(this.avatarFrame);
-    }
-
-
-    addStateBarToMap(key) {
-        this.addToMap(this[key].bg);
-        this.addGroupToMap(this[key].points);
-        this.addToMap(this[key].border);
-    }
-
-
-    addAvatarItemToMap() {
-        this.addToMap(this.itemBg);
-        this.addToMap(this.itemBomb);
-        this.addToMap(this.itemBorder);
     }
 }

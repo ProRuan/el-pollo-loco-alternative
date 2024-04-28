@@ -12,7 +12,7 @@ class StartScreen {
 
     // to edit (until this is complete)!!!
     constructor(world) {
-        this.updateWorld(world, this);
+        updateWorld(world, this);
 
         this.setStartScreenBg();
         this.setCredits();
@@ -21,14 +21,7 @@ class StartScreen {
         this.setCloseButton();
         this.setVolumeButtons();
 
-        this.updateWorld(this, world);
-    }
-
-
-    updateWorld(provider, recipient) {
-        for (const [key] of Object.entries(provider)) {
-            recipient[key] = provider[key];
-        }
+        updateWorld(this, world);
     }
 
 
