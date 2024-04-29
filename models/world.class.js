@@ -396,7 +396,7 @@ class World {
         this[name] = new DrawableObject((canvasWidth / 2 - textWidth / 2 - 4) / 64, (400 - 36 - 36 / 2 - 4) / 64, textWidth + 8, 24 + 8);    // Please move!!!
 
 
-        // console.log();
+        // console.log(this[name]);
     }
 
 
@@ -444,12 +444,12 @@ class World {
     setBirdArrow() {
         setInterval(() => {
             // only for testing!!!
-            if (this.keyboard.mouseClick) {
-                console.log(this.creditsButton, this.keyboard.mouseClick, 540 - this.keyboard.mouseClick.yOffset);
+            // if (this.keyboard.mouseClick) {
+            //     console.log(this.creditsButton, this.keyboard.mouseClick, 540 - this.keyboard.mouseClick.yOffset);
 
 
-                delete this.keyboard.mouseClick;
-            }
+            //     delete this.keyboard.mouseClick;
+            // }
 
 
             if (this.keyboard.mouseClick !== undefined) {
@@ -514,10 +514,13 @@ class World {
 
             if (this.keyboard.mouseClick !== undefined) {
                 if (
-                    this.cupButton.x < keyboard.mouseClick.xOffset &&
-                    keyboard.mouseClick.xOffset < this.cupButton.x + this.cupButton.width &&
-                    this.cupButton.y < keyboard.mouseClick.yOffset &&
-                    keyboard.mouseClick.yOffset < this.cupButton.y + this.cupButton.height
+
+                    isMouseClick(this.keyboard.mouseClick, this.cupButton)
+
+                    // this.cupButton.x < keyboard.mouseClick.xOffset &&
+                    // keyboard.mouseClick.xOffset < this.cupButton.x + this.cupButton.width &&
+                    // this.cupButton.y < 540 - keyboard.mouseClick.yOffset &&
+                    // 540 - keyboard.mouseClick.yOffset < this.cupButton.y + this.cupButton.height
                 ) {
                     this.leaderboardContent = 'high score';
                     this.cupButtonClicked = true;

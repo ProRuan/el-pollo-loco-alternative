@@ -42,9 +42,9 @@ document.addEventListener('mousedown', (event) => {
     }
     keyboard['mouseClick'] = {
         'x': event.clientX,
-        'y': 540 - event.clientY,
+        'y': event.clientY,
         'xOffset': event.offsetX,
-        'yOffset': 540 - event.offsetY
+        'yOffset': event.offsetY
     }
 
 
