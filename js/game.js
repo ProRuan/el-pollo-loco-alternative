@@ -160,8 +160,8 @@ function isMouseClick(m, o) {
 
 function getMouseXY(m) {
     return {
-        'x': m.xOffset,
-        'y': m.yOffset
+        'xOffset': m.xOffset,
+        'yOffset': 540 - m.yOffset
     }
 }
 
@@ -177,7 +177,7 @@ function getObjectXY(o) {
 
 
 function isIncluded2D(m, o) {
-    return isIncluded(o.xLeft, m.x, o.xRight) && isIncluded(o.yTop, m.y, o.yBottom);
+    return isIncluded(o.xLeft, m.xOffset, o.xRight) && isIncluded(o.yTop, m.yOffset, o.yBottom);
 }
 
 

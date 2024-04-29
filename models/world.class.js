@@ -138,6 +138,7 @@ class World {
 
     draw() {
         this.clearCanvas();
+        this.runWorldTime();
         this.drawStartScreen();
         this.drawLevelScreen();
         this.redraw();
@@ -408,6 +409,13 @@ class World {
     }
 
 
+    runWorldTime() {
+        setInterval(() => {
+            this.worldTime = getCurrentTime();
+        }, 1000 / 60);
+    }
+
+
     drawText(text, x, y) {
         this.ctx.fillText(text, x, y);
     }
@@ -435,22 +443,20 @@ class World {
             if (this.keyboard.mouseClick !== undefined) {
                 if (this.keyboard.arrowUp.keydown == true || isMouseClick(this.keyboard.mouseClick, this.newGameButton)) {    // Please also chane on mouseclick!!!
                     this.updateButtonPointer(8.50625, 2.925 - 0.5, 'new game');
-                } else if (this.keyboard.arrowDown.keydown == true || isMouseClick(this.keyboard.mouseClick, this.creditsButton)) {
+                    console.log('selected new game');
+                } else if (this.keyboard.arrowDown.keydown == true || isMouseClick(this.keyboard.mouseClick, this.creditsButton)) {    // funktioniert nicht ganz!!!
                     this.updateButtonPointer(8.19375, 1.8 - 0.5, 'credits');
+                    console.log(isMouseClick(this.keyboard.mouseClick, this.creditsButton));
                 }
             }
 
 
             if (this.keyboard.mouseClick !== undefined) {
-                if (!this.keyboard.escape.keydown &&
-                    this.newGameButton.x < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < this.newGameButton.x + this.newGameButton.width &&
-                    this.newGameButton.y < 540 - this.keyboard.mouseClick.yOffset && 540 - this.keyboard.mouseClick.yOffset < this.newGameButton.y + this.newGameButton.height &&
+                if (!this.keyboard.escape.keydown && (isMouseClick(this.keyboard.mouseClick, this.newGameButton) || (this.keyboard.enter.keydown && this.activeButton == 'new game')) &&
                     this.startScreenDisplayed == true && this.selectedLevelDisplayed == false) {
-                    // this.startScreenDisplayed = false;
-                    // this.selectedLevelDisplayed = true;
+
                     this.birdArrow.speed = 120 / 60;
                     this.activeButton = 'new game';
-                    console.log(this.newGameButton.y, 540 - this.keyboard.mouseClick.yOffset, this.newGameButton.y + this.newGameButton.height);
 
                     setTimeout(() => {
                         this.startScreenDisplayed = false;
@@ -459,42 +465,15 @@ class World {
                         this.birdArrow.speed = 0;
                     }, 1500);
 
-                    // AUDIO_START_SCREEN.pause();
-                    // AUDIO_START_SCREEN.currentTime = 0;
                     AUDIO_NEW_GAME.play();
                     console.log('level starts ...');
                     this.levelWatch = new Date().getTime();
-                    console.log(this.levelWatch);
                     delete this.keyboard.mouseClick;
                 }
             }
-            if (!this.keyboard.escape.keydown && this.keyboard.enter.keydown && this.activeButton == 'new game' && this.startScreenDisplayed == true && this.selectedLevelDisplayed == false) {
-                // this.startScreenDisplayed = false;
-                // this.selectedLevelDisplayed = true;
-                this.birdArrow.speed = 120 / 60;
 
-                setTimeout(() => {
-                    this.startScreenDisplayed = false;
-                    this.selectedLevelDisplayed = true;
-                    this.birdArrow.setPosition(8.50625, 2.925 - 0.5);
-                    this.birdArrow.speed = 0;
-                }, 1500);
 
-                // AUDIO_START_SCREEN.pause();
-                // AUDIO_START_SCREEN.currentTime = 0;
-                AUDIO_NEW_GAME.play();
-                console.log('level starts ...');
-                this.levelWatch = new Date().getTime();
-                console.log(this.levelWatch);
-            }
-            if (this.keyboard.escape.keydown) {
-                this.selectedLevelDisplayed = false;
-                this.startScreenDisplayed = true;
-                this.startedGame = undefined;
-                this.startScreenRevealed = undefined;
-                this.hero.AMBIENCE_SOUND.pause();
-                this.hero.AMBIENCE_SOUND.currentTime = 0;
-            }
+            this.leaveGame();
 
 
             if (this.leaderboardOpened == true && (
@@ -609,6 +588,24 @@ class World {
 
         }, 1000 / 60);
         this.birdArrow.speed = 0;    // neccessary???
+    }
+
+
+    leaveGame() {
+        if (this.verifyGameExit()) {
+            this.selectedLevelDisplayed = false;
+            this.startScreenDisplayed = true;
+            this.startedGame = undefined;
+            this.startScreenRevealed = undefined;
+            this.hero.AMBIENCE_SOUND.pause();
+            this.hero.AMBIENCE_SOUND.currentTime = 0;
+            this.keyboard.escape.lastTimeStamp = this.worldTime;
+        }
+    }
+
+
+    verifyGameExit() {
+        return this.keyboard.escape.keydown && this.worldTime - this.keyboard.escape.lastTimeStamp > 1800
     }
 
 
