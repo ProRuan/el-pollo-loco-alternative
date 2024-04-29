@@ -622,43 +622,15 @@ class World {
 
 
     drawLevelComponents() {
-        this.ctx.translate(this.camera_x, 0);
+        this.translateCamera(this.camera_x, 0);
 
-        // if (this.enemy[0] !== undefined) {
-        //     this.addToMap(this.enemy[0]);
-        // }
-        this.addGroupToMap(this.BACKGROUND);
-        this.addGroupToMap(this.CLOUDS);
-        this.addGroupToMap(this.BIRDS);
-        this.addGroupToMap(this.TREES);
-        this.addGroupToMap(this.LEAVES);
-        this.addGroupToMap(this.GRASS_FLYING);
-        this.addGroupToMap(this.GRASS);
-
-        // this.addGroupToMap(this.ladder);
-
-        this.addGroupToMap(this.LADDERS);
-        this.addGroupToMap(this.COINS);
-        this.addGroupToMap(this.CRYSTALS);
-        this.addGroupToMap(this.HIT_POINTS);
-        // this.addGroupToMap(this.STONES);
-        // this.addToMap(this.character);
-
-        // this.addToMap(this.dino);
-        // this.addToMap(this.ent);
-        // this.addToMap(this.spider);
-        this.addGroupToMap(this.webs);
-        // this.addToMap(this.endboss);
+        this.addLevelObjectsToMap();
         this.addToMap(this.ENDBOSS);
-        this.addGroupToMap(this.ENEMIES);
         this.addToMap(this.hero);
-
-        if (this.endbossMagic) {
-            this.addToMap(this.endbossMagic);
-        }
-
-
         this.executeMethodByKey('levelScreen', 'addAvatarInfo');
+
+        this.addEndbossMagicToMap();
+        this.addGroupToMap(this.webs);
 
         // Please enable!!!
         // ----------------
@@ -669,30 +641,46 @@ class World {
             }
             this.addToMap(this.itemBorder);
         }
-        // ----------------
 
-        // this.addToMap(this.stone);
+        this.addItemBombToMap();
 
-        // this.addToMap(this.blade);
-        // if (this.blades.length > 0 && this.blades[0] !== undefined) {
-        //     this.addToMap(this.blades[0]);
-        // }
-        // if (this.fires.length > 0 && this.fires[0] !== undefined) {
-        //     this.addToMap(this.fires[0]);
-        // }
-        // if (this.lightnings.length > 0 && this.lightnings[0] !== undefined) {
-        //     this.addToMap(this.lightnings[0]);
-        // }
+        this.translateCamera(-this.camera_x, 0);
+    }
 
+
+    translateCamera(x, y) {
+        this.ctx.translate(x, y);
+    }
+
+
+    // to edit
+    addLevelObjectsToMap() {
+        for (let i = 0; i < this.level.keys.length; i++) {
+            let key = this.level.keys[i].toUpperCase();
+            this.addGroupToMap(this[key]);
+        }
+    }
+
+
+    // addToMapOnCondition(object) {
+    //     if (object) {
+    //         this.addToMap(object);
+    //     }
+    // }
+
+
+    // to edit
+    addEndbossMagicToMap() {
+        if (this.endbossMagic) {
+            this.addToMap(this.endbossMagic);
+        }
+    }
+
+
+    // to edit
+    addItemBombToMap() {
         if (this.bomb !== undefined) {
             this.addToMap(this.bomb);
         }
-        // this.addToMap(this.fire);
-        // this.addToMap(this.lightning);
-
-
-
-
-        this.ctx.translate(-this.camera_x, 0);
     }
 }
