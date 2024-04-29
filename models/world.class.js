@@ -353,7 +353,7 @@ class World {
         if (this.startedGame) {
             this.drawTextNewGame(text, height);
             this.drawTextFrame('24px Arial', text, height);
-            this.setMainMenuButton(text, name);
+            this.setMainMenuButton(text, height, name);
         }
     }
 
@@ -391,15 +391,10 @@ class World {
 
 
     // to edit
-    setMainMenuButton(text, name) {    // height as parameter!?!
+    setMainMenuButton(text, height, name) {
         let textWidth = this.getTextWidth('24px Arial', text);
-        this[name] = new DrawableObject((canvasWidth / 2 - textWidth / 2 - 4) / 64, (400 - 36 - 36 / 2 - 4) / 64, textWidth + 8, 24 + 8);    // Please move!!!
-
-
-        // console.log(this[name]);
+        this[name] = new DrawableObject((canvasWidth / 2 - textWidth / 2 - 4) / 64, (canvasHeight - height) / 64, textWidth + 8, 24 + 8);
     }
-
-
 
 
     setFillStyle(color) {
@@ -443,24 +438,12 @@ class World {
 
     setBirdArrow() {
         setInterval(() => {
-            // only for testing!!!
-            // if (this.keyboard.mouseClick) {
-            //     console.log(this.creditsButton, this.keyboard.mouseClick, 540 - this.keyboard.mouseClick.yOffset);
-
-
-            //     delete this.keyboard.mouseClick;
-            // }
-
-
-            if (this.keyboard.mouseClick !== undefined) {
-                if (this.keyboard.arrowUp.keydown == true || isMouseClick(this.keyboard.mouseClick, this.newGameButton)) {    // Please also chane on mouseclick!!!
-                    this.updateButtonPointer(8.50625, 2.925 - 0.5, 'new game');
-                    console.log('selected new game');
-                } else if (this.keyboard.arrowDown.keydown == true || isMouseClick(this.keyboard.mouseClick, this.creditsButton)) {    // funktioniert nicht ganz!!!
-                    this.updateButtonPointer(8.19375, 1.8 - 0.5, 'credits');
-                    console.log(isMouseClick(this.keyboard.mouseClick, this.creditsButton));
-                }
+            if (this.keyboard.arrowUp.keydown == true && this.activeButton == 'credits' || isMouseClick(this.keyboard.mouseClick, this.newGameButton)) {
+                this.updateButtonPointer(8.50625, 2.925 - 0.5, 'new game');
+            } else if (this.keyboard.arrowDown.keydown == true && this.activeButton == 'new game' || isMouseClick(this.keyboard.mouseClick, this.creditsButton)) {    // funktioniert nicht ganz!!!
+                this.updateButtonPointer(8.19375, 1.8 - 0.5, 'credits');
             }
+            // delete mouse click anywhere ...
 
 
             if (this.keyboard.mouseClick !== undefined) {
@@ -488,13 +471,7 @@ class World {
             this.executeMethod('levelScreen', 'leaveGame');
 
 
-            if (this.leaderboardOpened == true && (
-
-                // this.isMouseClick(this.keyboard.mouseClick, this.closeButton)
-
-                650.5 - 14 < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < 650.5 + 14 &&
-                99.5 - 14 < this.keyboard.mouseClick.yOffset && this.keyboard.mouseClick.yOffset < 99.5 + 14
-            )) {
+            if (this.leaderboardOpened == true && isMouseClick(this.keyboard.mouseClick, this.closeButton)) {
                 this.leaderboardOpened = false;
             }
 
@@ -513,20 +490,11 @@ class World {
 
 
             if (this.keyboard.mouseClick !== undefined) {
-                if (
-
-                    isMouseClick(this.keyboard.mouseClick, this.cupButton)
-
-                    // this.cupButton.x < keyboard.mouseClick.xOffset &&
-                    // keyboard.mouseClick.xOffset < this.cupButton.x + this.cupButton.width &&
-                    // this.cupButton.y < 540 - keyboard.mouseClick.yOffset &&
-                    // 540 - keyboard.mouseClick.yOffset < this.cupButton.y + this.cupButton.height
-                ) {
-                    this.leaderboardContent = 'high score';
+                if (isMouseClick(this.keyboard.mouseClick, this.cupButton)) {
                     this.cupButtonClicked = true;
-                    this.leaderboardOpened = true;
                     this.selectedButton = this.cupButton;
-                    // this.leaderboardOpened = (!this.leaderboardOpened) ? true : false;
+                    this.leaderboardContent = 'high score';
+                    this.leaderboardOpened = true;
                 }
             }
 

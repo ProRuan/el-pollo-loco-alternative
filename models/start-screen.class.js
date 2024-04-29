@@ -67,7 +67,7 @@ class StartScreen {
 
     // to edit
     setCloseButton() {
-        this.closeButton = new DrawableObject((650.5 - 14) / 64, (99.5 - 14) / 64, 28, 28);
+        this.closeButton = new DrawableObject((650.5 - 14) / 64, (540 - 99.5 - 14) / 64, 28, 28);
     }
 
 

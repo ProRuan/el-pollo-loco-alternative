@@ -23,6 +23,9 @@ function init() {
 }
 
 
+// set style.cursor = pointer
+
+
 document.addEventListener('mousemove', (event) => {
     // console.log('mouseover');
     keyboard['mouseover'] = {
@@ -149,19 +152,18 @@ function updateWorld(provider, recipient) {
 
 
 function isMouseClick(m, o) {
-    let mouse = getMouseXY(m);
-    let object = getObjectXY(o);
-    if (isIncluded2D(mouse, object) == true) {
-        console.log('button mouse click');
+    if (m) {
+        let mouse = getMouseXY(m);
+        let object = getObjectXY(o);
+        return isIncluded2D(mouse, object);
     }
-    return isIncluded2D(mouse, object);
 }
 
 
 function getMouseXY(m) {
     return {
         'xOffset': m.xOffset,
-        'yOffset': m.yOffset    // set variable!!!
+        'yOffset': m.yOffset
     }
 }
 
