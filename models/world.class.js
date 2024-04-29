@@ -160,7 +160,7 @@ class World {
 
     drawLevelScreen() {
         if (this.selectedLevelDisplayed == true) {
-            this.executeMethodByKey('levelScreen', 'drawLevelComponents');
+            this.executeMethod('levelScreen', 'drawLevelComponents');
         }
     }
 
@@ -220,7 +220,7 @@ class World {
     }
 
 
-    executeMethodByKey(object, method, parameter) {
+    executeMethod(object, method, parameter) {
         (!parameter) ? this[object][method]() : this[object][method](parameter);
     }
 
@@ -239,14 +239,14 @@ class World {
 
 
             if (this.selectedButton == this.cupButton) {
-                this.executeMethodByKey('startScreen', 'drawExtraButtonWidthBlur', 'cupButton');
+                this.executeMethod('startScreen', 'drawExtraButtonWidthBlur', 'cupButton');
             } else {
                 this.addToMap(this.cupButton);
             }
 
 
             if (this.selectedButton == this.settingsButton) {
-                this.executeMethodByKey('startScreen', 'drawExtraButtonWidthBlur', 'settingsButton');
+                this.executeMethod('startScreen', 'drawExtraButtonWidthBlur', 'settingsButton');
             } else {
                 this.addToMap(this.settingsButton);
             }
@@ -281,10 +281,10 @@ class World {
             if (this.leaderboardOpened == true) {
                 this.addToMap(this.leaderboard);
                 if (this.leaderboardContent == 'high score') {
-                    this.executeMethodByKey('startScreen', 'drawHighScore');
+                    this.executeMethod('startScreen', 'drawHighScore');
                 }
                 if (this.leaderboardContent == 'settings') {
-                    this.executeMethodByKey('startScreen', 'drawSettings');
+                    this.executeMethod('startScreen', 'drawSettings');
                     this.addToMap(this.leftMusicButton);
                     this.addToMap(this.leftSoundButton);
                     this.addToMap(this.rightMusicButton);
@@ -473,10 +473,13 @@ class World {
             }
 
 
-            this.leaveGame();
+            this.executeMethod('levelScreen', 'leaveGame');
 
 
             if (this.leaderboardOpened == true && (
+
+                // this.isMouseClick(this.keyboard.mouseClick, this.closeButton)
+
                 650.5 - 14 < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < 650.5 + 14 &&
                 99.5 - 14 < this.keyboard.mouseClick.yOffset && this.keyboard.mouseClick.yOffset < 99.5 + 14
             )) {
@@ -486,6 +489,8 @@ class World {
 
             if (this.keyboard.mouseClick !== undefined) {
                 if (this.leaderboardOpened == true &&
+
+
                     (this.keyboard.mouseClick.xOffset < this.leaderboard.x || this.leaderboard.x + this.leaderboard.width < this.keyboard.mouseClick.xOffset) ||
                     (this.keyboard.mouseClick.yOffset < this.leaderboard.y || this.leaderboard.y + this.leaderboard.height < this.keyboard.mouseClick.yOffset)
                 ) {
@@ -588,24 +593,6 @@ class World {
 
         }, 1000 / 60);
         this.birdArrow.speed = 0;    // neccessary???
-    }
-
-
-    leaveGame() {
-        if (this.verifyGameExit()) {
-            this.selectedLevelDisplayed = false;
-            this.startScreenDisplayed = true;
-            this.startedGame = undefined;
-            this.startScreenRevealed = undefined;
-            this.hero.AMBIENCE_SOUND.pause();
-            this.hero.AMBIENCE_SOUND.currentTime = 0;
-            this.keyboard.escape.lastTimeStamp = this.worldTime;
-        }
-    }
-
-
-    verifyGameExit() {
-        return this.keyboard.escape.keydown && this.worldTime - this.keyboard.escape.lastTimeStamp > 1800
     }
 
 

@@ -161,7 +161,7 @@ function isMouseClick(m, o) {
 function getMouseXY(m) {
     return {
         'xOffset': m.xOffset,
-        'yOffset': 540 - m.yOffset
+        'yOffset': 540 - m.yOffset    // set variable!!!
     }
 }
 

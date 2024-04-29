@@ -123,4 +123,35 @@ class LevelScreen {
     }
 
 
+    leaveGame() {
+        if (this.verifyGameExit()) {
+            this.resetGame();
+            this.resetAmbienceSound();
+            this.updateEscapeLastTimeStamp();
+        }
+    }
+
+
+    verifyGameExit() {
+        return world.keyboard.escape.keydown && world.worldTime - world.keyboard.escape.lastTimeStamp > 1800
+    }
+
+
+    resetGame() {
+        world.selectedLevelDisplayed = false;
+        world.startScreenDisplayed = true;
+        world.startedGame = undefined;
+        world.startScreenRevealed = undefined;
+    }
+
+
+    resetAmbienceSound() {
+        world.hero.AMBIENCE_SOUND.pause();
+        world.hero.AMBIENCE_SOUND.currentTime = 0;
+    }
+
+
+    updateEscapeLastTimeStamp() {
+        world.keyboard.escape.lastTimeStamp = world.worldTime;
+    }
 }
