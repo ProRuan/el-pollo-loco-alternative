@@ -2,7 +2,6 @@ class StartScreen {
 
 
     // to edit
-    birdArrow = new Bird(8.50625, 2.925);    // x, y as variables!!!
     activeButton = 'new game';
     creditsOpened = false;
     leaderboardOpened = false;

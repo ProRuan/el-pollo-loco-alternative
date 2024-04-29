@@ -9,6 +9,7 @@ class World {
     lastWorldTime = 0;
 
 
+    birdArrow = new Bird(8.50625, 2.925);    // x, y as variables!!!
 
 
     // Level
@@ -40,7 +41,7 @@ class World {
         this.setStartScreen();
         this.setLevelScreen();
 
-        this.setBirdArrow();    // to edit (startScreen)
+        this.setBirdArrow();    // to edit (startScreen)this.birdArrow = new Bird(8.50625, 2.925);    // x, y as variables!!!
 
         this.draw();
         this.setWorld();
@@ -412,34 +413,34 @@ class World {
     }
 
 
+    updateButtonPointer(x, y, name) {
+        this.updateBirdArrow(x, y);
+        this.updateActiveButton(name);
+    }
+
+
+    updateBirdArrow(x, y) {
+        this.birdArrow.setPosition(x, y);
+        this.birdArrow.speed = 0;
+    }
+
+
+    updateActiveButton(name) {
+        this.activeButton = name;
+    }
+
+
     setBirdArrow() {
         setInterval(() => {
             if (this.keyboard.mouseClick !== undefined) {
-                if (this.keyboard.arrowUp.keydown || this.newGameButton.x < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < this.newGameButton.x + this.newGameButton.width &&
-                    this.newGameButton.y < 540 - this.keyboard.mouseClick.yOffset && 540 - this.keyboard.mouseClick.yOffset < this.newGameButton.y + this.newGameButton.height) {    // Please also chane on mouseclick!!!
-                    // this.birdArrow = new Bird(8.50625, 2.925);
-                    this.birdArrow.setPosition(8.50625, 2.925 - 0.5);
-                    this.birdArrow.speed = 0;
-                    this.activeButton = 'new game';
-                } else if (this.keyboard.arrowDown.keydown || this.creditsButton.x < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < this.creditsButton.x + this.creditsButton.width &&
-                    this.creditsButton.y < 540 - this.keyboard.mouseClick.yOffset + 72 && 540 - this.keyboard.mouseClick.yOffset + 72 < this.creditsButton.y + this.creditsButton.height) {
-                    // this.birdArrow = new Bird(8.19375, 1.8);
-                    this.birdArrow.setPosition(8.19375, 1.8 - 0.5);
-                    this.birdArrow.speed = 0;
-                    this.activeButton = 'credits';
+                if (this.keyboard.arrowUp.keydown == true || isMouseClick(this.keyboard.mouseClick, this.newGameButton)) {    // Please also chane on mouseclick!!!
+                    this.updateButtonPointer(8.50625, 2.925 - 0.5, 'new game');
+                } else if (this.keyboard.arrowDown.keydown == true || isMouseClick(this.keyboard.mouseClick, this.creditsButton)) {
+                    this.updateButtonPointer(8.19375, 1.8 - 0.5, 'credits');
                 }
             }
-            if (this.keyboard.arrowUp.keydown && this.activeButton == 'credits') {    // Only if leaderboard or credits not open!!!
-                // this.birdArrow = new Bird(8.50625, 2.925);
-                this.birdArrow.setPosition(8.50625, 2.925 - 0.5);
-                this.birdArrow.speed = 0;
-                this.activeButton = 'new game';
-            } else if (this.keyboard.arrowDown.keydown && this.activeButton == 'new game') {
-                // this.birdArrow = new Bird(8.19375, 1.8);
-                this.birdArrow.setPosition(8.19375, 1.8 - 0.5);
-                this.birdArrow.speed = 0;
-                this.activeButton = 'credits';
-            }
+
+
             if (this.keyboard.mouseClick !== undefined) {
                 if (!this.keyboard.escape.keydown &&
                     this.newGameButton.x < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < this.newGameButton.x + this.newGameButton.width &&

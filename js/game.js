@@ -146,3 +146,46 @@ function updateWorld(provider, recipient) {
         recipient[key] = provider[key];
     }
 }
+
+
+function isMouseClick(m, o) {
+    let mouse = getMouseXY(m);
+    let object = getObjectXY(o);
+    if (isIncluded2D(mouse, object) == true) {
+        console.log('button mouse click');
+    }
+    return isIncluded2D(mouse, object);
+}
+
+
+function getMouseXY(m) {
+    return {
+        'x': m.xOffset,
+        'y': m.yOffset
+    }
+}
+
+
+function getObjectXY(o) {
+    return {
+        'xLeft': o.xLeft,
+        'xRight': o.xRight,
+        'yTop': o.yTop,
+        'yBottom': o.yBottom
+    };
+}
+
+
+function isIncluded2D(m, o) {
+    return isIncluded(o.xLeft, m.x, o.xRight) && isIncluded(o.yTop, m.y, o.yBottom);
+}
+
+
+function isIncluded(a, b, c) {
+    return isLarger(a, b) && isLarger(b, c);
+}
+
+
+function isLarger(a, b, tolerant) {
+    return (!tolerant) ? a < b : a <= b;
+}
