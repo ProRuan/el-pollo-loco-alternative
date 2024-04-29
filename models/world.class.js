@@ -394,6 +394,9 @@ class World {
     setMainMenuButton(text, name) {    // height as parameter!?!
         let textWidth = this.getTextWidth('24px Arial', text);
         this[name] = new DrawableObject((canvasWidth / 2 - textWidth / 2 - 4) / 64, (400 - 36 - 36 / 2 - 4) / 64, textWidth + 8, 24 + 8);    // Please move!!!
+
+
+        // console.log();
     }
 
 
@@ -440,6 +443,15 @@ class World {
 
     setBirdArrow() {
         setInterval(() => {
+            // only for testing!!!
+            if (this.keyboard.mouseClick) {
+                console.log(this.creditsButton, this.keyboard.mouseClick, 540 - this.keyboard.mouseClick.yOffset);
+
+
+                delete this.keyboard.mouseClick;
+            }
+
+
             if (this.keyboard.mouseClick !== undefined) {
                 if (this.keyboard.arrowUp.keydown == true || isMouseClick(this.keyboard.mouseClick, this.newGameButton)) {    // Please also chane on mouseclick!!!
                     this.updateButtonPointer(8.50625, 2.925 - 0.5, 'new game');

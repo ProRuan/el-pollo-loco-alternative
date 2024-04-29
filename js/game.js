@@ -42,9 +42,9 @@ document.addEventListener('mousedown', (event) => {
     }
     keyboard['mouseClick'] = {
         'x': event.clientX,
-        'y': event.clientY,
+        'y': 540 - event.clientY,
         'xOffset': event.offsetX,
-        'yOffset': event.offsetY
+        'yOffset': 540 - event.offsetY
     }
 
 
@@ -161,7 +161,7 @@ function isMouseClick(m, o) {
 function getMouseXY(m) {
     return {
         'xOffset': m.xOffset,
-        'yOffset': 540 - m.yOffset    // set variable!!!
+        'yOffset': m.yOffset    // set variable!!!
     }
 }
 
