@@ -135,19 +135,35 @@ class World {
     }
 
 
-    // World Methods
-    draw() {    // to edit
+    draw() {
+        this.clearCanvas();
+        this.drawStartScreen();
+        this.drawLevelScreen();
+        this.redraw();
+    }
+
+
+    clearCanvas() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
 
+
+    // to edit
+    drawStartScreen() {
         if (this.startScreenDisplayed == true) {
-            this.drawStartScreen();
+            this.drawStartScreenComponents();    // to move!!!
         }
+    }
 
-        // Please activate!!!
-        if (this.selectedLevelDisplayed == true) {    // neccessary???
-            this.drawLevelComponents();
+
+    drawLevelScreen() {
+        if (this.selectedLevelDisplayed == true) {
+            this.executeMethodByKey('levelScreen', 'drawLevelComponents');
         }
+    }
 
+
+    redraw() {
         requestAnimationFrame(() => {
             this.draw();
         });
@@ -202,13 +218,13 @@ class World {
     }
 
 
-    executeMethodByKey(object, method) {
-        this[object][method]();
+    executeMethodByKey(object, method, parameter) {
+        (!parameter) ? this[object][method]() : this[object][method](parameter);
     }
 
 
     // to edit
-    drawStartScreen() {
+    drawStartScreenComponents() {
         this.setDarkScreen();
         this.revealStartScreen();
         this.addToMap(this.startScreenBg);
@@ -221,14 +237,14 @@ class World {
 
 
             if (this.selectedButton == this.cupButton) {
-                this.drawCupButtonWidthBlur();
+                this.executeMethodByKey('startScreen', 'drawExtraButtonWidthBlur', 'cupButton');
             } else {
                 this.addToMap(this.cupButton);
             }
 
 
             if (this.selectedButton == this.settingsButton) {
-                this.drawSettingsButtonWidthBlur();
+                this.executeMethodByKey('startScreen', 'drawExtraButtonWidthBlur', 'settingsButton');
             } else {
                 this.addToMap(this.settingsButton);
             }
@@ -595,71 +611,11 @@ class World {
     }
 
 
-    drawCupButtonWidthBlur() {
-        this.ctx.shadowColor = 'yellow';
-        this.ctx.shadowBlur = 16;
-        this.ctx.lineWidth = '1';
-        this.ctx.strokeStyle = 'yellow';
-        this.ctx.rect(896 - 44, 476 - 44, 88, 88);
-        this.ctx.stroke();
-        this.addToMap(this.cupButton);
-        this.ctx.shadowColor = 'rgba(0, 0, 0, 0)';
-        this.ctx.shadowBlur = 0;
-    }
-
-
-    drawSettingsButtonWidthBlur() {
-        this.ctx.shadowColor = 'yellow';
-        this.ctx.shadowBlur = 16;
-        this.ctx.lineWidth = '1';
-        this.ctx.strokeStyle = 'yellow';
-        this.ctx.rect(896 - 44, 476 - 44, 88, 88);
-        this.ctx.stroke();
-        this.addToMap(this.settingsButton);
-        this.ctx.shadowColor = 'rgba(0, 0, 0, 0)';
-        this.ctx.shadowBlur = 0;
-    }
-
-
-    drawLevelComponents() {
-        this.translateCamera(this.camera_x, 0);
-
-        this.addLevelObjectsToMap();
-        this.addToMap(this.ENDBOSS);
-        this.addToMap(this.hero);
-        this.executeMethodByKey('levelScreen', 'addAvatarInfo');
-
-        this.addEndbossMagicToMap();
-        this.addGroupToMap(this.webs);
-
-        // Please enable!!!
-        // ----------------
-        if (this.hero.bombSkillUnlocked) {
-            this.addToMap(this.itemBg);
-            if (this.energyBar.points.length == 100) {
-                this.addToMap(this.itemBomb);
-            }
-            this.addToMap(this.itemBorder);
-        }
-
-        this.addItemBombToMap();
-
-        this.translateCamera(-this.camera_x, 0);
-    }
-
-
-    translateCamera(x, y) {
-        this.ctx.translate(x, y);
-    }
-
-
-    // to edit
-    addLevelObjectsToMap() {
-        for (let i = 0; i < this.level.keys.length; i++) {
-            let key = this.level.keys[i].toUpperCase();
-            this.addGroupToMap(this[key]);
-        }
-    }
+    // drawExtraButtonWidthBlur(name) {
+    //     this.drawTextShadow('yellow', 16);
+    //     this.addToMap(this[name]);
+    //     this.drawTextShadow('rgba(0, 0, 0, 0)', 0);
+    // }
 
 
     // addToMapOnCondition(object) {
@@ -669,18 +625,7 @@ class World {
     // }
 
 
-    // to edit
-    addEndbossMagicToMap() {
-        if (this.endbossMagic) {
-            this.addToMap(this.endbossMagic);
-        }
-    }
 
 
-    // to edit
-    addItemBombToMap() {
-        if (this.bomb !== undefined) {
-            this.addToMap(this.bomb);
-        }
-    }
+    // extra button frame (896 - 44, 476 - 44, 88, 88)
 }

@@ -99,6 +99,13 @@ class StartScreen {
     }
 
 
+    drawExtraButtonWidthBlur(name) {
+        world.drawTextShadow('yellow', 16);
+        world.addToMap(world[name]);
+        world.drawTextShadow('rgba(0, 0, 0, 0)', 0);
+    }
+
+
     drawHighScore() {
         this.drawBestResult();
         this.drawLastResult();
