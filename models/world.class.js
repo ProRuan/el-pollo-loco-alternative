@@ -235,6 +235,7 @@ class World {
         this.drawStartText();
 
         if (this.startedGame == true) {
+            this.setLightScreen();
             this.addToMap(this.homeButton);
 
 
@@ -311,6 +312,11 @@ class World {
         } else {
             this.startScreenRevealed = true;
         }
+    }
+
+
+    setLightScreen() {
+        this.ctx.globalAlpha = 1;
     }
 
 
@@ -446,25 +452,21 @@ class World {
             // delete mouse click anywhere ...
 
 
-            if (this.keyboard.mouseClick !== undefined) {
-                if (!this.keyboard.escape.keydown && (isMouseClick(this.keyboard.mouseClick, this.newGameButton) || (this.keyboard.enter.keydown && this.activeButton == 'new game')) &&
-                    this.startScreenDisplayed == true && this.selectedLevelDisplayed == false) {
+            if (!this.keyboard.escape.keydown && (isMouseClick(this.keyboard.mouseClick, this.newGameButton) || (this.keyboard.enter.keydown && this.activeButton == 'new game')) &&
+                this.startScreenDisplayed == true && this.selectedLevelDisplayed == false) {
 
-                    this.birdArrow.speed = 120 / 60;
-                    this.activeButton = 'new game';
+                this.birdArrow.speed = 120 / 60;
 
-                    setTimeout(() => {
-                        this.startScreenDisplayed = false;
-                        this.selectedLevelDisplayed = true;
-                        this.birdArrow.setPosition(8.50625, 2.925 - 0.5);
-                        this.birdArrow.speed = 0;
-                    }, 1500);
+                setTimeout(() => {
+                    this.startScreenDisplayed = false;
+                    this.selectedLevelDisplayed = true;
+                    this.updateButtonPointer(8.50625, 2.925 - 0.5, 'new game');
+                }, 1500);
 
-                    AUDIO_NEW_GAME.play();
-                    console.log('level starts ...');
-                    this.levelWatch = new Date().getTime();
-                    delete this.keyboard.mouseClick;
-                }
+                AUDIO_NEW_GAME.play();
+                console.log('level starts ...');
+                this.levelWatch = new Date().getTime();
+                delete this.keyboard.mouseClick;
             }
 
 
@@ -476,114 +478,50 @@ class World {
             }
 
 
-            if (this.keyboard.mouseClick !== undefined) {
-                if (this.leaderboardOpened == true &&
-
-
-                    (this.keyboard.mouseClick.xOffset < this.leaderboard.x || this.leaderboard.x + this.leaderboard.width < this.keyboard.mouseClick.xOffset) ||
-                    (this.keyboard.mouseClick.yOffset < this.leaderboard.y || this.leaderboard.y + this.leaderboard.height < this.keyboard.mouseClick.yOffset)
-                ) {
-                    this.leaderboardOpened = false;
-                    this.selectedButton = undefined;
-                }
+            if (isMouseClick(this.keyboard.mouseClick, this.cupButton)) {
+                this.cupButtonClicked = true;
+                this.selectedButton = this.cupButton;
+                this.leaderboardContent = 'high score';
+                this.leaderboardOpened = true;
             }
 
 
-            if (this.keyboard.mouseClick !== undefined) {
-                if (isMouseClick(this.keyboard.mouseClick, this.cupButton)) {
-                    this.cupButtonClicked = true;
-                    this.selectedButton = this.cupButton;
-                    this.leaderboardContent = 'high score';
-                    this.leaderboardOpened = true;
-                }
+            if (isMouseClick(this.keyboard.mouseover, this.cupButton)) {
+                this.selectedButton = this.cupButton;
+                console.log('hover settings button');
+            } else if (isMouseClick(this.keyboard.mouseover, this.settingsButton)) {
+                this.selectedButton = this.settingsButton;
+                console.log('hover settings button');
+            } else if (this.leaderboardOpened != true) {
+                this.selectedButton = undefined;
             }
+            // delete this.keyboard.mouseover;
 
 
-            if (this.keyboard.mouseover !== undefined) {    // Rename to mousemove!!!
-                if (
-                    this.settingsButton.x < keyboard.mouseover.xOffset &&
-                    keyboard.mouseover.xOffset < this.settingsButton.x + this.settingsButton.width &&
-                    this.settingsButton.y < keyboard.mouseover.yOffset &&
-                    keyboard.mouseover.yOffset < this.settingsButton.y + this.settingsButton.height
-                ) {
-                    // this.leaderboardContent = 'settings';
-                    // this.settingsButtonClicked = true;
-                    // this.leaderboardOpened = true;
-                    this.selectedButton = this.settingsButton;
-                    console.log('hover settings button');
-
-                    // this.leaderboardOpened = (!this.leaderboardOpened) ? true : false;
-                } else if (this.leaderboardOpened != true) {
-                    this.selectedButton = undefined;
-                }
-                delete this.keyboard.mouseover;
+            if (isMouseClick(this.keyboard.mouseClick, this.settingsButton)) {
+                this.leaderboardContent = 'settings';
+                this.settingsButtonClicked = true;
+                this.leaderboardOpened = true;
+                this.selectedButton = this.settingsButton;
             }
-
-            // if (this.keyboard.mouseover !== undefined) {
-            //     console.log(this.keyboard.mouseover);
-            //     delete this.keyboard.mouseover;
-            // }
-
-            if (this.keyboard.mouseClick !== undefined) {
-                if (
-                    this.settingsButton.x < keyboard.mouseClick.xOffset &&
-                    keyboard.mouseClick.xOffset < this.settingsButton.x + this.settingsButton.width &&
-                    this.settingsButton.y < keyboard.mouseClick.yOffset &&
-                    keyboard.mouseClick.yOffset < this.settingsButton.y + this.settingsButton.height
-                ) {
-                    this.leaderboardContent = 'settings';
-                    this.settingsButtonClicked = true;
-                    this.leaderboardOpened = true;
-                    this.selectedButton = this.settingsButton;
-                    // this.leaderboardOpened = (!this.leaderboardOpened) ? true : false;
-                }
-            }
-
 
             if (this.leaderboardOpened == true && this.cupButtonClicked == true) {
                 this.cupButtonClicked = false;
             }
 
-            if (this.keyboard.mouseClick !== undefined) {
-                if (
-                    this.creditsButton.x < this.keyboard.mouseClick.xOffset && this.keyboard.mouseClick.xOffset < this.creditsButton.x + this.creditsButton.width &&
-                    this.creditsButton.y < 540 - this.keyboard.mouseClick.yOffset + 72 && 540 - this.keyboard.mouseClick.yOffset + 72 < this.creditsButton.y + this.creditsButton.height
-                ) {
-                    this.creditsOpened = true;
-                    this.activeButton = 'credits';
-                    delete this.keyboard.mouseClick;
-                }
-            }
-
-            if (this.activeButton == 'credits' && this.keyboard.enter.keydown) {
+            if (this.activeButton == 'credits' && this.keyboard.enter.keydown || isMouseClick(this.keyboard.mouseClick, this.creditsButton)) {
                 this.creditsOpened = true;
-            }
-
-            if (this.creditsOpened == true && this.keyboard.mouseClick &&
-                (this.keyboard.mouseClick.xOffset < this.credits.x || this.credits.x + this.credits.width < this.keyboard.mouseClick.xOffset ||
-                    540 - this.keyboard.mouseClick.yOffset + 72 < this.creditsButton.y || this.creditsButton.y + this.creditsButton.width < 540 - this.keyboard.mouseClick.yOffset + 72)) {
-                this.creditsOpened = false;
+                this.activeButton = 'credits';
                 delete this.keyboard.mouseClick;
             }
 
-            if (this.creditsOpened == true && this.keyboard.keyA.keydown) {
+
+            if (this.creditsOpened == true && (this.keyboard.mouseClick && !isMouseClick(this.keyboard.mouseClick, this.credits) || this.keyboard.keyX.keydown)) {
                 this.creditsOpened = false;
             }
-
-
-
-
-
         }, 1000 / 60);
         this.birdArrow.speed = 0;    // neccessary???
     }
-
-
-    // drawExtraButtonWidthBlur(name) {
-    //     this.drawTextShadow('yellow', 16);
-    //     this.addToMap(this[name]);
-    //     this.drawTextShadow('rgba(0, 0, 0, 0)', 0);
-    // }
 
 
     // addToMapOnCondition(object) {
@@ -591,8 +529,6 @@ class World {
     //         this.addToMap(object);
     //     }
     // }
-
-
 
 
     // extra button frame (896 - 44, 476 - 44, 88, 88)

@@ -14,6 +14,7 @@ class Keyboard {
     keyF = new Key('keyF');
     keyQ = new Key('keyQ');
     keyS = new Key('keyS');
+    keyX = new Key('keyX');
 
 
     updateKeydownTimeStamp() {
