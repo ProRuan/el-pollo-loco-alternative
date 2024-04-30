@@ -240,6 +240,20 @@ class World {
             this.addToMap(this.homeButton);
 
 
+            if (this.hoveredButton == this.cupButton) {
+                this.executeMethod('startScreen', 'drawExtraButtonWidthBlur', 'cupButton');
+            } else {
+                this.addToMap(this.cupButton);
+            }
+
+
+            if (this.hoveredButton == this.settingsButton) {
+                this.executeMethod('startScreen', 'drawExtraButtonWidthBlur', 'settingsButton');
+            } else {
+                this.addToMap(this.settingsButton);
+            }
+
+
             if (this.selectedButton == this.cupButton) {
                 this.executeMethod('startScreen', 'drawExtraButtonWidthBlur', 'cupButton');
             } else {
@@ -445,24 +459,22 @@ class World {
 
     control() {
         setInterval(() => {
-            // mouse hover
-            // ...
-
-
             // mouse click
-            if (isMouseClick(this.keyboard.mouseClick, this.newGameButton)) {
+            if (isMouseClick(this.keyboard.mouseClick, this.newGameButton) && this.leaderboardOpened == false) {
                 this.updateButtonPointer(8.50625, 2.925 - 0.5, 'new game');
                 this.resetMouseClick();
-            } else if (isMouseClick(this.keyboard.mouseClick, this.creditsButton)) {
+            } else if (isMouseClick(this.keyboard.mouseClick, this.creditsButton) && this.leaderboardOpened == false) {
                 this.updateButtonPointer(8.19375, 1.8 - 0.5, 'credits');
                 this.resetMouseClick();
             } else if (isMouseClick(this.keyboard.mouseClick, this.cupButton)) {
                 this.selectedButton = this.cupButton;
+                this.activeButton = 'cup';
                 this.leaderboardContent = 'high score';
                 this.leaderboardOpened = true;
                 this.resetMouseClick();
             } else if (isMouseClick(this.keyboard.mouseClick, this.settingsButton)) {
                 this.selectedButton = this.settingsButton;
+                this.activeButton = 'settings';
                 this.leaderboardContent = 'settings';
                 this.leaderboardOpened = true;
                 this.resetMouseClick();
@@ -476,12 +488,52 @@ class World {
             }
 
 
+            // mouse hover
+            if (isMouseClick(this.keyboard.mouseover, this.newGameButton) && this.leaderboardOpened == false) {
+                this.canvas.style.cursor = 'pointer';
+                this.updateButtonPointer(8.50625, 2.925 - 0.5, 'new game');
+            } else if (isMouseClick(this.keyboard.mouseover, this.creditsButton) && this.leaderboardOpened == false) {
+                this.canvas.style.cursor = 'pointer';
+                this.updateButtonPointer(8.19375, 1.8 - 0.5, 'credits');
+            } else if (isMouseClick(this.keyboard.mouseover, this.cupButton) && this.activeButton != 'cup') {
+                this.setButtonHover('hoveredButton', this.cupButton);
+            } else if (isMouseClick(this.keyboard.mouseover, this.settingsButton) && this.activeButton != 'settings') {
+                this.setButtonHover('hoveredButton', this.settingsButton);
+            } else {
+                // update setButtonHover (third parameter)!!!
+                this.hoveredButton = undefined;
+                this.canvas.style.cursor = 'initial';
+            }
+
+
             // mouse functions are still missing ...
 
 
             // key press
             // ...
         }, 1000 / 60);
+    }
+
+
+    setButtonHover(key, value) {
+        this.setObjectValue(key, value);
+        this.setCursorPointer();
+    }
+
+
+    setObjectValue(key, value) {
+        this[key] = value;
+    }
+
+
+    setCursorPointer() {
+        this.canvas.style.cursor = 'pointer';
+    }
+
+
+    // replace
+    resetMouseEvent(key) {
+        delete this.keyboard[key];
     }
 
 

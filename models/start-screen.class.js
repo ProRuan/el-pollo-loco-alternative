@@ -6,6 +6,7 @@ class StartScreen {
     creditsOpened = false;
     leaderboardOpened = false;
     leaderboardContent = 'settings';    // check!!!
+    hovoreddButton = undefined;    // neccessary???
     selectedButton = undefined;    // neccessary???
 
 
