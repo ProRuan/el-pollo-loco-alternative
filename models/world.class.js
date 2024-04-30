@@ -459,139 +459,8 @@ class World {
 
     control() {
         setInterval(() => {
-            // if (this.startScreenDisplayed)
-
-
-            // mouse click
-            this.controllMouseClick();
-
-
-            // mouse hover
-            if (isMouseClick(this.keyboard.mouseover, this.newGameButton) && this.creditsOpened == false && this.leaderboardOpened == false) {
-                // to edit
-
-                // this.canvas.style.cursor = 'pointer';
-                // this.updateButtonPointer(8.50625, 2.925 - 0.5, 'new game');
-                console.log('hovered: new game button');
-            } else if (isMouseClick(this.keyboard.mouseover, this.creditsButton) && this.creditsOpened == false && this.leaderboardOpened == false) {
-                // to edit
-
-                // this.canvas.style.cursor = 'pointer';
-                // this.updateButtonPointer(8.19375, 1.8 - 0.5, 'credits');
-                console.log('hovered: credits button');
-            } else if (isMouseClick(this.keyboard.mouseover, this.cupButton) && this.activeButton != 'cup') {
-                this.setButtonHover('hoveredButton', this.cupButton);
-            } else if (isMouseClick(this.keyboard.mouseover, this.settingsButton) && this.activeButton != 'settings') {
-                this.setButtonHover('hoveredButton', this.settingsButton);
-            } else {
-                // to edit
-
-                // update setButtonHover (third parameter)!!!
-                this.hoveredButton = undefined;
-                this.canvas.style.cursor = 'initial';
-            }
-
-
-            // mouse functions are still missing ...
-
-
-            // key press
-            // ...
+            this.startScreen.control();
         }, 1000 / 60);
-    }
-
-
-    controllMouseClick() {
-        if (this.isClickOnNewGameButton()) {
-            this.triggerNewGame();
-        } else if (this.isClickOnCreditsButton()) {
-            this.triggerCredits();
-        } else if (this.isClickOnCupButton()) {
-            this.triggerHighScore();
-        } else if (this.isSettingsButton()) {
-            this.triggerSettings();
-        } else if (this.isNotOnCredits()) {
-            this.closeCreditsWindow();
-        } else if (this.isNotOnLeaderBoard()) {
-            this.closeLeaderboardWindow();
-        }
-    }
-
-
-    isClickOnNewGameButton() {
-        return isMouseClick(this.keyboard.mouseClick, this.newGameButton) && this.creditsOpened == false && this.leaderboardOpened == false;
-    }
-
-
-    triggerNewGame() {
-        // to edit
-
-        // this.updateButtonPointer(8.50625, 2.925 - 0.5, 'new game');
-        this.resetMouseClick();
-        console.log('clicked: new game button');
-    }
-
-
-    isClickOnCreditsButton() {
-        return isMouseClick(this.keyboard.mouseClick, this.creditsButton) && this.creditsOpened == false && this.leaderboardOpened == false;
-    }
-
-
-    triggerCredits() {
-        // to edit
-
-        // this.updateButtonPointer(8.19375, 1.8 - 0.5, 'credits');
-        this.openCredits(true);
-        this.resetMouseClick();
-        console.log('clicked: credits button');
-    }
-
-
-    isClickOnCupButton() {
-        return isMouseClick(this.keyboard.mouseClick, this.cupButton) && (this.leaderboardOpened == false || this.leaderboardOpened == true && this.activeButton != this.cupButton);
-    }
-
-
-    triggerHighScore() {
-        this.openLeaderboard(this.cupButton, 'cup', 'high score');
-        this.resetMouseClick();
-    }
-
-
-    isSettingsButton() {
-        return isMouseClick(this.keyboard.mouseClick, this.settingsButton) && (this.leaderboardOpened == false || this.leaderboardOpened == true && this.activeButton != this.settingsButton);
-    }
-
-
-    triggerSettings() {
-        this.openLeaderboard(this.settingsButton, 'settings', 'settings');
-        this.resetMouseClick();
-    }
-
-
-    isNotOnCredits() {
-        return this.keyboard.mouseClick && !isMouseClick(this.keyboard.mouseClick, this.credits) && this.creditsOpened == true;
-    }
-
-
-    closeCreditsWindow() {
-        this.openCredits(false);
-        this.setUndefined(this.selectedButton);
-        this.resetMouseClick();
-        console.log('clicked: close button');
-    }
-
-
-    isNotOnLeaderBoard() {
-        return (isMouseClick(this.keyboard.mouseClick, this.closeButton) || this.keyboard.mouseClick && !isMouseClick(this.keyboard.mouseClick, this.leaderboard)) && this.leaderboardOpened == true;
-    }
-
-
-    closeLeaderboardWindow() {
-        this.updateLeaderboard(false);
-        this.setUndefined(this.selectedButton);
-        this.resetMouseClick();
-        console.log('clicked: close button');
     }
 
 
@@ -619,8 +488,8 @@ class World {
     }
 
 
-    setUndefined(object) {
-        object = undefined;
+    setUndefined(key) {
+        this[key] = undefined;
     }
 
 
@@ -681,54 +550,6 @@ class World {
 
 
             this.executeMethod('levelScreen', 'leaveGame');
-
-
-            if (this.leaderboardOpened == true && isMouseClick(this.keyboard.mouseClick, this.closeButton)) {
-                this.leaderboardOpened = false;
-            }
-
-
-            if (isMouseClick(this.keyboard.mouseClick, this.cupButton)) {
-                this.cupButtonClicked = true;
-                this.selectedButton = this.cupButton;
-                this.leaderboardContent = 'high score';
-                this.leaderboardOpened = true;
-            }
-
-
-            if (isMouseClick(this.keyboard.mouseover, this.cupButton)) {
-                this.selectedButton = this.cupButton;
-                console.log('hover settings button');
-            } else if (isMouseClick(this.keyboard.mouseover, this.settingsButton)) {
-                this.selectedButton = this.settingsButton;
-                console.log('hover settings button');
-            } else if (this.leaderboardOpened != true) {
-                this.selectedButton = undefined;
-            }
-            // delete this.keyboard.mouseover;
-
-
-            if (isMouseClick(this.keyboard.mouseClick, this.settingsButton)) {
-                this.leaderboardContent = 'settings';
-                this.settingsButtonClicked = true;
-                this.leaderboardOpened = true;
-                this.selectedButton = this.settingsButton;
-            }
-
-            if (this.leaderboardOpened == true && this.cupButtonClicked == true) {
-                this.cupButtonClicked = false;
-            }
-
-            if (this.activeButton == 'credits' && this.keyboard.enter.keydown || isMouseClick(this.keyboard.mouseClick, this.creditsButton)) {
-                this.creditsOpened = true;
-                this.activeButton = 'credits';
-                delete this.keyboard.mouseClick;
-            }
-
-
-            if (this.creditsOpened == true && (this.keyboard.mouseClick && !isMouseClick(this.keyboard.mouseClick, this.credits) || this.keyboard.keyX.keydown)) {
-                this.creditsOpened = false;
-            }
         }, 1000 / 60);
         this.birdArrow.speed = 0;    // neccessary???
     }

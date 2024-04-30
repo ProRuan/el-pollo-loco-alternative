@@ -152,4 +152,143 @@ class StartScreen {
         world.drawText('7', 960 / 2 + 64, 228);
         world.setFillStyle('black');
     }
+
+
+    control() {
+        if (world.startScreenDisplayed == true) {
+            // if (world.startScreenDisplayed)
+
+
+            // mouse click
+            this.controlMouseClick();
+
+
+            // mouse hover
+            if (isMouseClick(world.keyboard.mouseover, world.newGameButton) && world.creditsOpened == false && world.leaderboardOpened == false) {
+                // to edit
+
+                // world.canvas.style.cursor = 'pointer';
+                // world.updateButtonPointer(8.50625, 2.925 - 0.5, 'new game');
+                console.log('hovered: new game button');
+            } else if (isMouseClick(world.keyboard.mouseover, world.creditsButton) && world.creditsOpened == false && world.leaderboardOpened == false) {
+                // to edit
+
+                // world.canvas.style.cursor = 'pointer';
+                // world.updateButtonPointer(8.19375, 1.8 - 0.5, 'credits');
+                console.log('hovered: credits button');
+            } else if (isMouseClick(world.keyboard.mouseover, world.cupButton) && world.activeButton != 'cup') {
+                world.setButtonHover('hoveredButton', world.cupButton);
+            } else if (isMouseClick(world.keyboard.mouseover, world.settingsButton) && world.activeButton != 'settings') {
+                world.setButtonHover('hoveredButton', world.settingsButton);
+            } else {
+                // to edit
+
+                // update setButtonHover (third parameter)!!!
+                world.hoveredButton = undefined;
+                world.canvas.style.cursor = 'initial';
+            }
+
+
+            // mouse functions are still missing ...
+
+
+            // key press
+            // ...
+        }
+    }
+
+
+    controlMouseClick() {
+        if (this.isClickOnNewGameButton()) {
+            this.triggerNewGame();
+        } else if (this.isClickOnCreditsButton()) {
+            this.triggerCredits();
+        } else if (this.isClickOnCupButton()) {
+            this.triggerHighScore();
+        } else if (this.isSettingsButton()) {
+            this.triggerSettings();
+        } else if (this.isNotOnCredits()) {
+            this.closeCreditsWindow();
+        } else if (this.isNotOnLeaderBoard()) {
+            this.closeLeaderboardWindow();
+        }
+    }
+
+
+    isClickOnNewGameButton() {
+        return isMouseClick(world.keyboard.mouseClick, world.newGameButton) && world.creditsOpened == false && world.leaderboardOpened == false;
+    }
+
+
+    triggerNewGame() {
+        // to edit
+
+        // world.updateButtonPointer(8.50625, 2.925 - 0.5, 'new game');
+        world.resetMouseClick();
+        console.log('clicked: new game button');
+    }
+
+
+    isClickOnCreditsButton() {
+        return isMouseClick(world.keyboard.mouseClick, world.creditsButton) && world.creditsOpened == false && world.leaderboardOpened == false;
+    }
+
+
+    triggerCredits() {
+        // to edit
+
+        // world.updateButtonPointer(8.19375, 1.8 - 0.5, 'credits');
+        world.openCredits(true);
+        world.resetMouseClick();
+        console.log('clicked: credits button');
+    }
+
+
+    isClickOnCupButton() {
+        return isMouseClick(world.keyboard.mouseClick, world.cupButton) && (world.leaderboardOpened == false || world.leaderboardOpened == true && world.activeButton != world.cupButton);
+    }
+
+
+    triggerHighScore() {
+        world.openLeaderboard(world.cupButton, 'cup', 'high score');
+        world.resetMouseClick();
+    }
+
+
+    isSettingsButton() {
+        return isMouseClick(world.keyboard.mouseClick, world.settingsButton) && (world.leaderboardOpened == false || world.leaderboardOpened == true && world.activeButton != world.settingsButton);
+    }
+
+
+    triggerSettings() {
+        world.openLeaderboard(world.settingsButton, 'settings', 'settings');
+        world.resetMouseClick();
+    }
+
+
+    isNotOnCredits() {
+        return world.keyboard.mouseClick && !isMouseClick(world.keyboard.mouseClick, world.credits) && world.creditsOpened == true;
+    }
+
+
+    closeCreditsWindow() {
+        world.openCredits(false);
+        world.setUndefined('selectedButton');
+        world.resetMouseClick();
+        console.log('clicked: close button');
+    }
+
+
+    isNotOnLeaderBoard() {
+        return (isMouseClick(world.keyboard.mouseClick, world.closeButton) || world.keyboard.mouseClick && !isMouseClick(world.keyboard.mouseClick, world.leaderboard)) && world.leaderboardOpened == true;
+    }
+
+
+    closeLeaderboardWindow() {
+        world.updateLeaderboard(false);
+        world.setUndefined('selectedButton');
+        world.resetMouseClick();
+        console.log('clicked: close button');
+    }
+
 }
