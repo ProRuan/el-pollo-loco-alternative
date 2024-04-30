@@ -51,16 +51,16 @@ document.addEventListener('mousedown', (event) => {
     }
 
 
-    if (
-        world.settingsButton.x < keyboard.mouseClick.xOffset &&
-        keyboard.mouseClick.xOffset < world.settingsButton.x + world.settingsButton.width &&
-        world.settingsButton.y < keyboard.mouseClick.yOffset &&
-        keyboard.mouseClick.yOffset < world.settingsButton.y + world.settingsButton.height
-    ) {
-        console.log('click button');
-        console.log(world.settingsButton.x, keyboard.mouseClick.xOffset, world.settingsButton.x + world.settingsButton.width);
-        console.log(world.settingsButton.y, keyboard.mouseClick.yOffset, world.settingsButton.y + world.settingsButton.height);
-    }
+    // if (
+    //     world.settingsButton.x < keyboard.mouseClick.xOffset &&
+    //     keyboard.mouseClick.xOffset < world.settingsButton.x + world.settingsButton.width &&
+    //     world.settingsButton.y < keyboard.mouseClick.yOffset &&
+    //     keyboard.mouseClick.yOffset < world.settingsButton.y + world.settingsButton.height
+    // ) {
+    //     console.log('click button');
+    //     console.log(world.settingsButton.x, keyboard.mouseClick.xOffset, world.settingsButton.x + world.settingsButton.width);
+    //     console.log(world.settingsButton.y, keyboard.mouseClick.yOffset, world.settingsButton.y + world.settingsButton.height);
+    // }
 });
 
 

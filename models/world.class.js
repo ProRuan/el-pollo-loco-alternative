@@ -41,7 +41,8 @@ class World {
         this.setStartScreen();
         this.setLevelScreen();
 
-        this.setBirdArrow();    // to edit (startScreen)this.birdArrow = new Bird(8.50625, 2.925);    // x, y as variables!!!
+        this.control();
+        // this.setBirdArrow();    // to edit (startScreen)this.birdArrow = new Bird(8.50625, 2.925);    // x, y as variables!!!
 
         this.draw();
         this.setWorld();
@@ -440,6 +441,54 @@ class World {
     updateActiveButton(name) {
         this.activeButton = name;
     }
+
+
+    control() {
+        setInterval(() => {
+            // mouse hover
+            // ...
+
+
+            // mouse click
+            if (isMouseClick(this.keyboard.mouseClick, this.newGameButton)) {
+                this.updateButtonPointer(8.50625, 2.925 - 0.5, 'new game');
+                this.resetMouseClick();
+            } else if (isMouseClick(this.keyboard.mouseClick, this.creditsButton)) {
+                this.updateButtonPointer(8.19375, 1.8 - 0.5, 'credits');
+                this.resetMouseClick();
+            } else if (isMouseClick(this.keyboard.mouseClick, this.cupButton)) {
+                this.selectedButton = this.cupButton;
+                this.leaderboardContent = 'high score';
+                this.leaderboardOpened = true;
+                this.resetMouseClick();
+            } else if (isMouseClick(this.keyboard.mouseClick, this.settingsButton)) {
+                this.selectedButton = this.settingsButton;
+                this.leaderboardContent = 'settings';
+                this.leaderboardOpened = true;
+                this.resetMouseClick();
+            } else if (isMouseClick(this.keyboard.mouseClick, this.closeButton) && this.leaderboardOpened) {
+                this.leaderboardOpened = false;
+                this.resetMouseClick();
+            } else if (this.keyboard.mouseClick && !isMouseClick(this.keyboard.mouseClick, this.leaderboard) && this.leaderboardOpened) {
+                this.leaderboardOpened = false;
+                this.selectedButton = undefined;
+                this.resetMouseClick();
+            }
+
+
+            // mouse functions are still missing ...
+
+
+            // key press
+            // ...
+        }, 1000 / 60);
+    }
+
+
+    resetMouseClick() {
+        delete this.keyboard.mouseClick;
+    }
+
 
 
     setBirdArrow() {
