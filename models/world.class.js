@@ -464,42 +464,32 @@ class World {
 
             // mouse click
             if (isMouseClick(this.keyboard.mouseClick, this.newGameButton) && this.creditsOpened == false && this.leaderboardOpened == false) {
-                // this.updateButtonPointer(8.50625, 2.925 - 0.5, 'new game');
+                // to edit
 
+                // this.updateButtonPointer(8.50625, 2.925 - 0.5, 'new game');
                 this.resetMouseClick();
                 console.log('clicked: new game button');
             } else if (isMouseClick(this.keyboard.mouseClick, this.creditsButton) && this.creditsOpened == false && this.leaderboardOpened == false) {
-                // this.updateButtonPointer(8.19375, 1.8 - 0.5, 'credits');
-                this.creditsOpened = true;
+                // to edit
 
+                // this.updateButtonPointer(8.19375, 1.8 - 0.5, 'credits');
+                this.openCredits(true);
                 this.resetMouseClick();
                 console.log('clicked: credits button');
             } else if (isMouseClick(this.keyboard.mouseClick, this.cupButton) && (this.leaderboardOpened == false || this.leaderboardOpened == true && this.activeButton != this.cupButton)) {
-                this.selectedButton = this.cupButton;
-                this.activeButton = 'cup';
-                if (this.creditsOpened == true) {
-                    this.creditsOpened = false;
-                }
-                this.leaderboardContent = 'high score';
-                this.leaderboardOpened = true;
+                this.openLeaderboard(this.cupButton, 'cup', 'high score');
                 this.resetMouseClick();
             } else if (isMouseClick(this.keyboard.mouseClick, this.settingsButton) && (this.leaderboardOpened == false || this.leaderboardOpened == true && this.activeButton != this.settingsButton)) {
-                this.selectedButton = this.settingsButton;
-                this.activeButton = 'settings';
-                if (this.creditsOpened == true) {
-                    this.creditsOpened = false;
-                }
-                this.leaderboardContent = 'settings';
-                this.leaderboardOpened = true;
+                this.openLeaderboard(this.settingsButton, 'settings', 'settings');
                 this.resetMouseClick();
             } else if (this.keyboard.mouseClick && !isMouseClick(this.keyboard.mouseClick, this.credits) && this.creditsOpened == true) {
-                this.creditsOpened = false;
-                this.selectedButton = undefined;
+                this.openCredits(false);
+                this.setUndefined(this.selectedButton);
                 this.resetMouseClick();
                 console.log('clicked: close button');
             } else if ((isMouseClick(this.keyboard.mouseClick, this.closeButton) || this.keyboard.mouseClick && !isMouseClick(this.keyboard.mouseClick, this.leaderboard)) && this.leaderboardOpened == true) {
-                this.leaderboardOpened = false;
-                this.selectedButton = undefined;
+                this.updateLeaderboard(false);
+                this.setUndefined(this.selectedButton);
                 this.resetMouseClick();
                 console.log('clicked: close button');
             }
@@ -507,20 +497,24 @@ class World {
 
             // mouse hover
             if (isMouseClick(this.keyboard.mouseover, this.newGameButton) && this.creditsOpened == false && this.leaderboardOpened == false) {
+                // to edit
+
                 // this.canvas.style.cursor = 'pointer';
                 // this.updateButtonPointer(8.50625, 2.925 - 0.5, 'new game');
-
                 console.log('hovered: new game button');
             } else if (isMouseClick(this.keyboard.mouseover, this.creditsButton) && this.creditsOpened == false && this.leaderboardOpened == false) {
+                // to edit
+
                 // this.canvas.style.cursor = 'pointer';
                 // this.updateButtonPointer(8.19375, 1.8 - 0.5, 'credits');
-
                 console.log('hovered: credits button');
             } else if (isMouseClick(this.keyboard.mouseover, this.cupButton) && this.activeButton != 'cup') {
                 this.setButtonHover('hoveredButton', this.cupButton);
             } else if (isMouseClick(this.keyboard.mouseover, this.settingsButton) && this.activeButton != 'settings') {
                 this.setButtonHover('hoveredButton', this.settingsButton);
             } else {
+                // to edit
+
                 // update setButtonHover (third parameter)!!!
                 this.hoveredButton = undefined;
                 this.canvas.style.cursor = 'initial';
@@ -533,6 +527,35 @@ class World {
             // key press
             // ...
         }, 1000 / 60);
+    }
+
+
+    openLeaderboard(button, name, content) {
+        this.updateButton(button, name);
+        this.openCredits(false);
+        this.updateLeaderboard(true, content);
+    }
+
+
+    updateButton(button, name) {
+        this.selectedButton = button;
+        this.activeButton = name;
+    }
+
+
+    openCredits(logical) {
+        this.creditsOpened = logical;
+    }
+
+
+    updateLeaderboard(logical, content) {
+        this.leaderboardContent = (content) ? content : '';
+        this.leaderboardOpened = logical;
+    }
+
+
+    setUndefined(object) {
+        object = undefined;
     }
 
 
